@@ -116,7 +116,7 @@ estate_church =
 		local_unrest = -2
 	}	
 	province_modifier_angry = {
-		local_unrest = 5
+		local_unrest = 6
 	}	
 	
 	# Influence modifiers
