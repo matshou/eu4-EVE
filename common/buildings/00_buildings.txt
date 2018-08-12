@@ -204,7 +204,7 @@ regimental_camp = {
 	time = 12
 	modifier = {
 		land_forcelimit = 1
-		regiment_recruit_speed = 0.35
+		regiment_recruit_speed = -0.35
 	}
 
 #	# THIS = Province, FROM = Builder(not nessecairly owner, can be overlord)
