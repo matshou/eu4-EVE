@@ -55,25 +55,30 @@ estate_burghers =
 	country_modifier_happy = {
 		trade_efficiency = 0.2
 		development_cost = -0.1
+		build_cost = -0.1
+		global_institution_spread = 0.05
 	}
 	country_modifier_neutral = {
 		trade_efficiency = 0.2
 	}	
 	country_modifier_angry = {
 		trade_efficiency = -0.1
-		development_cost = 0.1
+		development_cost = 0.15
+		build_cost = 0.2
 	}
 	
 	# These do not scale, but only applied in provinces owned by the estate
 	province_modifier_happy = {
 		trade_goods_size_modifier = 0.1
 		province_trade_power_modifier = 0.5
+		local_build_time = -0.25
 	}
 	province_modifier_neutral = {
 		province_trade_power_modifier = 0.5
 	}		
 	province_modifier_angry = {
 		local_unrest = 5
+		local_build_time = 0.5
 	}	
 	
 	# Influence modifiers

@@ -103,13 +103,14 @@ estate_church =
 		church_power_modifier = -0.25
 		monthly_fervor_increase = -1
 		stability_cost_modifier = 0.1
+		institution_spread_from_true_faith = -0.1
 	}	
 	
 	# These do not scale, but only applied in provinces owned by the estate
 	province_modifier_happy = {
 		local_missionary_strength = 0.02
-		local_tax_modifier = 0.1
-		local_unrest = -2
+		local_tax_modifier = 0.15
+		local_unrest = -3.5
 	}
 	province_modifier_neutral = {
 		local_unrest = -2
