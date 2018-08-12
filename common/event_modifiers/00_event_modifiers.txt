@@ -10099,3 +10099,14 @@ rb_eng_divine_common = {
 rb_eng_national_economy = {
 	global_tax_modifier = 0.05
 }
+
+# Empty event modifiers that act kind of like flags with a timer
+#
+estate_developed_burghers = {
+}
+
+estate_developed_church = {
+}
+
+estate_developed_nobles = {
+}

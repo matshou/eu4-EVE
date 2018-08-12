@@ -235,6 +235,14 @@ estate_burghers =
 		loyalty = 10
 	}
 	
+	loyalty_modifier = {
+		desc = EST_VAL_DEVELOPED
+		trigger = {
+			has_country_modifier = estate_developed_burghers
+		}
+		loyalty = 175
+	}
+	
 	#Custom Names
 	custom_name = {
 		desc = estate_bourgeoisie
