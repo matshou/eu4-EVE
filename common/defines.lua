@@ -454,7 +454,7 @@ NCountry = {
 	ESTATE_PROVINCE_POWER = 1.5,				-- Per % of non overseas development in the country they manage
 	ESTATE_PROVINCE_POWER_MAX = 40,				
 	ESTATE_DANGER_THRESHOLD = 80,				-- Estates with more influence than this become a danger to the state
-	ESTATE_GRANT_PROVINCE_COOLDOWN = 7,			-- A province cannot be revoked for this amount of years after being granted to an estate
+	ESTATE_GRANT_PROVINCE_COOLDOWN = 5,			-- A province cannot be revoked for this amount of years after being granted to an estate
 	ESTATE_LACK_OF_TERRITORY_EFFECT = -0.25,		-- Monthly loyalty loss from having too little territory
 	
 	CULTURAL_UNION_MIN_DEV = 1000,				-- Minimum development to get cultural union effect without Common Sense, or if CULTURAL_UNION_MIN_RANK is set to negative value.
