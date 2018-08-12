@@ -48,6 +48,7 @@ return_manpower_modifier = {
 	}
 
 	may_return_manpower_on_disband = yes
+	reinforce_cost_modifier = -0.20
 }
 
 general_cost_modifier = {
@@ -62,6 +63,7 @@ general_cost_modifier = {
 	}
 
 	reserves_organisation = 0.5
+	general_cost = -0.5
 }
 
 reserves_organisation_modifier = {
@@ -75,6 +77,6 @@ reserves_organisation_modifier = {
 		always = yes
 	}
 
-	general_cost = -0.5
 	drill_gain_modifier = 0.5
+	leader_siege = 1
 }
