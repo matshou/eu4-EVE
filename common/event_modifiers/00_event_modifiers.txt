@@ -9233,8 +9233,8 @@ reassessement_provinces = {
 
 gunpowder_core = {
 	drill_gain_modifier = 0.5
-	land_maintenance_modifier = 0.10
-	global_regiment_recruit_speed = 0.4
+	land_maintenance_modifier = 0.12
+	global_regiment_recruit_speed = 0.25
 }
 
 standardized_uniforms_modifier = {
