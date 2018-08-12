@@ -1029,8 +1029,9 @@ low_army_professionalism = {
 high_army_professionalism = {
 	fire_damage = 0.1
 	shock_damage = 0.1
-	siege_ability = 0.2
+	siege_ability = 0.15
 	drill_gain_modifier = 0.5
+	global_regiment_recruit_speed = 0.6
 }
 
 streltsy_modifier = {
