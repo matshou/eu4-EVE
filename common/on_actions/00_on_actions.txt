@@ -895,14 +895,158 @@ on_dismantle_revolution = {
 
 # province
 on_adm_development = {
+	if = {
+		limit = {
+			AND = {
+				has_estate = estate_burghers
+				NOT = { owner = { has_country_modifier = estate_developed_burghers } }
+			}
+		}
+		owner = {
+			add_country_modifier = {
+				name = estate_developed_burghers
+				duration = 60
+				desc = EST_VAL_DEVELOPED
+				hidden = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			AND = {
+				has_estate = estate_church
+				NOT = { owner = { has_country_modifier = estate_developed_church } }
+			}
+		}
+		owner = {
+			add_country_modifier = {
+				name = estate_developed_church
+				duration = 60
+				desc = EST_VAL_DEVELOPED
+				hidden = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			AND = {
+				has_estate = estate_nobles
+				NOT = { owner = { has_country_modifier = estate_developed_nobles } }
+			}
+		}
+		owner = {
+			add_country_modifier = {
+				name = estate_developed_nobles
+				duration = 60
+				desc = EST_VAL_DEVELOPED
+				hidden = yes
+			}
+		}
+	}
 }
 
 # province
 on_dip_development = {
+	if = {
+		limit = {
+			AND = {
+				has_estate = estate_burghers
+				NOT = { owner = { has_country_modifier = estate_developed_burghers } }
+			}
+		}
+		owner = {
+			add_country_modifier = {
+				name = estate_developed_burghers
+				duration = 60
+				desc = EST_VAL_DEVELOPED
+				hidden = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			AND = {
+				has_estate = estate_church
+				NOT = { owner = { has_country_modifier = estate_developed_church } }
+			}
+		}
+		owner = {
+			add_country_modifier = {
+				name = estate_developed_church
+				duration = 60
+				desc = EST_VAL_DEVELOPED
+				hidden = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			AND = {
+				has_estate = estate_nobles
+				NOT = { owner = { has_country_modifier = estate_developed_nobles } }
+			}
+		}
+		owner = {
+			add_country_modifier = {
+				name = estate_developed_nobles
+				duration = 60
+				desc = EST_VAL_DEVELOPED
+				hidden = yes
+			}
+		}
+	}
 }
 
 # province
 on_mil_development = {
+	if = {
+		limit = {
+			AND = {
+				has_estate = estate_burghers
+				NOT = { owner = { has_country_modifier = estate_developed_burghers } }
+			}
+		}
+		owner = {
+			add_country_modifier = {
+				name = estate_developed_burghers
+				duration = 60
+				desc = EST_VAL_DEVELOPED
+				hidden = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			AND = {
+				has_estate = estate_church
+				NOT = { owner = { has_country_modifier = estate_developed_church } }
+			}
+		}
+		owner = {
+			add_country_modifier = {
+				name = estate_developed_church
+				duration = 60
+				desc = EST_VAL_DEVELOPED
+				hidden = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			AND = {
+				has_estate = estate_nobles
+				NOT = { owner = { has_country_modifier = estate_developed_nobles } }
+			}
+		}
+		owner = {
+			add_country_modifier = {
+				name = estate_developed_nobles
+				duration = 60
+				desc = EST_VAL_DEVELOPED
+				hidden = yes
+			}
+		}
+	}
 }
 
 on_overextension_pulse = {
