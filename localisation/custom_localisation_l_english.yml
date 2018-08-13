@@ -128,4 +128,5 @@
  string_regency_council:0 "The Regency Council"
  string_royal:0 "Royal"
  string_state:0 "State"
+ EST_VAL_DEVELOPED:0 "Recently Increased Development: "
 
