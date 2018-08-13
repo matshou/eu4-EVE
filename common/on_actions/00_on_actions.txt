@@ -905,53 +905,9 @@ on_adm_development = {
 			hidden = no
 		}
 	}
-	if = {
-		limit = {
-			AND = {
-				has_estate = estate_burghers
-				NOT = { owner = { has_country_modifier = estate_developed_burghers } }
-			}
-		}
-		owner = {
-			add_country_modifier = {
-				name = estate_developed_burghers
-				duration = 60
-				desc = EST_VAL_DEVELOPED
-				hidden = yes
-			}
-		}
-	}
-	if = {
-		limit = {
-			AND = {
-				has_estate = estate_church
-				NOT = { owner = { has_country_modifier = estate_developed_church } }
-			}
-		}
-		owner = {
-			add_country_modifier = {
-				name = estate_developed_church
-				duration = 60
-				desc = EST_VAL_DEVELOPED
-				hidden = yes
-			}
-		}
-	}
-	if = {
-		limit = {
-			AND = {
-				has_estate = estate_nobles
-				NOT = { owner = { has_country_modifier = estate_developed_nobles } }
-			}
-		}
-		owner = {
-			add_country_modifier = {
-				name = estate_developed_nobles
-				duration = 60
-				desc = EST_VAL_DEVELOPED
-				hidden = yes
-			}
-		}
+	if = { 
+		limit = { has_estate = yes }
+		develop_estate_land = yes
 	}
 }
 
@@ -967,59 +923,15 @@ on_dip_development = {
 			hidden = no
 		}
 	}
-	if = {
-		limit = {
-			AND = {
-				has_estate = estate_burghers
-				NOT = { owner = { has_country_modifier = estate_developed_burghers } }
-			}
-		}
-		owner = {
-			add_country_modifier = {
-				name = estate_developed_burghers
-				duration = 60
-				desc = EST_VAL_DEVELOPED
-				hidden = yes
-			}
-		}
-	}
-	if = {
-		limit = {
-			AND = {
-				has_estate = estate_church
-				NOT = { owner = { has_country_modifier = estate_developed_church } }
-			}
-		}
-		owner = {
-			add_country_modifier = {
-				name = estate_developed_church
-				duration = 60
-				desc = EST_VAL_DEVELOPED
-				hidden = yes
-			}
-		}
-	}
-	if = {
-		limit = {
-			AND = {
-				has_estate = estate_nobles
-				NOT = { owner = { has_country_modifier = estate_developed_nobles } }
-			}
-		}
-		owner = {
-			add_country_modifier = {
-				name = estate_developed_nobles
-				duration = 60
-				desc = EST_VAL_DEVELOPED
-				hidden = yes
-			}
-		}
+	if = { 
+		limit = { has_estate = yes }
+		develop_estate_land = yes
 	}
 }
 
 # province
 on_mil_development = {
-	if = {
+		if = {
 		limit = {
 			NOT = { has_province_modifier = province_developing }
 		}
@@ -1029,53 +941,9 @@ on_mil_development = {
 			hidden = no
 		}
 	}
-	if = {
-		limit = {
-			AND = {
-				has_estate = estate_burghers
-				NOT = { owner = { has_country_modifier = estate_developed_burghers } }
-			}
-		}
-		owner = {
-			add_country_modifier = {
-				name = estate_developed_burghers
-				duration = 60
-				desc = EST_VAL_DEVELOPED
-				hidden = yes
-			}
-		}
-	}
-	if = {
-		limit = {
-			AND = {
-				has_estate = estate_church
-				NOT = { owner = { has_country_modifier = estate_developed_church } }
-			}
-		}
-		owner = {
-			add_country_modifier = {
-				name = estate_developed_church
-				duration = 60
-				desc = EST_VAL_DEVELOPED
-				hidden = yes
-			}
-		}
-	}
-	if = {
-		limit = {
-			AND = {
-				has_estate = estate_nobles
-				NOT = { owner = { has_country_modifier = estate_developed_nobles } }
-			}
-		}
-		owner = {
-			add_country_modifier = {
-				name = estate_developed_nobles
-				duration = 60
-				desc = EST_VAL_DEVELOPED
-				hidden = yes
-			}
-		}
+	if = { 
+		limit = { has_estate = yes }
+		develop_estate_land = yes
 	}
 }
 
