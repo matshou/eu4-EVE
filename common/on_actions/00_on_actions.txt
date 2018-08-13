@@ -897,6 +897,16 @@ on_dismantle_revolution = {
 on_adm_development = {
 	if = {
 		limit = {
+			NOT = { has_province_modifier = province_developing }
+		}
+		add_province_modifier = { 
+			name = province_developing
+			duration = 120
+			hidden = no
+		}
+	}
+	if = {
+		limit = {
 			AND = {
 				has_estate = estate_burghers
 				NOT = { owner = { has_country_modifier = estate_developed_burghers } }
@@ -949,6 +959,16 @@ on_adm_development = {
 on_dip_development = {
 	if = {
 		limit = {
+			NOT = { has_province_modifier = province_developing }
+		}
+		add_province_modifier = { 
+			name = province_developing
+			duration = 120
+			hidden = no
+		}
+	}
+	if = {
+		limit = {
 			AND = {
 				has_estate = estate_burghers
 				NOT = { owner = { has_country_modifier = estate_developed_burghers } }
@@ -999,6 +1019,16 @@ on_dip_development = {
 
 # province
 on_mil_development = {
+	if = {
+		limit = {
+			NOT = { has_province_modifier = province_developing }
+		}
+		add_province_modifier = { 
+			name = province_developing
+			duration = 120
+			hidden = no
+		}
+	}
 	if = {
 		limit = {
 			AND = {
