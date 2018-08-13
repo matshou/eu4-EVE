@@ -10110,3 +10110,7 @@ estate_developed_church = {
 
 estate_developed_nobles = {
 }
+
+province_developing = {
+	local_development_cost = 10
+}
