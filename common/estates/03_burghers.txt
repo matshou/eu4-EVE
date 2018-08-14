@@ -232,7 +232,7 @@ estate_burghers =
 		trigger = {
 			full_idea_group = plutocracy_ideas
 		}
-		loyalty = 10
+		loyalty = 30
 	}
 	
 	loyalty_modifier = {

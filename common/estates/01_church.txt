@@ -290,7 +290,7 @@ estate_church =
 		trigger = {
 			full_idea_group = religious_ideas
 		}
-		loyalty = 10
+		loyalty = 30
 	}
 	
 	loyalty_modifier = {
