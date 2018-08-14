@@ -298,7 +298,7 @@ estate_church =
 		trigger = {
 			has_country_modifier = estate_developed_church
 		}
-		loyalty = 175
+		loyalty = 250
 	}
 	
 	custom_name = {
