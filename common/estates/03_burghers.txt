@@ -69,8 +69,8 @@ estate_burghers =
 	
 	# These do not scale, but only applied in provinces owned by the estate
 	province_modifier_happy = {
-		trade_goods_size_modifier = 0.1
-		province_trade_power_modifier = 0.5
+		trade_goods_size_modifier = 0.15
+		province_trade_power_modifier = 0.75
 		local_build_cost = -0.15
 	}
 	province_modifier_neutral = {
