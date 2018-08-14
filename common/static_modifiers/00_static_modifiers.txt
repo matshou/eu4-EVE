@@ -1024,6 +1024,8 @@ absolutism = {
 }
 
 low_army_professionalism = {
+	land_attrition = 0.20
+	possible_mercenaries = 0.15
 }
 
 high_army_professionalism = {
@@ -1032,6 +1034,7 @@ high_army_professionalism = {
 	siege_ability = 0.15
 	drill_gain_modifier = 0.5
 	global_regiment_recruit_speed = 0.6
+	land_maintenance_modifier = 0.2
 }
 
 streltsy_modifier = {
