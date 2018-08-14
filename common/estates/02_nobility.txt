@@ -225,7 +225,7 @@ estate_nobles =
 		trigger = {
 			has_country_modifier = estate_developed_nobles
 		}
-		loyalty = 175
+		loyalty = 250
 	}
 	
 	#Alternative naming of estates
