@@ -218,7 +218,7 @@ estate_nobles =
 		trigger = {
 			full_idea_group = aristocracy_ideas
 		}
-		loyalty = 10
+		loyalty = 30
 	}
 
 	loyalty_modifier = {
