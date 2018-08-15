@@ -220,6 +220,14 @@ estate_nobles =
 		}
 		loyalty = 30
 	}
+	
+	loyalty_modifier = {
+		desc = EST_VAL_FULL_INFLUENCE
+		trigger = {
+			full_idea_group = influence_ideas
+		}
+		loyalty = 15
+	}
 
 	loyalty_modifier = {
 		desc = EST_VAL_DEVELOPED
