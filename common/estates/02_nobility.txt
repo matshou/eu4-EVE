@@ -161,7 +161,13 @@ estate_nobles =
 		}
 		influence = 3
 	}
-	
+	influence_modifier = {
+		desc = EST_VAL_FULL_INNOVATIVE
+		trigger = {
+			full_idea_group = innovativeness_ideas
+		}
+		influence = -10
+	}
 	
 	# Loyalty modifiers
 	loyalty_modifier = {
