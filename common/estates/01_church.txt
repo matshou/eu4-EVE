@@ -299,7 +299,6 @@ estate_church =
 		}
 		loyalty = 35
 	}
-	
 	loyalty_modifier = {
 		desc = EST_VAL_DEVELOPED
 		trigger = {
