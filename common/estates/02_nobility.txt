@@ -147,6 +147,20 @@ estate_nobles =
 		}	
 		influence = -40
 	}
+	influence_modifier = {
+		desc = EST_VAL_FULL_ARISTOCRATIC_INF
+		trigger = {
+			full_idea_group = aristocracy_ideas
+		}
+		influence = 5
+	}
+	influence_modifier = {
+		desc = EST_VAL_FULL_INFLUENCE_INF
+		trigger = {
+			full_idea_group = influence_ideas
+		}
+		influence = 3
+	}
 	
 	
 	# Loyalty modifiers

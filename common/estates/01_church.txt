@@ -204,6 +204,13 @@ estate_church =
 		}		
 		influence = -10
 	}
+	influence_modifier = {
+		desc = EST_VAL_FULL_RELIGIOUS_INF
+		trigger = {
+			full_idea_group = religious_ideas
+		}
+		influence = 5
+	}
 	
 	# Loyalty modifiers
 	loyalty_modifier = {
