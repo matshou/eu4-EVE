@@ -248,7 +248,6 @@ estate_burghers =
 		}
 		loyalty = 30
 	}
-	
 	loyalty_modifier = {
 		desc = EST_VAL_FULL_TRADE
 		trigger = {
@@ -256,7 +255,6 @@ estate_burghers =
 		}
 		loyalty = 15
 	}
-	
 	loyalty_modifier = {
 		desc = EST_VAL_DEVELOPED
 		trigger = {
