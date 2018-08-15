@@ -9233,7 +9233,7 @@ reassessement_provinces = {
 
 gunpowder_core = {
 	drill_gain_modifier = 0.5
-	land_maintenance_modifier = 0.12
+	land_maintenance_modifier = 0.1
 	global_regiment_recruit_speed = 0.25
 }
 
