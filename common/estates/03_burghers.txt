@@ -236,6 +236,14 @@ estate_burghers =
 	}
 	
 	loyalty_modifier = {
+		desc = EST_VAL_FULL_TRADE
+		trigger = {
+			full_idea_group = trade_ideas
+		}
+		loyalty = 15
+	}
+	
+	loyalty_modifier = {
 		desc = EST_VAL_DEVELOPED
 		trigger = {
 			has_country_modifier = estate_developed_burghers
