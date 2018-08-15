@@ -216,6 +216,20 @@ estate_burghers =
 		}	
 		influence = -40
 	}
+	influence_modifier = {
+		desc = EST_VAL_FULL_PLUTOCRATIC_INF
+		trigger = {
+			full_idea_group = plutocracy_ideas
+		}
+		influence = 5
+	}
+	influence_modifier = {
+		desc = EST_VAL_FULL_TRADE_INF
+		trigger = {
+			full_idea_group = trade_ideas
+		}
+		influence = 3
+	}
 	
 	loyalty_modifier = {
 		desc = EST_VAL_OTHER_ESTATE_IN_POWER_LOY
