@@ -128,3 +128,6 @@
  string_regency_council:0 "The Regency Council"
  string_royal:0 "Royal"
  string_state:0 "State"
+ monthly_pulse:0 "Historic Greatness"
+ desc_monthly_pulse:0 "Having accomplished magnificent things, tales of your nation will be spoken for ages to come."
+ MONTHLY_PULSE_TT:0 "Become a great nation in the eyes of the world."

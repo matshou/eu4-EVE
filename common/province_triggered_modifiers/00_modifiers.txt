@@ -3,30 +3,43 @@
 #
 # Effects are fully scriptable here.
 
+# This trigger fires once each month, use it to handle stuff that 
+# depend on monthly updates (can use country and global scope)
 
-###########################################
-# Just random test modifier
-###########################################
-test_modifier = {
+monthly_pulse = {
 	potential = {
 		always = yes
 	}
 
 	trigger = {
 		owner = {
-			stability = 0
+			custom_trigger_tooltip {
+				tooltip = MONTHLY_PULSE_TT 
+				had_global_flag = {
+					flag = monthly_pulse_flag
+					days = 30
+				}
+			}
 		}
 	}
-
-	local_build_cost = 0.05	
+	
+	prestige_decay = -0.05  # dummy modifier, not achievable
 	
 	#Province scope
 	on_activation = {
-	
+		owner = { 
+			clr_global_flag = monthly_pulse_flag   # reset flag for "had_global_flag" condition
+			set_global_flag = monthly_pulse_flag
+			
+			
+		}
 	}
 	
+	# This should only fire when we remove the modifier via "remove_province_modifier"
 	on_deactivation = {
-	
+		owner = { 
+			log = "Monthly pulse deactivated."
+		}
 	}
 	
 }

@@ -2,6 +2,12 @@
 
 # country
 on_startup = {
+	if = {
+		limit = { ai = no }  # set up only for player
+		
+		set_global_flag = monthly_pulse_flag
+		capital_scope = { add_province_triggered_modifier = monthly_pulse }
+	}
 	events = {
 		muslim_school_events.20 #Pick School
 	}
