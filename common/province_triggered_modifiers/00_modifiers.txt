@@ -12,26 +12,52 @@ monthly_pulse = {
 	}
 
 	trigger = {
-		owner = {
-			custom_trigger_tooltip {
-				tooltip = MONTHLY_PULSE_TT 
-				had_global_flag = {
-					flag = monthly_pulse_flag
-					days = 30
-				}
-			}
-		}
+		always = yes
+	#	custom_trigger_tooltip = {
+	#		tooltip = MONTHLY_PULSE_TT 
+	#		had_global_flag = {
+	#			flag = monthly_pulse_flag days = 30
+	#		}
+	#	}
 	}
 	
 	prestige_decay = -0.05  # dummy modifier, not achievable
 	
 	#Province scope
 	on_activation = {
-		owner = { 
-			clr_global_flag = monthly_pulse_flag   # reset flag for "had_global_flag" condition
-			set_global_flag = monthly_pulse_flag
+		if = { 
+			limit = { NOT = { check_variable = { which = month_pulse_eta value = 1 } } }
+			set_variable = { which = month_pulse_eta value = 30 }
 			
+			owner = { log = "Monthly pulse for [This.GetName] just happened (ETA: [Root.month_pulse_eta.GetValue])" }  #Debug
+		
+			# Do this when we run the mod for the FIRST TIME this campaign
+			# PLEASE DO NOT REMOVE THE FOLLOWING SECTIONS!
+			if = {
+				limit = { NOT = { had_global_flag = { flag = eve_initialized days = 32 } } }
+			}
 			
+			# Reset flag for "had_global_flag" condition
+			# This allow us to fire this modifier as a pulse each month
+			if = {
+				limit = { owner = { ai = no } }
+				clr_global_flag = monthly_pulse_flag
+				set_global_flag = monthly_pulse_flag
+			}
+			if = {
+				limit = { NOT = { is_capital = yes } }
+				remove_province_modifier = monthly_pulse
+				owner = { 
+					capital_scope = {
+						log = "[Prev.GetName] has changed its capital to [This.GetName]"  #Debug
+						add_province_triggered_modifier = monthly_pulse
+					}
+				}
+			}
+		}
+		else = { 
+			subtract_variable = { which = month_pulse_eta value = 1 }
+			#log = "[Prev.GetName]: month pulse eta: [Root.month_pulse_eta.GetValue]"
 		}
 	}
 	
