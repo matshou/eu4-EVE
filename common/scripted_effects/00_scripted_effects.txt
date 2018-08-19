@@ -265,6 +265,7 @@ develop_estate_land = {
 		}
 	}
 }
+
 ##################################
 # EVE - Province Autonomy
 ##################################
@@ -273,7 +274,7 @@ develop_estate_land = {
 # Should ONLY be called from a provice with ROOT scope
 #
 recalculate_province_min_autonomy = {
-	log = "[EVE] [This.GetName]: recalculating autonomy based on distance from capital ([Root.GetName])."  #Debug
+	log = "EVE: [This.GetName]: recalculating autonomy based on distance from capital ([Root.GetName])."  #Debug
 	every_owned_province = {
 		set_province_dist_min_autonomy = yes
 	}

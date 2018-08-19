@@ -26,7 +26,7 @@ monthly_pulse = {
 	on_activation = {
 		if = { 
 			limit = { NOT = { check_variable = { which = month_pulse_eta value = 1 } } }
-			owner = { log = "[EVE] Monthly pulse for [This.GetName] just happened." }
+			owner = { log = "EVE: Monthly pulse for [This.GetName] just happened." }
 			set_variable = { which = month_pulse_eta value = 30 }
 		
 			# Do this when we run the mod for the FIRST TIME this campaign.
@@ -41,7 +41,7 @@ monthly_pulse = {
 				owner = { 
 					recalculate_province_min_autonomy = yes
 					capital_scope = {
-						log = "[EVE] [Prev.GetName] has changed its capital to [This.GetName]"  #Debug
+						log = "EVE: [Prev.GetName] has changed its capital to [This.GetName]."  #Debug
 						add_province_triggered_modifier = monthly_pulse
 					}
 				}
@@ -49,14 +49,14 @@ monthly_pulse = {
 		}
 		else = { 
 			subtract_variable = { which = month_pulse_eta value = 1 }
-			#log = "[EVE] [Prev.GetName]: month pulse eta: [Root.month_pulse_eta.GetValue]"  #Debug
+			#log = "EVE: [Prev.GetName]: month pulse eta: [Root.month_pulse_eta.GetValue]."  #Debug
 		}
 	}
 	
 	# This should only fire when we remove the modifier via "remove_province_modifier"
 	on_deactivation = {
 		owner = { 
-			log = "[EVE] Monthly pulse deactivated."
+			log = "EVE: Monthly pulse deactivated."
 		}
 	}
 	
