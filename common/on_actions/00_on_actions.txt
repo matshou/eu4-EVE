@@ -16,9 +16,8 @@ on_startup = {
 				ROOT = { change_variable = { which = init_num value = 1 } }
 			}
 		}
-		log = "[EVE] Running EVE for the first time this campaign."
-		log = "[EVE] Successfully initialized [This.init_num.GetValue] countries."		
-	}
+		log = "EVE: Running this mod for the first time this campaign."
+		log = "EVE: Successfully initialized [This.init_num.GetValue] countries."		
 	}
 	
 	events = {
