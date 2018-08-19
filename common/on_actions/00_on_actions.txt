@@ -2,12 +2,20 @@
 
 # country
 on_startup = {
+	# The following sections are triggered when starting a new campaign 
+	# or loading an existing one with this mod for the first time.
 	if = {
-		limit = { ai = no }  # set up only for player
-		
-		set_global_flag = monthly_pulse_flag
-		capital_scope = { add_province_triggered_modifier = monthly_pulse }
+		limit = { NOT = { has_global_flag = eve_initialized } }
+		log = "Running EVE for the first time this campaign."
+		set_global_flag = eve_initialized
 	}
+	capital_scope = { 
+		limit = { NOT = { had_global_flag = { flag = eve_initialized days = 1 } } }
+		add_province_triggered_modifier = monthly_pulse
+		set_variable = { which = month_pulse_eta value = 30 }
+		log = "Initialized monthly pulse for [Root.GetName]." #Debug
+	}
+	
 	events = {
 		muslim_school_events.20 #Pick School
 	}
