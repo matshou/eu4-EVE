@@ -10114,6 +10114,7 @@ estate_developed_nobles = {
 province_developing = {
 	local_development_cost = 10
 }
+
 ###############################
 # EVE - Province Autonomy
 ###############################
