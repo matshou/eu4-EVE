@@ -19,8 +19,9 @@ monthly_pulse = {
 		}
 	}
 	
-	prestige_decay = -0.05  # TODO: change this to something else
-
+	local_production_efficiency = 0.15
+	local_tax_modifier = 0.3 
+	
 	# Gets called on each new day
 	on_activation = {
 		if = { 
