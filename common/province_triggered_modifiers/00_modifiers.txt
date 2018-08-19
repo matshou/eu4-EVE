@@ -3,27 +3,25 @@
 #
 # Effects are fully scriptable here.
 
+# Scope: province(ROOT)
 # This trigger fires once each month, use it to handle stuff that 
 # depend on monthly updates (can use country and global scope)
-
+#
 monthly_pulse = {
 	potential = {
 		always = yes
 	}
 
 	trigger = {
-		always = yes
-	#	custom_trigger_tooltip = {
-	#		tooltip = MONTHLY_PULSE_TT 
-	#		had_global_flag = {
-	#			flag = monthly_pulse_flag days = 30
-	#		}
-	#	}
+		custom_trigger_tooltip = {
+			tooltip = MONTHLY_PULSE_TT 
+			always = yes
+		}
 	}
 	
-	prestige_decay = -0.05  # dummy modifier, not achievable
-	
-	#Province scope
+	prestige_decay = -0.05  # TODO: change this to something else
+
+	# Gets called on each new day
 	on_activation = {
 		if = { 
 			limit = { NOT = { check_variable = { which = month_pulse_eta value = 1 } } }
@@ -32,21 +30,12 @@ monthly_pulse = {
 			owner = { log = "Monthly pulse for [This.GetName] just happened (ETA: [Root.month_pulse_eta.GetValue])" }  #Debug
 		
 			# Do this when we run the mod for the FIRST TIME this campaign
-			# PLEASE DO NOT REMOVE THE FOLLOWING SECTIONS!
 			if = {
 				limit = { NOT = { had_global_flag = { flag = eve_initialized days = 32 } } }
 			}
-			
-			# Reset flag for "had_global_flag" condition
-			# This allow us to fire this modifier as a pulse each month
-			if = {
-				limit = { owner = { ai = no } }
-				clr_global_flag = monthly_pulse_flag
-				set_global_flag = monthly_pulse_flag
-			}
+			# This triggers when the capital province has changed (for any reason)
 			if = {
 				limit = { NOT = { is_capital = yes } }
-				remove_province_modifier = monthly_pulse
 				owner = { 
 					capital_scope = {
 						log = "[Prev.GetName] has changed its capital to [This.GetName]"  #Debug
