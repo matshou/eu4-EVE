@@ -32,11 +32,13 @@ monthly_pulse = {
 			# Do this when we run the mod for the FIRST TIME this campaign
 			if = {
 				limit = { NOT = { had_global_flag = { flag = eve_initialized days = 32 } } }
+				owner = { recalculate_province_min_autonomy = yes }
 			}
 			# This triggers when the capital province has changed (for any reason)
 			if = {
 				limit = { NOT = { is_capital = yes } }
 				owner = { 
+					recalculate_province_min_autonomy = yes
 					capital_scope = {
 						log = "[Prev.GetName] has changed its capital to [This.GetName]"  #Debug
 						add_province_triggered_modifier = monthly_pulse
