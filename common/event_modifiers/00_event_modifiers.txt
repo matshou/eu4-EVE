@@ -10114,3 +10114,48 @@ estate_developed_nobles = {
 province_developing = {
 	local_development_cost = 10
 }
+###############################
+# EVE - Province Autonomy
+###############################
+
+prov_autonomy_from_dist_50 = {     # slightly more difficult to govern
+	min_local_autonomy = 2.5
+	local_autonomy = 0.01
+	picture = "local_autonomy"
+}
+
+prov_autonomy_from_dist_100 = {
+	min_local_autonomy = 5
+	local_autonomy = 0.02
+	picture = "local_autonomy"
+}
+
+prov_autonomy_from_dist_150 = {    # moderately more difficult to govern
+	min_local_autonomy = 10
+	local_autonomy = 0.05
+	picture = "local_autonomy"
+}
+
+prov_autonomy_from_dist_200 = {
+	min_local_autonomy = 15
+	local_autonomy = 0.05
+	picture = "local_autonomy"
+}
+
+prov_autonomy_from_dist_250 = {    # considerably more difficult to govern
+	min_local_autonomy = 30
+	local_autonomy = 0.10
+	picture = "local_autonomy"
+}
+
+prov_autonomy_from_dist_300 = {    # considerably more difficult to govern
+	min_local_autonomy = 50
+	local_autonomy = 0.15
+	picture = "min_autonomy"
+}
+
+prov_autonomy_from_dist_350 = {    # extremely more difficult to govern
+	min_local_autonomy = 75
+	local_autonomy = 0.25
+	picture = "min_autonomy"
+}
