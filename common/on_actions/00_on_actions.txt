@@ -7,14 +7,14 @@ on_startup = {
 	# or loading an existing one with this mod for the first time.
 	if = {
 		limit = { NOT = { has_global_flag = eve_initialized } }
-		log = "Running EVE for the first time this campaign."
 		set_global_flag = eve_initialized
+		log = "[EVE] Running EVE for the first time this campaign."
+		log = "[EVE] Successfully initialized [This.init_num.GetValue] countries."		
 	}
 	capital_scope = { 
 		limit = { NOT = { had_global_flag = { flag = eve_initialized days = 1 } } }
 		add_province_triggered_modifier = monthly_pulse
 		set_variable = { which = month_pulse_eta value = 30 }
-		log = "Initialized monthly pulse for [Root.GetName]." #Debug
 	}
 	
 	events = {
