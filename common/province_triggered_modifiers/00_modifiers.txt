@@ -28,7 +28,8 @@ monthly_pulse = {
 			owner = { log = "[EVE] Monthly pulse for [This.GetName] just happened." }
 			set_variable = { which = month_pulse_eta value = 30 }
 		
-			# Do this when we run the mod for the FIRST TIME this campaign
+			# Do this when we run the mod for the FIRST TIME this campaign.
+			# It has to be run from here because the ROOT scope is set to capital province.
 			if = {
 				limit = { NOT = { had_global_flag = { flag = eve_initialized days = 32 } } }
 				owner = { recalculate_province_min_autonomy = yes }

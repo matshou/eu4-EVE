@@ -6,8 +6,16 @@ on_startup = {
 	# The following sections are triggered when starting a new campaign 
 	# or loading an existing one with this mod for the first time.
 	if = {
-		limit = { NOT = { has_global_flag = eve_initialized } }
+		limit = { NOT = { has_global_flag = eve_initialized } ai = no }
+		set_variable = { which = init_num value = 0 }
 		set_global_flag = eve_initialized
+		every_country = {
+			capital_scope = { 
+				add_province_triggered_modifier = monthly_pulse
+				set_variable = { which = month_pulse_eta value = 30 }
+				ROOT = { change_variable = { which = init_num value = 1 } }
+			}
+		}
 		log = "[EVE] Running EVE for the first time this campaign."
 		log = "[EVE] Successfully initialized [This.init_num.GetValue] countries."		
 	}
