@@ -14,11 +14,16 @@ on_startup = {
 			set_variable = { which = init_num value = 0 }
 			set_global_flag = eve_initialized
 			every_country = {
+				# Initialize monthly pulse counter
+				reset_monthly_pulse = yes
+				
+				# Add monthly pulse trigger to nation's capital 
 				capital_scope = { 
 					add_province_triggered_modifier = monthly_pulse
-					set_variable = { which = month_pulse_eta value = 30 }
 					ROOT = { change_variable = { which = init_num value = 1 } }
 				}
+				# Calculate initial number of provinces
+				set_initial_province_num = yes	
 			}
 			log = "EVE: Running this mod for the first time this campaign."
 			log = "EVE: Successfully initialized [This.init_num.GetValue] countries."
