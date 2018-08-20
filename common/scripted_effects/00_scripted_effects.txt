@@ -267,22 +267,129 @@ develop_estate_land = {
 }
 
 ##################################
-# EVE - Province Autonomy
+# EVE - Core Scripts
 ##################################
 
-# Scope: country 
-# Should ONLY be called from a provice with ROOT scope
+# Scope: country
+reset_monthly_pulse = {
+	set_variable = { which = month_pulse_eta value = 30 }
+}
+
+# Scope: country
+# The monthly pulse will fire the NEXT day in capital province
+fire_monthly_pulse = {
+	set_variable = { which = month_pulse_eta value = 0 }
+	log = "EVE: [This.GetName] ordered an immediate monthly pulse"  #Debug
+}
+
+# Scope: country
+# Called from 'on_startup' to determine the initial number of provinces for each country
+# Each month this value is compared with the current num of provinces to check for territorial change
 #
-recalculate_province_min_autonomy = {
-	log = "EVE: [This.GetName]: recalculating autonomy based on distance from capital ([Root.GetName])."  #Debug
-	every_owned_province = {
-		set_province_dist_min_autonomy = yes
+set_initial_province_num = {
+	set_variable = { 
+		which = num_of_provinces value = 0 
+	}
+	every_owned_province = { 
+		change_variable = { which = num_of_provinces value = 1 } 
 	}
 }
-# Scope: province
-# Should NOT be called directly from anywhere but the method above
+
+##################################
+# EVE - Autonomy Scripts
+##################################
+
+# Scope: country
+# Called on each monthly pulse to check if country gained or lost territory
+check_for_territorial_change = {
+	set_variable = { 
+		which = counter_var value = 0 
+	}
+	every_owned_province = {
+		change_variable = {
+			which = counter_var value = 1
+		}
+	}
+	if = {
+		limit = { NOT = { is_variable_equal = {
+			which = num_of_provinces which = counter_var } }
+		}
+		set_country_flag = territorial_change
+	}
+}
+
+# Scope: country
+# Called once after a country moves its capital to another province
+changed_capital_province = {
+	capital_scope = {
+		add_province_triggered_modifier = monthly_pulse
+	}
+	set_country_flag = territorial_change
+	fire_monthly_pulse = yes
+}
+
+# Scope: country 
+# Should ONLY be called from a provice with ROOT as that province
 #
-set_province_dist_min_autonomy = {
+calc_country_dist_autonomy = {
+	log = "EVE: [This.GetName]: calculate autonomy based on distance from ([Root.GetName])."  #Debug
+	
+	every_owned_province = {
+		if = { 
+			limit = { has_province_flag = distant_province }
+			remove_distance_modifier = yes
+		}
+		set_province_dist_autonomy = yes
+	}
+	clr_country_flag = territorial_change
+}
+
+# Scope: province
+# Called when recalculating province distance autonomy
+remove_distance_modifier = {
+	if = {
+		limit = { has_province_modifier = prov_autonomy_from_dist_50 }
+		remove_province_modifier = prov_autonomy_from_dist_50
+	}
+	else_if = {
+		limit = { has_province_modifier = prov_autonomy_from_dist_100 }
+		remove_province_modifier = prov_autonomy_from_dist_100
+	}
+	else_if = {
+		limit = { has_province_modifier = prov_autonomy_from_dist_150 }
+		remove_province_modifier = prov_autonomy_from_dist_150
+	}
+	else_if = {
+		limit = { has_province_modifier = prov_autonomy_from_dist_200 }
+		remove_province_modifier = prov_autonomy_from_dist_200
+	}
+	else_if = {
+		limit = { has_province_modifier = prov_autonomy_from_dist_250 }
+		remove_province_modifier = prov_autonomy_from_dist_250
+	}
+	else_if = {
+		limit = { has_province_modifier = prov_autonomy_from_dist_300 }
+		remove_province_modifier = prov_autonomy_from_dist_300
+	}
+	else_if = {
+		limit = { has_province_modifier = prov_autonomy_from_dist_350 }
+		remove_province_modifier = prov_autonomy_from_dist_350
+	}
+	else = {
+		# called method but province doesn't have a distance modifier
+		owner = { log = "EVE: ERROR(invalid call to remove modifier from province [Root.GetName] by [This.GetName])" }
+	}		
+}
+	
+# Scope: province
+# Add autonomy modifiers based on province distance from capital
+# Should ONLY be called from capital provinces (registered for monthly pulses)
+#
+set_province_dist_autonomy = {
+	
+	# will be removed if the province is not distant
+	set_province_flag = distant_province
+	
 	if = {
 		limit = { province_distance = { who = ROOT distance = 350 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_350" duration = -1 }
@@ -311,4 +418,6 @@ set_province_dist_min_autonomy = {
 		limit = { province_distance = { who = ROOT distance = 50 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_50" duration = -1 }
 	}
+	# province is in the capital zone and shouldn't have a distance modifier
+	else = { clr_province_flag = distant_province }
 }
