@@ -93,7 +93,7 @@ monthly_pulse = {
 			else_if = {
 				limit = { owner = { has_country_flag = territorial_change } }
 				owner = {
-					log = "EVE: [This.GetName] had territorial changes recently."
+					#log = "EVE: [This.GetName] had territorial changes recently."
 					calc_country_dist_autonomy = yes 
 				}
 			}
@@ -109,7 +109,7 @@ monthly_pulse = {
 	# This should only fire when we remove the modifier via "remove_province_modifier"
 	on_deactivation = {
 		owner = { 
-			log = "EVE: Monthly pulse deactivated."
+			log = "EVE: Monthly pulse deactivated for [Root.GetName]."
 		}
 	}
 	
