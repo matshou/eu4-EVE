@@ -1,7 +1,7 @@
 #When adding effects directly in on_actions always consider if it would be best to do so through a scripted effect. on_actions with a lot of script in them are harder to get an overview of.
 
 # Scope: country
-# Runs immediately after your load or start a new campaign
+# Fires for every country immediately after your load or start a new campaign (once per session)
 # NOTE: it will NOT fire for player (not ai) when using the 'load game' feature when inside a campaign
 on_startup = {
 
@@ -11,19 +11,41 @@ on_startup = {
 		limit = { NOT = { has_global_flag = eve_initialized } }
 		if = {
 			limit = { ai = no }
+			
 			set_variable = { which = init_num value = 0 }
 			set_global_flag = eve_initialized
+			
 			every_country = {
+				
+				# Since we're unable to export either province or country id to a variable
+				# and current scope is unable to retrieve variable values from ROOT (player)
+			    # we need to employ this convulated system of going through every country FOR 
+				# every country to give them a proper id number.
+				#
+				set_variable = { which = country_id value = 1 } 
+				every_country = {
+					limit = { NOT = { has_global_flag = found_country } }
+					if = { limit = { tag = PREV } set_global_flag = found_country }
+					else = { PREV = { change_variable = { which = country_id value = 1 } } }
+				}
+				clr_global_flag = found_country
+				ROOT = { change_variable = { which = init_num value = 1 } }
+				log = "EVE: Initializing country [This.GetName] with id: [This.country_id.GetValue]"  #Debug
+				
+				# Every country province is given an owner id that coresponds with its owner country id.
+				# Because of the issues listed above we also have to employ a similar convulated process here
+				#
+				every_owned_province = { 
+					set_province_owner_id = yes 
+				}
+
 				# Initialize monthly pulse counter
 				reset_monthly_pulse = yes
 				
 				# Add monthly pulse trigger to nation's capital 
 				capital_scope = { 
 					add_province_triggered_modifier = monthly_pulse
-					ROOT = { change_variable = { which = init_num value = 1 } }
 				}
-				# Calculate initial number of provinces
-				set_initial_province_num = yes	
 			}
 			log = "EVE: Running this mod for the first time this campaign."
 			log = "EVE: Successfully initialized [This.init_num.GetValue] countries."

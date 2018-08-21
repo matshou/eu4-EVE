@@ -295,6 +295,29 @@ set_initial_province_num = {
 	}
 }
 
+# Scope: province
+# Assign a unique id for province that coresponds to its owner country id
+# Each province should ALWAYS have the same id as its current owner
+#
+set_province_owner_id = {
+
+	# AFAIK this is currently the only way to export variables from different scopes,
+	# because only variables in the same scope can be compared to each other
+	
+	owner = { set_variable = { which = counter_var value = 1 } }
+	set_variable = { which = owner_id value = 1 }
+	
+	owner = {
+		while = { 
+			limit = { NOT = { is_variable_equal = { which = counter_var which = country_id } } }
+			change_variable = { which = counter_var value = 1 }
+			PREV = { change_variable = { which = owner_id value = 1 } }
+		}
+		set_variable = { which = counter_var value = 1 }
+	}
+	log = "EVE: Set owner id [This.owner_id.GetValue] for province [This.GetName]"  #Debug
+}
+
 ##################################
 # EVE - Autonomy Scripts
 ##################################
