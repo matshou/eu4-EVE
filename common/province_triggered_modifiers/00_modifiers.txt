@@ -50,37 +50,36 @@ monthly_pulse = {
 			if = {
 				limit = { NOT = { is_capital = yes } }
 				remove_province_triggered_modifier = monthly_pulse
-				log = "EVE: Removing pulse triggered modifier from [Root.GetName]"  #Debug
-				
-				# TODO: once capital province changes ownership the 'previous_owner'
-				#       variable will remain till the end of the game (I think so),
-				#       so implement a province flag that can be dated to determine
-				#       if the province has completely changed autonomy and modifiers etc.
 				
 				owner = {
 					# This province was gained as a concession in a war or
 					# for other reasons has ended up as territory of another country
-					#
-					every_known_country = {
-						limit = { ROOT = { previous_owner = PREV } }
-						
-						log = "EVE: Capital city [Root.GetName]([This.GetName]) now belongs to [Prev.GetName]" 
-						
-						changed_capital_province = yes						# previous owner
-						
-						PREV = { 											# current owner
-							set_country_flag = territorial_change         
-							fire_monthly_pulse = yes
-						}
-						ROOT = { set_province_flag = changed_ownership }
-					}
-					
-					# When the nation changes its capital province with diplomatic power or an event
 					if = {
+						limit = { ROOT = { has_province_flag = conquered_capital } }
+						
+						# Find capital province previous owner
+						every_known_country = {
+							limit = { ROOT = { previous_owner = PREV } }
+							
+							changed_capital_province = yes						# previous owner
+							
+							PREV = { 											# current owner
+								set_country_flag = territorial_change         
+								fire_monthly_pulse = yes
+							}
+						}
+						# Previous owner has most probably been annexed
+						#if = { 
+						#	limit = { NOT = { has_country_flag = territorial_change } }
+						#	log = "EVE: ERROR(conquered capital [Root.GetName] with unknown previous owner)"
+						#}
+						ROOT = { clr_province_flag = conquered_capital }
+					}					
+					# Owner changed its capital province with diplomatic power or an event
+					else_if = {
 						limit = { NOT = { ROOT = { has_province_flag = changed_ownership } } }
 						changed_capital_province = yes
 					}
-					else = { ROOT = { clr_province_flag = changed_ownership } }
 				}
 			}
 			# Do this when we run the mod for the FIRST TIME this campaign.
