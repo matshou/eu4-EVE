@@ -410,11 +410,18 @@ check_for_territorial_change = {
 			if = { limit = { NOT = { is_variable_equal = { 
 				which = province_owner_id which = country_id } } }
 				
-				set_country_flag = territorial_change       # call for autonomy recalc
+				PREV = {
+					if = {
+						# conquered another nation's capital province
+						limit = { AND = { has_province_modifier = monthly_pulse NOT = { is_capital = yes } } }
+						set_province_flag = conquered_capital
+					}
 				
-				PREV = { 
 					set_province_owner_id = yes 			# update owner id
 					clr_province_flag = distant_province    # don't try to remove modifier
+					
+					set_country_flag = territorial_change   # call for autonomy recalc
+					owner = { fire_monthly_pulse = yes }    # force an update
 				}
 				
 				log = "EVE: Province [Prev.GetName] now belongs to [This.GetName]"  #Debug
