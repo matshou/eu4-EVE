@@ -69,10 +69,15 @@ monthly_pulse = {
 							}
 						}
 						# Previous owner has most probably been annexed
-						#if = { 
-						#	limit = { NOT = { has_country_flag = territorial_change } }
-						#	log = "EVE: ERROR(conquered capital [Root.GetName] with unknown previous owner)"
-						#}
+						#
+						# TODO: Implement some different check other then comparing previous_owner.
+						#		The 'previous_owner' variable will be set to null after loading campaign
+						#       so this will trigger even when the previous owner was not annexed and still exists.
+						#
+						if = { 
+							limit = { NOT = { has_country_flag = territorial_change } }
+							log = "EVE: ERROR(conquered capital [Root.GetName] with unknown previous owner)"
+						}
 						ROOT = { clr_province_flag = conquered_capital }
 					}					
 					# Owner changed its capital province with diplomatic power or an event
