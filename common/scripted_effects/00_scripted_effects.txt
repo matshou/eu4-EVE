@@ -277,21 +277,70 @@ reset_monthly_pulse = {
 
 # Scope: country
 # The monthly pulse will fire the NEXT day in capital province
+#
 fire_monthly_pulse = {
 	set_variable = { which = month_pulse_eta value = 0 }
 	log = "EVE: [This.GetName] ordered an immediate monthly pulse"  #Debug
 }
 
 # Scope: country
-# Called from 'on_startup' to determine the initial number of provinces for each country
-# Each month this value is compared with the current num of provinces to check for territorial change
+# Assign id and enable monthly pulse for scoped country  
+# This is called in mod initialization phase and when a new country is formed
 #
-set_initial_province_num = {
-	set_variable = { 
-		which = num_of_provinces value = 0 
+initialize_country = {
+
+	if = {
+		# can only be called once per country
+		limit = { NOT = { has_country_flag = is_initialized } }  
+		
+		set_country_id = yes
+		every_owned_province = { set_province_owner_id = yes }
+
+		# Initialize monthly pulse counter
+		reset_monthly_pulse = yes
+
+		# Add monthly pulse trigger to nation's capital 
+		capital_scope = { add_province_triggered_modifier = monthly_pulse }
+
+		set_country_flag = is_initialized
+		log = "EVE: Initialized country [This.GetName] with id: [This.country_id.GetValue]"  #Debug
 	}
-	every_owned_province = { 
-		change_variable = { which = num_of_provinces value = 1 } 
+}
+
+# Scope: country
+# Assign a unique id for scoped country
+# This is called in mod initialization phase and when a new country is formed
+#
+set_country_id = {
+	
+	set_variable = { which = country_id value = 1 }
+	
+	if = {     # New country formed (post-init)
+	
+		limit = { has_global_flag = eve_initialized }
+		PREV = { set_variable = { which = counter_var value = 1 } }
+		
+		while = { 
+			limit = { NOT = { PREV = { is_variable_equal = { which = counter_var which = init_num } } } }
+			PREV = { change_variable = { which = counter_var value = 1 } }
+			change_variable = { which = country_id value = 1 }
+		}
+		
+		PREV = { change_variable = { which = init_num value = 1 } }
+		change_variable = { which = country_id value = 1 }
+	}
+	else = {	# Mod Initialization phase
+	
+		# Since we're unable to export either province or country id to a variable
+		# and current scope is unable to retrieve variable values from ROOT (player)
+		# we need to employ this convulated system of going through every country
+		# 
+		every_country = {
+			limit = { NOT = { has_global_flag = found_country } }
+			if = { limit = { tag = PREV } set_global_flag = found_country }
+			else = { PREV = { change_variable = { which = country_id value = 1 } } }
+		}
+		clr_global_flag = found_country
 	}
 }
 
@@ -315,34 +364,11 @@ set_province_owner_id = {
 		}
 		set_variable = { which = counter_var value = 1 }
 	}
-	log = "EVE: Set owner id [This.owner_id.GetValue] for province [This.GetName]"  #Debug
-}
-
-##################################
-# EVE - Autonomy Scripts
-##################################
-
-# Scope: country
-# Called on each monthly pulse to check if country gained or lost territory
-check_for_territorial_change = {
-	set_variable = { 
-		which = counter_var value = 0 
-	}
-	every_owned_province = {
-		change_variable = {
-			which = counter_var value = 1
-		}
-	}
-	if = {
-		limit = { NOT = { is_variable_equal = {
-			which = num_of_provinces which = counter_var } }
-		}
-		set_country_flag = territorial_change
-	}
 }
 
 # Scope: country
 # Called once after a country moves its capital to another province
+#
 changed_capital_province = {
 	capital_scope = {
 		add_province_triggered_modifier = monthly_pulse
@@ -351,12 +377,60 @@ changed_capital_province = {
 	fire_monthly_pulse = yes
 }
 
+##################################
+# EVE - Autonomy Scripts
+##################################
+
+# Scope: province
+# Create a copy of 'owner_id' variable in province owner's country scope
+#
+export_owner_id_to_country_scope = {
+
+	owner = { set_variable = { which = province_owner_id value = 1 } }
+	set_variable = { which = counter_var value = 1 }
+	while = { 
+		limit = { NOT = { is_variable_equal = { which = counter_var which = owner_id } } }
+		change_variable = { which = counter_var value = 1 }
+		PREV = { change_variable = { which = province_owner_id value = 1 } }
+	}
+}
+
+# Scope: country
+# Called on each monthly pulse to check if country gained new territory
+# Note: this will also update owner id for each new province
+#
+check_for_territorial_change = {
+	
+	# Check only for gained territory because lost territory doesn't
+	# need an update from our side, the country that gained it will handle that
+	
+	every_owned_province = {
+		export_owner_id_to_country_scope = yes
+		owner = {
+			if = { limit = { NOT = { is_variable_equal = { 
+				which = province_owner_id which = country_id } } }
+				
+				set_country_flag = territorial_change       # call for autonomy recalc
+				
+				PREV = { 
+					set_province_owner_id = yes 			# update owner id
+					clr_province_flag = distant_province    # don't try to remove modifier
+				}
+				
+				log = "EVE: Province [Prev.GetName] now belongs to [This.GetName]"  #Debug
+			}
+			set_variable = { which = province_owner_id value = 1 }
+		}
+	}
+}
+
 # Scope: country 
 # Should ONLY be called from a provice with ROOT as that province
 #
 calc_country_dist_autonomy = {
-	log = "EVE: [This.GetName]: calculate autonomy based on distance from ([Root.GetName])."  #Debug
-	
+	# Debug log
+	#log = "EVE: [This.GetName]: calculate autonomy based on distance from ([Root.GetName])."
+	#
 	every_owned_province = {
 		if = { 
 			limit = { has_province_flag = distant_province }
@@ -368,7 +442,9 @@ calc_country_dist_autonomy = {
 }
 
 # Scope: province
+# Remove old distance modifier before applying a new one
 # Called when recalculating province distance autonomy
+#
 remove_distance_modifier = {
 	if = {
 		limit = { has_province_modifier = prov_autonomy_from_dist_50 }
@@ -400,7 +476,7 @@ remove_distance_modifier = {
 	}
 	else = {
 		# called method but province doesn't have a distance modifier
-		owner = { log = "EVE: ERROR(invalid call to remove modifier from province [Root.GetName] by [This.GetName])" }
+		owner = { log = "EVE: ERROR(invalid call to remove modifier from province [Prev.GetName] by [This.GetName])" }
 	}		
 }
 	

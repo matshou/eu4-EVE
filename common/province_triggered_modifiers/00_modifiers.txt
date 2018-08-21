@@ -26,15 +26,31 @@ monthly_pulse = {
 	on_activation = {
 		if = { 
 			limit = { owner = { NOT = { check_variable = { which = month_pulse_eta value = 1 } } } }
-			owner = { reset_monthly_pulse = yes }
 			
-			check_for_territorial_change = yes
+			owner = { 
+				#log = "EVE: Monthly pulse fired for [This.GetName]([This.country_id.GetValue]) from [Root.GetName]([Root.owner_id.GetValue])"
+				
+				reset_monthly_pulse = yes
+				check_for_territorial_change = yes
+				
+				# Triggers only for player, do all GLOBAL stuff here:
+				if = { limit = { ai = no }
+				
+					# Check on each pulse to see if a new country formed
+					every_country = {
+						limit = { NOT = { has_country_flag = is_initialized } }
+						initialize_country = yes
+					}
+				}
+			}
 			
-			# This triggers when the capital province has changed (for any reason)
+			# This triggers when the capital gets moved to another 
+			# province or the previous owner gets annexed
+			#
 			if = {
 				limit = { NOT = { is_capital = yes } }
 				remove_province_triggered_modifier = monthly_pulse
-				log = "EVE: Removing pulse triggered modifier from [Root.GetName]"
+				log = "EVE: Removing pulse triggered modifier from [Root.GetName]"  #Debug
 				
 				# TODO: once capital province changes ownership the 'previous_owner'
 				#       variable will remain till the end of the game (I think so),
@@ -44,6 +60,7 @@ monthly_pulse = {
 				owner = {
 					# This province was gained as a concession in a war or
 					# for other reasons has ended up as territory of another country
+					#
 					every_known_country = {
 						limit = { ROOT = { previous_owner = PREV } }
 						
@@ -58,8 +75,7 @@ monthly_pulse = {
 						ROOT = { set_province_flag = changed_ownership }
 					}
 					
-					# When the nation changes its capital province with 
-					# diplomatic power or an event
+					# When the nation changes its capital province with diplomatic power or an event
 					if = {
 						limit = { NOT = { ROOT = { has_province_flag = changed_ownership } } }
 						changed_capital_province = yes
@@ -69,15 +85,16 @@ monthly_pulse = {
 			}
 			# Do this when we run the mod for the FIRST TIME this campaign.
 			# It has to be run from here because the ROOT scope is set to capital province.
+			#
 			else_if = {
 				limit = { NOT = { had_global_flag = { flag = eve_initialized days = 32 } } }
 				owner = { calc_country_dist_autonomy = yes }
 			}
-			
-			else_if = {   # OR owner has gained new land
+			# Owner country has either gained new territory or changed its capital province
+			else_if = {
 				limit = { owner = { has_country_flag = territorial_change } }
 				owner = {
-					log = "EVE: [This.GetName] has had territorial change recently."
+					log = "EVE: [This.GetName] had territorial changes recently."
 					calc_country_dist_autonomy = yes 
 				}
 			}
