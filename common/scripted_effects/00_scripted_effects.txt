@@ -318,7 +318,7 @@ set_country_id = {
 	if = {   # New country formed (post-init)
 	
 		limit = { has_global_flag = eve_initialized }
-		PREV = { set_variable = { which = counter_var value = 1 } }
+		PREV = { set_variable = { which = counter_var value = 1 } }  # Global (player) scope
 		
 		while = { 
 			limit = { NOT = { PREV = { is_variable_equal = { which = counter_var which = init_num } } } }
@@ -396,6 +396,20 @@ export_owner_id_to_country_scope = {
 }
 
 # Scope: country
+# Export THIS country id to PREV scope so it can be used for comparison
+#
+export_country_id_to_prev_scope = {
+	
+	PREV = { set_variable = { which = known_country_id value = 1 } }
+	set_variable = { which = counter_var value = 1 }
+	while = { 
+		limit = { NOT = { is_variable_equal = { which = counter_var which = country_id } } }
+		change_variable = { which = counter_var value = 1 }
+		PREV = { change_variable = { which = known_country_id value = 1 } }
+	}
+}
+
+# Scope: country
 # Called on each monthly pulse to check if country gained new territory
 # Note: this will also update owner id for each new province
 #
@@ -416,10 +430,9 @@ check_for_territorial_change = {
 						limit = { AND = { has_province_modifier = monthly_pulse NOT = { is_capital = yes } } }
 						set_province_flag = conquered_capital
 					}
-				
-					set_province_owner_id = yes 			# update owner id
-					clr_province_flag = distant_province    # don't try to remove modifier
+					else = { set_province_owner_id = yes }	# update owner id
 					
+					clr_province_flag = distant_province    # don't try to remove modifier
 					set_country_flag = territorial_change   # call for autonomy recalc
 					owner = { fire_monthly_pulse = yes }    # force an update
 				}

@@ -57,27 +57,34 @@ monthly_pulse = {
 					if = {
 						limit = { ROOT = { has_province_flag = conquered_capital } }
 						
-						# Find capital province previous owner
+						# Find capital province previous owner.
+						# Normally we would do this by using 'previous_owner' variable,
+						# but for some reason it gets set to null after loading a campaign
+						
+						ROOT = { export_owner_id_to_country_scope = yes }
 						every_known_country = {
-							limit = { ROOT = { previous_owner = PREV } }
 							
-							changed_capital_province = yes						# previous owner
+							export_country_id_to_prev_scope = yes
 							
-							PREV = { 											# current owner
-								set_country_flag = territorial_change         
-								fire_monthly_pulse = yes
+							# found province previous owner
+							if = { limit = { PREV = { is_variable_equal = { 
+								which = known_country_id which = province_owner_id } } }
+								
+								changed_capital_province = yes					# previous owner
+								
+								PREV = { 										# current owner
+									set_country_flag = territorial_change         
+									fire_monthly_pulse = yes
+								}
 							}
 						}
-						# Previous owner has most probably been annexed
-						#
-						# TODO: Implement some different check other then comparing previous_owner.
-						#		The 'previous_owner' variable will be set to null after loading campaign
-						#       so this will trigger even when the previous owner was not annexed and still exists.
-						#
-						if = { 
-							limit = { NOT = { has_country_flag = territorial_change } }
-							log = "EVE: ERROR(conquered capital [Root.GetName] with unknown previous owner)"
-						}
+						# Previous owner has been annexed/integrated
+						# This can also point to an error if the owner exists but is not listed as a 'known_country'
+						# but this shouldn't happen and would be a bug on Paradox's side
+						#if = { 
+						#	limit = { NOT = { has_country_flag = territorial_change } }
+						#	log = "EVE: ERROR(conquered capital [Root.GetName] with unknown previous owner)"
+						#}
 						ROOT = { clr_province_flag = conquered_capital }
 					}					
 					# Owner changed its capital province with diplomatic power or an event
