@@ -16,3 +16,6 @@
  desc_prov_autonomy_from_dist_300:0 "The population here is significantly more difficult to properly govern due to the distance of this province from our capital city."
  prov_autonomy_from_dist_350:0 "Self-Governance"
  desc_prov_autonomy_from_dist_350:0 "The population here is extremely more difficult to properly govern due to the distance of this province from our capital city."
+ eve_autonomy_flavor.1.t:0 "Autonomy in distant provinces"
+ eve_autonomy_flavor.1.d:0 "The population of any country always strives for more local autonomy for their communities as a response to government's continuous efforts to centralize territory under its control. Many factors hindered countries ability to exercise local jurisdiction, physical distance from capital city was one of them. As a result, it will be more difficult to collect income from distant provinces."
+ eve_autonomy_flavor.1.a:0 "We will have to accept this"
