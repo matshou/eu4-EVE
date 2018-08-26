@@ -8,10 +8,10 @@
 #
 init_gov_policy = {
 
-	set_variable = { which = policy_gov_min value = -5 }
-	set_variable = { which = policy_gov_max value = 5 }
-	set_variable = { which = policy_gov_val value = 0 }
-	set_variable = { which = policy_gov_rating value = 0 }
+	set_variable = { which = policy_gov_min value = -50 }
+	set_variable = { which = policy_gov_max value = 50 }
+	set_variable = { which = policy_gov_val value = 0 }        # These are base values,
+	set_variable = { which = policy_gov_rating value = 0 }     # DO NOT CHANGE!
 	set_country_flag = policy_gov_neutral
 	
 	# TODO: Implement max values for more governments, and set initial value
@@ -21,17 +21,17 @@ init_gov_policy = {
 		on_trigger = government
 	
 	# Monarchies
-		despotic_monarchy = { set_variable = { which = policy_gov_max value = 2 } } 
+		despotic_monarchy = { set_variable = { which = policy_gov_max value = 20 } } 
 		feudal_monarchy = { set_variable = { which = policy_gov_max value = 0 } }
-		administrative_monarchy = { set_variable = { which = policy_gov_max value = 3 } }
+		administrative_monarchy = { set_variable = { which = policy_gov_max value = 30 } }
 	
 	# Republics
-		noble_republic = { set_variable = { which = policy_gov_max value = 1 } }
+		noble_republic = { set_variable = { which = policy_gov_max value = 10 } }
 		merchant_republic = { set_variable = { which = policy_gov_max value = 0 } }
-		administrative_republic = { set_variable = { which = policy_gov_max value = 3 } }
+		administrative_republic = { set_variable = { which = policy_gov_max value = 30 } }
 	
 	# Tribal
-		tribal = { set_variable = { which = policy_gov_max value = -2 } }
+		tribal = { set_variable = { which = policy_gov_max value = -20 } }
 	}
 	
 	# Clamp policy value according to max value
@@ -79,7 +79,6 @@ update_gov_policy = {
 	round_gov_policy_gui_values = yes	 								  # round values for display
 }
 
-
 # Scope: country
 calc_gov_policy_mod = {
 
@@ -111,14 +110,14 @@ update_gov_policy_rating = {
 	if = {	
 		limit = { has_country_flag = policy_gov_neutral }   # Rating: 0
 		if = {
-			limit = { check_variable = { which = policy_gov_val value = 0.5 } }
+			limit = { check_variable = { which = policy_gov_val value = 5 } }
 			add_country_modifier = { name = centralization_level_1 duration = -1 }
 			set_variable = { which = policy_gov_rating value = 1 }
 			set_country_flag = policy_centralized                   # just became centralized
 			clr_country_flag = policy_gov_neutral
 		}
 		else_if = {
-			limit = { NOT = { check_variable = { which = policy_gov_val value = -0.499 } } }
+			limit = { NOT = { check_variable = { which = policy_gov_val value = -4.999 } } }
 			add_country_modifier = { name = decentralization_level_1 duration = -1 }
 			set_variable = { which = policy_gov_rating value = -1 }
 			set_country_flag = policy_decentralized                 # just became decentralized
@@ -130,13 +129,13 @@ update_gov_policy_rating = {
 		if = {
 			limit = { is_variable_equal = { which = policy_gov_rating value = 1 } }	   # Rating: 1
 			if = {
-				limit = { check_variable = { which = policy_gov_val value = 1.5 } }
+				limit = { check_variable = { which = policy_gov_val value = 15 } }
 				add_country_modifier = { name = centralization_level_2 duration = -1 }
 				set_variable = { which = policy_gov_rating value = 2 }
 				remove_country_modifier = centralization_level_1
 			}
 			else_if = {
-				limit = { NOT = { check_variable = { which = policy_gov_val value = 0.5 } } }
+				limit = { NOT = { check_variable = { which = policy_gov_val value = 5 } } }
 				set_variable = { which = policy_gov_rating value = 0 }
 				remove_country_modifier = centralization_level_1
 				clr_country_flag = policy_centralized				# no longer centralized
@@ -146,13 +145,13 @@ update_gov_policy_rating = {
 		else_if = {
 			limit = { is_variable_equal = { which = policy_gov_rating value = 2 } }	   # Rating: 2
 			if = {
-				limit = { check_variable = { which = policy_gov_val value = 2.5 } }
+				limit = { check_variable = { which = policy_gov_val value = 25 } }
 				add_country_modifier = { name = centralization_level_3 duration = -1 }
 				set_variable = { which = policy_gov_rating value = 3 }
 				remove_country_modifier = centralization_level_2
 			}
 			else_if = {
-				limit = { NOT = { check_variable = { which = policy_gov_val value = 1.5 } } }
+				limit = { NOT = { check_variable = { which = policy_gov_val value = 15 } } }
 				add_country_modifier = { name = centralization_level_1 duration = -1 }
 				set_variable = { which = policy_gov_rating value = 1 }
 				remove_country_modifier = centralization_level_2
@@ -161,13 +160,13 @@ update_gov_policy_rating = {
 		else_if = {
 			limit = { is_variable_equal = { which = policy_gov_rating value = 3 } }	   # Rating: 3
 			if = {
-				limit = { check_variable = { which = policy_gov_val value = 3.5 } }
+				limit = { check_variable = { which = policy_gov_val value = 35 } }
 				add_country_modifier = { name = centralization_level_4 duration = -1 }
 				set_variable = { which = policy_gov_rating value = 4 }
 				remove_country_modifier = centralization_level_3
 			}
 			else_if = {
-				limit = { NOT = { check_variable = { which = policy_gov_val value = 2.5 } } }
+				limit = { NOT = { check_variable = { which = policy_gov_val value = 25 } } }
 				add_country_modifier = { name = centralization_level_2 duration = -1 }
 				set_variable = { which = policy_gov_rating value = 2 }
 				remove_country_modifier = centralization_level_3
@@ -176,13 +175,13 @@ update_gov_policy_rating = {
 		else_if = {
 			limit = { is_variable_equal = { which = policy_gov_rating value = 4 } }	   # Rating: 4
 			if = {
-				limit = { check_variable = { which = policy_gov_val value = 4.5 } }
+				limit = { check_variable = { which = policy_gov_val value = 45 } }
 				add_country_modifier = { name = centralization_level_5 duration = -1 }
 				set_variable = { which = policy_gov_rating value = 5 }
 				remove_country_modifier = centralization_level_4
 			}
 			else_if = {
-				limit = { NOT = { check_variable = { which = policy_gov_val value = 3.5 } } }
+				limit = { NOT = { check_variable = { which = policy_gov_val value = 35 } } }
 				add_country_modifier = { name = centralization_level_3 duration = -1 }
 				set_variable = { which = policy_gov_rating value = 3 }
 				remove_country_modifier = centralization_level_4
@@ -194,13 +193,13 @@ update_gov_policy_rating = {
 		if = {
 			limit = { is_variable_equal = { which = policy_gov_rating value = -1 } }	# Rating: -1
 			if = {
-				limit = { NOT = { check_variable = { which = policy_gov_val value = -1.499 } } }
+				limit = { NOT = { check_variable = { which = policy_gov_val value = -14.999 } } }
 				add_country_modifier = { name = decentralization_level_2 duration = -1 }
 				set_variable = { which = policy_gov_rating value = -2 }
 				remove_country_modifier = decentralization_level_1
 			}
 			else_if = {
-				limit = { check_variable = { which = policy_gov_val value = -0.499 } }
+				limit = { check_variable = { which = policy_gov_val value = -4.999 } }
 				set_variable = { which = policy_gov_rating value = 0 }
 				remove_country_modifier = decentralization_level_1
 				clr_country_flag = policy_decentralized				# no longer decentralized
@@ -210,13 +209,13 @@ update_gov_policy_rating = {
 		else_if = {
 			limit = { is_variable_equal = { which = policy_gov_rating value = -2 } }    # Rating: -2
 			if = {
-				limit = { NOT = { check_variable = { which = policy_gov_val value = -2.499 } } }
+				limit = { NOT = { check_variable = { which = policy_gov_val value = -24.999 } } }
 				add_country_modifier = { name = decentralization_level_3 duration = -1 }
 				set_variable = { which = policy_gov_rating value = -3 }
 				remove_country_modifier = decentralization_level_2
 			}
 			else_if = {
-				limit = { check_variable = { which = policy_gov_val value = -1.499 } }
+				limit = { check_variable = { which = policy_gov_val value = -14.999 } }
 				add_country_modifier = { name = decentralization_level_1 duration = -1 }
 				set_variable = { which = policy_gov_rating value = -1 }
 				remove_country_modifier = decentralization_level_2
@@ -225,13 +224,13 @@ update_gov_policy_rating = {
 		else_if = {
 			limit = { is_variable_equal = { which = policy_gov_rating value = -3 } }    # Rating: -3
 			if = {
-				limit = { NOT = { check_variable = { which = policy_gov_val value = -3.499 } } }
+				limit = { NOT = { check_variable = { which = policy_gov_val value = -34.999 } } }
 				add_country_modifier = { name = decentralization_level_4 duration = -1 }
 				set_variable = { which = policy_gov_rating value = -4 }
 				remove_country_modifier = decentralization_level_3
 			}
 			else_if = {
-				limit = { check_variable = { which = policy_gov_val value = -2.499 } }
+				limit = { check_variable = { which = policy_gov_val value = -24.999 } }
 				add_country_modifier = { name = decentralization_level_2 duration = -1 }
 				set_variable = { which = policy_gov_rating value = -2 }
 				remove_country_modifier = decentralization_level_3
@@ -240,13 +239,13 @@ update_gov_policy_rating = {
 		else_if = {
 			limit = { is_variable_equal = { which = policy_gov_rating value = -4 } }    # Rating: -4
 			if = {
-				limit = { NOT = { check_variable = { which = policy_gov_val value = -4.499 } } }
+				limit = { NOT = { check_variable = { which = policy_gov_val value = -44.999 } } }
 				add_country_modifier = { name = decentralization_level_5 duration = -1 }
 				set_variable = { which = policy_gov_rating value = -5 }
 				remove_country_modifier = decentralization_level_4
 			}
 			else_if = {
-				limit = { check_variable = { which = policy_gov_val value = -3.499 } }
+				limit = { check_variable = { which = policy_gov_val value = -34.999 } }
 				add_country_modifier = { name = decentralization_level_3 duration = -1 }
 				set_variable = { which = policy_gov_rating value = -3 }
 				remove_country_modifier = decentralization_level_4
