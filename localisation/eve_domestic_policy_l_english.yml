@@ -35,5 +35,13 @@
  string_decentralization_desc:0 "Decentralization is an encompassing domestic policy that refers to the transfer of national responsibilities or functions from central government to provincial or state levels of government. It brings structures, procedures and practices of governance closer to nation's citizens."
  centralization_level_1:0 "Low Centralization"
  desc_centralization_level_1:0 "[Root.centralization_desc_txt]"
+ centralization_level_2:0 "Low Centralization"
+ desc_centralization_level_2:0 "[Root.centralization_desc_txt]"
+ centralization_level_3:0 "Medium Centralization"
+ desc_centralization_level_3:0 "[Root.centralization_desc_txt]"
+ centralization_level_4:0 "High Centralization"
+ desc_centralization_level_4:0 "[Root.centralization_desc_txt]"
+ centralization_level_5:0 "High Centralization"
+ desc_centralization_level_5:0 "[Root.centralization_desc_txt]"
  string_centralization_desc:0 "Centralization is an encompassing domestic policy that refers to the high concentration of nation's political, administrative and economic power in the hands of national government."
  
