@@ -210,10 +210,12 @@ check_for_territorial_change = {
 			if = { limit = { NOT = { is_variable_equal = {
 				which = province_owner_id which = country_id } } }
 
-				PREV = {
-					if = {
-						# conquered another nation's capital province
-						limit = { AND = { has_province_modifier = monthly_pulse NOT = { is_capital = yes } } }
+				PREV = {			# province scope
+					if = {			# conquered another nation's capital province
+						limit = { 
+							has_province_modifier = monthly_pulse 
+							NOT = { is_capital = yes } 
+						}
 						set_province_flag = conquered_capital
 					}
 					else = { set_province_owner_id = yes }	# update owner id
@@ -248,37 +250,15 @@ calc_country_dist_autonomy = {
 # Called when recalculating province distance autonomy
 #
 remove_distance_modifier = {
-	if = {
-		limit = { has_province_modifier = prov_autonomy_from_dist_50 }
-		remove_province_modifier = prov_autonomy_from_dist_50
-	}
-	else_if = {
-		limit = { has_province_modifier = prov_autonomy_from_dist_100 }
-		remove_province_modifier = prov_autonomy_from_dist_100
-	}
-	else_if = {
-		limit = { has_province_modifier = prov_autonomy_from_dist_150 }
-		remove_province_modifier = prov_autonomy_from_dist_150
-	}
-	else_if = {
-		limit = { has_province_modifier = prov_autonomy_from_dist_200 }
-		remove_province_modifier = prov_autonomy_from_dist_200
-	}
-	else_if = {
-		limit = { has_province_modifier = prov_autonomy_from_dist_250 }
-		remove_province_modifier = prov_autonomy_from_dist_250
-	}
-	else_if = {
-		limit = { has_province_modifier = prov_autonomy_from_dist_300 }
-		remove_province_modifier = prov_autonomy_from_dist_300
-	}
-	else_if = {
-		limit = { has_province_modifier = prov_autonomy_from_dist_350 }
-		remove_province_modifier = prov_autonomy_from_dist_350
-	}
-	else = {
-		# called method but province doesn't have a distance modifier
-		owner = { log = "EVE: ERROR(invalid call to remove modifier from province [Prev.GetName] by [This.GetName])" }
+	trigger_switch = {
+		on_trigger = has_province_modifier
+		prov_autonomy_from_dist_50 = { remove_province_modifier = prov_autonomy_from_dist_50 }
+		prov_autonomy_from_dist_100 = { remove_province_modifier = prov_autonomy_from_dist_100 }
+		prov_autonomy_from_dist_150 = { remove_province_modifier = prov_autonomy_from_dist_150 }
+		prov_autonomy_from_dist_200 = { remove_province_modifier = prov_autonomy_from_dist_200 }
+		prov_autonomy_from_dist_250 = { remove_province_modifier = prov_autonomy_from_dist_250 }
+		prov_autonomy_from_dist_300 = { remove_province_modifier = prov_autonomy_from_dist_300 }
+		prov_autonomy_from_dist_350 = { remove_province_modifier = prov_autonomy_from_dist_350 }
 	}
 }
 
