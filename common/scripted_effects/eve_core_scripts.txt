@@ -3,6 +3,16 @@
 # EVE - Core Scripts
 ##################################
 
+# List of flags:
+# ====================
+#  eve_initialized			# global
+#  found_country			# global
+#  round_to_negative		# country
+#  is_initialized			# country
+#  territorial_change		# country
+#  conquered_capital		# province
+#  distant_province			# province
+
 # Scope: country
 # Round 'value_to_round' variable to 'round_to_decimal' places
 # This is used to display clean values in game UI
@@ -212,9 +222,9 @@ check_for_territorial_change = {
 
 				PREV = {			# province scope
 					if = {			# conquered another nation's capital province
-						limit = { 
-							has_province_modifier = monthly_pulse 
-							NOT = { is_capital = yes } 
+						limit = {
+							has_province_modifier = monthly_pulse
+							NOT = { is_capital = yes }
 						}
 						set_province_flag = conquered_capital
 					}

@@ -3,6 +3,12 @@
 # EVE - Governance Policy
 ###############################
 
+# List of flags:
+# ====================
+#  policy_gov_neutral		# all
+#  policy_centralized		# country
+#  policy_decentralized		# scope
+
 # Scope: country
 # Called from initialization phase for every country
 #
