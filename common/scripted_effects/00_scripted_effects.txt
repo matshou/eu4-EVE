@@ -271,32 +271,52 @@ develop_estate_land = {
 ##################################
 
 # Scope: country
-# Trim everything past two decimals for set value
+# Round 'value_to_round' variable to 'round_to_decimal' places
 # This is used to display clean values in game UI
-# Note: do only for player to reduce CPU usage
 #
-clamp_value_to_two_decimals = {
+round_value_to_decimal = {
 	if = { 
-		limit = { NOT = { check_variable = { which = value_to_clamp value = 0 } } }
-		multiply_variable = { which = value_to_clamp value = -1 }
-		set_country_flag = clamp_to_negative
+		limit = { NOT = { check_variable = { which = value_to_round value = 0 } } }
+		multiply_variable = { which = value_to_round value = -1 }
+		set_country_flag = round_to_negative
 	}
-	multiply_variable = { which = value_to_clamp value = 100 }
-	set_variable = { which = counter_var value = 100 }
+	set_variable = { which = counter_var value = 1 }
+	set_variable = { which = counter_var2 value = 1 }    # if 'value_to_round' >= 1
 	while = {
-		limit = { NOT = { is_variable_equal = { which = counter_var value = 0 } } }
+		limit = { check_variable = { which = value_to_round which = counter_var2 } }
+		multiply_variable = { which = counter_var value = 10 }
+		multiply_variable = { which = counter_var2 value = 10 }
+	}
+	while = {
+		limit = { check_variable = { which = round_to_decimal value = 1 } }
+		multiply_variable = { which = value_to_round value = 10 }
+		multiply_variable = { which = counter_var value = 10 }
+		subtract_variable = { which = round_to_decimal value = 1 }
+	}
+	
+	set_variable = { which = normalize_var which = counter_var }
+	divide_variable = { which = normalize_var which = counter_var2 }   # used to normalize value
+	
+	while = {
+		limit = { NOT = { is_variable_equal = { which = counter_var value = -1 } } }
 		if = { 
-			limit = { check_variable = { which = value_to_clamp which = counter_var } }
-			set_variable = { which = value_to_clamp which = counter_var }
-			set_variable = { which = counter_var value = 0 }
+			limit = { check_variable = { which = value_to_round which = counter_var } }
+			change_variable = { which = counter_var value = 0.5 }
+			if = { 
+				limit = { check_variable = { which = value_to_round which = counter_var } }
+				change_variable = { which = counter_var value = 0.5 }
+			}
+			else = { change_variable = { which = counter_var value = -0.5 } }
+			set_variable = { which = value_to_round which = counter_var }
+			set_variable = { which = counter_var value = -1 }               # break loop
 		}
 		else = { subtract_variable = { which = counter_var value = 1 } }
 	}
-	divide_variable = { which = value_to_clamp value = 100 }
+	divide_variable = { which = value_to_round which = normalize_var }   # normalize value
 	if = { 
-		limit = { has_country_flag = clamp_to_negative }
-		multiply_variable = { which = value_to_clamp value = -1 }
-		clr_country_flag = clamp_to_negative
+		limit = { has_country_flag = round_to_negative }
+		multiply_variable = { which = value_to_round value = -1 }
+		clr_country_flag = round_to_negative
 	}
 }
 		

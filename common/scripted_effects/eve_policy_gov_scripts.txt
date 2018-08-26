@@ -75,7 +75,8 @@ update_gov_policy = {
 		}
 		else = { update_gov_policy_rating = yes }
 	}
-	clamp_gov_policy_gui_values = yes	 # do this after using all raw values
+	set_variable = { which = policy_gov_gui_val which = policy_gov_val }  # used only in GUI
+	round_gov_policy_gui_values = yes	 								  # round values for display
 }
 
 
@@ -258,20 +259,18 @@ update_gov_policy_rating = {
 # Used to display clean values in game UI
 # Note: do only for player to reduce CPU usage
 #
-clamp_gov_policy_gui_values = {
+round_gov_policy_gui_values = {
 	if = { 
 		limit = { ai = no }
 		
-		set_variable = { which = value_to_clamp which = corruption_mod }
-		clamp_value_to_two_decimals = yes
-		set_variable = { which = corruption_mod which = value_to_clamp }
+		set_variable = { which = value_to_round which = policy_gov_mod }
+		set_variable = { which = round_to_decimal value = 2 }
+		round_value_to_decimal = yes
+		set_variable = { which = policy_gov_mod which = value_to_round }
 		
-		set_variable = { which = value_to_clamp which = autonomy_mod }
-		clamp_value_to_two_decimals = yes
-		set_variable = { which = autonomy_mod which = value_to_clamp }
-		
-		set_variable = { which = value_to_clamp which = policy_gov_mod }
-		clamp_value_to_two_decimals = yes
-		set_variable = { which = policy_gov_mod which = value_to_clamp }
+		set_variable = { which = value_to_round which = policy_gov_gui_val }
+		set_variable = { which = round_to_decimal value = 1 }
+		round_value_to_decimal = yes
+		set_variable = { which = policy_gov_gui_val which = value_to_round }
 	}
 }
