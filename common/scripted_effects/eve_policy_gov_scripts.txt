@@ -86,7 +86,7 @@ calc_gov_policy_mod = {
 	# to give information about modifiers affecting policy change each month
 	
 	export_to_variable = { which = stability_mod value = stability }
-	multiply_variable = { which = stability_mod value = 0.05 }
+	multiply_variable = { which = stability_mod value = 0.025 }
 	change_variable = { which = policy_gov_mod which = stability_mod }
 	
 	export_to_variable = { which = corruption_mod value = corruption }
@@ -94,12 +94,12 @@ calc_gov_policy_mod = {
 	change_variable = { which = policy_gov_mod which = corruption_mod }
 	
 	export_to_variable = { which = autonomy_mod value = average_autonomy }
-	multiply_variable = { which = autonomy_mod value = -0.0 }
+	multiply_variable = { which = autonomy_mod value = -0.008 }
 	change_variable = { which = policy_gov_mod which = autonomy_mod }
 	
 	if = { 
 		limit = { is_part_of_hre = yes }
-		change_variable = { which = policy_gov_mod value = -0.1 }
+		change_variable = { which = policy_gov_mod value = -0.05 }
 	}
 }
 
