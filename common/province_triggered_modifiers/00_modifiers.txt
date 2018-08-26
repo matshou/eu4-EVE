@@ -32,6 +32,7 @@ monthly_pulse = {
 				
 				reset_monthly_pulse = yes
 				check_for_territorial_change = yes
+				update_gov_policy = yes
 				
 				# Triggers only for player, do all GLOBAL stuff here:
 				if = { limit = { ai = no }

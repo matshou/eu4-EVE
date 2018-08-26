@@ -271,6 +271,36 @@ develop_estate_land = {
 ##################################
 
 # Scope: country
+# Trim everything past two decimals for set value
+# This is used to display clean values in game UI
+# Note: do only for player to reduce CPU usage
+#
+clamp_value_to_two_decimals = {
+	if = { 
+		limit = { NOT = { check_variable = { which = value_to_clamp value = 0 } } }
+		multiply_variable = { which = value_to_clamp value = -1 }
+		set_country_flag = clamp_to_negative
+	}
+	multiply_variable = { which = value_to_clamp value = 100 }
+	set_variable = { which = counter_var value = 100 }
+	while = {
+		limit = { NOT = { is_variable_equal = { which = counter_var value = 0 } } }
+		if = { 
+			limit = { check_variable = { which = value_to_clamp which = counter_var } }
+			set_variable = { which = value_to_clamp which = counter_var }
+			set_variable = { which = counter_var value = 0 }
+		}
+		else = { subtract_variable = { which = counter_var value = 1 } }
+	}
+	divide_variable = { which = value_to_clamp value = 100 }
+	if = { 
+		limit = { has_country_flag = clamp_to_negative }
+		multiply_variable = { which = value_to_clamp value = -1 }
+		clr_country_flag = clamp_to_negative
+	}
+}
+		
+# Scope: country
 reset_monthly_pulse = {
 	set_variable = { which = month_pulse_eta value = 30 }
 }
@@ -301,7 +331,10 @@ initialize_country = {
 
 		# Add monthly pulse trigger to nation's capital 
 		capital_scope = { add_province_triggered_modifier = monthly_pulse }
-
+		
+		# Initialize domestic policies
+		init_domestic_policies = yes
+		
 		set_country_flag = is_initialized
 		#log = "EVE: Initialized country [This.GetName] with id: [This.country_id.GetValue]"  #Debug
 	}
@@ -535,4 +568,17 @@ set_province_dist_autonomy = {
 	}
 	# province is in the capital zone and shouldn't have a distance modifier
 	else = { clr_province_flag = distant_province }
+}
+
+##################################
+# EVE - Domestic Policy Scripts
+##################################
+
+# Scope: country
+# Initialize all domestic policies for country scope
+#
+init_domestic_policies = {
+
+	add_country_modifier = { name = governance_policy duration = -1 }
+	init_gov_policy = yes
 }
