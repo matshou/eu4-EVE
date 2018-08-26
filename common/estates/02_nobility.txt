@@ -1,12 +1,12 @@
 estate_nobles =
 {
 	icon = 2
-	
+
 	color = { 200 0 50 }
-	
+
 	# Is estate kept in control of province on conquest?
 	keep_on_conquest = no
-	
+
 	# They want to control at least this % of the country's non-overseas development, if # of home provinecs is above set amount
 	min_territory = 10
 	min_provinces_to_want_territory = 5
@@ -14,19 +14,19 @@ estate_nobles =
 		desc = EST_VAL_FEUDAL_MONARCHY
 		trigger = {
 			government = feudal_monarchy
-		}	
-		value = 5		
+		}
+		value = 5
 	}
 	wanted_territory_modifier = {
 		desc = EST_VAL_NOBLE_REPUBLIC
 		trigger = {
 			government = noble_republic
-		}	
-		value = 30	
-	}	
-	
+		}
+		value = 30
+	}
+
 	# If true, country will get estate
-	trigger = {	
+	trigger = {
 		NOT = { government = merchant_republic }
 		NOT = { government = veche_republic }
 		NOT = { government = native_council }
@@ -46,19 +46,19 @@ estate_nobles =
 			AND = {
 				NOT = { government = english_monarchy }
 				NOT = { government = constitutional_monarchy }
-				NOT = { government = constitutional_republic }		
+				NOT = { government = constitutional_republic }
 			}
 		}
 	}
-	
+
 	# If true, province can be granted to estate
 	province_trigger = {
 		always = yes
-	}	
-	
+	}
+
 	# Min autonomy in estate provinces
 	min_autonomy = 20
-	
+
 	# Estate cancels out the following multiplicative local autonomy effects:
 	autonomy_does_not_affect = local_manpower_modifier
 	autonomy_does_not_affect = land_forcelimit_modifier
@@ -69,14 +69,14 @@ estate_nobles =
 		army_tradition = 0.8
 	}
 	country_modifier_neutral = {
-		manpower_recovery_speed = 0.2 
-	}	
+		manpower_recovery_speed = 0.2
+	}
 	country_modifier_angry = {
 		manpower_recovery_speed = -0.1
 		land_maintenance_modifier = 0.1
 		discipline = -0.08
 	}
-	
+
 	# These do not scale, but only applied in provinces owned by the estate
 	province_modifier_happy = {
 		local_defensiveness = 0.15
@@ -85,50 +85,50 @@ estate_nobles =
 	}
 	province_modifier_neutral = {
 		local_manpower_modifier = 0.2
-	}	
+	}
 	province_modifier_angry = {
 		local_unrest = 5
-	}		
-	
+	}
+
 	# Influence modifiers
 	base_influence = 20
 	influence_modifier = {
 		desc = EST_VAL_EASTERN_TECH
 		trigger = {
 			technology_group = eastern
-		}	
+		}
 		influence = 5
-	}		
+	}
 	influence_modifier = {
 		desc = EST_VAL_MONARCHY
 		trigger = {
 			government = monarchy
 			NOT = { government = feudal_monarchy }
-		}		
+		}
 		influence = 5
 	}
 	influence_modifier = {
 		desc = EST_VAL_BLACK_ARMY
 		trigger = {
 			has_country_modifier = hun_black_army
-		}		
+		}
 		influence = -10
 	}
 	influence_modifier = {
 		desc = EST_VAL_CELESTIAL_EMPIRE
 		trigger = {
 			government = celestial_empire
-		}		
+		}
 		influence = -10
 	}
 	influence_modifier = {
 		desc = EST_VAL_MAMLUK_AMIRS
 		trigger = {
 			government = mamluk_government
-		}		
+		}
 		influence = 10
 	}
-	
+
 	# Influence modifiers from Events:
 	influence_modifier = {
 		desc = EST_HUN_MAGNATES
@@ -144,7 +144,7 @@ estate_nobles =
 				has_disaster = estate_church_disaster
 				has_disaster = estate_burghers_disaster
 			}
-		}	
+		}
 		influence = -40
 	}
 	influence_modifier = {
@@ -168,7 +168,7 @@ estate_nobles =
 		}
 		influence = -10
 	}
-	
+
 	# Loyalty modifiers
 	loyalty_modifier = {
 		desc = EST_VAL_OTHER_ESTATE_IN_POWER_LOY
@@ -180,7 +180,7 @@ estate_nobles =
 		}
 		loyalty = -20
 	}
-	
+
 	loyalty_modifier = {
 		desc = EST_VAL_NOBLE_CONSORT
 		trigger = {
@@ -190,7 +190,7 @@ estate_nobles =
 		}
 		loyalty = 5
 	}
-	
+
 	loyalty_modifier = {
 		desc = EST_VAL_JUNKERS
 		trigger = {
@@ -198,7 +198,7 @@ estate_nobles =
 		}
 		loyalty = 10
 	}
-	
+
 	loyalty_modifier = {
 		desc = EST_VAL_VERY_LEGITIMATE
 		trigger = {
@@ -254,7 +254,7 @@ estate_nobles =
 		}
 		loyalty = 250
 	}
-	
+
 	#Alternative naming of estates
 	custom_name = {
 		desc = estate_beys
@@ -354,20 +354,20 @@ estate_nobles =
 		trigger = {
 			has_idea_group = aristocracy_ideas
 			num_of_cities = 10
-		}	
-		value = 5		
+		}
+		value = 5
 	}
 	ai_territory_modifier = {
 		trigger = {
 			has_idea_group = influence_ideas
 			num_of_cities = 10
-		}	
-		value = 5		
-	}		
-	
+		}
+		value = 5
+	}
+
 	# For province assignment
 	ai_grant_province = {
-		factor = 1	
+		factor = 1
 		modifier = {
 			factor = 0.5
 			development = 20
@@ -375,7 +375,7 @@ estate_nobles =
 		modifier = {
 			factor = 2
 			NOT = { development = 10 }
-		}				
+		}
 		modifier = {
 			factor = 0.1
 			has_estate = estate_cossacks
@@ -388,7 +388,7 @@ estate_nobles =
 		modifier = {
 			factor = 0.75
 			province_trade_power = 5
-		}			
+		}
 		modifier = {
 			factor = 0.75
 			province_trade_power = 10
@@ -401,19 +401,19 @@ estate_nobles =
 			factor = 0.25
 			NOT = { local_autonomy = 25 }
 		}
-	}	
-	
+	}
+
 	# Special interactions
 	interaction = {
 		name = "CALL_DIET"
 		icon = 1
-		
+
 		years_between_use = 20
-		
+
 		trigger = {
 			always = yes
 		}
-		
+
 		effect = {
 			add_prestige = -5
 			add_estate_loyalty = {
@@ -427,7 +427,7 @@ estate_nobles =
 				duration = 7300
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -435,41 +435,41 @@ estate_nobles =
 				estate_influence = {
 					estate = estate_nobles
 					influence = 60
-				}				
+				}
 			}
 			modifier = {
 				factor = 0
 				estate_loyalty = {
 					estate = estate_nobles
 					loyalty = 30
-				}				
-			}			
+				}
+			}
 		}
 	}
 	interaction = {
 		name = "GRANT_GENERALSHIP"
 		icon = 5
-		
+
 		years_between_use = 10
-		
+
 		potential = {
 			NOT = { has_disaster = estate_church_disaster }
 			NOT = { has_disaster = estate_burghers_disaster }
 		}
-		
+
 		trigger = {
 			estate_loyalty = {
 				estate = estate_nobles
 				loyalty = 30
-			}	
+			}
 			estate_influence = {
 				estate = estate_nobles
 				influence = 40
-			}			
+			}
 		}
-		
+
 		effect = {
-			create_general = 40		
+			create_general = 40
 			add_estate_influence_modifier = {
 				estate = estate_nobles
 				desc = EST_VAL_GRANTED_GENERALSHIP
@@ -477,7 +477,7 @@ estate_nobles =
 				duration = 3650
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
@@ -485,28 +485,28 @@ estate_nobles =
 	interaction = {
 		name = "RECRUIT_CONQUISTADOR_ESTATES"
 		icon = 19
-		
+
 		years_between_use = 15
-		
+
 		potential = {
 			has_idea = quest_for_the_new_world
 			NOT = { has_disaster = estate_church_disaster }
 			NOT = { has_disaster = estate_burghers_disaster }
 		}
-		
+
 		trigger = {
 			estate_loyalty = {
 				estate = estate_nobles
 				loyalty = 30
-			}	
+			}
 			estate_influence = {
 				estate = estate_nobles
 				influence = 40
 			}
 		}
-		
+
 		effect = {
-			create_conquistador = 40		
+			create_conquistador = 40
 			add_estate_influence_modifier = {
 				estate = estate_nobles
 				desc = EST_VAL_RECRUITED_CONQUISTADOR
@@ -514,7 +514,7 @@ estate_nobles =
 				duration = 5475
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
@@ -522,25 +522,25 @@ estate_nobles =
 	interaction = {
 		name = "DEMAND_SUPPORT_NOBLES"
 		icon = 4
-		
+
 		years_between_use = 20
-		
+
 		potential = {
 			NOT = { has_disaster = estate_church_disaster }
 			NOT = { has_disaster = estate_burghers_disaster }
 		}
-		
-		trigger = {		
+
+		trigger = {
 			estate_loyalty = {
 				estate = estate_nobles
 				loyalty = 30
-			}	
+			}
 			estate_influence = {
 				estate = estate_nobles
 				influence = 25
-			}			
+			}
 		}
-		
+
 		effect = {
 			if = {
 				limit = {
@@ -548,7 +548,7 @@ estate_nobles =
 						estate_influence = {
 							estate = estate_nobles
 							influence = 50
-						}	
+						}
 					}
 				}
 				add_mil_power = 50
@@ -563,7 +563,7 @@ estate_nobles =
 						estate_influence = {
 							estate = estate_nobles
 							influence = 75
-						}	
+						}
 					}
 				}
 				add_mil_power = 100
@@ -578,7 +578,7 @@ estate_nobles =
 						estate_influence = {
 							estate = estate_nobles
 							influence = 100
-						}	
+						}
 					}
 				}
 				add_mil_power = 150
@@ -591,13 +591,13 @@ estate_nobles =
 					}
 				}
 				add_mil_power = 200
-			}				
+			}
 			add_estate_loyalty = {
 				estate = estate_nobles
 				loyalty = -20
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
@@ -605,21 +605,21 @@ estate_nobles =
 	interaction = {
 		name = "RECRUIT_MINISTER"
 		icon = 10
-		
+
 		years_between_use = 30
-		
+
 		potential = {
 			NOT = { has_disaster = estate_church_disaster }
 			NOT = { has_disaster = estate_burghers_disaster }
 		}
-		
+
 		trigger = {
 			estate_influence = {
 				estate = estate_nobles
 				influence = 40
 			}
 		}
-		
+
 		effect = {
 			hidden_effect = {
 				random_owned_province = {
@@ -686,7 +686,7 @@ estate_nobles =
 				duration = 10950
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
@@ -694,14 +694,14 @@ estate_nobles =
 	interaction = {
 		name = "DEMAND_MORE_TROOPS"
 		icon = 12
-		
+
 		years_between_use = 25
-		
+
 		potential = {
 			NOT = { has_disaster = estate_church_disaster }
 			NOT = { has_disaster = estate_burghers_disaster }
 		}
-		
+
 		trigger = {
 			estate_loyalty = {
 				estate = estate_nobles
@@ -712,7 +712,7 @@ estate_nobles =
 				influence = 40
 			}
 		}
-		
+
 		effect = {
 			if = {
 				limit = {
@@ -720,7 +720,7 @@ estate_nobles =
 						estate_influence = {
 							estate = estate_nobles
 							influence = 50
-						}	
+						}
 					}
 				}
 				add_yearly_manpower = 1
@@ -735,7 +735,7 @@ estate_nobles =
 						estate_influence = {
 							estate = estate_nobles
 							influence = 75
-						}	
+						}
 					}
 				}
 				add_yearly_manpower = 1.5
@@ -750,7 +750,7 @@ estate_nobles =
 						estate_influence = {
 							estate = estate_nobles
 							influence = 100
-						}	
+						}
 					}
 				}
 				add_yearly_manpower = 2
@@ -763,13 +763,13 @@ estate_nobles =
 					}
 				}
 				add_yearly_manpower = 2.5
-			}	
+			}
 			add_estate_loyalty = {
 				estate = estate_nobles
 				loyalty = -15
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -778,17 +778,17 @@ estate_nobles =
 					estate_loyalty = {
 						estate = estate_nobles
 						loyalty = 50
-					}	
+					}
 				}
 			}
 			modifier = {
 				factor = 0
-				manpower_percentage = 0.25				
+				manpower_percentage = 0.25
 			}
 			modifier = {
 				factor = 0
 				is_at_war = no
-			}			
+			}
 		}
 	}
 }

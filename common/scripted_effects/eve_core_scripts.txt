@@ -8,7 +8,7 @@
 # This is used to display clean values in game UI
 #
 round_value_to_decimal = {
-	if = { 
+	if = {
 		limit = { NOT = { check_variable = { which = value_to_round value = 0 } } }
 		multiply_variable = { which = value_to_round value = -1 }
 		set_country_flag = round_to_negative
@@ -26,16 +26,16 @@ round_value_to_decimal = {
 		multiply_variable = { which = counter_var value = 10 }
 		subtract_variable = { which = round_to_decimal value = 1 }
 	}
-	
+
 	set_variable = { which = normalize_var which = counter_var }
 	divide_variable = { which = normalize_var which = counter_var2 }   # used to normalize value
-	
+
 	while = {
 		limit = { NOT = { is_variable_equal = { which = counter_var value = -1 } } }
-		if = { 
+		if = {
 			limit = { check_variable = { which = value_to_round which = counter_var } }
 			change_variable = { which = counter_var value = 0.5 }
-			if = { 
+			if = {
 				limit = { check_variable = { which = value_to_round which = counter_var } }
 				change_variable = { which = counter_var value = 0.5 }
 			}
@@ -46,13 +46,13 @@ round_value_to_decimal = {
 		else = { subtract_variable = { which = counter_var value = 1 } }
 	}
 	divide_variable = { which = value_to_round which = normalize_var }   # normalize value
-	if = { 
+	if = {
 		limit = { has_country_flag = round_to_negative }
 		multiply_variable = { which = value_to_round value = -1 }
 		clr_country_flag = round_to_negative
 	}
 }
-		
+
 # Scope: country
 reset_monthly_pulse = {
 	set_variable = { which = month_pulse_eta value = 30 }
@@ -67,27 +67,27 @@ fire_monthly_pulse = {
 }
 
 # Scope: country
-# Assign id and enable monthly pulse for scoped country  
+# Assign id and enable monthly pulse for scoped country
 # This is called in mod initialization phase and when a new country is formed
 #
 initialize_country = {
 
 	if = {
 		# can only be called once per country
-		limit = { NOT = { has_country_flag = is_initialized } }  
-		
+		limit = { NOT = { has_country_flag = is_initialized } }
+
 		set_country_id = yes
 		every_owned_province = { set_province_owner_id = yes }
 
 		reset_monthly_pulse = yes   # initialize monthly pulse
 		fire_monthly_pulse = yes    # force an immediate update
 
-		# Add monthly pulse trigger to nation's capital 
+		# Add monthly pulse trigger to nation's capital
 		capital_scope = { add_province_triggered_modifier = monthly_pulse }
-		
+
 		# Initialize domestic policies
 		init_domestic_policies = yes
-		
+
 		set_country_flag = is_initialized
 		#log = "EVE: Initialized country [This.GetName] with id: [This.country_id.GetValue]"  #Debug
 	}
@@ -98,29 +98,29 @@ initialize_country = {
 # This is called in mod initialization phase and when a new country is formed
 #
 set_country_id = {
-	
+
 	set_variable = { which = country_id value = 1 }
-	
+
 	if = {   # New country formed (post-init)
-	
+
 		limit = { has_global_flag = eve_initialized }
 		PREV = { set_variable = { which = counter_var value = 1 } }  # Global (player) scope
-		
-		while = { 
+
+		while = {
 			limit = { NOT = { PREV = { is_variable_equal = { which = counter_var which = init_num } } } }
 			PREV = { change_variable = { which = counter_var value = 1 } }
 			change_variable = { which = country_id value = 1 }
 		}
-		
+
 		PREV = { change_variable = { which = init_num value = 1 } }
 		change_variable = { which = country_id value = 1 }
 	}
 	else = {	# Mod Initialization phase
-	
+
 		# Since we're unable to export either province or country id to a variable
 		# and current scope is unable to retrieve variable values from ROOT (player)
 		# we need to employ this convulated system of going through every country
-		# 
+		#
 		every_country = {
 			limit = { NOT = { has_global_flag = found_country } }
 			if = { limit = { tag = PREV } set_global_flag = found_country }
@@ -138,12 +138,12 @@ set_province_owner_id = {
 
 	# AFAIK this is currently the only way to export variables from different scopes,
 	# because only variables in the same scope can be compared to each other
-	
+
 	owner = { set_variable = { which = counter_var value = 1 } }
 	set_variable = { which = owner_id value = 1 }
-	
+
 	owner = {
-		while = { 
+		while = {
 			limit = { NOT = { is_variable_equal = { which = counter_var which = country_id } } }
 			change_variable = { which = counter_var value = 1 }
 			PREV = { change_variable = { which = owner_id value = 1 } }
@@ -174,7 +174,7 @@ export_owner_id_to_country_scope = {
 
 	owner = { set_variable = { which = province_owner_id value = 1 } }
 	set_variable = { which = counter_var value = 1 }
-	while = { 
+	while = {
 		limit = { NOT = { is_variable_equal = { which = counter_var which = owner_id } } }
 		change_variable = { which = counter_var value = 1 }
 		PREV = { change_variable = { which = province_owner_id value = 1 } }
@@ -185,10 +185,10 @@ export_owner_id_to_country_scope = {
 # Export THIS country id to PREV scope so it can be used for comparison
 #
 export_country_id_to_prev_scope = {
-	
+
 	PREV = { set_variable = { which = known_country_id value = 1 } }
 	set_variable = { which = counter_var value = 1 }
-	while = { 
+	while = {
 		limit = { NOT = { is_variable_equal = { which = counter_var which = country_id } } }
 		change_variable = { which = counter_var value = 1 }
 		PREV = { change_variable = { which = known_country_id value = 1 } }
@@ -200,16 +200,16 @@ export_country_id_to_prev_scope = {
 # Note: this will also update owner id for each new province
 #
 check_for_territorial_change = {
-	
+
 	# Check only for gained territory because lost territory doesn't
 	# need an update from our side, the country that gained it will handle that
-	
+
 	every_owned_province = {
 		export_owner_id_to_country_scope = yes
 		owner = {
-			if = { limit = { NOT = { is_variable_equal = { 
+			if = { limit = { NOT = { is_variable_equal = {
 				which = province_owner_id which = country_id } } }
-				
+
 				PREV = {
 					if = {
 						# conquered another nation's capital province
@@ -217,7 +217,7 @@ check_for_territorial_change = {
 						set_province_flag = conquered_capital
 					}
 					else = { set_province_owner_id = yes }	# update owner id
-					
+
 					clr_province_flag = distant_province    # don't try to remove modifier
 					set_country_flag = territorial_change   # call for autonomy recalc
 					owner = { fire_monthly_pulse = yes }    # force an update
@@ -228,13 +228,13 @@ check_for_territorial_change = {
 	}
 }
 
-# Scope: country 
+# Scope: country
 # Should ONLY be called from a provice with ROOT as that province
 #
 calc_country_dist_autonomy = {
 
 	every_owned_province = {
-		if = { 
+		if = {
 			limit = { has_province_flag = distant_province }
 			remove_distance_modifier = yes
 		}
@@ -279,18 +279,18 @@ remove_distance_modifier = {
 	else = {
 		# called method but province doesn't have a distance modifier
 		owner = { log = "EVE: ERROR(invalid call to remove modifier from province [Prev.GetName] by [This.GetName])" }
-	}		
+	}
 }
-	
+
 # Scope: province
 # Add autonomy modifiers based on province distance from capital
 # Should ONLY be called from capital provinces (registered for monthly pulses)
 #
 set_province_dist_autonomy = {
-	
+
 	# will be removed if the province is not distant
 	set_province_flag = distant_province
-	
+
 	if = {
 		limit = { province_distance = { who = ROOT distance = 350 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_350" duration = -1 }

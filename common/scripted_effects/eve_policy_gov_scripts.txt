@@ -1,6 +1,6 @@
 
 ###############################
-# EVE - Governance Policy     
+# EVE - Governance Policy
 ###############################
 
 # Scope: country
@@ -13,35 +13,35 @@ init_gov_policy = {
 	set_variable = { which = policy_gov_val value = 0 }        # These are base values,
 	set_variable = { which = policy_gov_rating value = 0 }     # DO NOT CHANGE!
 	set_country_flag = policy_gov_neutral
-	
+
 	# TODO: Implement max values for more governments, and set initial value
-	#       different for all governments (could be random value below maximum) 
-	
+	#       different for all governments (could be random value below maximum)
+
 	trigger_switch = {
 		on_trigger = government
-	
+
 	# Monarchies
-		despotic_monarchy = { set_variable = { which = policy_gov_max value = 20 } } 
+		despotic_monarchy = { set_variable = { which = policy_gov_max value = 20 } }
 		feudal_monarchy = { set_variable = { which = policy_gov_max value = 0 } }
 		administrative_monarchy = { set_variable = { which = policy_gov_max value = 30 } }
-	
+
 	# Republics
 		noble_republic = { set_variable = { which = policy_gov_max value = 10 } }
 		merchant_republic = { set_variable = { which = policy_gov_max value = 0 } }
 		administrative_republic = { set_variable = { which = policy_gov_max value = 30 } }
-	
+
 	# Tribal
 		tribal = { set_variable = { which = policy_gov_max value = -20 } }
 	}
-	
+
 	# Clamp policy value according to max value
 	if = {
 		limit = { check_variable = { which = policy_gov_val which = policy_gov_max } }
 		set_variable = { which = policy_gov_val which = policy_gov_max }
 		set_variable = { which = policy_gov_rating which = policy_gov_val }
 	}
-	
-	update_gov_policy = yes 
+
+	update_gov_policy = yes
 }
 
 # Scope: country
@@ -51,25 +51,25 @@ update_gov_policy = {
 
 	# Reset the modifier so we can recalculate it
 	set_variable = { which = policy_gov_mod value = 0 }
-	
+
 	# Calculate modifier to add to rating
 	calc_gov_policy_mod = yes
-	
+
 	# Apply modifier to current value
 	change_variable = { which = policy_gov_val which = policy_gov_mod }
-	
+
 	# Do not allow values to go outside of min-max range
 	if = { 	# centralization
 		limit = { check_variable = { which = policy_gov_mod value = 0.001 } }
-		if = { 
+		if = {
 			limit = { check_variable = { which = policy_gov_val which = policy_gov_max } }
 			set_variable = { which = policy_gov_val which = policy_gov_max }
 		}
 		else = { update_gov_policy_rating = yes }
 	}
 	else_if = {	 # decentralization
-		limit = { NOT = { check_variable = { which = policy_gov_mod value = -0.001 } } } 
-		if = { 
+		limit = { NOT = { check_variable = { which = policy_gov_mod value = -0.001 } } }
+		if = {
 			limit = { NOT = { check_variable = { which = policy_gov_val which = policy_gov_min } } }
 			set_variable = { which = policy_gov_val which = policy_gov_min }
 		}
@@ -84,20 +84,20 @@ calc_gov_policy_mod = {
 
 	# Variables with "_mod" suffix below are used in localisation
 	# to give information about modifiers affecting policy change each month
-	
+
 	export_to_variable = { which = stability_mod value = stability }
 	multiply_variable = { which = stability_mod value = 0.025 }
 	change_variable = { which = policy_gov_mod which = stability_mod }
-	
+
 	export_to_variable = { which = corruption_mod value = corruption }
 	multiply_variable = { which = corruption_mod value = -0.003 }
 	change_variable = { which = policy_gov_mod which = corruption_mod }
-	
+
 	export_to_variable = { which = autonomy_mod value = average_autonomy }
 	multiply_variable = { which = autonomy_mod value = -0.008 }
 	change_variable = { which = policy_gov_mod which = autonomy_mod }
-	
-	if = { 
+
+	if = {
 		limit = { is_part_of_hre = yes }
 		change_variable = { which = policy_gov_mod value = -0.05 }
 	}
@@ -107,7 +107,7 @@ calc_gov_policy_mod = {
 # Update rating value and country modifiers
 #
 update_gov_policy_rating = {
-	if = {	
+	if = {
 		limit = { has_country_flag = policy_gov_neutral }   # Rating: 0
 		if = {
 			limit = { check_variable = { which = policy_gov_val value = 5 } }
@@ -259,14 +259,14 @@ update_gov_policy_rating = {
 # Note: do only for player to reduce CPU usage
 #
 round_gov_policy_gui_values = {
-	if = { 
+	if = {
 		limit = { ai = no }
-		
+
 		set_variable = { which = value_to_round which = policy_gov_mod }
 		set_variable = { which = round_to_decimal value = 2 }
 		round_value_to_decimal = yes
 		set_variable = { which = policy_gov_mod which = value_to_round }
-		
+
 		set_variable = { which = value_to_round which = policy_gov_gui_val }
 		set_variable = { which = round_to_decimal value = 1 }
 		round_value_to_decimal = yes

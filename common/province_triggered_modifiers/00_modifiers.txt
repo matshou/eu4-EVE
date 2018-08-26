@@ -4,7 +4,7 @@
 # Effects are fully scriptable here.
 
 # Scope: province(ROOT)
-# This trigger fires once each month, use it to handle stuff that 
+# This trigger fires once each month, use it to handle stuff that
 # depend on monthly updates (can use country and global scope)
 #
 monthly_pulse = {
@@ -14,29 +14,29 @@ monthly_pulse = {
 
 	trigger = {
 		custom_trigger_tooltip = {
-			tooltip = MONTHLY_PULSE_TT 
+			tooltip = MONTHLY_PULSE_TT
 			always = yes
 		}
 	}
-	
+
 	local_production_efficiency = 0.15
-	local_tax_modifier = 0.3 
-	
+	local_tax_modifier = 0.3
+
 	# Gets called on each new day
 	on_activation = {
-		if = { 
+		if = {
 			limit = { owner = { NOT = { check_variable = { which = month_pulse_eta value = 1 } } } }
-			
-			owner = { 
+
+			owner = {
 				#log = "EVE: Monthly pulse fired for [This.GetName]([This.country_id.GetValue]) from [Root.GetName]([Root.owner_id.GetValue])"
-				
+
 				reset_monthly_pulse = yes
 				check_for_territorial_change = yes
 				update_gov_policy = yes
-				
+
 				# Triggers only for player, do all GLOBAL stuff here:
 				if = { limit = { ai = no }
-				
+
 					# Check on each pulse to see if a new country formed
 					every_country = {
 						limit = { NOT = { has_country_flag = is_initialized } }
@@ -44,37 +44,37 @@ monthly_pulse = {
 					}
 				}
 			}
-			
-			# This triggers when the capital gets moved to another 
+
+			# This triggers when the capital gets moved to another
 			# province or the previous owner gets annexed
 			#
 			if = {
 				limit = { NOT = { is_capital = yes } }
 				remove_province_triggered_modifier = monthly_pulse
-				
+
 				owner = {
 					# This province was gained as a concession in a war or
 					# for other reasons has ended up as territory of another country
 					if = {
 						limit = { ROOT = { has_province_flag = conquered_capital } }
-						
+
 						# Find capital province previous owner.
 						# Normally we would do this by using 'previous_owner' variable,
 						# but for some reason it gets set to null after loading a campaign
-						
+
 						ROOT = { export_owner_id_to_country_scope = yes }
 						every_known_country = {
-							
+
 							export_country_id_to_prev_scope = yes
-							
+
 							# found province previous owner
-							if = { limit = { PREV = { is_variable_equal = { 
+							if = { limit = { PREV = { is_variable_equal = {
 								which = known_country_id which = province_owner_id } } }
-								
+
 								changed_capital_province = yes					# previous owner
-								
+
 								PREV = { 										# current owner
-									set_country_flag = territorial_change         
+									set_country_flag = territorial_change
 									fire_monthly_pulse = yes
 								}
 							}
@@ -82,12 +82,12 @@ monthly_pulse = {
 						# Previous owner has been annexed/integrated
 						# This can also point to an error if the owner exists but is not listed as a 'known_country'
 						# but this shouldn't happen and would be a bug on Paradox's side
-						#if = { 
+						#if = {
 						#	limit = { NOT = { has_country_flag = territorial_change } }
 						#	log = "EVE: ERROR(conquered capital [Root.GetName] with unknown previous owner)"
 						#}
 						ROOT = { clr_province_flag = conquered_capital }
-					}					
+					}
 					# Owner changed its capital province with diplomatic power or an event
 					else_if = {
 						limit = { NOT = { ROOT = { has_province_flag = changed_ownership } } }
@@ -107,35 +107,35 @@ monthly_pulse = {
 				limit = { owner = { has_country_flag = territorial_change } }
 				owner = {
 					#log = "EVE: [This.GetName] had territorial changes recently."
-					calc_country_dist_autonomy = yes 
+					calc_country_dist_autonomy = yes
 				}
 			}
 		}
-		else = { 
-			owner = { 
+		else = {
+			owner = {
 				subtract_variable = { which = month_pulse_eta value = 1 }
 			    #log = "EVE: [Prev.GetName]: month pulse eta: [This.month_pulse_eta.GetValue]."  #Debug
 			}
 		}
 	}
-	
+
 	# This should only fire when we remove the modifier via "remove_province_modifier"
 	on_deactivation = {
-		owner = { 
+		owner = {
 			log = "EVE: Monthly pulse deactivated for [Root.GetName]."
 		}
 	}
-	
+
 }
 
 non_catholic_rome = {
 	potential = {
 		normal_or_historical_nations = yes
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		owner = {
 			NOT = { religion = catholic }
@@ -148,25 +148,25 @@ non_catholic_rome = {
 
 	prestige = 0.5
 	missionaries = 1
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }
 
 religious_center = {
 	potential = {
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		if = {
 			limit = {
@@ -231,16 +231,16 @@ religious_center = {
 	}
 
 	local_missionary_strength = -0.05
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }
 
 #Coptic control of Alexandria
@@ -249,29 +249,29 @@ coptic_alexandria = {
 	potential = {
 		normal_or_historical_nations = yes
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		owner = {
 			religion = coptic
 		}
 	}
-	
+
 	prestige = 0.5
 	missionaries = 1
 	tolerance_own = 1
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }
 
 #Therevada Control of sacred tooth
@@ -280,29 +280,29 @@ theravada_kotte = {
 	potential = {
 		normal_or_historical_nations = yes
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		owner = {
 			religion = buddhism
 		}
 	}
-	
+
 	prestige = 0.5
 	missionaries = 1
 	tolerance_own = 1
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }
 
 #Vajrayana Control of Lhasa
@@ -311,29 +311,29 @@ vajrayana_lhasa = {
 	potential = {
 		normal_or_historical_nations = yes
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		owner = {
 			religion = vajrayana
 		}
 	}
-	
+
 	prestige = 0.5
 	missionaries = 1
 	tolerance_own = 1
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }
 
 #Mahayana control of Louyang
@@ -342,29 +342,29 @@ mahayana_louyang = {
 	potential = {
 		normal_or_historical_nations = yes
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		owner = {
 			religion = mahayana
 		}
 	}
-	
+
 	prestige = 0.5
 	missionaries = 1
 	tolerance_own = 1
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }
 
 #Buddhist control of Bodh Gaya
@@ -373,10 +373,10 @@ buddhist_bodh_gaya = {
 	potential = {
 		normal_or_historical_nations = yes
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		owner = {
 			OR = {
@@ -386,20 +386,20 @@ buddhist_bodh_gaya = {
 			}
 		}
 	}
-	
+
 	prestige = 0.5
 	missionaries = 1
 	global_heretic_missionary_strength = 0.02
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }
 
 # Hindu control of Varanasi
@@ -408,29 +408,29 @@ hindu_varanasi = {
 	potential = {
 		normal_or_historical_nations = yes
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		owner = {
 			religion = hinduism
 		}
 	}
-	
+
 	prestige = 0.5
 	missionaries = 1
 	tolerance_own = 1
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }
 
 # Inti control of Pachamac
@@ -439,30 +439,30 @@ inti_lima = {
 	potential = {
 		normal_or_historical_nations = yes
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		owner = {
 			religion = inti
 			is_religion_reformed = yes
 		}
 	}
-	
+
 	prestige = 0.5
 	missionaries = 1
 	tolerance_own = 1
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }
 
 #Nahuatl control of cholulula
@@ -471,30 +471,30 @@ nahuatl_cholula = {
 	potential = {
 		normal_or_historical_nations = yes
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		owner = {
 			religion = nahuatl
 			is_religion_reformed = yes
 		}
 	}
-	
+
 	prestige = 0.5
 	missionaries = 1
 	tolerance_own = 1
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }
 
 # Mayan control of Chichen Itza
@@ -503,30 +503,30 @@ mayan_chichen_itza = {
 	potential = {
 		normal_or_historical_nations = yes
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		owner = {
 			religion = mesoamerican_religion
 			is_religion_reformed = yes
 		}
 	}
-	
+
 	prestige = 0.5
 	missionaries = 1
 	tolerance_own = 1
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }
 
 # Sikh control of Amritsar
@@ -535,30 +535,30 @@ sikh_amritsar = {
 	potential = {
 		normal_or_historical_nations = yes
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		owner = {
 			religion = sikhism
 		}
 		religion = sikhism
 	}
-	
+
 	prestige = 0.5
 	missionaries = 1
 	tolerance_own = 1
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }
 
 # Christian control of Mecca
@@ -567,29 +567,29 @@ christian_mecca = {
 	potential = {
 		normal_or_historical_nations = yes
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		owner = {
 			religion_group = christian
 		}
 	}
-	
+
 	prestige = 0.5
 	missionaries = 1
 	tolerance_own = 1
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }
 
 # Jerusalem held by any Abrahamic faith
@@ -598,10 +598,10 @@ jerusalem_held = {
 	potential = {
 		normal_or_historical_nations = yes
 	}
-	
+
 	#viewer = {
 	#}
-	
+
 	trigger = {
 		owner = {
 			OR = {
@@ -611,18 +611,18 @@ jerusalem_held = {
 			}
 		}
 	}
-	
+
 	prestige = 0.5
 	missionaries = 1
 	global_heretic_missionary_strength = 0.02
-	
+
 	#Province scope
 	on_activation = {
-	
+
 	}
-	
+
 	on_deactivation = {
-	
+
 	}
-	
+
 }

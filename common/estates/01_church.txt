@@ -1,30 +1,30 @@
 estate_church =
 {
 	icon = 1
-	
+
 	color = { 200 150 0 }
-	
+
 	# Is estate kept in control of province on conquest?
 	keep_on_conquest = no
-	
+
 	# Estate will always be removed when conquered by a different religion than previous owner
 	always_remove_on_religious_conquest = yes
-	
+
 	# They want to control at least this % of the country's non-overseas development, if # of home provinecs is above set amount
-	min_territory = 10 
+	min_territory = 10
 	min_provinces_to_want_territory = 10
 	wanted_territory_modifier = {
 		desc = EST_VAL_HINDU_CLERGY
 		trigger = {
 			religion = hinduism
-		}	
+		}
 		value = -5
 	}
 	wanted_territory_modifier = {
 		desc = EST_VAL_PAPAL_LANDS
 		trigger = {
 			tag = PAP
-		}	
+		}
 		value = -10
 	}
 	wanted_territory_modifier = {
@@ -32,7 +32,7 @@ estate_church =
 		trigger = {
 			religion = catholic
 			NOT = { tag = PAP }
-		}	
+		}
 		value = 5
 	}
 	wanted_territory_modifier = {
@@ -41,7 +41,7 @@ estate_church =
 			has_dlc = "Cradle of Civilization"
 			has_global_flag = neo_sufism
 			religion_group = muslim
-		}	
+		}
 		value = 5
 	}
 	wanted_territory_modifier = {
@@ -49,7 +49,7 @@ estate_church =
 		trigger = {
 			government = theocracy
 			NOT = { tag = PAP }
-		}	
+		}
 		value = 5
 	}
 
@@ -72,15 +72,15 @@ estate_church =
 		is_nomad = no
 		is_colonial_nation = no
 	}
-	
+
 	# If true, province can be granted to estate
 	province_trigger = {
 		always = yes
 	}
-	
+
 	# Min autonomy in estate provinces
 	min_autonomy = 20
-	
+
 	# Estate cancels out the following multiplicative local autonomy effects:
 	autonomy_does_not_affect = local_tax_modifier
 
@@ -95,7 +95,7 @@ estate_church =
 	}
 	country_modifier_neutral = {
 		global_tax_modifier = 0.2
-	}	
+	}
 	country_modifier_angry = {
 		global_tax_modifier = -0.1
 		papal_influence = -1
@@ -104,8 +104,8 @@ estate_church =
 		monthly_fervor_increase = -1
 		stability_cost_modifier = 0.1
 		institution_spread_from_true_faith = -0.1
-	}	
-	
+	}
+
 	# These do not scale, but only applied in provinces owned by the estate
 	province_modifier_happy = {
 		local_missionary_strength = 0.02
@@ -114,11 +114,11 @@ estate_church =
 	}
 	province_modifier_neutral = {
 		local_unrest = -2
-	}	
+	}
 	province_modifier_angry = {
 		local_unrest = 6
-	}	
-	
+	}
+
 	# Influence modifiers
 	base_influence = 20
 	influence_modifier = {
@@ -126,7 +126,7 @@ estate_church =
 		trigger = {
 			government = theocracy
 			NOT = { tag = PAP }
-		}	
+		}
 		influence = 10
 	}
 	influence_modifier = {
@@ -141,14 +141,14 @@ estate_church =
 		trigger = {
 			tag = HED
 			owns = 385 #Mecca
-		}	
+		}
 		influence = 20
 	}
 	influence_modifier = {
 		desc = EST_VAL_STATE_RELIGIOUS_MINORITY
 		trigger = {
 			NOT = { dominant_religion = ROOT }
-		}	
+		}
 		influence = -15
 	}
 	influence_modifier = {
@@ -156,7 +156,7 @@ estate_church =
 		trigger = {
 			religion = orthodox
 			patriarch_authority = 0.75
-		}	
+		}
 		influence = 10
 	}
 	influence_modifier = {
@@ -165,7 +165,7 @@ estate_church =
 			religion = orthodox
 			patriarch_authority = 0.5
 			NOT = { patriarch_authority = 0.75 }
-		}	
+		}
 		influence = 5
 	}
 	influence_modifier = {
@@ -174,7 +174,7 @@ estate_church =
 			has_dlc = "El Dorado"
 			religion = inti
 			authority = 75
-		}	
+		}
 		influence = 15
 	}
 	influence_modifier = {
@@ -184,7 +184,7 @@ estate_church =
 			religion = inti
 			authority = 50
 			NOT = { authority = 75 }
-		}	
+		}
 		influence = 10
 	}
 	influence_modifier = {
@@ -201,7 +201,7 @@ estate_church =
 		desc = EST_VAL_CELESTIAL_EMPIRE
 		trigger = {
 			government = celestial_empire
-		}		
+		}
 		influence = -10
 	}
 	influence_modifier = {
@@ -218,8 +218,8 @@ estate_church =
 		}
 		influence = -10
 	}
-	
-	
+
+
 	# Loyalty modifiers
 	loyalty_modifier = {
 		desc = EST_VAL_PIOUS
@@ -314,7 +314,7 @@ estate_church =
 		}
 		loyalty = 250
 	}
-	
+
 	custom_name = {
 		desc = estate_monasteries
 		trigger = {
@@ -358,7 +358,7 @@ estate_church =
 			religion = nahuatl
 		}
 	}
-	
+
 	# For province assignment
 	ai_grant_province = {
 		factor = 1
@@ -379,7 +379,7 @@ estate_church =
 		modifier = {
 			factor = 0.75
 			province_trade_power = 5
-		}			
+		}
 		modifier = {
 			factor = 0.75
 			province_trade_power = 10
@@ -393,39 +393,39 @@ estate_church =
 			NOT = { local_autonomy = 25 }
 		}
 	}
-	
+
 	# Does the AI want to give any extra territory beyond the minimum?
 	ai_territory_modifier = {
 		trigger = {
 			has_idea_group = religious_ideas
 			num_of_cities = 10
-		}	
-		value = 10		
-	}		
-	
+		}
+		value = 10
+	}
+
 	# Special interactions
 	interaction = {
 		name = "DEMAND_SUPPORT_CHURCH"
 		icon = 2
-		
+
 		years_between_use = 20
-		
+
 		potential = {
 			NOT = { has_disaster = estate_nobility_disaster }
 			NOT = { has_disaster = estate_burghers_disaster }
 		}
-		
-		trigger = {		
+
+		trigger = {
 			estate_loyalty = {
 				estate = estate_church
 				loyalty = 30
-			}	
+			}
 			estate_influence = {
 				estate = estate_church
 				influence = 25
-			}			
+			}
 		}
-		
+
 		effect = {
 			if = {
 				limit = {
@@ -433,7 +433,7 @@ estate_church =
 						estate_influence = {
 							estate = estate_church
 							influence = 50
-						}	
+						}
 					}
 				}
 				add_adm_power = 50
@@ -448,7 +448,7 @@ estate_church =
 						estate_influence = {
 							estate = estate_church
 							influence = 75
-						}	
+						}
 					}
 				}
 				add_adm_power = 100
@@ -463,7 +463,7 @@ estate_church =
 						estate_influence = {
 							estate = estate_church
 							influence = 100
-						}	
+						}
 					}
 				}
 				add_adm_power = 150
@@ -476,32 +476,32 @@ estate_church =
 					}
 				}
 				add_adm_power = 200
-			}				
+			}
 			add_estate_loyalty = {
 				estate = estate_church
 				loyalty = -20
 			}
 		}
-		
+
 		ai_will_do = {
-			factor = 0		
+			factor = 0
 		}
 	}
 	interaction = {
 		name = "MAKE_GENEROUS_DONATION"
 		icon = 7
-		
+
 		years_between_use = 10
-		
+
 		potential = {
 			NOT = { has_disaster = estate_nobility_disaster }
 			NOT = { has_disaster = estate_burghers_disaster }
 		}
-		
+
 		trigger = {
 			always = yes
 		}
-		
+
 		effect = {
 			add_years_of_income = -0.25
 			add_estate_loyalty = {
@@ -509,12 +509,12 @@ estate_church =
 				loyalty = 15
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0
-				NOT = { years_of_income = 0.5 }				
+				NOT = { years_of_income = 0.5 }
 			}
 			modifier = {
 				factor = 0
@@ -522,19 +522,19 @@ estate_church =
 					estate = estate_church
 					loyalty = 40
 				}
-			}			
-		}		
+			}
+		}
 	}
 	interaction = {
 		name = "SEEK_SUPPORT_OF_CLERGY"
 		icon = 17
-		
+
 		years_between_use = 20
-		
+
 		trigger = {
 			always = yes
 		}
-		
+
 		effect = {
 			add_prestige = -5
 			add_legitimacy = -5
@@ -561,7 +561,7 @@ estate_church =
 				loyalty = 15
 			}
 		}
-	
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -569,35 +569,35 @@ estate_church =
 				estate_loyalty = {
 					estate = estate_church
 					loyalty = 30
-				}						
+				}
 			}
 			modifier = {
 				factor = 0
 				estate_influence = {
 					estate = estate_church
 					influence = 60
-				}						
-			}			
+				}
+			}
 		}
 	}
 	interaction = {
 		name = "RECRUIT_MINISTER"
 		icon = 10
-		
+
 		potential = {
 			NOT = { has_disaster = estate_nobility_disaster }
 			NOT = { has_disaster = estate_burghers_disaster }
 		}
-		
+
 		years_between_use = 30
-		
+
 		trigger = {
 			estate_influence = {
 				estate = estate_church
 				influence = 40
 			}
 		}
-		
+
 		effect = {
 			hidden_effect = {
 				random_owned_province = {
@@ -664,29 +664,29 @@ estate_church =
 				duration = 10950
 			}
 		}
-		
+
 		ai_will_do = {
-			factor = 0			
+			factor = 0
 		}
 	}
 	interaction = {
 		name = "RECRUIT_INQUISITOR"
 		icon = 11
-		
+
 		potential = {
 			NOT = { has_disaster = estate_nobility_disaster }
 			NOT = { has_disaster = estate_burghers_disaster }
 		}
-		
+
 		years_between_use = 30
-		
+
 		trigger = {
 			estate_influence = {
 				estate = estate_church
 				influence = 40
 			}
 		}
-		
+
 		effect = {
 			hidden_effect = {
 				random_owned_province = {
@@ -760,7 +760,7 @@ estate_church =
 				}
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
@@ -768,22 +768,22 @@ estate_church =
 	interaction = {
 		name = "NEW_WORLD_MISSION"
 		icon = 15
-		
+
 		years_between_use = 20
-		
+
 		potential = {
 			has_idea_group = exploration_ideas
 			NOT = { has_disaster = estate_nobility_disaster }
 			NOT = { has_disaster = estate_burghers_disaster }
 		}
-		
+
 		trigger = {
 			estate_influence = {
 				estate = estate_church
 				influence = 40
 			}
 		}
-		
+
 		effect = {
 			add_country_modifier = {
 				name = "new_world_missions"
@@ -796,31 +796,31 @@ estate_church =
 				duration = 7300
 			}
 		}
-		
+
 		ai_will_do = {
-			factor = 0			
+			factor = 0
 		}
 	}
 	interaction = {
 		name = "SEND_EMISSARY_TO_POPE"
 		icon = 14
-		
+
 		years_between_use = 20
-		
+
 		potential = {
 			religion = catholic
 			NOT = { tag = PAP }
 			NOT = { has_disaster = estate_nobility_disaster }
 			NOT = { has_disaster = estate_burghers_disaster }
 		}
-		
+
 		trigger = {
 			estate_influence = {
 				estate = estate_church
 				influence = 40
 			}
 		}
-		
+
 		effect = {
 			add_papal_influence = 10
 			add_estate_influence_modifier = {
@@ -830,9 +830,9 @@ estate_church =
 				duration = 7300
 			}
 		}
-	
+
 		ai_will_do = {
-			factor = 0			
-		}	
+			factor = 0
+		}
 	}
 }
