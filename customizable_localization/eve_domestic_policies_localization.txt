@@ -159,6 +159,30 @@ defined_text = {
 	}
 }
 
+defined_text = {
+	name = decentralization_desc_txt
+	random = no
+	
+	text = {
+		localisation_key = string_decentralization_desc
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = centralization_desc_txt
+	random = no
+	
+	text = {
+		localisation_key = string_centralization_desc
+		trigger = {
+			always = yes
+		}
+	}
+}
+	
 ###########################
 # EVE: Color Keys
 ###########################
