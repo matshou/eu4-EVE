@@ -89,10 +89,7 @@ monthly_pulse = {
 						ROOT = { clr_province_flag = conquered_capital }
 					}
 					# Owner changed its capital province with diplomatic power or an event
-					else_if = {
-						limit = { NOT = { ROOT = { has_province_flag = changed_ownership } } }
-						changed_capital_province = yes
-					}
+					else = { changed_capital_province = yes }
 				}
 			}
 			# Do this when we run the mod for the FIRST TIME this campaign.
