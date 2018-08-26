@@ -1,0 +1,80 @@
+
+###########################
+# EVE: Localization Text
+###########################
+
+defined_text = {
+    name = separator_txt
+    random = no
+
+    text = {
+		localisation_key = string_separator
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+###########################
+# EVE: Color Keys
+###########################
+
+defined_text = {
+    name = stability_txt_c
+    random = no
+
+    text = {
+        localisation_key = color_key_g
+        trigger = {
+             stability = 1
+        }
+    }
+	text = {
+		localisation_key = color_key_r
+        trigger = {
+            NOT = { stability = 0 }
+        }
+    }
+	text = {
+        localisation_key = color_key_n
+        trigger = {
+            always = yes
+        }
+    }
+}
+
+defined_text = {
+    name = corruption_txt_c
+    random = no
+
+	text = {
+        localisation_key = color_key_r
+        trigger = {
+            corruption = 0.001
+        }
+    }
+	text = {
+        localisation_key = color_key_n
+        trigger = {
+            always = yes
+        }
+    }
+}
+
+defined_text = {
+    name = autonomy_txt_c
+    random = no
+
+	text = {
+        localisation_key = color_key_r
+        trigger = {
+            average_autonomy = 0.001
+        }
+    }
+	text = {
+        localisation_key = color_key_n
+        trigger = {
+            always = yes
+        }
+    }
+}

@@ -1,0 +1,188 @@
+
+###########################
+# EVE: Modifier Text
+###########################
+
+defined_text = {
+	name = policy_gov_desc_txt
+	random = no
+	
+	text = {
+		localisation_key = string_gov_policy_desc
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = policy_gov_txt
+	random = no
+	
+	text = {
+		localisation_key = string_gov_policy_stance
+		trigger = {
+			NOT = { is_variable_equal = { which = policy_gov_rating value = 0 } }
+		}
+	}
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = policy_gov_result_txt
+	random = no
+	
+	text = {
+		localisation_key = string_centralized
+		trigger = {
+			check_variable = { which = policy_gov_rating value = 1 }
+		}
+	}
+	text = {
+		localisation_key = string_decentralized
+		trigger = {
+			NOT = { check_variable = { which = policy_gov_rating value = 0 } }
+		}
+	}
+}
+
+defined_text = {
+	name = policy_gov_change_txt
+	random = no
+	
+	text = {
+		localisation_key = string_gov_policy_change
+		trigger = {
+			NOT = { is_variable_equal = { which = policy_gov_max which = policy_gov_val } }
+		}
+	}
+	text = {
+		localisation_key = string_period
+		trigger = {
+			always = yes
+		}
+	}
+}		
+
+defined_text = {
+	name = policy_gov_ext_txt
+	random = no
+	
+	text = {
+		localisation_key = string_gov_policy_ext
+		trigger = {
+			NOT = { is_variable_equal = { which = policy_gov_mod value = 0 } }
+		}
+	}
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+    name = policy_gov_mod_1_txt
+    random = no
+	
+	text = {
+		localisation_key = string_gov_policy_mod_1
+		trigger = {
+			NOT = { is_variable_equal = { which = stability_mod value = 0 } }
+		}
+	}
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+    name = policy_gov_mod_2_txt
+    random = no
+	
+	text = {
+		localisation_key = string_gov_policy_mod_2
+		trigger = {
+			NOT = { is_variable_equal = { which = corruption_mod value = 0 } }
+		}
+	}
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+    name = policy_gov_mod_3_txt
+    random = no
+	
+	text = {
+		localisation_key = string_gov_policy_mod_3
+		trigger = {
+			NOT = { is_variable_equal = { which = autonomy_mod value = 0 } }
+		}
+	}
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+    name = policy_gov_mod_4_txt
+    random = no
+	
+	text = {
+		localisation_key = string_gov_policy_mod_4
+		trigger = {
+			is_part_of_hre = yes
+		}
+	}
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+###########################
+# EVE: Color Keys
+###########################
+	
+defined_text = {
+    name = policy_gov_txt_c
+    random = no
+
+    text = {
+        localisation_key = color_key_g
+        trigger = {
+             check_variable = { which = policy_gov_mod value = 0.001 }
+        }
+    }
+    text = {
+        localisation_key = color_key_r
+        trigger = {
+            NOT = { check_variable = { which = policy_gov_mod value = 0 } }
+        }
+    }
+	text = {
+        localisation_key = color_key_n
+        trigger = {
+            always = yes
+        }
+    }
+} 
