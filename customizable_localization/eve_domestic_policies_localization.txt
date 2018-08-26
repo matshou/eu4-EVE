@@ -6,7 +6,7 @@
 defined_text = {
 	name = policy_gov_desc_txt
 	random = no
-	
+
 	text = {
 		localisation_key = string_gov_policy_desc
 		trigger = {
@@ -18,7 +18,7 @@ defined_text = {
 defined_text = {
 	name = policy_gov_txt
 	random = no
-	
+
 	text = {
 		localisation_key = string_gov_policy_stance
 		trigger = {
@@ -36,7 +36,7 @@ defined_text = {
 defined_text = {
 	name = policy_gov_result_txt
 	random = no
-	
+
 	text = {
 		localisation_key = string_centralized
 		trigger = {
@@ -54,7 +54,7 @@ defined_text = {
 defined_text = {
 	name = policy_gov_change_txt
 	random = no
-	
+
 	text = {
 		localisation_key = string_gov_policy_change
 		trigger = {
@@ -67,12 +67,12 @@ defined_text = {
 			always = yes
 		}
 	}
-}		
+}
 
 defined_text = {
 	name = policy_gov_ext_txt
 	random = no
-	
+
 	text = {
 		localisation_key = string_gov_policy_ext
 		trigger = {
@@ -90,7 +90,7 @@ defined_text = {
 defined_text = {
     name = policy_gov_mod_1_txt
     random = no
-	
+
 	text = {
 		localisation_key = string_gov_policy_mod_1
 		trigger = {
@@ -108,7 +108,7 @@ defined_text = {
 defined_text = {
     name = policy_gov_mod_2_txt
     random = no
-	
+
 	text = {
 		localisation_key = string_gov_policy_mod_2
 		trigger = {
@@ -126,7 +126,7 @@ defined_text = {
 defined_text = {
     name = policy_gov_mod_3_txt
     random = no
-	
+
 	text = {
 		localisation_key = string_gov_policy_mod_3
 		trigger = {
@@ -144,7 +144,7 @@ defined_text = {
 defined_text = {
     name = policy_gov_mod_4_txt
     random = no
-	
+
 	text = {
 		localisation_key = string_gov_policy_mod_4
 		trigger = {
@@ -162,7 +162,7 @@ defined_text = {
 defined_text = {
 	name = decentralization_desc_txt
 	random = no
-	
+
 	text = {
 		localisation_key = string_decentralization_desc
 		trigger = {
@@ -174,7 +174,7 @@ defined_text = {
 defined_text = {
 	name = centralization_desc_txt
 	random = no
-	
+
 	text = {
 		localisation_key = string_centralization_desc
 		trigger = {
@@ -182,11 +182,11 @@ defined_text = {
 		}
 	}
 }
-	
+
 ###########################
 # EVE: Color Keys
 ###########################
-	
+
 defined_text = {
     name = policy_gov_txt_c
     random = no
@@ -209,4 +209,4 @@ defined_text = {
             always = yes
         }
     }
-} 
+}

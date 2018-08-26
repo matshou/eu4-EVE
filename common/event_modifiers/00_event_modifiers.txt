@@ -10200,7 +10200,7 @@ centralization_level_5 = {
 governance_policy = {
 	autonomy_change_time = -0.01
 }
-	
+
 ###############################
 # EVE - Province Autonomy
 ###############################

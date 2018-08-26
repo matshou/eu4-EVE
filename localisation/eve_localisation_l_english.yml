@@ -2,7 +2,7 @@
  monthly_pulse:0 "Capital City"
  desc_monthly_pulse:0 "This province is a political and administrative center of its nation. It will be generate higher tax and production revenue in addition to being easier to govern."
  MONTHLY_PULSE_TT:0 "Province is home to the nation's capital."
- 
+
  prov_autonomy_from_dist_50:0 "Self-Governance"
  desc_prov_autonomy_from_dist_50:0 "The population here is slightly more difficult to properly govern due to the distance of this province from our capital city."
  prov_autonomy_from_dist_100:0 "Self-Governance"
@@ -19,7 +19,7 @@
  desc_prov_autonomy_from_dist_350:0 "The population here is extremely more difficult to properly govern due to the distance of this province from our capital city."
  province_developing:0 "Province Developing"
  desc_province_developing:0 "This province is currently being developed, so it would be much harder to develop it further."
- 
+
  EST_VAL_FULL_TRADE:0 "Merchant Class: $VAL|Y$"
  EST_VAL_FULL_INFLUENCE:0 "Sphere of Influence: $VAL|Y$"
  EST_VAL_FULL_RELIGIOUS_INF:0 "Fully Religious: §Y$VAL$%§!"
@@ -29,15 +29,14 @@
  EST_VAL_FULL_INFLUENCE_INF:0 "Sphere of Influence: §Y$VAL$%§!"
  EST_VAL_FULL_INNOVATIVE:0 "Focus on Innovation: §Y$VAL$%§!"
  EST_VAL_DEVELOPED:0 "Recently Increased Development: "
- 
+
  eve_autonomy_flavor.1.t:0 "Autonomy in distant provinces"
  eve_autonomy_flavor.1.d:0 "The population of any country always strives for more local autonomy for their communities as a response to government's continuous efforts to centralize territory under its control. Many factors hindered countries ability to exercise local jurisdiction, physical distance from capital city was one of them. As a result, it will be more difficult to collect income from distant provinces."
  eve_autonomy_flavor.1.a:0 "We will have to accept this"
- 
+
  string_separator:0 "\n--------------\n"
  string_null:0 ""
  string_period:0 "."
  color_key_r:0 "R"
  color_key_g:0 "G+"
  color_key_n:0 "Y"
- 
