@@ -13,6 +13,18 @@
 #  conquered_capital		# province
 #  distant_province			# province
 
+# List of variables:
+# ====================
+#  counter_var				# used for while loops
+#  counter2_var				# -||-
+#  arg1_var					# used for methods that need input
+#  arg2_var					# -||-
+#  output_var				# used for methods that create output
+#  normalize_var			# used in rounding method to normalize output
+#  month_pulse_eta			# used as a counter for monthly pulses
+#  country_id				# used as a substitude for 'province_id'
+#  owner_id					# used by provinces to pair with 'country_id'
+
 # Scope: country
 # Round 'arg1_var' variable to 'arg2_var' decimal places
 # This is used to display clean values in game UI
