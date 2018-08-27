@@ -9,6 +9,15 @@
 #  policy_centralized		# country
 #  policy_decentralized		# scope
 
+# List of variables:
+# ====================
+#  policy_gov_min
+#  policy_gov_max
+#  policy_gov_val			# current rating for this policy
+#  policy_gov_rating		# short numerical for 'policy_gov_val'
+#  policy_gov_mod
+#  policy_gov_gui_val		# used by GUI only
+
 # Scope: country
 # Called from initialization phase for every country
 #
