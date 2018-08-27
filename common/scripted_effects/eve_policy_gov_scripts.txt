@@ -266,14 +266,14 @@ round_gov_policy_gui_values = {
 	if = {
 		limit = { ai = no }
 
-		set_variable = { which = value_to_round which = policy_gov_mod }
-		set_variable = { which = round_to_decimal value = 2 }
+		set_variable = { which = arg1_var which = policy_gov_mod }
+		set_variable = { which = arg2_var value = 2 }
 		round_value_to_decimal = yes
-		set_variable = { which = policy_gov_mod which = value_to_round }
+		set_variable = { which = policy_gov_mod which = arg1_var }
 
-		set_variable = { which = value_to_round which = policy_gov_gui_val }
-		set_variable = { which = round_to_decimal value = 1 }
+		set_variable = { which = arg1_var which = policy_gov_gui_val }
+		set_variable = { which = arg2_var value = 1 }
 		round_value_to_decimal = yes
-		set_variable = { which = policy_gov_gui_val which = value_to_round }
+		set_variable = { which = policy_gov_gui_val which = arg1_var }
 	}
 }
