@@ -46,8 +46,6 @@ init_gov_policy = {
 		set_variable = { which = policy_gov_val which = policy_gov_max }
 		set_variable = { which = policy_gov_rating which = policy_gov_val }
 	}
-
-	update_gov_policy = yes
 }
 
 # Scope: country
