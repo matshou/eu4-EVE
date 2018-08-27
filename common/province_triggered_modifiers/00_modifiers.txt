@@ -40,7 +40,7 @@ monthly_pulse = {
 			}
 		}
 	}
-	# Doesn't seem get called under any circumstances
+	# Doesn't seem to get called under any circumstances
 	on_deactivation = {
 	}
 }
