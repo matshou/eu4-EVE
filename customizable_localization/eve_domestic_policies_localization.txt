@@ -62,7 +62,7 @@ defined_text = {
 		}
 	}
 	text = {
-		localisation_key = string_period
+		localisation_key = string_null
 		trigger = {
 			always = yes
 		}
