@@ -4,12 +4,12 @@
 # Effects are fully scriptable here.
 
 # Scope: province(ROOT)
-# This trigger fires once each month, use it to handle stuff that
-# depend on monthly updates (can use country and global scope)
+# Main EVE update mechanism.
+# Every capital province should ALWAYS have this modifier
 #
 monthly_pulse = {
 	potential = {
-		always = yes
+		always = yes		# always allow daily ticks
 	}
 
 	trigger = {
@@ -19,110 +19,30 @@ monthly_pulse = {
 		}
 	}
 
+	# Always have at least one modifier here so the
+	# province modifier can display an icon in GUI
+
 	local_production_efficiency = 0.15
 	local_tax_modifier = 0.3
 
-	# Gets called on each new day
+	# Gets called on each new day as long as this modifier is applied.
+	# Note that it stops calling after loading an existing campaign unless
+	# manually reset by removing and then re-adding the modifier
+	#
 	on_activation = {
-		if = {
-			limit = { owner = { NOT = { check_variable = { which = month_pulse_eta value = 1 } } } }
-
-			owner = {
-				#log = "EVE: Monthly pulse fired for [This.GetName]([This.country_id.GetValue]) from [Root.GetName]([Root.owner_id.GetValue])"
-
-				reset_monthly_pulse = yes
-				check_for_territorial_change = yes
-				update_gov_policy = yes
-
-				# Triggers only for player, do all GLOBAL stuff here:
-				if = { limit = { ai = no }
-
-					# Check on each pulse to see if a new country formed
-					every_country = {
-						limit = { NOT = { has_country_flag = is_initialized } }
-						initialize_country = yes
-					}
-				}
-			}
-
-			# This triggers when the capital gets moved to another
-			# province or the previous owner gets annexed
-			#
-			if = {
-				limit = { NOT = { is_capital = yes } }
-				remove_province_triggered_modifier = monthly_pulse
-
-				owner = {
-					# This province was gained as a concession in a war or
-					# for other reasons has ended up as territory of another country
-					if = {
-						limit = { ROOT = { has_province_flag = conquered_capital } }
-
-						# Find capital province previous owner.
-						# Normally we would do this by using 'previous_owner' variable,
-						# but for some reason it gets set to null after loading a campaign
-
-						ROOT = { export_owner_id_to_country_scope = yes }
-						every_known_country = {
-
-							export_country_id_to_prev_scope = yes
-
-							# found province previous owner
-							if = { limit = { PREV = { is_variable_equal = {
-								which = known_country_id which = province_owner_id } } }
-
-								changed_capital_province = yes					# previous owner
-
-								PREV = { 										# current owner
-									set_country_flag = territorial_change
-									fire_monthly_pulse = yes
-								}
-							}
-						}
-						# Previous owner has been annexed/integrated
-						# This can also point to an error if the owner exists but is not listed as a 'known_country'
-						# but this shouldn't happen and would be a bug on Paradox's side
-						#if = {
-						#	limit = { NOT = { has_country_flag = territorial_change } }
-						#	log = "EVE: ERROR(conquered capital [Root.GetName] with unknown previous owner)"
-						#}
-						ROOT = { clr_province_flag = conquered_capital }
-					}
-					# Owner changed its capital province with diplomatic power or an event
-					else = { changed_capital_province = yes }
-				}
-			}
-			# Do this when we run the mod for the FIRST TIME this campaign.
-			# It has to be run from here because the ROOT scope is set to capital province.
-			#
-			else_if = {
-				limit = { NOT = { had_global_flag = { flag = eve_initialized days = 32 } } }
-				owner = { calc_country_dist_autonomy = yes }
-			}
-			# Owner country has either gained new territory or changed its capital province
-			else_if = {
-				limit = { owner = { has_country_flag = territorial_change } }
-				owner = {
-					#log = "EVE: [This.GetName] had territorial changes recently."
-					calc_country_dist_autonomy = yes
-				}
-			}
-		}
-		else = {
-			owner = {
-				subtract_variable = { which = month_pulse_eta value = 1 }
-			    #log = "EVE: [Prev.GetName]: month pulse eta: [This.month_pulse_eta.GetValue]."  #Debug
-			}
-		}
-	}
-
-	# This should only fire when we remove the modifier via "remove_province_modifier"
-	on_deactivation = {
 		owner = {
-			log = "EVE: Monthly pulse deactivated for [Root.GetName]."
+			if = {
+				limit = { is_variable_equal = { which = month_pulse_eta value = 0 } }
+				on_monthly_pulse = yes
+			}
+			else = {
+				subtract_variable = { which = month_pulse_eta value = 1 }
+			}
 		}
 	}
-
+	# Doesn't seem get called under any circumstances
+	on_deactivation = {
+	}
 }
 
 non_catholic_rome = {
