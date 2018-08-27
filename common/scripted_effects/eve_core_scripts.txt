@@ -14,51 +14,51 @@
 #  distant_province			# province
 
 # Scope: country
-# Round 'value_to_round' variable to 'round_to_decimal' places
+# Round 'arg1_var' variable to 'arg2_var' decimal places
 # This is used to display clean values in game UI
 #
 round_value_to_decimal = {
 	if = {
-		limit = { NOT = { check_variable = { which = value_to_round value = 0 } } }
-		multiply_variable = { which = value_to_round value = -1 }
+		limit = { NOT = { check_variable = { which = arg1_var value = 0 } } }
+		multiply_variable = { which = arg1_var value = -1 }
 		set_country_flag = round_to_negative
 	}
 	set_variable = { which = counter_var value = 1 }
-	set_variable = { which = counter_var2 value = 1 }    # if 'value_to_round' >= 1
+	set_variable = { which = counter2_var value = 1 }    # if 'arg1_var' >= 1
 	while = {
-		limit = { check_variable = { which = value_to_round which = counter_var2 } }
+		limit = { check_variable = { which = arg1_var which = counter2_var } }
 		multiply_variable = { which = counter_var value = 10 }
-		multiply_variable = { which = counter_var2 value = 10 }
+		multiply_variable = { which = counter2_var value = 10 }
 	}
 	while = {
-		limit = { check_variable = { which = round_to_decimal value = 1 } }
-		multiply_variable = { which = value_to_round value = 10 }
+		limit = { check_variable = { which = arg2_var value = 1 } }
+		multiply_variable = { which = arg1_var value = 10 }
 		multiply_variable = { which = counter_var value = 10 }
-		subtract_variable = { which = round_to_decimal value = 1 }
+		subtract_variable = { which = arg2_var value = 1 }
 	}
 
 	set_variable = { which = normalize_var which = counter_var }
-	divide_variable = { which = normalize_var which = counter_var2 }   # used to normalize value
+	divide_variable = { which = normalize_var which = counter2_var }   # used to normalize value
 
 	while = {
 		limit = { NOT = { is_variable_equal = { which = counter_var value = -1 } } }
 		if = {
-			limit = { check_variable = { which = value_to_round which = counter_var } }
+			limit = { check_variable = { which = arg1_var which = counter_var } }
 			change_variable = { which = counter_var value = 0.5 }
 			if = {
-				limit = { check_variable = { which = value_to_round which = counter_var } }
+				limit = { check_variable = { which = arg1_var which = counter_var } }
 				change_variable = { which = counter_var value = 0.5 }
 			}
 			else = { change_variable = { which = counter_var value = -0.5 } }
-			set_variable = { which = value_to_round which = counter_var }
+			set_variable = { which = arg1_var which = counter_var }
 			set_variable = { which = counter_var value = -1 }               # break loop
 		}
 		else = { subtract_variable = { which = counter_var value = 1 } }
 	}
-	divide_variable = { which = value_to_round which = normalize_var }   # normalize value
+	divide_variable = { which = arg1_var which = normalize_var }   # normalize value
 	if = {
 		limit = { has_country_flag = round_to_negative }
-		multiply_variable = { which = value_to_round value = -1 }
+		multiply_variable = { which = arg1_var value = -1 }
 		clr_country_flag = round_to_negative
 	}
 }
@@ -182,12 +182,12 @@ changed_capital_province = {
 #
 export_owner_id_to_country_scope = {
 
-	owner = { set_variable = { which = province_owner_id value = 1 } }
+	owner = { set_variable = { which = output_var value = 1 } }
 	set_variable = { which = counter_var value = 1 }
 	while = {
 		limit = { NOT = { is_variable_equal = { which = counter_var which = owner_id } } }
 		change_variable = { which = counter_var value = 1 }
-		PREV = { change_variable = { which = province_owner_id value = 1 } }
+		PREV = { change_variable = { which = output_var value = 1 } }
 	}
 }
 
@@ -196,12 +196,12 @@ export_owner_id_to_country_scope = {
 #
 export_country_id_to_prev_scope = {
 
-	PREV = { set_variable = { which = known_country_id value = 1 } }
+	PREV = { set_variable = { which = output_var value = 1 } }
 	set_variable = { which = counter_var value = 1 }
 	while = {
 		limit = { NOT = { is_variable_equal = { which = counter_var which = country_id } } }
 		change_variable = { which = counter_var value = 1 }
-		PREV = { change_variable = { which = known_country_id value = 1 } }
+		PREV = { change_variable = { which = output_var value = 1 } }
 	}
 }
 
@@ -218,7 +218,7 @@ check_for_territorial_change = {
 		export_owner_id_to_country_scope = yes
 		owner = {
 			if = { limit = { NOT = { is_variable_equal = {
-				which = province_owner_id which = country_id } } }
+				which = output_var which = country_id } } }
 
 				PREV = {			# province scope
 					if = {			# conquered another nation's capital province
@@ -228,14 +228,14 @@ check_for_territorial_change = {
 						}
 						set_province_flag = conquered_capital
 					}
-					else = { set_province_owner_id = yes }	# update owner id
+					else = { set_output_var = yes }	# update owner id
 
 					clr_province_flag = distant_province    # don't try to remove modifier
 					set_country_flag = territorial_change   # call for autonomy recalc
 					owner = { fire_monthly_pulse = yes }    # force an update
 				}
 			}
-			set_variable = { which = province_owner_id value = 1 }
+			set_variable = { which = output_var value = 1 }
 		}
 	}
 }
