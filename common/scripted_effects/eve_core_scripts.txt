@@ -7,6 +7,7 @@
 # ====================
 #  eve_initialized			# global
 #  found_country			# global
+#  inagurated				# ruler
 #  round_to_negative		# country
 #  is_initialized			# country
 #  territorial_change		# country
@@ -33,6 +34,14 @@
 #		methods that only accept scope as argument (example: 'province_distance' condition)
 #
 on_monthly_pulse = {
+
+	# Mark the inaguration day for current ruler
+	# Note that this is not an actual day the ruler was inagurated
+	# but the first day pulse fired after his inaguration
+	if = {
+		limit = { NOT = { has_ruler_flag = inagurated } }
+		set_ruler_flag = inagurated
+	}
 
 	reset_monthly_pulse = yes
 	check_for_territorial_change = yes
