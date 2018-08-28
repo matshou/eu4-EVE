@@ -191,7 +191,6 @@ initialize_country = {
 		set_country_id = yes
 		every_owned_province = { set_province_owner_id = yes }
 
-		reset_monthly_pulse = yes   # initialize monthly pulse
 		fire_monthly_pulse = yes    # force an immediate update
 
 		# Add monthly pulse trigger to nation's capital
