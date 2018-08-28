@@ -370,7 +370,7 @@ check_for_territorial_change = {
 						}
 						set_province_flag = conquered_capital
 					}
-					else = { set_output_var = yes }	# update owner id
+					else = { set_province_owner_id = yes }	# update owner id
 
 					clr_province_flag = distant_province    # don't try to remove modifier
 					set_country_flag = territorial_change   # call for autonomy recalc
