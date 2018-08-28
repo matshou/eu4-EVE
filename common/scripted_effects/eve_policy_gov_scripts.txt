@@ -114,6 +114,38 @@ calc_gov_policy_mod = {
 		limit = { is_part_of_hre = yes }
 		change_variable = { which = policy_gov_mod value = -0.05 }
 	}
+	
+	# Ruler's Administrative Skill
+	if = {
+		# recalculate only once for each new ruler
+		limit = { NOT = { had_ruler_flag = { flag = inagurated days = 1 } } }
+		
+		export_to_variable = { which = arg1_var value = trigger_value:ADM }
+		subtract_variable = { which = arg1_var value = 1 }  # normalize adm value
+		
+		set_variable = { which = arg2_var value = 6 }
+		set_variable = { which = arg3_var value = 0.022 }
+		set_variable = { which = arg4_var value = 0.005 }
+		
+		calculate_progressive_mod = yes
+		set_variable = { which = policy_gov_rul_mod which = output_var }
+		change_variable = { which = policy_gov_mod which = policy_gov_rul_mod }
+	}
+	
+	# Advisor's Administrative Skill
+	if = {
+		limit = { advisor = master_of_mint }
+		get_mint_advisor_lvl = yes
+		set_variable = { which = arg1_var which = output_var }
+		
+		set_variable = { which = arg2_var value = 5 }
+		set_variable = { which = arg3_var value = 0.015 }
+		set_variable = { which = arg4_var value = 0.004 }
+		
+		calculate_progressive_mod = yes
+		set_variable = { which = policy_gov_adv_mod which = output_var }
+		change_variable = { which = policy_gov_mod which = policy_gov_adv_mod }
+	}
 }
 
 # Scope: country
@@ -286,3 +318,30 @@ round_gov_policy_gui_values = {
 		set_variable = { which = policy_gov_gui_val which = arg1_var }
 	}
 }
+
+# Scope: country
+# Advisor level cannot be exported as a variable so we have to
+# find it with like this. Only call if master of mint advisor is hired
+#
+get_mint_advisor_lvl = {
+
+	# Cannot use a trigger switch here because
+	# for some odd reason the game crashes when we do
+
+	if = { limit = { master_of_mint = 5 }
+		set_variable = { which = output_var value = 5 }
+	}
+	else_if = { limit = { master_of_mint = 4 }
+		set_variable = { which = output_var value = 4 }
+	}
+	else_if = { limit = { master_of_mint = 3 }
+		set_variable = { which = output_var value = 3 }
+	}
+	else_if = { limit = { master_of_mint = 2 }
+		set_variable = { which = output_var value = 2 }
+	}
+	else_if = { limit = { master_of_mint = 1 }
+		set_variable = { which = output_var value = 1 }
+	}
+}
+	
