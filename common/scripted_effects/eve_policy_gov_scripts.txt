@@ -17,6 +17,8 @@
 #  policy_gov_rating		# short numerical for 'policy_gov_val'
 #  policy_gov_mod
 #  policy_gov_gui_val		# used by GUI only
+#  policy_gov_rul_mod		# modifier from ruler administrative skill
+#  policy_gov_adv_mod		# modifier from advisor administrative skill
 
 # Scope: country
 # Called from initialization phase for every country
@@ -93,6 +95,9 @@ update_gov_policy = {
 }
 
 # Scope: country
+# Reset and calculate all policy modifiers.
+# Should be called on each monthly pulse update
+#
 calc_gov_policy_mod = {
 
 	# Variables with "_mod" suffix below are used in localisation
@@ -114,34 +119,34 @@ calc_gov_policy_mod = {
 		limit = { is_part_of_hre = yes }
 		change_variable = { which = policy_gov_mod value = -0.05 }
 	}
-	
+
 	# Ruler's Administrative Skill
 	if = {
 		# recalculate only once for each new ruler
 		limit = { NOT = { had_ruler_flag = { flag = inagurated days = 1 } } }
-		
+
 		export_to_variable = { which = arg1_var value = trigger_value:ADM }
 		subtract_variable = { which = arg1_var value = 1 }  # normalize adm value
-		
+
 		set_variable = { which = arg2_var value = 6 }
 		set_variable = { which = arg3_var value = 0.022 }
 		set_variable = { which = arg4_var value = 0.005 }
-		
+
 		calculate_progressive_mod = yes
 		set_variable = { which = policy_gov_rul_mod which = output_var }
 		change_variable = { which = policy_gov_mod which = policy_gov_rul_mod }
 	}
-	
+
 	# Advisor's Administrative Skill
 	if = {
 		limit = { advisor = master_of_mint }
 		get_mint_advisor_lvl = yes
 		set_variable = { which = arg1_var which = output_var }
-		
+
 		set_variable = { which = arg2_var value = 5 }
 		set_variable = { which = arg3_var value = 0.015 }
 		set_variable = { which = arg4_var value = 0.004 }
-		
+
 		calculate_progressive_mod = yes
 		set_variable = { which = policy_gov_adv_mod which = output_var }
 		change_variable = { which = policy_gov_mod which = policy_gov_adv_mod }
@@ -344,4 +349,3 @@ get_mint_advisor_lvl = {
 		set_variable = { which = output_var value = 1 }
 	}
 }
-	

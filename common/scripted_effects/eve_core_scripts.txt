@@ -288,7 +288,7 @@ changed_capital_province = {
 # Scope: anywhere
 #
 # Calculate a unique type of modifier for 'arg1/arg2' value.
-# This modifier increases progressively each step by increasing the value added 
+# This modifier increases progressively each step by increasing the value added
 # to the next step by 'arg4' respective to the current step defined with 'counter_var'.
 # Increase in value added becomes a decrease after reaching steps midpoint.
 # This is intended to be used with ruler and advisor skills to show how higher skill ratings
@@ -301,19 +301,19 @@ changed_capital_province = {
 #
 calculate_progressive_mod = {
 
-	# Here is an example of output result for each step with 
+	# Here is an example of output result for each step with
 	# arg2 = 6, arg3 = 0.022 and arg4 = 0.005:
 	#
 	# prog inc:	 	 22    27     32 [mid] 27	   22     17
 	# output_var:	 0.022 - 0.049 - 0.081 - 0.108 - 0.13 - 0.147
-	
+
 	set_variable = { which = counter_var value = 0 }
 	set_variable = { which = output_var value = 0 }
-	
+
 	set_variable = { which = counter2_var which = arg2_var }
 	divide_variable = { which = counter2_var value = 2 }
 	subtract_variable = { which = counter2_var value = 1 }    # take lower half value
-	
+
 	while = {
 		limit = { NOT = { is_variable_equal = { which = counter_var which = arg1_var } } }
 		change_variable = { which = output_var which = arg3_var }
