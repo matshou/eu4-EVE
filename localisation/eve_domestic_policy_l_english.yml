@@ -4,11 +4,11 @@
  #######################
 
  governance_policy:0 "Governance Policy"
- desc_governance_policy:0 "Governance domestic policy rating is §Y[Root.policy_gov_gui_val.GetValue]§!.[Root.policy_gov_txt]\nMaximum rating for §Y[Root.GovernmentName]§! is §Y[Root.policy_gov_max.GetValue]§!.[Root.policy_gov_change_txt]"
+ desc_governance_policy:0 "Governance domestic policy rating is §Y[Root.policy_gov_gui_val.GetValue]§!.[Root.policy_gov_txt]\nMaximum rating for §Y[Root.GovernmentName]§! is §Y[Root.policy_gov_max.GetValue]§!.[Root.policy_gov_change_txt][Root.separator_txt][Root.policy_gov_desc_txt]"
  string_gov_policy_desc:0 "This policy reflects our ability to exercise state jurisdiction in core provinces."
  string_gov_policy_stance:0 "\nAs a result our government is more §Y[Root.policy_gov_result_txt]§!"
- string_gov_policy_change:0 "\nIt changes by §[Root.policy_gov_txt_c][Root.policy_gov_mod.GetValue]§! every month[Root.policy_gov_ext_txt][Root.separator_txt][Root.policy_gov_desc_txt]"
- string_gov_policy_ext:0 ", due to:[policy_gov_mod_1_txt] [policy_gov_mod_2_txt] [policy_gov_mod_3_txt] [policy_gov_mod_4_txt]"
+ string_gov_policy_change:0 "\nIt changes by §[Root.policy_gov_txt_c][Root.policy_gov_mod.GetValue]§! every month[Root.policy_gov_ext_txt]"
+ string_gov_policy_ext:0 ", due to:[policy_gov_mod_1_txt] [policy_gov_mod_2_txt] [policy_gov_mod_3_txt] [policy_gov_mod_4_txt] [policy_gov_mod_5_txt] [policy_gov_mod_6_txt]"
 
  string_gov_policy_mod_1:0 "\n Stability: §[Root.stability_txt_c][Root.stability_mod.GetValue]§!"
  string_gov_policy_mod_2:0 "\n Corruption: §[Root.corruption_txt_c][Root.corruption_mod.GetValue]§!"
