@@ -19,6 +19,8 @@
 #  counter2_var				# -||-
 #  arg1_var					# used for methods that need input
 #  arg2_var					# -||-
+#  arg3_var					# -||-
+#  arg4_var					# -||-
 #  output_var				# used for methods that create output
 #  normalize_var			# used in rounding method to normalize output
 #  month_pulse_eta			# used as a counter for monthly pulses
