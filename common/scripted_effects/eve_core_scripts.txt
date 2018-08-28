@@ -369,32 +369,27 @@ check_for_territorial_change = {
 
 	every_owned_province = {
 		export_owner_id_to_country_scope = yes
-		owner = {
-			if = { 			# Newly gained province
-				limit = {
-					NOT = { is_variable_equal = { which = output_var which = country_id } }
-				}
-				PREV = {			# province scope
-					if = {			# conquered another nation's capital province
-						limit = {
-							has_province_modifier = monthly_pulse
-							NOT = { is_capital = yes }
-						}
-						set_province_flag = conquered_capital
-					}
-					else = { set_province_owner_id = yes }	# update owner id
 
-					clr_province_flag = distant_province    # don't try to remove modifier
-					set_province_flag = new_territory		# update autonomy only for this province
-
-					owner = {
-						set_country_flag = territorial_change   	# call for autonomy update
-						set_country_flag = gained_new_territory		# update only new territory
-						fire_monthly_pulse = yes    				# force an update on next day
-					}
-				}
+		if = { 			# Newly gained province
+			limit = {
+				owner = { NOT = { is_variable_equal = { which = output_var which = country_id } } }
 			}
-			set_variable = { which = output_var value = 1 }
+			if = {			# conquered another nation's capital province
+				limit = {
+					has_province_modifier = monthly_pulse
+					NOT = { is_capital = yes }
+				}
+				set_province_flag = conquered_capital	# handle in 'on_monthly_pulse'
+			}
+			else = { set_province_owner_id = yes }	# update owner id
+
+			clr_province_flag = distant_province    # don't try to remove modifier
+			set_province_flag = new_territory		# update autonomy only for this province
+
+			owner = {
+				set_country_flag = territorial_change   	# call for autonomy update
+				set_country_flag = gained_new_territory		# update only new territory
+			}
 		}
 	}
 }
