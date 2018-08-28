@@ -148,6 +148,42 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_4
 		trigger = {
+			NOT = { is_variable_equal = { which = policy_gov_rul_mod value = 0 } }
+		}
+	}
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+    name = policy_gov_mod_5_txt
+    random = no
+
+	text = {
+		localisation_key = string_gov_policy_mod_5
+		trigger = {
+			NOT = { is_variable_equal = { which = policy_gov_adv_mod value = 0 } }
+		}
+	}
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+    name = policy_gov_mod_6_txt
+    random = no
+
+	text = {
+		localisation_key = string_gov_policy_mod_6
+		trigger = {
 			is_part_of_hre = yes
 		}
 	}
