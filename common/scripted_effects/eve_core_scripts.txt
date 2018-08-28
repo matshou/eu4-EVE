@@ -44,8 +44,8 @@ on_monthly_pulse = {
 	}
 
 	reset_monthly_pulse = yes
-	check_for_territorial_change = yes
 	update_gov_policy = yes
+	check_for_territorial_change = yes
 
 	# Triggers only for player, do all GLOBAL stuff here:
 	if = {
@@ -68,14 +68,14 @@ on_monthly_pulse = {
 	# It has to be run from here because the ROOT scope is set to capital province.
 	#
 	else_if = {
-		limit = { NOT = { had_global_flag = { flag = eve_initialized days = 32 } } }
-		calc_country_dist_autonomy = yes
+		limit = { NOT = { had_global_flag = { flag = eve_initialized days = 2 } } }
+		update_country_dist_autonomy = yes
 	}
 	# Owner country has either gained new territory
 	# or changed its capital province
 	else_if = {
 		limit = { has_country_flag = territorial_change }
-		calc_country_dist_autonomy = yes
+		update_country_dist_autonomy = yes
 	}
 }
 
@@ -370,9 +370,10 @@ check_for_territorial_change = {
 	every_owned_province = {
 		export_owner_id_to_country_scope = yes
 		owner = {
-			if = { limit = { NOT = { is_variable_equal = {
-				which = output_var which = country_id } } }
-
+			if = { 			# Newly gained province
+				limit = {
+					NOT = { is_variable_equal = { which = output_var which = country_id } }
+				}
 				PREV = {			# province scope
 					if = {			# conquered another nation's capital province
 						limit = {
@@ -384,8 +385,13 @@ check_for_territorial_change = {
 					else = { set_province_owner_id = yes }	# update owner id
 
 					clr_province_flag = distant_province    # don't try to remove modifier
-					set_country_flag = territorial_change   # call for autonomy recalc
-					owner = { fire_monthly_pulse = yes }    # force an update
+					set_province_flag = new_territory		# update autonomy only for this province
+
+					owner = {
+						set_country_flag = territorial_change   	# call for autonomy update
+						set_country_flag = gained_new_territory		# update only new territory
+						fire_monthly_pulse = yes    				# force an update on next day
+					}
 				}
 			}
 			set_variable = { which = output_var value = 1 }
@@ -394,16 +400,25 @@ check_for_territorial_change = {
 }
 
 # Scope: country
+# Set local autonomy floor for every owned distance based on distance from capital
 # Should ONLY be called from a provice with ROOT as that province
 #
-calc_country_dist_autonomy = {
+update_country_dist_autonomy = {
 
-	every_owned_province = {
-		if = {
-			limit = { has_province_flag = distant_province }
-			remove_distance_modifier = yes
+	if = {
+		limit = { has_country_flag = gained_new_territory }
+		every_owned_province = {
+			limit = { has_province_flag = new_territory }
+			set_province_dist_autonomy = yes
+			clr_province_flag = new_territory
 		}
-		set_province_dist_autonomy = yes
+		clr_country_flag = gained_new_territory
+	}
+	else = {
+		every_owned_province = {
+			remove_distance_modifier = yes
+			set_province_dist_autonomy = yes
+		}
 	}
 	clr_country_flag = territorial_change
 }
@@ -413,15 +428,19 @@ calc_country_dist_autonomy = {
 # Called when recalculating province distance autonomy
 #
 remove_distance_modifier = {
-	trigger_switch = {
-		on_trigger = has_province_modifier
-		prov_autonomy_from_dist_50 = { remove_province_modifier = prov_autonomy_from_dist_50 }
-		prov_autonomy_from_dist_100 = { remove_province_modifier = prov_autonomy_from_dist_100 }
-		prov_autonomy_from_dist_150 = { remove_province_modifier = prov_autonomy_from_dist_150 }
-		prov_autonomy_from_dist_200 = { remove_province_modifier = prov_autonomy_from_dist_200 }
-		prov_autonomy_from_dist_250 = { remove_province_modifier = prov_autonomy_from_dist_250 }
-		prov_autonomy_from_dist_300 = { remove_province_modifier = prov_autonomy_from_dist_300 }
-		prov_autonomy_from_dist_350 = { remove_province_modifier = prov_autonomy_from_dist_350 }
+
+	if = {
+		limit = { has_province_flag = distant_province }
+		trigger_switch = {
+			on_trigger = has_province_modifier
+			prov_autonomy_from_dist_50 = { remove_province_modifier = prov_autonomy_from_dist_50 }
+			prov_autonomy_from_dist_100 = { remove_province_modifier = prov_autonomy_from_dist_100 }
+			prov_autonomy_from_dist_150 = { remove_province_modifier = prov_autonomy_from_dist_150 }
+			prov_autonomy_from_dist_200 = { remove_province_modifier = prov_autonomy_from_dist_200 }
+			prov_autonomy_from_dist_250 = { remove_province_modifier = prov_autonomy_from_dist_250 }
+			prov_autonomy_from_dist_300 = { remove_province_modifier = prov_autonomy_from_dist_300 }
+			prov_autonomy_from_dist_350 = { remove_province_modifier = prov_autonomy_from_dist_350 }
+		}
 	}
 }
 
