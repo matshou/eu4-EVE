@@ -10,11 +10,11 @@
  string_gov_policy_change:0 "\nIt changes by §[Root.policy_gov_txt_c][Root.policy_gov_mod.GetValue]§! every month[Root.policy_gov_ext_txt]"
  string_gov_policy_ext:0 ", due to:[policy_gov_mod_1_txt] [policy_gov_mod_2_txt] [policy_gov_mod_3_txt] [policy_gov_mod_4_txt] [policy_gov_mod_5_txt] [policy_gov_mod_6_txt]"
 
- string_gov_policy_mod_1:0 "\n Stability: §[Root.stability_txt_c][Root.stability_mod.GetValue]§!"
- string_gov_policy_mod_2:0 "\n Corruption: §[Root.corruption_txt_c][Root.corruption_mod.GetValue]§!"
- string_gov_policy_mod_3:0 "\n Autonomy: §[Root.autonomy_txt_c][Root.autonomy_mod.GetValue]§!"
- string_gov_policy_mod_4:0 "\n [Root.Monarch.GetName]'s Administrative Skill: §G+[Root.policy_gov_rul_mod.GetValue]§!"
- string_gov_policy_mod_5:0 "\n [Root.Adm_Advisor.GetName]'s Administrative Skill: §G+[Root.policy_gov_adv_mod.GetValue]§!"
+ string_gov_policy_mod_1:0 "\n [Root.Monarch.GetName]'s Administrative Skill: §G+[Root.policy_gov_rul_mod.GetValue]§!"
+ string_gov_policy_mod_2:0 "\n [Root.Adm_Advisor.GetName]'s Administrative Skill: §G+[Root.policy_gov_adv_mod.GetValue]§!"
+ string_gov_policy_mod_3:0 "\n Province Autonomy: §[Root.autonomy_txt_c][Root.autonomy_mod.GetValue]§!"
+ string_gov_policy_mod_4:0 "\n Stability: §[Root.stability_txt_c][Root.stability_mod.GetValue]§!"
+ string_gov_policy_mod_5:0 "\n Corruption: §[Root.corruption_txt_c][Root.corruption_mod.GetValue]§!"
  string_gov_policy_mod_6:0 "\n Member of HRE: §R-0.05§!"
 
  string_centralized: "centralized"

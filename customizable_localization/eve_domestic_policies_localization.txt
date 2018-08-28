@@ -94,7 +94,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_1
 		trigger = {
-			NOT = { is_variable_equal = { which = stability_mod value = 0 } }
+			NOT = { is_variable_equal = { which = policy_gov_rul_mod value = 0 } }
 		}
 	}
 	text = {
@@ -112,7 +112,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_2
 		trigger = {
-			NOT = { is_variable_equal = { which = corruption_mod value = 0 } }
+			NOT = { is_variable_equal = { which = policy_gov_adv_mod value = 0 } }
 		}
 	}
 	text = {
@@ -148,7 +148,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_4
 		trigger = {
-			NOT = { is_variable_equal = { which = policy_gov_rul_mod value = 0 } }
+			NOT = { is_variable_equal = { which = stability_mod value = 0 } }
 		}
 	}
 	text = {
@@ -166,7 +166,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_5
 		trigger = {
-			NOT = { is_variable_equal = { which = policy_gov_adv_mod value = 0 } }
+			NOT = { is_variable_equal = { which = corruption_mod value = 0 } }
 		}
 	}
 	text = {
