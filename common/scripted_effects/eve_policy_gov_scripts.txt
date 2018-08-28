@@ -17,8 +17,8 @@
 #  policy_gov_rating		# short numerical for 'policy_gov_val'
 #  policy_gov_mod
 #  policy_gov_gui_val		# used by GUI only
-#  policy_gov_rul_mod		# modifier from ruler administrative skill
-#  policy_gov_adv_mod		# modifier from advisor administrative skill
+#  policy_gov_rul_mod		# from ruler administrative skill
+#  policy_gov_adv_mod		# from advisor administrative skill
 
 # Scope: country
 # Called from initialization phase for every country
@@ -71,24 +71,37 @@ update_gov_policy = {
 	calc_gov_policy_mod = yes
 
 	# Apply modifier to current value
-	change_variable = { which = policy_gov_val which = policy_gov_mod }
 
-	# Do not allow values to go outside of min-max range
-	if = { 	# centralization
-		limit = { check_variable = { which = policy_gov_mod value = 0.001 } }
-		if = {
-			limit = { check_variable = { which = policy_gov_val which = policy_gov_max } }
-			set_variable = { which = policy_gov_val which = policy_gov_max }
+
+	if = {
+		limit = { 	# Update only if modifier would affect policy
+			NOT = { is_variable_equal = { which = policy_gov_mod value = 0 } }
 		}
-		else = { update_gov_policy_rating = yes }
-	}
-	else_if = {	 # decentralization
-		limit = { NOT = { check_variable = { which = policy_gov_mod value = -0.001 } } }
 		if = {
-			limit = { NOT = { check_variable = { which = policy_gov_val which = policy_gov_min } } }
-			set_variable = { which = policy_gov_val which = policy_gov_min }
+			limit = { check_variable = { which = policy_gov_mod value = 0 } }	# centralizing
+			if = {
+				limit = { NOT = { is_variable_equal = { which = policy_gov_val which = policy_gov_max } } }
+				change_variable = { which = policy_gov_val which = policy_gov_mod }
+
+				if = { # Do not allow value to go above maximum
+					limit = { check_variable = { which = policy_gov_val which = policy_gov_max } }
+					set_variable = { which = policy_gov_val which = policy_gov_max }
+				}
+				update_gov_policy_rating = yes
+			}
 		}
-		else = { update_gov_policy_rating = yes }
+		else = {	# decentralizing
+			if = {
+				limit = { NOT = { is_variable_equal = { which = policy_gov_val which = policy_gov_min } } }
+				change_variable = { which = policy_gov_val which = policy_gov_mod }
+
+				if = { # Do not allow value to go below minimum
+					limit = { NOT = { check_variable = { which = policy_gov_val which = policy_gov_min } } }
+					set_variable = { which = policy_gov_val which = policy_gov_max }
+				}
+				update_gov_policy_rating = yes
+			}
+		}
 	}
 	set_variable = { which = policy_gov_gui_val which = policy_gov_val }  # used only in GUI
 	round_gov_policy_gui_values = yes	 								  # round values for display
