@@ -121,7 +121,7 @@ on_is_no_longer_capital = {
 			# but this shouldn't happen and would be a bug on Paradox's side
 			#if = {
 			#	limit = { NOT = { has_country_flag = territorial_change } }
-			#	log = "EVE: ERROR(conquered capital [Root.GetName] with unknown previous owner)"
+			#	log = "EVE: Error 120 >> conquered capital [Root.GetName] with unknown previous owner."
 			#}
 
 			ROOT = {
@@ -237,12 +237,12 @@ initialize_country = {
 #
 set_country_id = {
 
-	set_variable = { which = country_id value = 1 }
+	set_variable = { which = country_id value = 4 }
 
 	if = {   # New country formed (post-init)
 
 		limit = { has_global_flag = eve_initialized }
-		PREV = { set_variable = { which = counter_var value = 1 } }  # Global (player) scope
+		PREV = { set_variable = { which = counter_var value = 4 } }  # Global (player) scope
 
 		while = {
 			limit = { NOT = { PREV = { is_variable_equal = { which = counter_var which = init_num } } } }
@@ -270,24 +270,31 @@ set_country_id = {
 
 # Scope: province
 # Assign a unique id for province that coresponds to its owner country id
-# Each province should ALWAYS have the same id as its current owner
+# Each owned province should ALWAYS have the same id as its current owner
+# All uncolonized provinces are assigned an id value of 3 (natives country)
 #
 set_province_owner_id = {
 
 	# AFAIK this is currently the only way to export variables from different scopes,
 	# because only variables in the same scope can be compared to each other
 
-	owner = { set_variable = { which = counter_var value = 1 } }
-	set_variable = { which = owner_id value = 1 }
+	if = {
+		limit = { owner = { check_variable = { which = country_id value = 4 } } }
 
-	owner = {
-		while = {
-			limit = { NOT = { is_variable_equal = { which = counter_var which = country_id } } }
-			change_variable = { which = counter_var value = 1 }
-			PREV = { change_variable = { which = owner_id value = 1 } }
+		owner = { set_variable = { which = counter_var value = 4 } }
+		set_variable = { which = owner_id value = 4 }
+		set_variable = { which = test_variable value = 15 }
+
+		owner = {
+			while = {
+				limit = { NOT = { is_variable_equal = { which = counter_var which = country_id } } }
+				change_variable = { which = counter_var value = 1 }
+				PREV = { change_variable = { which = owner_id value = 1 } }
+			}
+			set_variable = { which = counter_var value = 1 }
 		}
-		set_variable = { which = counter_var value = 1 }
 	}
+	else = { owner = { log = "EVE: Error 279 >> 'country_id' var not initialized for country [This.GetName]." } }
 }
 
 # Scope: country
@@ -351,27 +358,38 @@ calculate_progressive_mod = {
 #
 export_owner_id_to_country_scope = {
 
-	owner = { set_variable = { which = output_var value = 1 } }
-	set_variable = { which = counter_var value = 1 }
-	while = {
-		limit = { NOT = { is_variable_equal = { which = counter_var which = owner_id } } }
-		change_variable = { which = counter_var value = 1 }
-		PREV = { change_variable = { which = output_var value = 1 } }
+	if = {
+		limit = { check_variable = { which = owner_id value = 3 } }
+
+		owner = { set_variable = { which = output_var value = 3 } }
+		set_variable = { which = counter_var value = 3 }
+		while = {
+			limit = { NOT = { is_variable_equal = { which = counter_var which = owner_id } } }
+			change_variable = { which = counter_var value = 1 }
+			owner = { change_variable = { which = output_var value = 1 } }
+		}
 	}
+	else = { log = "EVE: Error 354 >> 'owner_id' var not initialized for province [This.GetName]." }
 }
 
 # Scope: country
 # Export THIS country id to PREV scope so it can be used for comparison
+# Uses 'output2_var' as return value
 #
 export_country_id_to_prev_scope = {
 
-	PREV = { set_variable = { which = output_var value = 1 } }
-	set_variable = { which = counter_var value = 1 }
-	while = {
-		limit = { NOT = { is_variable_equal = { which = counter_var which = country_id } } }
-		change_variable = { which = counter_var value = 1 }
-		PREV = { change_variable = { which = output_var value = 1 } }
+	if = {
+		limit = { check_variable = { which = country_id value = 4 } }
+
+		PREV = { set_variable = { which = output2_var value = 4 } }
+		set_variable = { which = counter_var value = 4 }
+		while = {
+			limit = { NOT = { is_variable_equal = { which = counter_var which = country_id } } }
+			change_variable = { which = counter_var value = 1 }
+			PREV = { change_variable = { which = output2_var value = 1 } }
+		}
 	}
+	else = { log = "EVE: Error 373 >> 'country_id' var not initialized for country [This.GetName]." }
 }
 
 # Scope: country
@@ -384,23 +402,35 @@ check_for_territorial_change = {
 	# need an update from our side, the country that gained it will handle that
 
 	every_owned_province = {
-		export_owner_id_to_country_scope = yes
 
-		if = { 			# Newly gained province
-			limit = {
-				owner = { NOT = { is_variable_equal = { which = output_var which = country_id } } }
-			}
-			# Conquered another nation's capital province
-			# Raising the flag to let the province ROOT scope know we've already updated autonomy.
-			# Also don't update owner id, it will be used by province ROOT scope to find last province owner
-			if = {
-				limit = { has_province_modifier = monthly_pulse }
-				set_province_flag = conquered_capital
-			}
-			else = { set_province_owner_id = yes }	# update owner id
+		# Gained territory is uncolonized land
+		# For some reason each time a province becomes uncolonized it
+		# loses all custom data, so we need to set 'owner_id' again
+		if = {
+			limit = { NOT = { check_variable = { which = owner_id value = 1 } } }
+			call_update_for_new_territory = yes
+			set_province_owner_id = yes
+		}
+		else = {
+			# do this after handling uncolonized territory
+			export_owner_id_to_country_scope = yes
 
-			clr_province_flag = distant_province	# don't try to remove modifier
-			call_update_for_new_territory = yes		# call for an autonomy update
+			if = {			# Newly gained province
+				limit = {
+					owner = { NOT = { is_variable_equal = { which = output_var which = country_id } } }
+				}
+				# Conquered another nation's capital province
+				# Raising the flag to let the province ROOT scope know we've already updated autonomy.
+				# Also don't update owner id, it will be used by province ROOT scope to find last province owner
+				if = {
+					limit = { has_province_modifier = monthly_pulse }
+					set_province_flag = conquered_capital
+				}
+				else = { set_province_owner_id = yes }	# update owner id
+
+				clr_province_flag = distant_province	# don't try to remove modifier
+				call_update_for_new_territory = yes		# call for an autonomy update
+			}
 		}
 	}
 }
