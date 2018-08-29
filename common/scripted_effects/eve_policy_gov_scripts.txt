@@ -70,9 +70,6 @@ update_gov_policy = {
 	# Calculate modifier to add to rating
 	calc_gov_policy_mod = yes
 
-	# Apply modifier to current value
-
-
 	if = {
 		limit = { 	# Update only if modifier would affect policy
 			NOT = { is_variable_equal = { which = policy_gov_mod value = 0 } }
@@ -138,9 +135,7 @@ calc_gov_policy_mod = {
 		# recalculate only once for each new ruler
 		limit = { NOT = { had_ruler_flag = { flag = inagurated days = 1 } } }
 
-		export_to_variable = { which = arg1_var value = trigger_value:ADM }
-		subtract_variable = { which = arg1_var value = 1 }  # normalize adm value
-
+		set_variable = { which = arg1_var which = ruler_adm_skill }
 		set_variable = { which = arg2_var value = 6 }
 		set_variable = { which = arg3_var value = 0.022 }
 		set_variable = { which = arg4_var value = 0.005 }
