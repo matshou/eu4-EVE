@@ -25,6 +25,7 @@
 #  arg3_var					# -||-
 #  arg4_var					# -||-
 #  output_var				# used for methods that create output
+#  output2_var				# used for method output comparison
 #  normalize_var			# used in rounding method to normalize output
 #  month_pulse_eta			# used as a counter for monthly pulses
 #  country_id				# used as a substitude for 'province_id'
@@ -37,47 +38,51 @@
 #
 on_monthly_pulse = {
 
-	# Initialize ruler skills and mark inaguration day
-	# Note that this is not the 'actual' day the ruler was inagurated
-	if = {
-		limit = { NOT = { has_ruler_flag = inagurated } }
-		set_ruler_flag = inagurated
-		export_ruler_skills = yes
-	}
-
-	reset_monthly_pulse = yes
-	update_gov_policy = yes
-	check_for_territorial_change = yes
-
-	# Triggers only for player, do all GLOBAL stuff here:
-	if = {
-		limit = { ai = no }
-
-		# Check on each pulse to see if a new country formed
-		every_country = {
-			limit = { NOT = { has_country_flag = is_initialized } }
-			initialize_country = yes
-		}
-	}
-
 	# This triggers when the capital gets moved to another
 	# province or the previous owner gets annexed
 	if = {
 		limit = { ROOT = { NOT = { is_capital = yes } } }
 		ROOT = { on_is_no_longer_capital = yes }
 	}
-	# Do this when we run the mod for the FIRST TIME this campaign.
-	# It has to be run from here because the ROOT scope is set to capital province.
-	#
-	else_if = {
-		limit = { NOT = { had_global_flag = { flag = eve_initialized days = 2 } } }
-		update_country_dist_autonomy = yes
-	}
-	# Owner country has either gained new territory
-	# or changed its capital province
-	else_if = {
-		limit = { has_country_flag = territorial_change }
-		update_country_dist_autonomy = yes
+	# Don't do anything else if this is no longer a capital province
+	else = {
+
+		# Initialize ruler skills and mark inaguration day
+		# Note that this is not the 'actual' day the ruler was inagurated
+		if = {
+			limit = { NOT = { has_ruler_flag = inagurated } }
+			set_ruler_flag = inagurated
+			export_ruler_skills = yes
+		}
+
+		# Triggers only for player, do all GLOBAL stuff here:
+		if = {
+			limit = { ai = no }
+
+			# Check on each pulse to see if a new country formed
+			every_country = {
+				limit = { NOT = { has_country_flag = is_initialized } }
+				initialize_country = yes
+			}
+		}
+
+		reset_monthly_pulse = yes
+		update_gov_policy = yes
+		check_for_territorial_change = yes
+
+		# Do this when we run the mod for the FIRST TIME this campaign.
+		# It has to be run from here because the ROOT scope is set to capital province.
+		#
+		if = {
+			limit = { NOT = { had_global_flag = { flag = eve_initialized days = 2 } } }
+			update_country_dist_autonomy = yes
+		}
+		# Owner country has either gained new territory
+		# or changed its capital province
+		else_if = {
+			limit = { has_country_flag = territorial_change }
+			update_country_dist_autonomy = yes
+		}
 	}
 }
 
@@ -87,11 +92,13 @@ on_monthly_pulse = {
 on_is_no_longer_capital = {
 
 	remove_province_triggered_modifier = monthly_pulse
+	export_owner_id_to_country_scope = yes
+
 	owner = {
 		# This province was gained as a concession in a war or
 		# for other reasons has ended up as territory of another country
 		if = {
-			limit = { ROOT = { has_province_flag = conquered_capital } }
+			limit = { NOT = { is_variable_equal = { which = output_var which = country_id } } }
 
 			# Find capital province previous owner.
 			# Normally we would do this by using 'previous_owner' variable,
@@ -102,16 +109,11 @@ on_is_no_longer_capital = {
 
 				export_country_id_to_prev_scope = yes
 
-				# found province previous owner
-				if = { limit = { PREV = { is_variable_equal = {
-					which = output_var which = output_var } } }
-
-					changed_capital_province = yes					# previous owner
-
-					PREV = { 										# current owner
-						set_country_flag = territorial_change
-						fire_monthly_pulse = yes
+				if = { 			# found province previous owner
+					limit = {
+						PREV = { is_variable_equal = { which = output_var which = output2_var } }
 					}
+					changed_capital_province = yes		# previous owner
 				}
 			}
 			# Previous owner has been annexed/integrated
@@ -121,7 +123,19 @@ on_is_no_longer_capital = {
 			#	limit = { NOT = { has_country_flag = territorial_change } }
 			#	log = "EVE: ERROR(conquered capital [Root.GetName] with unknown previous owner)"
 			#}
-			ROOT = { clr_province_flag = conquered_capital }
+
+			ROOT = {
+				set_province_owner_id = yes
+
+				# Do not do anything further if this has already been done
+				# by owner when checking for territorial change
+				if = {
+					limit = { NOT = { has_province_flag = conquered_capital } }
+					call_update_for_new_territory = yes
+					capital_scope = { fire_monthly_pulse = yes }
+				}
+				else = { clr_province_flag = conquered_capital }
+			}
 		}
 		# Owner changed its capital province with diplomatic power or an event
 		else = { changed_capital_province = yes }
@@ -376,23 +390,31 @@ check_for_territorial_change = {
 			limit = {
 				owner = { NOT = { is_variable_equal = { which = output_var which = country_id } } }
 			}
-			if = {			# conquered another nation's capital province
-				limit = {
-					has_province_modifier = monthly_pulse
-					NOT = { is_capital = yes }
-				}
-				set_province_flag = conquered_capital	# handle in 'on_monthly_pulse'
+			# Conquered another nation's capital province
+			# Raising the flag to let the province ROOT scope know we've already updated autonomy.
+			# Also don't update owner id, it will be used by province ROOT scope to find last province owner
+			if = {
+				limit = { has_province_modifier = monthly_pulse }
+				set_province_flag = conquered_capital
 			}
 			else = { set_province_owner_id = yes }	# update owner id
 
-			clr_province_flag = distant_province    # don't try to remove modifier
-			set_province_flag = new_territory		# update autonomy only for this province
-
-			owner = {
-				set_country_flag = territorial_change   	# call for autonomy update
-				set_country_flag = gained_new_territory		# update only new territory
-			}
+			clr_province_flag = distant_province	# don't try to remove modifier
+			call_update_for_new_territory = yes		# call for an autonomy update
 		}
+	}
+}
+
+# Scope: province
+# Call for autonomy update only for this province
+#
+call_update_for_new_territory = {
+
+	set_province_flag = new_territory		# update autonomy only for this province
+
+	owner = {
+		set_country_flag = territorial_change   	# call for autonomy update
+		set_country_flag = gained_new_territory		# update only new territory
 	}
 }
 
