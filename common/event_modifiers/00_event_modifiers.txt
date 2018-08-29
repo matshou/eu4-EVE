@@ -10246,3 +10246,13 @@ prov_autonomy_from_dist_350 = {    # extremely more difficult to govern
 	local_autonomy = 0.25
 	picture = "min_autonomy"
 }
+
+###############################
+# EVE - State Modifiers
+###############################
+
+prov_nation_capital = {
+	# no effect, modifier is here to give information
+	picture = "current_capital_icon"
+}
+
