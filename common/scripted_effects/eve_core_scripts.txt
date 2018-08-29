@@ -11,6 +11,8 @@
 #  round_to_negative		# country
 #  is_initialized			# country
 #  territorial_change		# country
+#  gained_new_territory		# country
+#  new_territory			# province
 #  conquered_capital		# province
 #  distant_province			# province
 
