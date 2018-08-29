@@ -7,14 +7,14 @@
 # Main EVE update mechanism.
 # Every capital province should ALWAYS have this modifier
 #
-monthly_pulse = {
+capital_province = {
 	potential = {
 		always = yes		# always allow daily ticks
 	}
 
 	trigger = {
 		custom_trigger_tooltip = {
-			tooltip = MONTHLY_PULSE_TT
+			tooltip = CAPITAL_PROVINCE_TT
 			always = yes
 		}
 	}
@@ -22,7 +22,6 @@ monthly_pulse = {
 	# Always have at least one modifier here so the
 	# province modifier can display an icon in GUI
 
-	local_production_efficiency = 0.15
 	local_tax_modifier = 0.3
 
 	# Gets called on each new day as long as this modifier is applied.

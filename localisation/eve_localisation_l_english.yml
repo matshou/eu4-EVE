@@ -1,8 +1,7 @@
 ﻿l_english:
- monthly_pulse:0 "Capital City"
- desc_monthly_pulse:0 "This province is a political and administrative center of its nation. It will be generate higher tax and production revenue in addition to being easier to govern."
- MONTHLY_PULSE_TT:0 "Province is home to the nation's capital."
-
+ capital_province:0 "Capital City Taxes"
+ desc_capital_province:0 "Mantaining a nation's capital is not cheap due to various administrative and military expenses, thus its citizens will be expected to pay much higher taxes."
+ CAPITAL_PROVINCE_TT:0 "Province is home to nation's capital."
  prov_autonomy_from_dist_50:0 "Self-Governance"
  desc_prov_autonomy_from_dist_50:0 "The population here is slightly more difficult to properly govern due to the distance of this province from our capital city."
  prov_autonomy_from_dist_100:0 "Self-Governance"

@@ -30,8 +30,8 @@ on_startup = {
 	# Reset the modifier here to force the game to start firing 'on_activation'
 	else = {
 		capital_scope = {
-			remove_province_triggered_modifier = monthly_pulse
-			add_province_triggered_modifier = monthly_pulse
+			remove_province_triggered_modifier = capital_province
+			add_province_triggered_modifier = capital_province
 		}
 	}
 
