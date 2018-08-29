@@ -35,12 +35,12 @@
 #
 on_monthly_pulse = {
 
-	# Mark the inaguration day for current ruler
-	# Note that this is not an actual day the ruler was inagurated
-	# but the first day pulse fired after his inaguration
+	# Initialize ruler skills and mark inaguration day
+	# Note that this is not the 'actual' day the ruler was inagurated
 	if = {
 		limit = { NOT = { has_ruler_flag = inagurated } }
 		set_ruler_flag = inagurated
+		export_ruler_skills = yes
 	}
 
 	reset_monthly_pulse = yes
@@ -491,4 +491,40 @@ init_domestic_policies = {
 
 	add_country_modifier = { name = governance_policy duration = -1 }
 	init_gov_policy = yes
+}
+
+##################################
+# EVE - Initialization Scripts
+##################################
+
+# Scope: country
+# This method is called every time a new ruler rises to throne.
+# We need to manually set variables like this because for unknown reasons
+# exporting trigger values sometimes leads to a CTD.
+#
+export_ruler_skills = {
+	trigger_switch = {
+		on_trigger = adm
+		5 = { set_variable = { which = ruler_adm_skill value = 5 } }
+		4 = { set_variable = { which = ruler_adm_skill value = 4 } }
+		3 = { set_variable = { which = ruler_adm_skill value = 3 } }
+		2 = { set_variable = { which = ruler_adm_skill value = 2 } }
+		1 = { set_variable = { which = ruler_adm_skill value = 1 } }
+	}
+	trigger_switch = {
+		on_trigger = dip
+		5 = { set_variable = { which = ruler_dip_skill value = 5 } }
+		4 = { set_variable = { which = ruler_dip_skill value = 4 } }
+		3 = { set_variable = { which = ruler_dip_skill value = 3 } }
+		2 = { set_variable = { which = ruler_dip_skill value = 2 } }
+		1 = { set_variable = { which = ruler_dip_skill value = 1 } }
+	}
+	trigger_switch = {
+		on_trigger = mil
+		5 = { set_variable = { which = ruler_mil_skill value = 5 } }
+		4 = { set_variable = { which = ruler_mil_skill value = 4 } }
+		3 = { set_variable = { which = ruler_mil_skill value = 3 } }
+		2 = { set_variable = { which = ruler_mil_skill value = 2 } }
+		1 = { set_variable = { which = ruler_mil_skill value = 1 } }
+	}
 }
