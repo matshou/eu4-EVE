@@ -92,6 +92,8 @@ on_monthly_pulse = {
 on_is_no_longer_capital = {
 
 	remove_province_triggered_modifier = capital_province
+	remove_province_modifier = prov_nation_capital
+	
 	export_owner_id_to_country_scope = yes
 
 	owner = {
@@ -172,6 +174,7 @@ initialize_country = {
 
 		# Add monthly pulse trigger to nation's capital
 		capital_scope = {
+			add_province_modifier = { name = prov_nation_capital duration = -1 }
 			add_province_triggered_modifier = capital_province 
 		}
 
