@@ -29,6 +29,7 @@ init_gov_policy = {
 	set_variable = { which = policy_gov_max value = 50 }
 	set_variable = { which = policy_gov_val value = 0 }        # These are base values,
 	set_variable = { which = policy_gov_rating value = 0 }     # DO NOT CHANGE!
+
 	set_country_flag = policy_gov_neutral
 
 	# TODO: Implement max values for more governments, and set initial value
@@ -57,6 +58,9 @@ init_gov_policy = {
 		set_variable = { which = policy_gov_val which = policy_gov_max }
 		set_variable = { which = policy_gov_rating which = policy_gov_val }
 	}
+
+	# Initialize GUI value so we don't get errors
+	set_variable = { which = policy_gov_gui_val which = policy_gov_val }
 }
 
 # Scope: country
@@ -100,6 +104,7 @@ update_gov_policy = {
 			}
 		}
 	}
+
 	set_variable = { which = policy_gov_gui_val which = policy_gov_val }  # used only in GUI
 	round_gov_policy_gui_values = yes	 								  # round values for display
 }
