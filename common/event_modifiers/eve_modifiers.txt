@@ -11,7 +11,7 @@ estate_developed_church = {}
 estate_developed_nobles = {}
 
 ###############################
-# EVE - Domestic Policy
+# EVE - Domestic Policies
 ###############################
 
 governance_policy = {
