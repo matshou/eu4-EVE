@@ -3,8 +3,8 @@
  # Policy Localization #
  #######################
 
- governance_policy:0 "Governance Policy"
- desc_governance_policy:0 "Governance domestic policy rating is §Y[Root.policy_gov_gui_val.GetValue]§!.[Root.policy_gov_txt]\nMaximum rating for §Y[Root.GovernmentName]§! is §Y[Root.policy_gov_max.GetValue]§!.[Root.policy_gov_change_txt][Root.separator_txt][Root.policy_gov_desc_txt]"
+ domestic_policy_governance:0 "Governance Policy"
+ desc_domestic_policy_governance:0 "Governance domestic policy rating is §Y[Root.policy_gov_gui_val.GetValue]§!.[Root.policy_gov_txt]\nMaximum rating for §Y[Root.GovernmentName]§! is §Y[Root.policy_gov_max.GetValue]§!.[Root.policy_gov_change_txt][Root.separator_txt][Root.policy_gov_desc_txt]"
  string_gov_policy_desc:0 "This policy reflects our ability to exercise state jurisdiction in core provinces."
  string_gov_policy_stance:0 "\nAs a result our government is more §Y[Root.policy_gov_result_txt]§!"
  string_gov_policy_change:0 "\nIt changes by §[Root.policy_gov_txt_c][Root.policy_gov_mod.GetValue]§! every month[Root.policy_gov_ext_txt]"

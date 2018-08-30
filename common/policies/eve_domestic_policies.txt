@@ -1,0 +1,22 @@
+
+###############################
+# EVE - Domestic Policies
+###############################
+
+domestic_policy_governance = {
+
+	monarch_power = ADM
+	potential = {
+		always = yes
+	}
+	allow = {
+		always = yes
+	}
+
+	# Use this modifier just to get the right icon
+	administrative_efficiency = 0.001
+
+	ai_will_do = {
+		factor = 0
+	}
+}

@@ -479,7 +479,6 @@ set_province_dist_autonomy = {
 #
 init_domestic_policies = {
 
-	add_country_modifier = { name = governance_policy duration = -1 }
 	init_gov_policy = yes
 }
 

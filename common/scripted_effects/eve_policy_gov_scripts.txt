@@ -29,6 +29,7 @@ init_gov_policy = {
 	set_variable = { which = policy_gov_max value = 50 }
 	set_variable = { which = policy_gov_val value = 0 }        # These are base values,
 	set_variable = { which = policy_gov_rating value = 0 }     # DO NOT CHANGE!
+	set_variable = { which = policy_gov_mod value = 0 }
 
 	set_country_flag = policy_gov_neutral
 
@@ -61,6 +62,9 @@ init_gov_policy = {
 
 	# Initialize GUI value so we don't get errors
 	set_variable = { which = policy_gov_gui_val which = policy_gov_val }
+
+	# Set policy as active and add to GUI
+	add_active_policy = domestic_policy_governance
 }
 
 # Scope: country
