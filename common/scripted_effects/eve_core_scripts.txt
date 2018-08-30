@@ -31,6 +31,20 @@
 #  country_id				# used as a substitude for 'province_id'
 #  owner_id					# used by provinces to pair with 'country_id'
 
+
+# Scope: country
+reset_monthly_pulse = {
+	set_variable = { which = month_pulse_eta value = 30 }
+}
+
+# Scope: country
+# The monthly pulse will fire the NEXT day in capital province
+#
+fire_monthly_pulse = {
+	set_variable = { which = month_pulse_eta value = 0 }
+	#log = "EVE: [This.GetName] ordered an immediate monthly pulse"  #Debug
+}
+
 # Scope: country
 # This fires once each month, use it to handle stuff that depend on monthly updates
 # Note: ROOT scope here is the province caller. This is very useful for using vanilla
@@ -91,9 +105,7 @@ on_monthly_pulse = {
 #
 on_is_no_longer_capital = {
 
-	remove_province_triggered_modifier = capital_province
-	remove_province_modifier = prov_nation_capital
-	
+	remove_capital_modifiers = yes
 	export_owner_id_to_country_scope = yes
 
 	owner = {
@@ -145,19 +157,6 @@ on_is_no_longer_capital = {
 }
 
 # Scope: country
-reset_monthly_pulse = {
-	set_variable = { which = month_pulse_eta value = 30 }
-}
-
-# Scope: country
-# The monthly pulse will fire the NEXT day in capital province
-#
-fire_monthly_pulse = {
-	set_variable = { which = month_pulse_eta value = 0 }
-	#log = "EVE: [This.GetName] ordered an immediate monthly pulse"  #Debug
-}
-
-# Scope: country
 # Assign id and enable monthly pulse for scoped country
 # This is called in mod initialization phase and when a new country is formed
 #
@@ -168,18 +167,13 @@ initialize_country = {
 		limit = { NOT = { has_country_flag = is_initialized } }
 
 		set_country_id = yes
-		every_owned_province = { set_province_owner_id = yes }
-
-		fire_monthly_pulse = yes    # force an immediate update
-
-		# Add monthly pulse trigger to nation's capital
-		capital_scope = {
-			add_province_modifier = { name = prov_nation_capital duration = -1 }
-			add_province_triggered_modifier = capital_province 
+		every_owned_province = {
+			set_province_owner_id = yes
 		}
 
-		# Initialize domestic policies
-		init_domestic_policies = yes
+		initialize_capital_city = yes		# apply capital modifiers
+		fire_monthly_pulse = yes    		# force an immediate update
+		init_domestic_policies = yes		# setup all domestic policies
 
 		set_country_flag = is_initialized
 		#log = "EVE: Initialized country [This.GetName] with id: [This.country_id.GetValue]"  #Debug
@@ -252,15 +246,43 @@ set_province_owner_id = {
 	else = { owner = { log = "EVE: Error 279 >> 'country_id' var not initialized for country [This.GetName]." } }
 }
 
+##################################
+# EVE - Capital Scripts
+##################################
+
 # Scope: country
 # Called once after a country moves its capital to another province
 #
 changed_capital_province = {
-	capital_scope = {
-		add_province_triggered_modifier = capital_province
-	}
+
+	initialize_capital_city = yes
 	set_country_flag = territorial_change
 	fire_monthly_pulse = yes
+}
+
+# Scope: country
+# Apply all capital modifiers in capital province for country scope
+#
+initialize_capital_city = {
+
+	capital_scope = {
+		add_province_triggered_modifier = capital_province
+		add_province_modifier = { name = prov_nation_capital duration = -1 }
+	}
+}
+
+# Scope: province
+# Remove all capital modifiers from current province scope
+#
+remove_capital_modifiers = {
+
+	if = {
+		limit = { has_province_modifier = capital_province }
+
+		remove_province_triggered_modifier = capital_province
+		remove_province_modifier = prov_nation_capital
+	}
+	else = { log = "EVE: Error 309 >> tried to remove capital mods from non-capital province [This.GetName]" }
 }
 
 ##################################
