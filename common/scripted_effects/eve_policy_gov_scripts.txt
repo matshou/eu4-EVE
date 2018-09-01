@@ -5,7 +5,7 @@
 
 # List of flags:
 # ====================
-#  policy_gov_neutral		# all
+#  policy_gov_neutral			# all
 #  policy_gov_centralized		# country
 #  policy_gov_decentralized		# scope
 
@@ -14,9 +14,10 @@
 #  policy_gov_min
 #  policy_gov_max
 #  policy_gov_val			# current rating for this policy
+#  policy_gov_val			# current rating value for this policy
 #  policy_gov_rating		# short numerical for 'policy_gov_val'
-#  policy_gov_mod
-#  policy_gov_gui_val		# used by GUI only
+#  policy_gov_mod			# modifier monthly applied to rating
+#  policy_gov_gui_val		# same as 'policy_gov_val' but used by GUI only
 #  policy_gov_rul_mod		# from ruler administrative skill
 #  policy_gov_adv_mod		# from advisor administrative skill
 
@@ -60,8 +61,9 @@ init_gov_policy = {
 		set_variable = { which = policy_gov_rating which = policy_gov_val }
 	}
 
-	# Initialize GUI value so we don't get errors
+	# Initialize GUI values here so we don't get errors
 	set_variable = { which = policy_gov_gui_val which = policy_gov_val }
+	set_variable = { which = time_to_increase value = 0 }
 
 	# Set policy as active and add to GUI
 	add_active_policy = domestic_policy_governance
@@ -93,6 +95,7 @@ update_gov_policy = {
 					set_variable = { which = policy_gov_val which = policy_gov_max }
 				}
 				update_gov_policy_rating = yes
+				calc_gov_policy_increase_time = yes
 			}
 		}
 		else = {	# decentralizing
@@ -105,6 +108,7 @@ update_gov_policy = {
 					set_variable = { which = policy_gov_val which = policy_gov_max }
 				}
 				update_gov_policy_rating = yes
+				calc_gov_policy_increase_time = yes
 			}
 		}
 	}
@@ -169,6 +173,7 @@ calc_gov_policy_mod = {
 # Update rating value and country modifiers
 #
 update_gov_policy_rating = {
+
 	if = {
 		limit = { has_country_flag = policy_gov_neutral }   # Rating: 0
 		if = {
@@ -285,6 +290,28 @@ update_gov_policy_rating = {
 }
 
 # Scope: country
+# Calculate time remaining until we change our policy rating
+# based on current policy modifier value
+#
+calc_gov_policy_increase_time = {
+
+	set_variable = { which = time_to_increase which = policy_gov_rating }
+	multiply_variable = { which = time_to_increase value = 10 }
+
+	if = {
+		limit = { check_variable = { which = policy_gov_mod value = 0 } }  		# centralizing
+		change_variable = { which = time_to_increase value = 5 }
+		subtract_variable = { which = time_to_increase which = policy_gov_val }
+	}
+	else = {
+		subtract_variable = { which = time_to_increase value = 5 }				# decentralizing
+		subtract_variable = { which = time_to_increase which = policy_gov_val }
+	}
+
+	divide_variable = { which = time_to_increase which = policy_gov_mod }
+}
+
+# Scope: country
 # Used to display clean values in game UI
 # Note: do only for player to reduce CPU usage
 #
@@ -295,6 +322,7 @@ round_gov_policy_gui_values = {
 
 		#round_value_to_decimal = { VALUE = policy_gov_mod DECIMALS = 2 }
 		#round_value_to_decimal = { VALUE = policy_gov_gui_val DECIMALS = 1 }
+		#round_value_to_decimal = { VALUE = time_to_increase DECIMALS = 0 }
 	}
 }
 
