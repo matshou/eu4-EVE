@@ -16,13 +16,55 @@ defined_text = {
 }
 
 defined_text = {
+	name = policy_gov_desc_2_txt
+	random = no
+
+	text = {
+		localisation_key = string_null
+		trigger = {
+			is_variable_equal = { which = policy_gov_mod value = 0 }
+		}
+	}
+	text = {
+		localisation_key = string_gov_policy_desc_c
+		trigger = {
+			check_variable = { which = policy_gov_mod value = 0 }
+		}
+	}
+	text = {
+		localisation_key = string_gov_policy_desc_d
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = policy_gov_increase_time_txt
+	random = no
+
+	text = {
+		localisation_key = string_policy_gov_increase_time
+		trigger = {
+			NOT = { is_variable_equal = { which = policy_gov_adv_mod value = 0 } }
+		}
+	}
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
 	name = policy_gov_txt
 	random = no
 
 	text = {
 		localisation_key = string_gov_policy_stance
 		trigger = {
-			NOT = { is_variable_equal = { which = policy_gov_rating value = 0 } }
+			NOT = { has_country_flag = policy_gov_neutral }
 		}
 	}
 	text = {
@@ -40,13 +82,37 @@ defined_text = {
 	text = {
 		localisation_key = string_centralized
 		trigger = {
-			check_variable = { which = policy_gov_rating value = 1 }
+			has_country_flag = policy_gov_centralized
 		}
 	}
 	text = {
 		localisation_key = string_decentralized
 		trigger = {
-			NOT = { check_variable = { which = policy_gov_rating value = 0 } }
+			has_country_flag = policy_gov_decentralized
+		}
+	}
+}
+
+defined_text = {
+	name = policy_gov_result_2_txt
+	random = no
+
+	text = {
+		localisation_key = string_null
+		trigger = {
+			is_variable_equal = { which = policy_gov_mod value = 0 }
+		}
+	}
+	text = {
+		localisation_key = string_centralized
+		trigger = {
+			check_variable = { which = policy_gov_mod value = 0 }
+		}
+	}
+	text = {
+		localisation_key = string_decentralized
+		trigger = {
+			always = yes
 		}
 	}
 }
@@ -62,7 +128,7 @@ defined_text = {
 		}
 	}
 	text = {
-		localisation_key = string_null
+		localisation_key = string_period
 		trigger = {
 			always = yes
 		}
@@ -196,11 +262,11 @@ defined_text = {
 }
 
 defined_text = {
-	name = decentralization_desc_txt
+	name = policy_gov_mod_d_desc_txt
 	random = no
 
 	text = {
-		localisation_key = string_decentralization_desc
+		localisation_key = string_policy_gov_mod_d_desc
 		trigger = {
 			always = yes
 		}
@@ -208,17 +274,52 @@ defined_text = {
 }
 
 defined_text = {
-	name = centralization_desc_txt
+	name = policy_gov_mod_d_desc_2_txt
 	random = no
 
 	text = {
-		localisation_key = string_centralization_desc
+		localisation_key = string_policy_gov_mod_d_desc_3
+		trigger = {
+			is_variable_equal = { which = policy_gov_rating value = -5 }
+		}
+	}
+	text = {
+		localisation_key = string_policy_gov_mod_d_desc_2
 		trigger = {
 			always = yes
 		}
 	}
 }
 
+defined_text = {
+	name = policy_gov_mod_c_desc_txt
+	random = no
+
+	text = {
+		localisation_key = string_policy_gov_mod_c_desc
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = policy_gov_mod_c_desc_2_txt
+	random = no
+
+	text = {
+		localisation_key = string_policy_gov_mod_c_desc_3
+		trigger = {
+			is_variable_equal = { which = policy_gov_rating value = 5 }
+		}
+	}
+	text = {
+		localisation_key = string_policy_gov_mod_c_desc_2
+		trigger = {
+			always = yes
+		}
+	}
+}
 
 defined_text = {
 	name = policy_gov_mod_desc_adj_txt
