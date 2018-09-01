@@ -23,22 +23,43 @@
 #  arg_var					# used in methods with arguments
 #  output_var				# used for methods that create output
 #  normalize_var			# used in rounding method to normalize output
-#  month_pulse_eta			# used as a counter for monthly pulses
-#  country_id				# used as a substitude for 'province_id'
+#  days_elapsed				# used as counter for monthly pulses
+#  country_id				# used as substitude for 'province_id'
 #  owner_id					# used by provinces to pair with 'country_id'
 
 
 # Scope: country
 reset_monthly_pulse = {
-	set_variable = { which = month_pulse_eta value = 30 }
+	set_variable = { which = days_elapsed value = 30 }
 }
 
 # Scope: country
 # The monthly pulse will fire the NEXT day in capital province
 #
 fire_monthly_pulse = {
-	set_variable = { which = month_pulse_eta value = 0 }
+	set_variable = { which = days_elapsed value = 0 }
 	#log = "EVE: [This.GetName] ordered an immediate monthly pulse"  #Debug
+}
+
+# Scope: country
+# Fires once each day from 'capital_province' method
+#
+on_daily_pulse = {
+
+	# This triggers when the capital gets moved to another
+	# province or the previous owner gets annexed
+	if = {
+		limit = { ROOT = { NOT = { is_capital = yes } } }
+		ROOT = { on_is_no_longer_capital = yes }
+	}
+	# Don't do anything else if this is no longer a capital province
+	else_if = {
+		limit = { is_variable_equal = { which = days_elapsed value = 0 } }
+		on_monthly_pulse = yes
+	}
+	else = {
+		subtract_variable = { which = days_elapsed value = 1 }
+	}
 }
 
 # Scope: country
@@ -48,51 +69,41 @@ fire_monthly_pulse = {
 #
 on_monthly_pulse = {
 
-	# This triggers when the capital gets moved to another
-	# province or the previous owner gets annexed
+	# Initialize ruler skills and mark inaguration day
+	# Note that this is not the 'actual' day the ruler was inagurated
 	if = {
-		limit = { ROOT = { NOT = { is_capital = yes } } }
-		ROOT = { on_is_no_longer_capital = yes }
+		limit = { NOT = { has_ruler_flag = inagurated } }
+		set_ruler_flag = inagurated
+		export_ruler_skills = yes
 	}
-	# Don't do anything else if this is no longer a capital province
-	else = {
 
-		# Initialize ruler skills and mark inaguration day
-		# Note that this is not the 'actual' day the ruler was inagurated
-		if = {
-			limit = { NOT = { has_ruler_flag = inagurated } }
-			set_ruler_flag = inagurated
-			export_ruler_skills = yes
+	# Triggers only for player, do all GLOBAL stuff here:
+	if = {
+		limit = { ai = no }
+
+		# Check on each pulse to see if a new country formed
+		every_country = {
+			limit = { NOT = { has_country_flag = is_initialized } }
+			initialize_country = yes
 		}
+	}
 
-		# Triggers only for player, do all GLOBAL stuff here:
-		if = {
-			limit = { ai = no }
+	reset_monthly_pulse = yes
+	update_gov_policy = yes
+	check_for_territorial_change = yes
 
-			# Check on each pulse to see if a new country formed
-			every_country = {
-				limit = { NOT = { has_country_flag = is_initialized } }
-				initialize_country = yes
-			}
-		}
-
-		reset_monthly_pulse = yes
-		update_gov_policy = yes
-		check_for_territorial_change = yes
-
-		# Do this when we run the mod for the FIRST TIME this campaign.
-		# It has to be run from here because the ROOT scope is set to capital province.
-		#
-		if = {
-			limit = { NOT = { had_global_flag = { flag = eve_initialized days = 2 } } }
-			update_country_dist_autonomy = yes
-		}
-		# Owner country has either gained new territory
-		# or changed its capital province
-		else_if = {
-			limit = { has_country_flag = territorial_change }
-			update_country_dist_autonomy = yes
-		}
+	# Do this when we run the mod for the FIRST TIME this campaign.
+	# It has to be run from here because the ROOT scope is set to capital province.
+	#
+	if = {
+		limit = { NOT = { had_global_flag = { flag = eve_initialized days = 2 } } }
+		update_country_dist_autonomy = yes
+	}
+	# Owner country has either gained new territory
+	# or changed its capital province
+	else_if = {
+		limit = { has_country_flag = territorial_change }
+		update_country_dist_autonomy = yes
 	}
 }
 
