@@ -219,6 +219,106 @@ defined_text = {
 	}
 }
 
+
+defined_text = {
+	name = policy_gov_mod_desc_adj_txt
+	random = no
+
+	text = {
+		localisation_key = string_adj.a.1
+		trigger = {
+			OR = {
+				is_variable_equal = { which = policy_gov_rating value = 1 }
+				is_variable_equal = { which = policy_gov_rating value = -1 }
+			}
+		}
+	}
+	text = {
+		localisation_key = string_adj.a.2
+		trigger = {
+			OR = {
+				is_variable_equal = { which = policy_gov_rating value = 2 }
+				is_variable_equal = { which = policy_gov_rating value = -2 }
+			}
+		}
+	}
+	text = {
+		localisation_key = string_adj.a.3
+		trigger = {
+			OR = {
+				is_variable_equal = { which = policy_gov_rating value = 3 }
+				is_variable_equal = { which = policy_gov_rating value = -3 }
+			}
+		}
+	}
+	text = {
+		localisation_key = string_adj.a.4
+		trigger = {
+			OR = {
+				is_variable_equal = { which = policy_gov_rating value = 4 }
+				is_variable_equal = { which = policy_gov_rating value = -4 }
+			}
+		}
+	}
+	text = {
+		localisation_key = string_adj.a.5
+		trigger = {
+			OR = {
+				is_variable_equal = { which = policy_gov_rating value = 5 }
+				is_variable_equal = { which = policy_gov_rating value = -5 }
+			}
+		}
+	}
+}
+
+defined_text = {
+	name = policy_gov_mod_desc_adj_2_txt
+	random = no
+
+	text = {
+		localisation_key = string_adj.a.1
+		trigger = {
+			has_country_flag = policy_gov_neutral
+		}
+	}
+	text = {
+		localisation_key = string_adj.a.2
+		trigger = {
+			OR = {
+				is_variable_equal = { which = policy_gov_rating value = 1 }
+				is_variable_equal = { which = policy_gov_rating value = -1 }
+			}
+		}
+	}
+	text = {
+		localisation_key = string_adj.a.3
+		trigger = {
+			OR = {
+				is_variable_equal = { which = policy_gov_rating value = 2 }
+				is_variable_equal = { which = policy_gov_rating value = -2 }
+			}
+		}
+	}
+	text = {
+		localisation_key = string_adj.a.4
+		trigger = {
+			OR = {
+				is_variable_equal = { which = policy_gov_rating value = 3 }
+				is_variable_equal = { which = policy_gov_rating value = -3 }
+			}
+		}
+	}
+	text = {
+		localisation_key = string_adj.a.5
+		trigger = {
+			OR = {
+				is_variable_equal = { which = policy_gov_rating value = 4 }
+				is_variable_equal = { which = policy_gov_rating value = -4 }
+			}
+		}
+	}
+}
+
 ###########################
 # EVE: Color Keys
 ###########################

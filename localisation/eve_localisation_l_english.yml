@@ -38,6 +38,13 @@
  string_separator:0 "\n--------------\n"
  string_null:0 ""
  string_period:0 "."
+
+ string_adj.a.1:0 "slightly more"
+ string_adj.a.2:0 "increasingly more"
+ string_adj.a.3:0 "moderately more"
+ string_adj.a.4:0 "considerably more"
+ string_adj.a.5:0 "completely"
+
  color_key_r:0 "R"
  color_key_g:0 "G+"
  color_key_n:0 "Y"
