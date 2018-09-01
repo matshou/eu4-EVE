@@ -30,13 +30,7 @@ capital_province = {
 	#
 	on_activation = {
 		owner = {
-			if = {
-				limit = { is_variable_equal = { which = month_pulse_eta value = 0 } }
-				on_monthly_pulse = yes
-			}
-			else = {
-				subtract_variable = { which = month_pulse_eta value = 1 }
-			}
+			on_daily_pulse = yes
 		}
 	}
 	# Doesn't seem to get called under any circumstances
