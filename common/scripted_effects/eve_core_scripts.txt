@@ -53,12 +53,23 @@ on_daily_pulse = {
 		ROOT = { on_is_no_longer_capital = yes }
 	}
 	# Don't do anything else if this is no longer a capital province
-	else_if = {
-		limit = { is_variable_equal = { which = days_elapsed value = 0 } }
-		on_monthly_pulse = yes
-	}
 	else = {
-		subtract_variable = { which = days_elapsed value = 1 }
+
+		if = {	# new ruler rises to throne
+			limit = { NOT = { has_ruler_flag = inagurated } }
+
+			set_ruler_flag = inagurated
+			export_ruler_skills = yes
+			calc_gov_policy_ruler_mod = yes
+		}
+
+		if = {
+			limit = { is_variable_equal = { which = days_elapsed value = 0 } }
+			on_monthly_pulse = yes
+		}
+		else = {
+			subtract_variable = { which = days_elapsed value = 1 }
+		}
 	}
 }
 
@@ -68,14 +79,6 @@ on_daily_pulse = {
 #		methods that only accept scope as argument (example: 'province_distance' condition)
 #
 on_monthly_pulse = {
-
-	# Initialize ruler skills and mark inaguration day
-	# Note that this is not the 'actual' day the ruler was inagurated
-	if = {
-		limit = { NOT = { has_ruler_flag = inagurated } }
-		set_ruler_flag = inagurated
-		export_ruler_skills = yes
-	}
 
 	# Triggers only for player, do all GLOBAL stuff here:
 	if = {

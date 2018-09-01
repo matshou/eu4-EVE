@@ -143,17 +143,6 @@ calc_gov_policy_mod = {
 		change_variable = { which = policy_gov_mod value = -0.05 }
 	}
 
-	# Ruler's Administrative Skill
-	if = {
-		# recalculate only once for each new ruler
-		limit = { NOT = { had_ruler_flag = { flag = inagurated days = 1 } } }
-
-		calculate_progressive_mod = {
-			VALUE = ruler_adm_skill STEPS = 6 MOD = 0.022
-			INC = 0.005 OUTPUT = policy_gov_rul_mod
-		}
-	}
-
 	change_variable = { which = policy_gov_mod which = policy_gov_rul_mod }
 
 	# Advisor's Administrative Skill
@@ -166,6 +155,21 @@ calc_gov_policy_mod = {
 			INC = 0.004 OUTPUT = policy_gov_adv_mod
 		}
 		change_variable = { which = policy_gov_mod which = policy_gov_adv_mod }
+	}
+}
+
+# Scope: country
+# Done once every time a new ruler rises to throne
+#
+calc_gov_policy_ruler_mod = {
+
+	if = {
+		limit = { NOT = { had_ruler_flag = { flag = inagurated days = 1 } } }
+
+		calculate_progressive_mod = {
+			VALUE = ruler_adm_skill STEPS = 6 MOD = 0.022
+			INC = 0.005 OUTPUT = policy_gov_rul_mod
+		}
 	}
 }
 
