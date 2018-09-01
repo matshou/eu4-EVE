@@ -144,13 +144,10 @@ calc_gov_policy_mod = {
 		# recalculate only once for each new ruler
 		limit = { NOT = { had_ruler_flag = { flag = inagurated days = 1 } } }
 
-		set_variable = { which = arg1_var which = ruler_adm_skill }
-		set_variable = { which = arg2_var value = 6 }
-		set_variable = { which = arg3_var value = 0.022 }
-		set_variable = { which = arg4_var value = 0.005 }
-
-		calculate_progressive_mod = yes
-		set_variable = { which = policy_gov_rul_mod which = output_var }
+		calculate_progressive_mod = {
+			VALUE = ruler_adm_skill STEPS = 6 MOD = 0.022
+			INC = 0.005 OUTPUT = policy_gov_rul_mod
+		}
 	}
 
 	change_variable = { which = policy_gov_mod which = policy_gov_rul_mod }
@@ -159,14 +156,11 @@ calc_gov_policy_mod = {
 	if = {
 		limit = { advisor = master_of_mint }
 		get_mint_advisor_lvl = yes
-		set_variable = { which = arg1_var which = output_var }
 
-		set_variable = { which = arg2_var value = 5 }
-		set_variable = { which = arg3_var value = 0.015 }
-		set_variable = { which = arg4_var value = 0.004 }
-
-		calculate_progressive_mod = yes
-		set_variable = { which = policy_gov_adv_mod which = output_var }
+		calculate_progressive_mod = {
+			VALUE = output_var STEPS = 5 MOD = 0.015
+			INC = 0.004 OUTPUT = policy_gov_adv_mod
+		}
 		change_variable = { which = policy_gov_mod which = policy_gov_adv_mod }
 	}
 }
@@ -295,18 +289,12 @@ update_gov_policy_rating = {
 # Note: do only for player to reduce CPU usage
 #
 round_gov_policy_gui_values = {
+
 	if = {
 		limit = { ai = no }
 
-		set_variable = { which = arg1_var which = policy_gov_mod }
-		set_variable = { which = arg2_var value = 2 }
-		round_value_to_decimal = yes
-		set_variable = { which = policy_gov_mod which = arg1_var }
-
-		set_variable = { which = arg1_var which = policy_gov_gui_val }
-		set_variable = { which = arg2_var value = 1 }
-		round_value_to_decimal = yes
-		set_variable = { which = policy_gov_gui_val which = arg1_var }
+		#round_value_to_decimal = { VALUE = policy_gov_mod DECIMALS = 2 }
+		#round_value_to_decimal = { VALUE = policy_gov_gui_val DECIMALS = 1 }
 	}
 }
 

@@ -5,67 +5,75 @@
 
 # Scope: anywhere
 #
-# Calculate a unique type of modifier for 'arg1/arg2' value.
+# Calculate a unique type of modifier for argument value.
 # This modifier increases progressively each step by increasing the value added
-# to the next step by 'arg4' respective to the current step defined with 'counter_var'.
+# to the next step by base mod value respective to the current step defined with 'counter_var'.
 # Increase in value added becomes a decrease after reaching steps midpoint.
 # This is intended to be used with ruler and advisor skills to show how higher skill ratings
 # become less impactful with each point. Midpoint skill ratings (ex. 3-6 adm) are worth the most.
 #
-# arg1 - value to calculate modifier for
-# arg2 - maximum modifier steps
-# arg3 - base modifier value
-# arg4 - progressive increase value
+# OUTPUT -(var) variable to export result to
+# VALUE  -(var) value to calculate modifier for
+# STEPS  -(val) maximum modifier steps
+# MOD    -(val) base modifier value
+# INC    -(val) progressive increase value
 #
 calculate_progressive_mod = {
 
 	# Here is an example of output result for each step with
 	# arg2 = 6, arg3 = 0.022 and arg4 = 0.005:
 	#
-	# prog inc:	 	 22    27     32 [mid] 27	   22     17
-	# output_var:	 0.022 - 0.049 - 0.081 - 0.108 - 0.13 - 0.147
+	# increase:	 	22    27     32 [mid] 27	   22     17
+	# output:		0.022 - 0.049 - 0.081 - 0.108 - 0.13 - 0.147
 
+	set_variable = { which = $OUTPUT$ value = 0 }
 	set_variable = { which = counter_var value = 0 }
-	set_variable = { which = output_var value = 0 }
+	set_variable = { which = arg_var value = $MOD$ }
 
-	set_variable = { which = counter2_var which = arg2_var }
+	set_variable = { which = counter2_var value = $STEPS$ }
 	divide_variable = { which = counter2_var value = 2 }
 	subtract_variable = { which = counter2_var value = 1 }    # take lower half value
 
 	while = {
-		limit = { NOT = { is_variable_equal = { which = counter_var which = arg1_var } } }
-		change_variable = { which = output_var which = arg3_var }
+		limit = { NOT = { is_variable_equal = { which = counter_var which = $VALUE$ } } }
+		change_variable = { which = $OUTPUT$ which = arg_var }
 		if = {
 			limit = { check_variable = { which = counter_var which = counter2_var} }
-			subtract_variable = { which = arg3_var which = arg4_var }
+			subtract_variable = { which = arg_var value = $INC$ }
 		}
-		else = { change_variable = { which = arg3_var which = arg4_var } }
+		else = { change_variable = { which = arg_var value = $INC$ } }
 		change_variable = { which = counter_var value = 1 }
 	}
 }
 
 # Scope: country
-# Round 'arg1_var' variable to 'arg2_var' decimal places
+# Round X variable to Y decimal places
 # This is used to display clean values in game UI
 #
+# VALUE    -(var) value to round
+# DECIMALS -(val) num of decimal places
+#
 round_value_to_decimal = {
+
+	set_variable = { which = arg_var value = $DECIMALS$ }
+
 	if = {
-		limit = { NOT = { check_variable = { which = arg1_var value = 0 } } }
-		multiply_variable = { which = arg1_var value = -1 }
+		limit = { NOT = { check_variable = { which = $VALUE$ value = 0 } } }
+		multiply_variable = { which = $VALUE$ value = -1 }
 		set_country_flag = round_to_negative
 	}
 	set_variable = { which = counter_var value = 1 }
-	set_variable = { which = counter2_var value = 1 }    # if 'arg1_var' >= 1
+	set_variable = { which = counter2_var value = 1 }    # if '$VALUE$' >= 1
 	while = {
-		limit = { check_variable = { which = arg1_var which = counter2_var } }
+		limit = { check_variable = { which = $VALUE$ which = counter2_var } }
 		multiply_variable = { which = counter_var value = 10 }
 		multiply_variable = { which = counter2_var value = 10 }
 	}
 	while = {
-		limit = { check_variable = { which = arg2_var value = 1 } }
-		multiply_variable = { which = arg1_var value = 10 }
+		limit = { check_variable = { which = arg_var value = 1 } }
+		multiply_variable = { which = $VALUE$ value = 10 }
 		multiply_variable = { which = counter_var value = 10 }
-		subtract_variable = { which = arg2_var value = 1 }
+		subtract_variable = { which = arg_var value = 1 }
 	}
 
 	set_variable = { which = normalize_var which = counter_var }
@@ -74,22 +82,22 @@ round_value_to_decimal = {
 	while = {
 		limit = { NOT = { is_variable_equal = { which = counter_var value = -1 } } }
 		if = {
-			limit = { check_variable = { which = arg1_var which = counter_var } }
+			limit = { check_variable = { which = $VALUE$ which = counter_var } }
 			change_variable = { which = counter_var value = 0.5 }
 			if = {
-				limit = { check_variable = { which = arg1_var which = counter_var } }
+				limit = { check_variable = { which = $VALUE$ which = counter_var } }
 				change_variable = { which = counter_var value = 0.5 }
 			}
 			else = { change_variable = { which = counter_var value = -0.5 } }
-			set_variable = { which = arg1_var which = counter_var }
+			set_variable = { which = $VALUE$ which = counter_var }
 			set_variable = { which = counter_var value = -1 }               # break loop
 		}
 		else = { subtract_variable = { which = counter_var value = 1 } }
 	}
-	divide_variable = { which = arg1_var which = normalize_var }   # normalize value
+	divide_variable = { which = $VALUE$ which = normalize_var }   # normalize value
 	if = {
 		limit = { has_country_flag = round_to_negative }
-		multiply_variable = { which = arg1_var value = -1 }
+		multiply_variable = { which = $VALUE$ value = -1 }
 		clr_country_flag = round_to_negative
 	}
 }
