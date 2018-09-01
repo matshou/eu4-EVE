@@ -20,12 +20,8 @@
 # ====================
 #  counter_var				# used for while loops
 #  counter2_var				# -||-
-#  arg1_var					# used for methods that need input
-#  arg2_var					# -||-
-#  arg3_var					# -||-
-#  arg4_var					# -||-
+#  arg_var					# used in methods with arguments
 #  output_var				# used for methods that create output
-#  output2_var				# used for method output comparison
 #  normalize_var			# used in rounding method to normalize output
 #  month_pulse_eta			# used as a counter for monthly pulses
 #  country_id				# used as a substitude for 'province_id'
@@ -106,9 +102,10 @@ on_monthly_pulse = {
 on_is_no_longer_capital = {
 
 	remove_capital_modifiers = yes
-	export_owner_id_to_country_scope = yes
 
 	owner = {
+		ROOT = { export_var_to_prev_scope = { VAR = owner_id } }
+
 		# This province was gained as a concession in a war or
 		# for other reasons has ended up as territory of another country
 		if = {
@@ -118,16 +115,16 @@ on_is_no_longer_capital = {
 			# Normally we would do this by using 'previous_owner' variable,
 			# but for some reason it gets set to null after loading a campaign
 
-			ROOT = { export_owner_id_to_country_scope = yes }
 			every_known_country = {
-
-				export_country_id_to_prev_scope = yes
-
-				if = { 			# found province previous owner
-					limit = {
-						PREV = { is_variable_equal = { which = output_var which = output2_var } }
-					}
-					changed_capital_province = yes		# previous owner
+				limit = {
+					# output variable will be set to -1 if country is found
+					NOT = { PREV = { is_variable_equal = { which = output_var value = -1 } } }
+				}
+				PREV = { export_var_to_prev_scope = { VAR = output_var } }	# capital owner_id
+				if = {
+					limit = { is_variable_equal = { which = output_var which = country_id } }
+					PREV = { set_variable = { which = output_var value = -1 } }	# break loop
+					changed_capital_province = yes
 				}
 			}
 			# Previous owner has been annexed/integrated
@@ -289,43 +286,47 @@ remove_capital_modifiers = {
 # EVE - Autonomy Scripts
 ##################################
 
-# Scope: province
-# Create a copy of 'owner_id' variable in province owner's country scope
-#
-export_owner_id_to_country_scope = {
-
-	if = {
-		limit = { check_variable = { which = owner_id value = 3 } }
-
-		owner = { set_variable = { which = output_var value = 3 } }
-		set_variable = { which = counter_var value = 3 }
-		while = {
-			limit = { NOT = { is_variable_equal = { which = counter_var which = owner_id } } }
-			change_variable = { which = counter_var value = 1 }
-			owner = { change_variable = { which = output_var value = 1 } }
-		}
-	}
-	else = { log = "EVE: Error 354 >> 'owner_id' var not initialized for province [This.GetName]." }
-}
-
 # Scope: country
-# Export THIS country id to PREV scope so it can be used for comparison
-# Uses 'output2_var' as return value
+# Export argument variable to PREV scope so it can be used for comparison.
+# Currently using a while loop is the only way to transfer variable values between scopes.
+# Here we are performing an interlaced scan with intervals using while loops.
+# On average this method will run 20 rotations (changing var) per call
 #
-export_country_id_to_prev_scope = {
+export_var_to_prev_scope = {
 
-	if = {
-		limit = { check_variable = { which = country_id value = 4 } }
+	set_variable = { which = counter_var value = 1000 }
+	PREV = { set_variable = { which = output_var value = 1000 } }
 
-		PREV = { set_variable = { which = output2_var value = 4 } }
-		set_variable = { which = counter_var value = 4 }
-		while = {
-			limit = { NOT = { is_variable_equal = { which = counter_var which = country_id } } }
-			change_variable = { which = counter_var value = 1 }
-			PREV = { change_variable = { which = output2_var value = 1 } }
+	# Do an interlaced scan alternating between adding and subtracting,
+	# until we find an approximate value that we can use in a final loop
+
+	while = {
+		limit = {
+			NOT = { is_variable_equal = { which = $VAR$ which = counter_var } }		# $VAR$ > counter_var
+			check_variable = { which = $VAR$ which = counter_var }
 		}
+		change_variable = { which = counter_var value = 1000 }
+		PREV = { change_variable = { which = output_var value = 1000 } }
 	}
-	else = { log = "EVE: Error 373 >> 'country_id' var not initialized for country [This.GetName]." }
+	while = {
+		limit = { NOT = { check_variable = { which = $VAR$ which = counter_var } } }	# $VAR$ < counter_var
+		subtract_variable = { which = counter_var value = 100 }
+		PREV = { subtract_variable = { which = output_var value = 100 } }
+	}
+	while = {
+		limit = {
+			NOT = { is_variable_equal = { which = $VAR$ which = counter_var } }		# $VAR$ > counter_var
+			check_variable = { which = $VAR$ which = counter_var }
+		}
+		change_variable = { which = counter_var value = 10 }
+		PREV = { change_variable = { which = output_var value = 10 } }
+	}
+
+	while = {
+		limit = { NOT = { is_variable_equal = { which = counter_var which = $VAR$ } } }
+		subtract_variable = { which = counter_var value = 1 }
+		PREV = { subtract_variable = { which = output_var value = 1 } }
+	}
 }
 
 # Scope: country
@@ -349,7 +350,7 @@ check_for_territorial_change = {
 		}
 		else = {
 			# do this after handling uncolonized territory
-			export_owner_id_to_country_scope = yes
+			export_var_to_prev_scope = { VAR = owner_id }
 
 			if = {			# Newly gained province
 				limit = {
