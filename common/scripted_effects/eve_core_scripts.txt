@@ -180,67 +180,31 @@ initialize_country = {
 # Scope: country
 # Assign a unique id for scoped country
 # This is called in mod initialization phase and when a new country is formed
+# Should ONLY be called from global(player) scope!
 #
 set_country_id = {
 
-	set_variable = { which = country_id value = 4 }
+	PREV = { export_var_to_prev_scope = { VAR = init_num } }	# Global(player) scope
+	set_variable = { which = country_id which = output_var }
 
-	if = {   # New country formed (post-init)
-
-		limit = { has_global_flag = eve_initialized }
-		PREV = { set_variable = { which = counter_var value = 4 } }  # Global (player) scope
-
-		while = {
-			limit = { NOT = { PREV = { is_variable_equal = { which = counter_var which = init_num } } } }
-			PREV = { change_variable = { which = counter_var value = 1 } }
-			change_variable = { which = country_id value = 1 }
-		}
-
-		PREV = { change_variable = { which = init_num value = 1 } }
-		change_variable = { which = country_id value = 1 }
-	}
-	else = {	# Mod Initialization phase
-
-		# Since we're unable to export either province or country id to a variable
-		# and current scope is unable to retrieve variable values from ROOT (player)
-		# we need to employ this convulated system of going through every country
-		#
-		every_country = {
-			limit = { NOT = { has_global_flag = found_country } }
-			if = { limit = { tag = PREV } set_global_flag = found_country }
-			else = { PREV = { change_variable = { which = country_id value = 1 } } }
-		}
-		clr_global_flag = found_country
-	}
+	PREV = { change_variable = { which = init_num value = 1 } }
+	change_variable = { which = country_id value = 1 }
 }
 
 # Scope: province
 # Assign a unique id for province that coresponds to its owner country id
 # Each owned province should ALWAYS have the same id as its current owner
-# All uncolonized provinces are assigned an id value of 3 (natives country)
 #
 set_province_owner_id = {
 
-	# AFAIK this is currently the only way to export variables from different scopes,
-	# because only variables in the same scope can be compared to each other
-
-	if = {
-		limit = { owner = { check_variable = { which = country_id value = 4 } } }
-
-		owner = { set_variable = { which = counter_var value = 4 } }
-		set_variable = { which = owner_id value = 4 }
-		set_variable = { which = test_variable value = 15 }
-
-		owner = {
-			while = {
-				limit = { NOT = { is_variable_equal = { which = counter_var which = country_id } } }
-				change_variable = { which = counter_var value = 1 }
-				PREV = { change_variable = { which = owner_id value = 1 } }
-			}
-			set_variable = { which = counter_var value = 1 }
+	owner = {
+		if = {
+			limit = { check_variable = { which = country_id value = 1 } }
+			export_var_to_prev_scope = { VAR = country_id }
+			PREV = { set_variable = { which = owner_id which = output_var } }
 		}
+		else = { owner = { log = "EVE: Error 279 >> 'country_id' var not initialized for country [This.GetName]." } }
 	}
-	else = { owner = { log = "EVE: Error 279 >> 'country_id' var not initialized for country [This.GetName]." } }
 }
 
 ##################################

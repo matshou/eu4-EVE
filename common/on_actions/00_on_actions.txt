@@ -15,11 +15,10 @@ on_startup = {
 			# id of last initialized country
 			set_variable = { which = init_num value = 0 }
 
-			every_country = {
-				initialize_country = yes
-				ROOT = { change_variable = { which = init_num value = 1 } }
-			}
+			# set country_id for every country in the game
+			every_country = { initialize_country = yes }
 
+			# set flag after running mod for the first time
 			set_global_flag = eve_initialized
 
 			log = "EVE: Running this mod for the first time this campaign."
