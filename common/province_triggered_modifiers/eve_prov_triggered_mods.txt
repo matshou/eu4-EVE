@@ -1,0 +1,40 @@
+
+######################################
+# EVE - Province Triggered Modifiers
+######################################
+
+
+# Scope: province(ROOT)
+# Main EVE update mechanism.
+# Every capital province should ALWAYS have this modifier
+#
+capital_province = {
+	potential = {
+		always = yes		# always allow daily ticks
+	}
+
+	trigger = {
+		custom_trigger_tooltip = {
+			tooltip = CAPITAL_PROVINCE_TT
+			always = yes
+		}
+	}
+
+	# Always have at least one modifier here so the
+	# province modifier can display an icon in GUI
+
+	local_tax_modifier = 0.3
+
+	# Gets called on each new day as long as this modifier is applied.
+	# Note that it stops calling after loading an existing campaign unless
+	# manually reset by removing and then re-adding the modifier
+	#
+	on_activation = {
+		owner = {
+			on_daily_pulse = yes
+		}
+	}
+	# Doesn't seem to get called under any circumstances
+	on_deactivation = {
+	}
+}
