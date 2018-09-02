@@ -52,17 +52,16 @@ on_daily_pulse = {
 		limit = { ROOT = { NOT = { is_capital = yes } } }
 		ROOT = { on_is_no_longer_capital = yes }
 	}
-	# Don't do anything else if this is no longer a capital province
+	# Don't do anything else if no longer a capital province
 	else = {
-
-		if = {	# new ruler rises to throne
+		# Check if a new ruler has rised to throne
+		if = {
 			limit = { NOT = { has_ruler_flag = inagurated } }
 
 			set_ruler_flag = inagurated
 			export_ruler_skills = yes
 			calc_gov_policy_ruler_mod = yes
 		}
-
 		if = {
 			limit = { is_variable_equal = { which = days_elapsed value = 0 } }
 			on_monthly_pulse = yes
@@ -95,16 +94,9 @@ on_monthly_pulse = {
 	update_gov_policy = yes
 	check_for_territorial_change = yes
 
-	# Do this when we run the mod for the FIRST TIME this campaign.
-	# It has to be run from here because the ROOT scope is set to capital province.
-	#
-	if = {
-		limit = { NOT = { had_global_flag = { flag = eve_initialized days = 2 } } }
-		update_country_dist_autonomy = yes
-	}
 	# Owner country has either gained new territory
 	# or changed its capital province
-	else_if = {
+	if = {
 		limit = { has_country_flag = territorial_change }
 		update_country_dist_autonomy = yes
 	}
@@ -184,10 +176,10 @@ initialize_country = {
 
 		initialize_capital_city = yes		# apply capital modifiers
 		fire_monthly_pulse = yes    		# force an immediate update
-		init_domestic_policies = yes		# setup all domestic policies
+		init_domestic_policies = yes
 
 		set_country_flag = is_initialized
-		#log = "EVE: Initialized country [This.GetName] with id: [This.country_id.GetValue]"  #Debug
+		set_country_flag = territorial_change
 	}
 }
 
