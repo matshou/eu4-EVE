@@ -15,7 +15,6 @@
 #  new_territory			# province
 #  conquered_capital		# province
 #  distant_province			# province
-#  state_prov_updated       # state
 
 
 # List of variables:
@@ -95,6 +94,7 @@ on_monthly_pulse = {
 	reset_monthly_pulse = yes
 	update_gov_policy = yes
 	update_all_states = yes
+	update_non_state_provinces = yes
 	check_for_territorial_change = yes
 
 	# Owner country has either gained new territory
@@ -216,43 +216,6 @@ set_province_owner_id = {
 	}
 }
 
-##############################
-# EVE - State Scripts
-##############################
-
-# Scope: country
-# Update all states and all provinces belonging to states
-#
-update_all_states = {
-
-	# This scope will be entered once for each state
-	every_owned_province = {
-		limit = {
-			is_state = yes
-			NOT = { has_province_flag = state_prov_updated }
-		}
-
-		# BEFORE updating state provinces:
-
-		# This scope will be entered once for every province in current state
-		every_province_in_state = {
-
-			if = {
-				limit = { NOT = { has_province_flag = state_prov_updated } }
-
-				# Place your PROVINCE update code here:
-
-				# check every province only once per state update
-				set_province_flag = state_prov_updated
-			}
-			else = { clr_province_flag = state_prov_updated }
-		}
-
-		# AFTER updating current state provinces:
-
-	}
-}
-
 ##################################
 # EVE - Capital Scripts
 ##################################
@@ -366,6 +329,7 @@ check_for_territorial_change = {
 				limit = {
 					owner = { NOT = { is_variable_equal = { which = output_var which = country_id } } }
 				}
+
 				# Conquered another nation's capital province
 				# Raising the flag to let the province ROOT scope know we've already updated autonomy.
 				# Also don't update owner id, it will be used by province ROOT scope to find last province owner

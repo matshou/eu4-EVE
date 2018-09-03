@@ -1,0 +1,149 @@
+
+##############################
+# EVE - State Scripts
+##############################
+
+# List of flags:
+# ====================
+#  state_prov_updated		# province
+#  adm_center_in_state		# country
+#  adm_center_found			# country
+
+
+# Scope: country
+# Update all states and all provinces belonging to states
+#
+update_all_states = {
+
+	# This scope will be entered once for each state
+	every_owned_province = {
+		limit = { is_state = yes }
+
+		if = {
+			limit = { NOT = { has_province_flag = state_prov_updated } }
+			update_state_in_scope = yes
+		}
+
+		clr_province_flag = state_prov_updated
+
+		owner = {
+			if = {
+				limit = { has_country_flag = adm_center_in_state }
+				if = {
+					limit = { NOT = { has_country_flag = adm_center_found } }
+					PREV = { remove_state_jurisdiction = yes }
+				}
+				else = { clr_country_flag = adm_center_found }
+				clr_country_flag = adm_center_in_state
+			}
+		}
+	}
+}
+
+# Scope: province
+# Update every province in the currently scoped state.
+# This scope will be entered once for every province in current state
+#
+update_state_in_scope = {
+
+	every_province_in_state = {
+
+		# Place your PROVINCE update code here:
+
+		if = {
+			limit = { has_province_modifier = prov_state_jurisdiction }
+			owner = { set_country_flag = adm_center_in_state }
+		}
+		else_if = {
+			limit = { has_province_modifier = prov_state_adm_center }
+
+			# Check to make sure every province in state is under jurisdiction
+			every_province_in_state = {
+				limit = {
+					NOT = { province_id = PREV }
+					NOT = { has_province_modifier = prov_state_jurisdiction }
+				}
+				add_province_modifier = { name = prov_state_jurisdiction duration = -1 }
+			}
+			owner = { set_country_flag = adm_center_found }
+		}
+		# Province recently became a state and has administrative building
+		else_if = {
+			limit = { OR = { has_building = courthouse has_building = town_hall } }
+			apply_state_jurisdiction = yes
+			if = {
+				limit = { owner = { is_variable_equal = { which = output_var value = 1 } } }
+				owner = { set_country_flag = adm_center_found }
+			}
+		}
+
+		# check every province only once per state update
+		set_province_flag = state_prov_updated
+	}
+}
+
+# Scope: country
+# Update every province that does not belong to a state
+#
+update_non_state_provinces = {
+
+	every_owned_province = {
+		limit = { NOT = { is_state = yes } }
+		if = {
+			limit = { has_province_modifier = prov_state_adm_center }
+			remove_province_modifier = prov_state_adm_center
+		}
+		else_if = {
+			limit = { has_province_modifier = prov_state_jurisdiction }
+			remove_province_modifier = prov_state_jurisdiction
+		}
+	}
+}
+
+# Scope: province
+# Apply jurisdiction province modifiers to current state
+# Needs to be called from a province with an administrative building
+#
+apply_state_jurisdiction = {
+
+	if = {
+		limit = {
+			NOT = {
+				any_province_in_state = {
+					is_capital = yes
+				}
+				any_province_in_state = {
+					NOT = { province_id = PREV }
+					OR = { has_building = courthouse has_building = town_hall }
+				}
+			}
+		}
+		owner = { set_variable = { which = output_var value = 1 } }
+		add_province_modifier = { name = prov_state_adm_center duration = -1 }
+
+		every_province_in_state = {
+			limit = { NOT = { has_province_modifier = prov_state_adm_center } }
+			add_province_modifier = { name = prov_state_jurisdiction duration = -1 }
+		}
+	}
+	else = { owner = { set_variable = { which = output_var value = -1 } } }
+}
+
+# Scope: province
+# Remove jurisdiction province modifiers to current state
+#
+remove_state_jurisdiction = {
+
+	if = {
+		limit = { has_province_modifier = prov_state_adm_center }
+		remove_province_modifier = prov_state_adm_center
+	}
+
+	# Note that this will not remove modifiers if the provinces are not in state
+	# we will have to manually scan for these and remove them later on
+	#
+	every_province_in_state = {
+		limit = { has_province_modifier = prov_state_jurisdiction }
+		remove_province_modifier = prov_state_jurisdiction
+	}
+}

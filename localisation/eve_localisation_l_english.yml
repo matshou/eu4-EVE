@@ -18,8 +18,13 @@
  desc_prov_autonomy_from_dist_300:0 "The population here is significantly more difficult to properly govern due to the distance of this province from our capital city."
  prov_autonomy_from_dist_350:0 "Self-Governance"
  desc_prov_autonomy_from_dist_350:0 "The population here is extremely more difficult to properly govern due to the distance of this province from our capital city."
+
  province_developing:0 "Province Developing"
  desc_province_developing:0 "This province is currently being developed, so it would be much harder to develop it further."
+ prov_state_adm_center:0 "State Administrative Center"
+ desc_prov_state_adm_center:0 "This province is the state's administrative center and home to a local court of law. It will help enforce governmental jurisdiction and provide additional stability in every province of this state."
+ prov_state_jurisdiction:0 "State Jurisdiction"
+ desc_prov_state_jurisdiction:0 "This province belongs to a state with an established administrative center and local court of law. It will receive the benefits of better governence."
 
  EST_VAL_FULL_TRADE:0 "Merchant Class: $VAL|Y$"
  EST_VAL_FULL_INFLUENCE:0 "Sphere of Influence: $VAL|Y$"
