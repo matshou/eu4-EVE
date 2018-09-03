@@ -126,6 +126,9 @@ calc_gov_policy_mod = {
 	# Variables with "_mod" suffix below are used in localisation
 	# to give information about modifiers affecting policy change each month
 
+	multiply_variable = { which = policy_gov_state_adm_mod value = 0.125 }			# state admin
+	change_variable = { which = policy_gov_mod which = policy_gov_state_adm_mod }	# min: 0, max: 0.125
+
 	export_to_variable = { which = stability_mod value = stability }			# stability
 	multiply_variable = { which = stability_mod value = 0.025 }					# min: -0.075, max: 0.075
 	change_variable = { which = policy_gov_mod which = stability_mod }
