@@ -126,32 +126,32 @@ calc_gov_policy_mod = {
 	# Variables with "_mod" suffix below are used in localisation
 	# to give information about modifiers affecting policy change each month
 
-	export_to_variable = { which = stability_mod value = stability }
-	multiply_variable = { which = stability_mod value = 0.025 }
+	export_to_variable = { which = stability_mod value = stability }			# stability
+	multiply_variable = { which = stability_mod value = 0.025 }					# min: -0.075, max: 0.075
 	change_variable = { which = policy_gov_mod which = stability_mod }
 
-	export_to_variable = { which = corruption_mod value = corruption }
-	multiply_variable = { which = corruption_mod value = -0.003 }
+	export_to_variable = { which = corruption_mod value = corruption }			# corruption
+	multiply_variable = { which = corruption_mod value = -0.003 }				# min: 0, max: -0.3
 	change_variable = { which = policy_gov_mod which = corruption_mod }
 
-	export_to_variable = { which = autonomy_mod value = average_autonomy }
-	multiply_variable = { which = autonomy_mod value = -0.008 }
+	export_to_variable = { which = autonomy_mod value = average_autonomy }		# autonomy
+	multiply_variable = { which = autonomy_mod value = -0.008 }					# min: 0, max: -0.8
 	change_variable = { which = policy_gov_mod which = autonomy_mod }
 
 	if = {
 		limit = { is_part_of_hre = yes }
 		change_variable = { which = policy_gov_mod value = -0.05 }
 	}
-
-	change_variable = { which = policy_gov_mod which = policy_gov_rul_mod }
+																				# ruler skill
+	change_variable = { which = policy_gov_mod which = policy_gov_rul_mod }		# min: 0, max: 0.147
 
 	# Advisor's Administrative Skill
 	if = {
 		limit = { advisor = master_of_mint }
 		get_mint_advisor_lvl = yes
 
-		calculate_progressive_mod = {
-			VALUE = output_var STEPS = 5 MOD = 0.015
+		calculate_progressive_mod = {											# advisor skill
+			VALUE = output_var STEPS = 5 MOD = 0.015							# min: 0, max: 0.091
 			INC = 0.004 OUTPUT = policy_gov_adv_mod
 		}
 		change_variable = { which = policy_gov_mod which = policy_gov_adv_mod }
