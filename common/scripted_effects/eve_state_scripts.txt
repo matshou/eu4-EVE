@@ -69,12 +69,12 @@ update_state_in_scope = {
 		}
 		# Province recently became a state and has administrative building
 		else_if = {
-			limit = { OR = { has_building = courthouse has_building = town_hall } }
-			apply_state_jurisdiction = yes
-			if = {
-				limit = { owner = { is_variable_equal = { which = output_var value = 1 } } }
-				owner = { set_country_flag = adm_center_found }
+			limit = {
+				has_admin_building = yes
+				can_build_courthouse = yes
 			}
+			apply_state_jurisdiction = yes
+			owner = { set_country_flag = adm_center_found }
 		}
 
 		# check every province only once per state update
@@ -106,27 +106,12 @@ update_non_state_provinces = {
 #
 apply_state_jurisdiction = {
 
-	if = {
-		limit = {
-			NOT = {
-				any_province_in_state = {
-					is_capital = yes
-				}
-				any_province_in_state = {
-					NOT = { province_id = PREV }
-					OR = { has_building = courthouse has_building = town_hall }
-				}
-			}
-		}
-		owner = { set_variable = { which = output_var value = 1 } }
-		add_province_modifier = { name = prov_state_adm_center duration = -1 }
+	add_province_modifier = { name = prov_state_adm_center duration = -1 }
 
-		every_province_in_state = {
-			limit = { NOT = { has_province_modifier = prov_state_adm_center } }
-			add_province_modifier = { name = prov_state_jurisdiction duration = -1 }
-		}
+	every_province_in_state = {
+		limit = { NOT = { has_province_modifier = prov_state_adm_center } }
+		add_province_modifier = { name = prov_state_jurisdiction duration = -1 }
 	}
-	else = { owner = { set_variable = { which = output_var value = -1 } } }
 }
 
 # Scope: province
