@@ -92,9 +92,9 @@ on_monthly_pulse = {
 	}
 
 	reset_monthly_pulse = yes
-	update_gov_policy = yes
 	update_all_states = yes
 	update_non_state_provinces = yes
+	update_gov_policy = yes
 	check_for_territorial_change = yes
 
 	# Owner country has either gained new territory
