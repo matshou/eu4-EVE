@@ -1,9 +1,9 @@
 ﻿l_english:
  capital_province:0 "Capital City Taxes"
- desc_capital_province:0 "Mantaining a nation's capital is not cheap due to various administrative and military expenses, thus its citizens will be expected to pay much higher taxes."
+ desc_capital_province:0 "Maintaining a nation's capital is not cheap due to various administrative and military expenses, thus its citizens will be expected to pay much higher taxes."
  CAPITAL_PROVINCE_TT:0 "Province is home to nation's capital."
  prov_nation_capital:0 "Nation's Capital"
- desc_prov_nation_capital:0 "This province is the main political and administrative center of [Root.Owner.GetName]. As a result every province in the capital state will receive various benefits related to governence."
+ desc_prov_nation_capital:0 "This province is the main political and administrative center of [Root.Owner.GetName]. As a result every province in the capital state will receive various benefits related to governance."
  prov_autonomy_from_dist_50:0 "Self-Governance"
  desc_prov_autonomy_from_dist_50:0 "The population here is slightly more difficult to properly govern due to the distance of this province from our capital city."
  prov_autonomy_from_dist_100:0 "Self-Governance"
@@ -24,7 +24,7 @@
  prov_state_adm_center:0 "State Administrative Center"
  desc_prov_state_adm_center:0 "This province is the state's administrative center and home to a local court of law. It will help enforce governmental jurisdiction and provide additional stability in every province of this state."
  prov_state_jurisdiction:0 "State Jurisdiction"
- desc_prov_state_jurisdiction:0 "This province belongs to a state with an established administrative center and local court of law. It will receive the benefits of better governence."
+ desc_prov_state_jurisdiction:0 "This province belongs to a state with an established administrative center and local court of law. It will receive the benefits of better governance."
 
  building_courthouse_desc:0 "Courthouse is a government building that is home to a local court of law and regional county  government. It is also the state's main administrative center. As a result, all state provinces will receive benefits of better governance.\n--------------\n§YBuilding Requirements:§!\n - State does §RNOT§! have a courthouse or town hall.\n - Province belongs to a non-capital state.\n--------------"
 
