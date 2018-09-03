@@ -171,6 +171,12 @@ fort_15th = {
 courthouse = {
 	cost = 100
 	time = 12
+	
+	# Note that we cannot use a scripted trigger to validate this
+	# as vanilla code does not recognize references to building entries
+	# that are made AFTER the calling building. In this situation the town hall
+	# building would not be recognized because it's declared after courthouse
+	#
 	trigger = {
 		is_state = yes
 		NOT = {

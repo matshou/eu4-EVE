@@ -1,0 +1,26 @@
+
+##############################
+# EVE - Building Triggers
+##############################
+
+has_admin_building = {
+	OR = {
+		has_building = courthouse
+		has_building = town_hall
+	}
+}
+
+can_build_courthouse = {
+	is_state = yes
+	NOT = {
+		is_capital = yes
+		any_province_in_state = {
+			NOT = { province_id = PREV }
+			OR = {
+				has_building = courthouse
+				has_building = town_hall
+				is_capital = yes
+			}
+		}
+	}
+}
