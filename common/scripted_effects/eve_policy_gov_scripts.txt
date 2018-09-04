@@ -13,7 +13,6 @@
 # ====================
 #  policy_gov_min
 #  policy_gov_max
-#  policy_gov_val			# current rating for this policy
 #  policy_gov_val			# current rating value for this policy
 #  policy_gov_rating		# short numerical for 'policy_gov_val'
 #  policy_gov_mod			# modifier monthly applied to rating
@@ -73,6 +72,13 @@ init_gov_policy = {
 # Update policy modifiers, rating and GUI values
 #
 update_gov_policy = {
+
+	if = {
+		limit = { tag = MAN is_variable_equal = { which = policy_gov_max value = 0 } }
+		log = "Its set to 0"
+	}
+	#log = "Policy max is [This.policy_gov_max.GetValue]"
+	#multiply_variable = { which = policy_gov_max value = 20 }
 
 	# Reset the modifier so we can recalculate it
 	set_variable = { which = policy_gov_mod value = 0 }

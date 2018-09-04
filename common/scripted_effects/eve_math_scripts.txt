@@ -28,7 +28,7 @@ calculate_progressive_mod = {
 
 	set_variable = { which = $OUTPUT$ value = 0 }
 	set_variable = { which = counter_var value = 0 }
-	set_variable = { which = arg_var value = $MOD$ }
+	set_variable = { which = mod_val value = $MOD$ }
 
 	set_variable = { which = counter2_var value = $STEPS$ }
 	divide_variable = { which = counter2_var value = 2 }
@@ -36,14 +36,15 @@ calculate_progressive_mod = {
 
 	while = {
 		limit = { NOT = { is_variable_equal = { which = counter_var which = $VALUE$ } } }
-		change_variable = { which = $OUTPUT$ which = arg_var }
+		change_variable = { which = $OUTPUT$ which = mod_val }
 		if = {
 			limit = { check_variable = { which = counter_var which = counter2_var} }
-			subtract_variable = { which = arg_var value = $INC$ }
+			subtract_variable = { which = mod_val value = $INC$ }
 		}
-		else = { change_variable = { which = arg_var value = $INC$ } }
+		else = { change_variable = { which = mod_val value = $INC$ } }
 		change_variable = { which = counter_var value = 1 }
 	}
+	set_variable = { which = mod_val value = 0 }  # cleanup
 }
 
 # Scope: country
@@ -55,7 +56,7 @@ calculate_progressive_mod = {
 #
 round_value_to_decimal = {
 
-	set_variable = { which = arg_var value = $DECIMALS$ }
+	set_variable = { which = decimals value = $DECIMALS$ }
 
 	if = {
 		limit = { NOT = { check_variable = { which = $VALUE$ value = 0 } } }
@@ -70,10 +71,10 @@ round_value_to_decimal = {
 		multiply_variable = { which = counter2_var value = 10 }
 	}
 	while = {
-		limit = { check_variable = { which = arg_var value = 1 } }
+		limit = { check_variable = { which = decimals value = 1 } }
 		multiply_variable = { which = $VALUE$ value = 10 }
 		multiply_variable = { which = counter_var value = 10 }
-		subtract_variable = { which = arg_var value = 1 }
+		subtract_variable = { which = decimals value = 1 }
 	}
 
 	set_variable = { which = normalize_var which = counter_var }
@@ -100,4 +101,7 @@ round_value_to_decimal = {
 		multiply_variable = { which = $VALUE$ value = -1 }
 		clr_country_flag = round_to_negative
 	}
+	# cleanup
+	set_variable = { which = decimals value = 0 }
+	set_variable = { which = normalize_var value = 0 }
 }

@@ -119,8 +119,9 @@ get_state_development = {
 	owner = { set_variable = { which = output_var value = 0 } }
 	every_province_in_state = {
 		owner = {
-			export_to_variable = { which = arg_var value = development who = PREV }
-			change_variable = { which = output_var which = arg_var }
+			export_to_variable = { which = int_var value = development who = PREV }
+			change_variable = { which = output_var which = int_var }
+			set_variable = { which = int_var value = 0 }
 		}
 	}
 }
@@ -131,9 +132,10 @@ get_state_development = {
 #
 get_state_dev_ratio = {
 
-	export_to_variable = { which = arg_var value = total_development }
-	divide_variable = { which = $DEV$ which = arg_var }
+	export_to_variable = { which = int_var value = total_development }
+	divide_variable = { which = $DEV$ which = int_var }
 	set_variable = { which = output_var which = $DEV$ }
+	set_variable = { which = int_var value = 0 }
 }
 
 # Scope: province
