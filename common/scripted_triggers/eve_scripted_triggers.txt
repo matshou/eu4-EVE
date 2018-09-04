@@ -3,22 +3,48 @@
 # EVE - Core Triggers
 ##############################
 
-is_not_equal_to_val = {
-	NOT = { is_variable_equal = { which = $VAR$ value = $VAL$ } }
-}
-
-is_not_equal_to_var = {
-	NOT = { is_variable_equal = { which = $VAR$ which = $VAR2$ } }
-}
-
 should_do_monthly_update = {
 	OR = {
 		has_country_flag = immediate_update
 		variable_arithmetic_trigger = {
 			export_to_variable = { which = current_month value = trigger_value:is_month }
-			is_not_equal_to_var = { VAR = last_month VAR2 = current_month  }
+			is_var_not_equal_to = { VAR1 = last_month VAR2 = current_month  }
 		}
 	}
+}
+
+##############################
+# EVE - Math Triggers
+##############################
+
+is_var_less_than = {
+	NOT = { check_variable = { which = $VAR1$ which = $VAR2$ } }
+}
+
+is_var_less_than_val = {
+	NOT = { check_variable = { which = $VAR$ which = $VAL$ } }
+}
+
+is_var_greater_than = {
+	NOT = { is_variable_equal = { which = $VAR1$ which = $VAR2$ } }
+	check_variable = { which = $VAR1$ which = $VAR2$ }
+}
+
+is_var_greater_than_val = {
+	NOT = { is_variable_equal = { which = $VAR$ value = $VAL$ } }
+	check_variable = { which = $VAR1$ value = $VAL$ }
+}
+
+is_var_not_equal_to = {
+	NOT = { is_variable_equal = { which = $VAR1$ which = $VAR2$ } }
+}
+
+is_var_not_equal_to_val = {
+	NOT = { is_variable_equal = { which = $VAR$ value = $VAL$ } }
+}
+
+is_var_not_null = {
+	NOT = { is_variable_equal = { which = $VAR$ value = 0 } }
 }
 
 ##############################

@@ -59,7 +59,7 @@ round_value_to_decimal = {
 	set_variable = { which = decimals value = $DECIMALS$ }
 
 	if = {
-		limit = { NOT = { check_variable = { which = $VALUE$ value = 0 } } }
+		limit = { is_var_less_than_val = { VAR = $VALUE$ VAL = 0 } }
 		multiply_variable = { which = $VALUE$ value = -1 }
 		set_country_flag = round_to_negative
 	}
@@ -81,7 +81,7 @@ round_value_to_decimal = {
 	divide_variable = { which = normalize_var which = counter2_var }   # used to normalize value
 
 	while = {
-		limit = { NOT = { is_variable_equal = { which = counter_var value = -1 } } }
+		limit = { is_var_not_equal_to_val = { VAR = counter_var VAL = -1 } }
 		if = {
 			limit = { check_variable = { which = $VALUE$ which = counter_var } }
 			change_variable = { which = counter_var value = 0.5 }
