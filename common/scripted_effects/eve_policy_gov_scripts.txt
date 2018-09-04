@@ -20,6 +20,29 @@
 #  policy_gov_rul_mod		# from ruler administrative skill
 #  policy_gov_adv_mod		# from advisor administrative skill
 
+
+# Scope: country
+# Re-initialize policy values that display in GUI.
+# This is called immediately after loading a game to initialize variables
+# with null values that have not been written in the save game file
+#
+reinit_gov_policy_values = {
+
+	if = {
+		limit = { is_variable_equal = { which = policy_gov_max value = 0 } }
+		set_variable = { which = policy_gov_max value = 0 }
+	}
+	if = {
+		limit = { is_variable_equal = { which = policy_gov_gui_val value = 0 } }
+		set_variable = { which = policy_gov_gui_val value = 0 }
+	}
+	if = {
+		limit = { is_variable_equal = { which = time_to_increase value = 0 } }
+		set_variable = { which = time_to_increase value = 0 }
+	}
+}
+
+
 # Scope: country
 # Called from initialization phase for every country
 #
