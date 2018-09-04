@@ -14,6 +14,8 @@
  string_gov_policy_ext:0 ", due to:[policy_gov_mod_1_txt] [policy_gov_mod_2_txt] [policy_gov_mod_3_txt] [policy_gov_mod_4_txt] [policy_gov_mod_5_txt] [policy_gov_mod_6_txt] [policy_gov_mod_7_txt]"
 
  string_gov_policy_mod_1:0 "\n [Root.Monarch.GetName]'s Administrative Skill: §G+[Root.policy_gov_rul_mod.GetValue]§!"
+ string_gov_policy_mod_1.a:0 "\n Regency Council: §R-0.05§!"
+ string_gov_policy_mod_1.b:0 "\n Interregnum: §R-0.65§!"
  string_gov_policy_mod_2:0 "\n [Root.Adm_Advisor.GetName]'s Administrative Skill: §G+[Root.policy_gov_adv_mod.GetValue]§!"
  string_gov_policy_mod_3:0 "\n State Administration: §G+[Root.policy_gov_state_adm_mod.GetValue]§!"
  string_gov_policy_mod_4:0 "\n Province Autonomy: §[Root.autonomy_txt_c][Root.autonomy_mod.GetValue]§!"
