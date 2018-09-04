@@ -25,9 +25,14 @@ on_startup = {
 			log = "EVE: Successfully initialized [This.init_num.GetValue] countries."
 		}
 	}
-	# When loading a save file the monthly pulse stop firing for some reason.
-	# Reset the modifier here to force the game to start firing 'on_activation'
+	# Loaded an existing save game file with mod already initialized
 	else = {
+		# initialize null value variables so they display properly in GUI
+		reinit_gov_policy_values = yes
+
+		# When loading a save file the monthly pulse stop firing for some reason.
+		# Reset the modifier here to force the game to start firing 'on_activation'
+		#
 		capital_scope = {
 			remove_province_triggered_modifier = capital_province
 			add_province_triggered_modifier = capital_province
