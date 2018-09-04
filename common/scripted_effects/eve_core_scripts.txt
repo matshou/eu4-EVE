@@ -21,9 +21,7 @@
 # ====================
 #  counter_var				# used for while loops
 #  counter2_var				# -||-
-#  arg_var					# used in methods with arguments
 #  output_var				# used for methods that create output
-#  normalize_var			# used in rounding method to normalize output
 #  days_elapsed				# used as counter for monthly pulses
 #  country_id				# used as substitude for 'province_id'
 #  owner_id					# used by provinces to pair with 'country_id'
