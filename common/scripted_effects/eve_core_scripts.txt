@@ -9,6 +9,7 @@
 #  found_country			# global
 #  inagurated				# ruler
 #  round_to_negative		# country
+#  immediate_update			# country
 #  is_initialized			# country
 #  territorial_change		# country
 #  gained_new_territory		# country
@@ -22,21 +23,16 @@
 #  counter_var				# used for while loops
 #  counter2_var				# -||-
 #  output_var				# used for methods that create output
-#  days_elapsed				# used as counter for monthly pulses
+#  last_month				# last month that monthly pulse fired
 #  country_id				# used as substitude for 'province_id'
 #  owner_id					# used by provinces to pair with 'country_id'
 
 
 # Scope: country
-reset_monthly_pulse = {
-	set_variable = { which = days_elapsed value = 30 }
-}
-
-# Scope: country
 # The monthly pulse will fire the NEXT day in capital province
 #
 fire_monthly_pulse = {
-	set_variable = { which = days_elapsed value = 0 }
+	set_country_flag = immediate_update
 }
 
 # Scope: country
@@ -61,11 +57,8 @@ on_daily_pulse = {
 			calc_gov_policy_ruler_mod = yes
 		}
 		if = {
-			limit = { is_variable_equal = { which = days_elapsed value = 0 } }
+			limit = { should_do_monthly_update = yes }
 			on_monthly_pulse = yes
-		}
-		else = {
-			subtract_variable = { which = days_elapsed value = 1 }
 		}
 	}
 }
@@ -76,6 +69,12 @@ on_daily_pulse = {
 #		methods that only accept scope as argument (example: 'province_distance' condition)
 #
 on_monthly_pulse = {
+
+	export_to_variable = { which = last_month value = trigger_value:is_month }
+	if = {
+		limit = { has_country_flag = immediate_update }
+		clr_country_flag = immediate_update
+	}
 
 	# Triggers only for player, do all GLOBAL stuff here:
 	if = {
@@ -88,7 +87,6 @@ on_monthly_pulse = {
 		}
 	}
 
-	reset_monthly_pulse = yes
 	update_all_states = yes
 	update_non_state_provinces = yes
 	update_gov_policy = yes
