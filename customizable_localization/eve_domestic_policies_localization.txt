@@ -164,6 +164,18 @@ defined_text = {
 		}
 	}
 	text = {
+		localisation_key = string_gov_policy_mod_1.a
+		trigger = {
+			has_regency_council = yes
+		}
+	}
+	text = {
+		localisation_key = string_gov_policy_mod_1.b
+		trigger = {
+			has_interregnum = yes
+		}
+	}
+	text = {
 		localisation_key = string_null
 		trigger = {
 			always = yes

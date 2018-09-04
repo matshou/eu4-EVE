@@ -1,5 +1,24 @@
 
 ##############################
+# EVE - Country Triggers
+##############################
+
+has_non_consort_regency = {
+	has_regency = yes
+	has_consort_regency = no
+}
+
+has_regency_council = {
+	has_non_consort_regency = yes
+	has_heir = yes
+}
+
+has_interregnum = {
+	has_non_consort_regency = yes
+	has_heir = no
+}
+
+##############################
 # EVE - Building Triggers
 ##############################
 

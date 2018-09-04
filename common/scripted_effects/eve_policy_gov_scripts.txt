@@ -167,8 +167,17 @@ calc_gov_policy_mod = {
 		limit = { is_part_of_hre = yes }
 		change_variable = { which = policy_gov_mod value = -0.05 }
 	}
-																				# ruler skill
-	change_variable = { which = policy_gov_mod which = policy_gov_rul_mod }		# min: 0, max: 0.147
+	if = {
+		limit = { has_non_consort_regency = yes }
+		if = {
+			limit = { has_heir = yes }										# regency council
+			change_variable = { which = policy_gov_mod value = -0.05 }
+		}
+		else = {															# interregnum
+			change_variable = { which = policy_gov_mod value = -0.65 }
+		}
+	}																					 # ruler skill
+	else = { change_variable = { which = policy_gov_mod which = policy_gov_rul_mod } }	 # min: 0, max: 0.147
 
 	# Advisor's Administrative Skill
 	if = {
@@ -180,21 +189,6 @@ calc_gov_policy_mod = {
 			INC = 0.004 OUTPUT = policy_gov_adv_mod
 		}
 		change_variable = { which = policy_gov_mod which = policy_gov_adv_mod }
-	}
-}
-
-# Scope: country
-# Done once every time a new ruler rises to throne
-#
-calc_gov_policy_ruler_mod = {
-
-	if = {
-		limit = { NOT = { had_ruler_flag = { flag = inagurated days = 1 } } }
-
-		calculate_progressive_mod = {
-			VALUE = ruler_adm_skill STEPS = 6 MOD = 0.022
-			INC = 0.005 OUTPUT = policy_gov_rul_mod
-		}
 	}
 }
 
@@ -352,6 +346,30 @@ round_gov_policy_gui_values = {
 		#round_value_to_decimal = { VALUE = policy_gov_mod DECIMALS = 2 }
 		#round_value_to_decimal = { VALUE = policy_gov_gui_val DECIMALS = 1 }
 		#round_value_to_decimal = { VALUE = time_to_increase DECIMALS = 0 }
+	}
+}
+
+
+# Scope: country
+# Called once every time a new ruler rises to throne
+#
+calc_gov_policy_ruler_mod = {
+
+	export_to_variable = { which = output_var value = trigger_value:adm }
+	subtract_variable = { which = output_var value = 1 } # normalize
+
+	if = {
+		limit = {
+			check_variable = { which = output_var value = 1 }
+			has_regency = no
+		}
+		calculate_progressive_mod = {
+			VALUE = output_var STEPS = 6 MOD = 0.022
+			INC = 0.005 OUTPUT = policy_gov_rul_mod
+		}
+	}
+	else = {
+		set_variable = { which = policy_gov_rul_mod value = 0 }
 	}
 }
 
