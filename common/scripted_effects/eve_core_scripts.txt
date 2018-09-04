@@ -188,7 +188,7 @@ initialize_country = {
 set_country_id = {
 
 	if = {
-		limit = { is_global_scope = yes }
+		limit = { PREV = { is_global_scope = yes } }
 
 		PREV = { export_var_to_prev_scope = { VAR = init_num } }
 		set_variable = { which = country_id which = output_var }
