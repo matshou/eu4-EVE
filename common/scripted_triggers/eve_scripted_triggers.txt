@@ -1,5 +1,27 @@
 
 ##############################
+# EVE - Core Triggers
+##############################
+
+is_not_equal_to_val = {
+	NOT = { is_variable_equal = { which = $VAR$ value = $VAL$ } }
+}
+
+is_not_equal_to_var = {
+	NOT = { is_variable_equal = { which = $VAR$ which = $VAR2$ } }
+}
+
+should_do_monthly_update = {
+	OR = {
+		has_country_flag = immediate_update
+		variable_arithmetic_trigger = {
+			export_to_variable = { which = current_month value = trigger_value:is_month }
+			is_not_equal_to_var = { VAR = last_month VAR2 = current_month  }
+		}
+	}
+}
+
+##############################
 # EVE - Country Triggers
 ##############################
 
