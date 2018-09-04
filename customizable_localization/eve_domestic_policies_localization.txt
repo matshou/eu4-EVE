@@ -46,7 +46,7 @@ defined_text = {
 	text = {
 		localisation_key = string_policy_gov_increase_time
 		trigger = {
-			NOT = { is_variable_equal = { which = policy_gov_adv_mod value = 0 } }
+			is_var_not_null = { VAR = policy_gov_adv_mod }
 		}
 	}
 	text = {
@@ -124,7 +124,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_change
 		trigger = {
-			NOT = { is_variable_equal = { which = policy_gov_max which = policy_gov_val } }
+			is_var_not_equal_to = { VAR1 = policy_gov_max VAR2 = policy_gov_val }
 		}
 	}
 	text = {
@@ -142,7 +142,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_ext
 		trigger = {
-			NOT = { is_variable_equal = { which = policy_gov_mod value = 0 } }
+			is_var_not_null = { VAR = policy_gov_mod }
 		}
 	}
 	text = {
@@ -160,7 +160,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_1
 		trigger = {
-			NOT = { is_variable_equal = { which = policy_gov_rul_mod value = 0 } }
+			is_var_not_null = { VAR = policy_gov_rul_mod }
 		}
 	}
 	text = {
@@ -190,7 +190,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_2
 		trigger = {
-			NOT = { is_variable_equal = { which = policy_gov_adv_mod value = 0 } }
+			is_var_not_null = { VAR = policy_gov_adv_mod }
 		}
 	}
 	text = {
@@ -208,7 +208,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_3
 		trigger = {
-			NOT = { is_variable_equal = { which = policy_gov_state_adm_mod value = 0 } }
+			is_var_not_null = { VAR = policy_gov_state_adm_mod }
 		}
 	}
 	text = {
@@ -226,7 +226,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_4
 		trigger = {
-			NOT = { is_variable_equal = { which = autonomy_mod value = 0 } }
+			is_var_not_null = { VAR = autonomy_mod }
 		}
 	}
 	text = {
@@ -244,7 +244,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_5
 		trigger = {
-			NOT = { is_variable_equal = { which = stability_mod value = 0 } }
+			is_var_not_null = { VAR = stability_mod }
 		}
 	}
 	text = {
@@ -262,7 +262,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_6
 		trigger = {
-			NOT = { is_variable_equal = { which = corruption_mod value = 0 } }
+			is_var_not_null = { VAR = corruption_mod }
 		}
 	}
 	text = {
@@ -467,7 +467,7 @@ defined_text = {
     text = {
         localisation_key = color_key_r
         trigger = {
-            NOT = { check_variable = { which = policy_gov_mod value = 0 } }
+            is_var_less_than_val = { VAR = policy_gov_mod VAL = 0 }
         }
     }
 	text = {
