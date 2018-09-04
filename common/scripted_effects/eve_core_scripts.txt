@@ -37,7 +37,6 @@ reset_monthly_pulse = {
 #
 fire_monthly_pulse = {
 	set_variable = { which = days_elapsed value = 0 }
-	#log = "EVE: [This.GetName] ordered an immediate monthly pulse"  #Debug
 }
 
 # Scope: country
