@@ -127,7 +127,7 @@ update_gov_policy = {
 
 				if = { # Do not allow value to go below minimum
 					limit = { is_policy_gov_below_min = yes }
-					set_variable = { which = policy_gov_val which = policy_gov_max }
+					set_variable = { which = policy_gov_val which = policy_gov_min }
 				}
 				update_gov_policy_rating = yes
 				calc_gov_policy_increase_time = yes
