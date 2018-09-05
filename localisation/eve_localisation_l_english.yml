@@ -26,7 +26,7 @@
  prov_state_jurisdiction:0 "State Jurisdiction"
  desc_prov_state_jurisdiction:0 "This province belongs to a state with an established administrative center and local court of law. It will receive the benefits of better governance."
 
- building_courthouse_desc:0 "Courthouse is a government building that is home to a local court of law and regional county  government. It is also the state's main administrative center. As a result, all state provinces will receive benefits of better governance.\n--------------\n§YBuilding Requirements:§!\n - State does §RNOT§! have a courthouse or town hall.\n - Province belongs to a state.\n--------------"
+ building_courthouse_desc:0 "Courthouse is a government building that is home to a local court of law and regional county  government. It is also the state's main administrative center. As a result, all state provinces will receive benefits of better governance.\n--------------\n§YBuilding Requirements:§!\n - State does §RNOT§! have a courthouse or town hall.\n - Province belongs to a state.\n--------------\nState Administration: §G+?§!"
 
  EST_VAL_FULL_TRADE:0 "Merchant Class: $VAL|Y$"
  EST_VAL_FULL_INFLUENCE:0 "Sphere of Influence: $VAL|Y$"
