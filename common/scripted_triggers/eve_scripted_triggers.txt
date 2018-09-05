@@ -52,7 +52,7 @@ is_var_greater_than = {
 
 is_var_greater_than_val = {
 	NOT = { is_variable_equal = { which = $VAR$ value = $VAL$ } }
-	check_variable = { which = $VAR1$ value = $VAL$ }
+	check_variable = { which = $VAR$ value = $VAL$ }
 }
 
 is_var_not_equal_to = {
