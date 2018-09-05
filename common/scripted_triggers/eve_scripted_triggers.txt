@@ -129,6 +129,13 @@ is_policy_gov_rating = {
 	is_variable_equal = { which = policy_gov_rating value = $VAL$ }
 }
 
+is_policy_gov_relative_rating = {
+	OR = {
+		is_variable_equal = { which = policy_gov_rating value = $VAL$ }
+		is_variable_equal = { which = policy_gov_rating value = -$VAL$ }
+	}
+}
+
 ##############################
 # EVE - Building Triggers
 ##############################
