@@ -106,13 +106,13 @@ update_gov_policy = {
 		# Update only if modifier would affect policy
 		limit = { is_var_not_null = { VAR = policy_gov_mod } }
 		if = {
-			limit = { is_gov_policy_centalizing = yes }
+			limit = { is_policy_gov_centalizing = yes }
 			if = {
-				limit = { is_gov_policy_fully_centralized = no }
+				limit = { is_policy_gov_fully_centralized = no }
 				change_variable = { which = policy_gov_val which = policy_gov_mod }
 
 				if = { # Do not allow value to go above maximum
-					limit = { is_gov_policy_above_max = yes }
+					limit = { is_policy_gov_above_max = yes }
 					set_variable = { which = policy_gov_val which = policy_gov_max }
 				}
 				update_gov_policy_rating = yes
@@ -121,11 +121,11 @@ update_gov_policy = {
 		}
 		else = {	# decentralizing
 			if = {
-				limit = { is_gov_policy_fully_decentralized = no }
+				limit = { is_policy_gov_fully_decentralized = no }
 				change_variable = { which = policy_gov_val which = policy_gov_mod }
 
 				if = { # Do not allow value to go below minimum
-					limit = { is_gov_policy_below_min = yes }
+					limit = { is_policy_gov_below_min = yes }
 					set_variable = { which = policy_gov_val which = policy_gov_max }
 				}
 				update_gov_policy_rating = yes
