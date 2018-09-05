@@ -22,13 +22,13 @@ defined_text = {
 	text = {
 		localisation_key = string_null
 		trigger = {
-			is_variable_equal = { which = policy_gov_mod value = 0 }
+			is_policy_gov_idle = yes
 		}
 	}
 	text = {
 		localisation_key = string_gov_policy_desc_c
 		trigger = {
-			check_variable = { which = policy_gov_mod value = 0 }
+			is_policy_gov_centalizing = yes
 		}
 	}
 	text = {
@@ -64,7 +64,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_stance
 		trigger = {
-			NOT = { has_country_flag = policy_gov_neutral }
+			NOT = { is_policy_gov_rating_neutral = yes }
 		}
 	}
 	text = {
@@ -82,13 +82,13 @@ defined_text = {
 	text = {
 		localisation_key = string_centralized
 		trigger = {
-			has_country_flag = policy_gov_centralized
+			is_policy_gov_rating_centralized = yes
 		}
 	}
 	text = {
 		localisation_key = string_decentralized
 		trigger = {
-			has_country_flag = policy_gov_decentralized
+			is_policy_gov_rating_decentralized = yes
 		}
 	}
 }
@@ -100,13 +100,13 @@ defined_text = {
 	text = {
 		localisation_key = string_null
 		trigger = {
-			is_variable_equal = { which = policy_gov_mod value = 0 }
+			is_policy_gov_idle = yes
 		}
 	}
 	text = {
 		localisation_key = string_centralized
 		trigger = {
-			check_variable = { which = policy_gov_mod value = 0 }
+			is_policy_gov_centalizing = yes
 		}
 	}
 	text = {
@@ -124,7 +124,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_change
 		trigger = {
-			is_var_not_equal_to = { VAR1 = policy_gov_max VAR2 = policy_gov_val }
+			is_policy_gov_idle = no
 		}
 	}
 	text = {
@@ -142,7 +142,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_ext
 		trigger = {
-			is_var_not_null = { VAR = policy_gov_mod }
+			is_policy_gov_idle = no
 		}
 	}
 	text = {
@@ -310,7 +310,7 @@ defined_text = {
 	text = {
 		localisation_key = string_policy_gov_mod_d_desc_3
 		trigger = {
-			is_variable_equal = { which = policy_gov_rating value = -5 }
+			is_policy_gov_rating = { VAL = -5 }
 		}
 	}
 	text = {
@@ -340,7 +340,7 @@ defined_text = {
 	text = {
 		localisation_key = string_policy_gov_mod_c_desc_3
 		trigger = {
-			is_variable_equal = { which = policy_gov_rating value = 5 }
+			is_policy_gov_rating = { VAL = 5 }
 		}
 	}
 	text = {
@@ -358,46 +358,31 @@ defined_text = {
 	text = {
 		localisation_key = string_adj.a.1
 		trigger = {
-			OR = {
-				is_variable_equal = { which = policy_gov_rating value = 1 }
-				is_variable_equal = { which = policy_gov_rating value = -1 }
-			}
+			is_policy_gov_relative_rating = { VAL = 1 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.2
 		trigger = {
-			OR = {
-				is_variable_equal = { which = policy_gov_rating value = 2 }
-				is_variable_equal = { which = policy_gov_rating value = -2 }
-			}
+			is_policy_gov_relative_rating = { VAL = 2 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.3
 		trigger = {
-			OR = {
-				is_variable_equal = { which = policy_gov_rating value = 3 }
-				is_variable_equal = { which = policy_gov_rating value = -3 }
-			}
+			is_policy_gov_relative_rating = { VAL = 3 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.4
 		trigger = {
-			OR = {
-				is_variable_equal = { which = policy_gov_rating value = 4 }
-				is_variable_equal = { which = policy_gov_rating value = -4 }
-			}
+			is_policy_gov_relative_rating = { VAL = 4 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.5
 		trigger = {
-			OR = {
-				is_variable_equal = { which = policy_gov_rating value = 5 }
-				is_variable_equal = { which = policy_gov_rating value = -5 }
-			}
+			is_policy_gov_relative_rating = { VAL = 5 }
 		}
 	}
 }
@@ -415,37 +400,25 @@ defined_text = {
 	text = {
 		localisation_key = string_adj.a.2
 		trigger = {
-			OR = {
-				is_variable_equal = { which = policy_gov_rating value = 1 }
-				is_variable_equal = { which = policy_gov_rating value = -1 }
-			}
+			is_policy_gov_relative_rating = { VAL = 1 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.3
 		trigger = {
-			OR = {
-				is_variable_equal = { which = policy_gov_rating value = 2 }
-				is_variable_equal = { which = policy_gov_rating value = -2 }
-			}
+			is_policy_gov_relative_rating = { VAL = 2 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.4
 		trigger = {
-			OR = {
-				is_variable_equal = { which = policy_gov_rating value = 3 }
-				is_variable_equal = { which = policy_gov_rating value = -3 }
-			}
+			is_policy_gov_relative_rating = { VAL = 3 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.5
 		trigger = {
-			OR = {
-				is_variable_equal = { which = policy_gov_rating value = 4 }
-				is_variable_equal = { which = policy_gov_rating value = -4 }
-			}
+			is_policy_gov_relative_rating = { VAL = 4 }
 		}
 	}
 }
@@ -461,13 +434,13 @@ defined_text = {
     text = {
         localisation_key = color_key_g
         trigger = {
-             check_variable = { which = policy_gov_mod value = 0.001 }
+             is_policy_gov_centalizing = yes
         }
     }
     text = {
         localisation_key = color_key_r
         trigger = {
-            is_var_less_than_val = { VAR = policy_gov_mod VAL = 0 }
+            is_policy_gov_idle = no
         }
     }
 	text = {
