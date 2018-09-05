@@ -118,6 +118,7 @@ update_gov_policy = {
 				update_gov_policy_rating = yes
 				calc_gov_policy_increase_time = yes
 			}
+			else = { set_variable = { which = policy_gov_mod value = 0 } }
 		}
 		else = {	# decentralizing
 			if = {
@@ -131,6 +132,7 @@ update_gov_policy = {
 				update_gov_policy_rating = yes
 				calc_gov_policy_increase_time = yes
 			}
+			else = { set_variable = { which = policy_gov_mod value = 0 } }
 		}
 	}
 
@@ -188,6 +190,10 @@ calc_gov_policy_mod = {
 			INC = 0.004 OUTPUT = policy_gov_adv_mod
 		}
 		change_variable = { which = policy_gov_mod which = policy_gov_adv_mod }
+	}
+	else_if = {
+		limit = { is_var_not_null = { VAR = policy_gov_adv_mod } }
+		set_variable = { which = policy_gov_adv_mod value = 0 }
 	}
 }
 
