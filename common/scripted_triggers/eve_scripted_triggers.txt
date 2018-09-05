@@ -42,7 +42,7 @@ is_var_less_than = {
 }
 
 is_var_less_than_val = {
-	NOT = { check_variable = { which = $VAR$ which = $VAL$ } }
+	NOT = { check_variable = { which = $VAR$ value = $VAL$ } }
 }
 
 is_var_greater_than = {
