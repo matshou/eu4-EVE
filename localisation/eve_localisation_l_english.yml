@@ -57,6 +57,11 @@
 
  string_quant.1:0 "more"
 
+ string_time_frame.1:0 "day"
+ string_time_frame.2:0 "month"
+ string_time_frame.3:0 "year"
+ string_time_frame.s:0 "s"
+
  color_key_r:0 "R"
  color_key_g:0 "G+"
  color_key_n:0 "Y"
