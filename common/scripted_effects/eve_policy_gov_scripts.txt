@@ -8,6 +8,8 @@
 #  policy_gov_neutral			# all
 #  policy_gov_centralized		# country
 #  policy_gov_decentralized		# scope
+#  policy_gov_time_months		# scope
+#  policy_gov_time_years		#
 
 # List of variables:
 # ====================
@@ -19,7 +21,7 @@
 #  policy_gov_gui_val		# same as 'policy_gov_val' but used by GUI only
 #  policy_gov_rul_mod		# from ruler administrative skill
 #  policy_gov_adv_mod		# from advisor administrative skill
-
+#  policy_gov_time			# months or years until rating change
 
 # Scope: country
 # Re-initialize policy values that display in GUI.
@@ -35,10 +37,6 @@ reinit_gov_policy_values = {
 	if = {
 		limit = { is_variable_equal = { which = policy_gov_gui_val value = 0 } }
 		set_variable = { which = policy_gov_gui_val value = 0 }
-	}
-	if = {
-		limit = { is_variable_equal = { which = time_to_increase value = 0 } }
-		set_variable = { which = time_to_increase value = 0 }
 	}
 }
 
@@ -85,7 +83,6 @@ init_gov_policy = {
 
 	# Initialize GUI values here so we don't get errors
 	set_variable = { which = policy_gov_gui_val which = policy_gov_val }
-	set_variable = { which = time_to_increase value = 0 }
 
 	# Set policy as active and add to GUI
 	add_active_policy = domestic_policy_governance
@@ -331,20 +328,37 @@ update_gov_policy_rating = {
 #
 calc_gov_policy_increase_time = {
 
-	set_variable = { which = time_to_increase which = policy_gov_rating }
-	multiply_variable = { which = time_to_increase value = 10 }
+	clr_country_flag = policy_gov_time_months
+	clr_country_flag = policy_gov_time_years
+
+	set_variable = { which = policy_gov_time which = policy_gov_rating }
+	multiply_variable = { which = policy_gov_time value = 10 }
 
 	if = {
-		limit = { check_variable = { which = policy_gov_mod value = 0 } }  		# centralizing
-		change_variable = { which = time_to_increase value = 5 }
-		subtract_variable = { which = time_to_increase which = policy_gov_val }
+		limit = { check_variable = { which = policy_gov_mod value = 0 } }  			# centralizing
+		change_variable = { which = policy_gov_time value = 5 }
+		subtract_variable = { which = policy_gov_time which = policy_gov_val }
 	}
 	else = {
-		subtract_variable = { which = time_to_increase value = 5 }				# decentralizing
-		subtract_variable = { which = time_to_increase which = policy_gov_val }
+		subtract_variable = { which = policy_gov_time value = 5 }				# decentralizing
+		subtract_variable = { which = policy_gov_time which = policy_gov_val }
 	}
 
-	divide_variable = { which = time_to_increase which = policy_gov_mod }
+	# If government is decentralizing the change time will
+	# become a negative value which will mess up our calculation
+	#
+	divide_variable = { which = policy_gov_time which = policy_gov_mod }
+	if = {
+		limit = { is_var_less_than_val = { VAR = policy_gov_time VAL = 0 } }
+		multiply_variable = { which = policy_gov_time value = -1 }
+	}
+
+	if = {
+		limit = { check_variable = { which = policy_gov_time value = 12 } }
+		divide_variable = { which = policy_gov_time value = 12 }
+		set_country_flag = policy_gov_time_years
+	}
+	else = { set_country_flag = policy_gov_time_months }
 }
 
 # Scope: country
