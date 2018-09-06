@@ -265,6 +265,10 @@ update_gov_policy_rating = {
 				set_variable = { which = policy_gov_rating value = 3 }
 			}
 		}
+		else_if = {
+			limit = { is_var_less_than_val = { VAR = policy_gov_val VAL = 45 } }	   # Rating: 5
+			set_variable = { which = policy_gov_rating value = 4 }
+		}
 	}
 	else_if = {
 		limit = { has_country_flag = policy_gov_decentralized }
@@ -313,6 +317,10 @@ update_gov_policy_rating = {
 				limit = { check_variable = { which = policy_gov_val value = -34.999 } }
 				set_variable = { which = policy_gov_rating value = -3 }
 			}
+		}
+		else_if = {
+			limit = { check_variable = { which = policy_gov_val value = -44.999 } }		# Rating: -5
+			set_variable = { which = policy_gov_rating value = -4 }
 		}
 	}
 }
