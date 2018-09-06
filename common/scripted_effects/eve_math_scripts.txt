@@ -105,3 +105,23 @@ round_value_to_decimal = {
 	set_variable = { which = decimals value = 0 }
 	set_variable = { which = normalize_var value = 0 }
 }
+
+# Scope: anywhere
+# Force argument value inside designated range
+clamp_to_max_value = {
+
+	if = {
+		limit = { is_var_greater_than_val = { VAR = $VAR$ VAL = $VAL$ } }
+		set_variable = { which = $VAR$ value = $VAL$ }
+	}
+}
+
+# Scope: anywhere
+# Force argument value inside designated range
+clamp_to_min_value = {
+
+	if = {
+		limit = { is_var_less_than_val = { VAR = $VAR$ VAL = $VAL$ } }
+		set_variable = { which = $VAR$ value = $VAL$ }
+	}
+}
