@@ -49,13 +49,13 @@
  string_prefix.a.1:0 "[Root.policy_gov_mod_desc_adj_1_txt][Root.policy_gov_mod_quant_1_txt]"
  string_prefix.a.2:0 "[Root.policy_gov_mod_desc_adj_2_txt][Root.policy_gov_mod_quant_2_txt]"
 
- string_adj.a.1:0 "slightly "
- string_adj.a.2:0 "increasingly "
- string_adj.a.3:0 "moderately "
- string_adj.a.4:0 "considerably "
- string_adj.a.5:0 "completely "
+ string_adj.a.1:0 " slightly"
+ string_adj.a.2:0 " increasingly"
+ string_adj.a.3:0 " moderately"
+ string_adj.a.4:0 " considerably"
+ string_adj.a.5:0 " completely"
 
- string_quant.1:0 "more"
+ string_quant.1:0 " more"
 
  string_time_frame.1:0 "day"
  string_time_frame.2:0 "month"

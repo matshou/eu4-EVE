@@ -463,7 +463,10 @@ defined_text = {
 	text = {
 		localisation_key = string_quant.1
 		trigger = {
-			NOT = { is_policy_gov_relative_rating = { VAL = 4 } }
+			OR = {
+				is_policy_gov_moving_to_neutral = yes
+				NOT = { is_policy_gov_relative_rating = { VAL = 4 } }
+			}
 		}
 	}
 	text = {
