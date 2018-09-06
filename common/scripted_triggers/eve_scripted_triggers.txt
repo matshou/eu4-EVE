@@ -100,6 +100,9 @@ is_policy_gov_below_min = {
 is_policy_gov_above_max = {
 	is_var_greater_than = { VAR1 = policy_gov_val VAR2 = policy_gov_max }
 }
+is_policy_gov_max_rating = {
+	is_policy_gov_relative_rating = { VAL = 5 }
+}
 
 is_policy_gov_rating_centralized = {
 	has_country_flag = policy_gov_centralized
@@ -118,11 +121,26 @@ is_policy_gov_fully_decentralized = {
 	is_variable_equal = { which = policy_gov_val which = policy_gov_min }
 }
 
+is_policy_gov_decentalizing = {
+	is_var_less_than_val = { VAR = policy_gov_mod VAL = 0 }
+}
 is_policy_gov_centalizing = {
 	is_var_greater_than_val = { VAR = policy_gov_mod VAL = 0 }
 }
 is_policy_gov_idle = {
 	is_variable_equal = { which = policy_gov_mod value = 0 }
+}
+is_policy_gov_moving_to_neutral = {
+	OR = {
+		AND = {
+			is_policy_gov_rating_decentralized = yes
+			is_policy_gov_centalizing = yes
+		}
+		AND = {
+			is_policy_gov_rating_centralized = yes
+			is_policy_gov_decentalizing = yes
+		}
+	}
 }
 
 is_policy_gov_rating = {
