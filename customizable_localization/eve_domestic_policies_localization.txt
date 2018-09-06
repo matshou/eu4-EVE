@@ -44,13 +44,22 @@ defined_text = {
 	random = no
 
 	text = {
-		localisation_key = string_policy_gov_increase_time
+		localisation_key = string_null
 		trigger = {
-			is_var_not_null = { VAR = policy_gov_adv_mod }
+			is_var_null = { VAR = policy_gov_adv_mod }
 		}
 	}
 	text = {
-		localisation_key = string_null
+		localisation_key = string_policy_gov_increase_time_1
+		trigger = {
+			OR = {
+				is_policy_gov_max_rating = no
+				is_policy_gov_moving_to_neutral = yes
+			}
+		}
+	}
+	text = {
+		localisation_key = string_policy_gov_increase_time_2
 		trigger = {
 			always = yes
 		}
@@ -64,7 +73,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_stance
 		trigger = {
-			NOT = { is_policy_gov_rating_neutral = yes }
+			is_policy_gov_rating_neutral = no
 		}
 	}
 	text = {
@@ -352,7 +361,67 @@ defined_text = {
 }
 
 defined_text = {
-	name = policy_gov_mod_desc_adj_txt
+	name = policy_gov_mod_pref_1_txt
+	random = no
+
+	text = {
+		localisation_key = string_prefix.a.1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = policy_gov_mod_pref_2_txt
+	random = no
+
+	text = {
+		localisation_key = string_prefix.a.2
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = policy_gov_mod_quant_1_txt
+	random = no
+
+	text = {
+		localisation_key = string_quant.1
+		trigger = {
+			is_policy_gov_max_rating = no
+		}
+	}
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = policy_gov_mod_quant_2_txt
+	random = no
+
+	text = {
+		localisation_key = string_quant.1
+		trigger = {
+			NOT = { is_policy_gov_relative_rating = { VAL = 4 } }
+		}
+	}
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = policy_gov_mod_desc_adj_1_txt
 	random = no
 
 	text = {
@@ -385,6 +454,12 @@ defined_text = {
 			is_policy_gov_relative_rating = { VAL = 5 }
 		}
 	}
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
 }
 
 defined_text = {
@@ -392,9 +467,15 @@ defined_text = {
 	random = no
 
 	text = {
+		localisation_key = string_null
+		trigger = {
+			is_policy_gov_moving_to_neutral = yes
+		}
+	}
+	text = {
 		localisation_key = string_adj.a.1
 		trigger = {
-			has_country_flag = policy_gov_neutral
+			is_policy_gov_rating_neutral = yes
 		}
 	}
 	text = {
@@ -419,6 +500,12 @@ defined_text = {
 		localisation_key = string_adj.a.5
 		trigger = {
 			is_policy_gov_relative_rating = { VAL = 4 }
+		}
+	}
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
 		}
 	}
 }
