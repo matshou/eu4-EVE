@@ -193,24 +193,6 @@ defined_text = {
 }
 
 defined_text = {
-	name = policy_gov_ext_txt
-	random = no
-
-	text = {
-		localisation_key = string_gov_policy_ext
-		trigger = {
-			is_policy_gov_idle = no
-		}
-	}
-	text = {
-		localisation_key = string_period
-		trigger = {
-			always = yes
-		}
-	}
-}
-
-defined_text = {
     name = policy_gov_mod_1_txt
     random = no
 
