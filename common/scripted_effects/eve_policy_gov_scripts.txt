@@ -5,9 +5,9 @@
 
 # List of flags:
 # ====================
-#  policy_gov_neutral			# all
-#  policy_gov_centralized		# country
-#  policy_gov_decentralized		# scope
+#  policy_gov_neutral			#
+#  policy_gov_centralized		# all
+#  policy_gov_decentralized		# country
 #  policy_gov_time_months		# scope
 #  policy_gov_time_years		#
 
@@ -31,11 +31,11 @@
 reinit_gov_policy_values = {
 
 	if = {
-		limit = { is_variable_equal = { which = policy_gov_max value = 0 } }
+		limit = { is_var_null = { VAR = policy_gov_max } }
 		set_variable = { which = policy_gov_max value = 0 }
 	}
 	if = {
-		limit = { is_variable_equal = { which = policy_gov_gui_val value = 0 } }
+		limit = { is_var_null = { VAR = policy_gov_gui_val } }
 		set_variable = { which = policy_gov_gui_val value = 0 }
 	}
 }
@@ -340,7 +340,7 @@ calc_gov_policy_increase_time = {
 		subtract_variable = { which = policy_gov_time which = policy_gov_val }
 	}
 	else = {
-		subtract_variable = { which = policy_gov_time value = 5 }				# decentralizing
+		subtract_variable = { which = policy_gov_time value = 5 }					# decentralizing
 		subtract_variable = { which = policy_gov_time which = policy_gov_val }
 	}
 
@@ -375,7 +375,6 @@ round_gov_policy_gui_values = {
 		math_ceil = { VAL = policy_gov_time DEC = 0 }
 	}
 }
-
 
 # Scope: country
 # Called once every time a new ruler rises to throne
