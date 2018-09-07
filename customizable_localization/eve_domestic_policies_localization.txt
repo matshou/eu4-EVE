@@ -109,7 +109,7 @@ defined_text = {
 	text = {
 		localisation_key = string_time_frame.s
 		trigger = {
-			check_variable = { which = rating_change_time value = 2 }
+			check_variable = { which = policy_gov_time value = 2 }
 		}
 	}
 	text = {
@@ -187,12 +187,6 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_change
 		trigger = {
-			is_policy_gov_idle = no
-		}
-	}
-	text = {
-		localisation_key = string_null
-		trigger = {
 			always = yes
 		}
 	}
@@ -209,7 +203,7 @@ defined_text = {
 		}
 	}
 	text = {
-		localisation_key = string_null
+		localisation_key = string_period
 		trigger = {
 			always = yes
 		}
