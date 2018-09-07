@@ -114,6 +114,8 @@ in_state = {
 in_capital_state = {
 	local_institution_spread = 0.05
 	local_state_maintenance_modifier = -0.5
+	local_autonomy = -0.15
+	local_unrest = -1.5
 }
 
 coastal = {
