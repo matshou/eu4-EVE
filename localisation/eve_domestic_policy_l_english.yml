@@ -12,8 +12,7 @@
  string_policy_gov_time_format:0 "§Y[Root.policy_gov_time.GetValue]§! [Root.policy_gov_time_frame_txt][Root.policy_gov_time_frame_s_txt]"
  string_policy_gov_increase_time_2:0 "[Root.Adm_Advisor.GetName] reports that we will not be able to strengthen our government policy much more then we already have."
  string_gov_policy_stance:0 "\nAs a result our government is[Root.policy_gov_mod_desc_adj_1_txt] §Y[Root.policy_gov_result_txt]§!"
- string_gov_policy_change:0 "\nIt changes by §[Root.policy_gov_txt_c][Root.policy_gov_mod.GetValue]§! every month[Root.policy_gov_ext_txt]"
- string_gov_policy_ext:0 ", due to:[policy_gov_mod_1_txt] [policy_gov_mod_2_txt] [policy_gov_mod_3_txt] [policy_gov_mod_4_txt] [policy_gov_mod_5_txt] [policy_gov_mod_6_txt] [policy_gov_mod_7_txt]"
+ string_gov_policy_change:0 "\nIt changes by §[Root.policy_gov_txt_c][Root.policy_gov_mod.GetValue]§! every month due to:[policy_gov_mod_1_txt] [policy_gov_mod_2_txt] [policy_gov_mod_3_txt] [policy_gov_mod_4_txt] [policy_gov_mod_5_txt] [policy_gov_mod_6_txt] [policy_gov_mod_7_txt]"
 
  string_gov_policy_mod_1:0 "\n [Root.Monarch.GetName]'s Administrative Skill: §G+[Root.policy_gov_rul_mod.GetValue]§!"
  string_gov_policy_mod_1.a:0 "\n Regency Council: §R-0.05§!"
