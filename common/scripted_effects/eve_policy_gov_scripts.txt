@@ -370,9 +370,9 @@ round_gov_policy_gui_values = {
 	if = {
 		limit = { ai = no }
 
-		#round_value_to_decimal = { VALUE = policy_gov_mod DECIMALS = 2 }
-		#round_value_to_decimal = { VALUE = policy_gov_gui_val DECIMALS = 1 }
-		#round_value_to_decimal = { VALUE = time_to_increase DECIMALS = 0 }
+		math_round = { VAL = policy_gov_mod DEC = 2 }
+		math_round = { VAL = policy_gov_gui_val DEC = 1 }
+		math_ceil = { VAL = policy_gov_time DEC = 0 }
 	}
 }
 
