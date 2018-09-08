@@ -61,3 +61,15 @@
  string_policy_gov_mod_c_desc_2:0 ", as provincial administrative and economic functions are more controlled by state authorities"
  string_policy_gov_mod_c_desc_3:0 " and provincial administrative and economic functions are fully controlled by state authorities"
 
+ raised_vassal_taxes_1:0 "Standard Vassal Tax Rate"
+ raised_vassal_taxes_2:0 "Increased Vassal Tax Rate"
+ raised_vassal_taxes_3:0 "Medium Vassal Tax Rate"
+ raised_vassal_taxes_4:0 "High Vassal Tax Rate"
+ raised_vassal_taxes_5:0 "Outrageous Vassal Tax Rate"
+
+ ##########################
+ # Decisions Localization #
+ ##########################
+
+ raise_vassal_taxes:0 "Raise Vassal Taxes"
+
