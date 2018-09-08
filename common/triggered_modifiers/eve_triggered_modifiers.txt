@@ -31,7 +31,7 @@ centralization_level_2 = {
 	}
 
 	trigger = {
-		is_variable_equal = { which = policy_gov_rating value = 2 }
+		is_policy_gov_rating = { VAL = 2 }
 	}
 	
 	all_power_cost = -0.06
@@ -53,7 +53,7 @@ centralization_level_3 = {
 	}
 
 	trigger = {
-		is_variable_equal = { which = policy_gov_rating value = 3 }
+		is_policy_gov_rating = { VAL = 3 }
 	}
 	
 	all_power_cost = -0.09
@@ -75,7 +75,7 @@ centralization_level_4 = {
 	}
 
 	trigger = {
-		is_variable_equal = { which = policy_gov_rating value = 4 }
+		is_policy_gov_rating = { VAL = 4 }
 	}
 	
 	all_power_cost = -0.12
@@ -97,7 +97,7 @@ centralization_level_5 = {
 	}
 
 	trigger = {
-		is_variable_equal = { which = policy_gov_rating value = 5 }
+		is_policy_gov_rating = { VAL = 5 }
 	}
 	
 	all_power_cost = -0.15
@@ -123,7 +123,7 @@ decentralization_level_1 = {
 	}
 
 	trigger = {
-		is_variable_equal = { which = policy_gov_rating value = -1 }
+		is_policy_gov_rating = { VAL = -1 }
 	}
 	
 	all_power_cost = 0.03
@@ -142,7 +142,7 @@ decentralization_level_2 = {
 	}
 
 	trigger = {
-		is_variable_equal = { which = policy_gov_rating value = -2 }
+		is_policy_gov_rating = { VAL = -2 }
 	}
 	
 	all_power_cost = 0.06
@@ -161,7 +161,7 @@ decentralization_level_3 = {
 	}
 
 	trigger = {
-		is_variable_equal = { which = policy_gov_rating value = -3 }
+		is_policy_gov_rating = { VAL = -3 }
 	}
 
 	all_power_cost = 0.09
@@ -180,7 +180,7 @@ decentralization_level_4 = {
 	}
 
 	trigger = {
-		is_variable_equal = { which = policy_gov_rating value = -4 }
+		is_policy_gov_rating = { VAL = -4 }
 	}
 	
 	all_power_cost = 0.12
@@ -199,7 +199,7 @@ decentralization_level_5 = {
 	}
 
 	trigger = {
-		is_variable_equal = { which = policy_gov_rating value = -5 }
+		is_policy_gov_rating = { VAL = -5 }
 	}
 
 	all_power_cost = 0.15
