@@ -1,0 +1,29 @@
+
+########################################
+# EVE - Governance Decision Modifiers
+########################################
+
+raised_vassal_taxes_1 = {
+	vassal_income = 0.06
+	liberty_desire = 7
+}
+
+raised_vassal_taxes_2 = {
+	vassal_income = 0.12
+	liberty_desire = 14
+}
+
+raised_vassal_taxes_3 = {
+	vassal_income = 0.18
+	liberty_desire = 21
+}
+
+raised_vassal_taxes_4 = {
+	vassal_income = 0.24
+	liberty_desire = 28
+}
+
+raised_vassal_taxes_5 = {
+	vassal_income = 0.30
+	liberty_desire = 35
+}

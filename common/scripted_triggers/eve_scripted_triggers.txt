@@ -154,6 +154,10 @@ is_policy_gov_relative_rating = {
 	}
 }
 
+can_raise_vassal_taxes = {
+	is_var_less_than = { VAR1 = vassal_tax_level VAR2 = policy_gov_rating }
+}
+
 ##############################
 # EVE - Building Triggers
 ##############################
