@@ -424,3 +424,17 @@ get_mint_advisor_lvl = {
 		set_variable = { which = output_var value = 1 }
 	}
 }
+
+# Scope: country
+# Used in governance decisions when enacting new vassal taxes
+#
+# NEW - country modifier to be applied
+# OLD - country modifier to be removed
+#
+increase_vassal_taxes = {
+
+	add_country_modifier = { name = $NEW$ duration = -1 }
+	hidden_effect = {
+		remove_country_modifier = $OLD$
+	}
+}

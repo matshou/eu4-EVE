@@ -1,0 +1,47 @@
+
+###############################
+# EVE - Governance Decisions
+###############################
+
+country_decisions = {
+
+	raise_vassal_taxes = {
+		major = no
+		potential = {
+			#num_of_vassals = 1
+			can_raise_vassal_taxes = yes
+			is_policy_gov_rating_neutral = no
+			is_policy_gov_max_rating = no
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			if = {
+				limit = { has_country_modifier = raised_vassal_taxes_4 }
+				increase_vassal_taxes = { NEW = raised_vassal_taxes_5 OLD = raised_vassal_taxes_4 }
+			}
+			else_if = {
+				limit = { has_country_modifier = raised_vassal_taxes_3 }
+				increase_vassal_taxes = { NEW = raised_vassal_taxes_4 OLD = raised_vassal_taxes_3 }
+			}
+			else_if = {
+				limit = { has_country_modifier = raised_vassal_taxes_2 }
+				increase_vassal_taxes = { NEW = raised_vassal_taxes_3 OLD = raised_vassal_taxes_2 }
+			}
+			else_if = {
+				limit = { has_country_modifier = raised_vassal_taxes_1 }
+				increase_vassal_taxes = { NEW = raised_vassal_taxes_2 OLD = raised_vassal_taxes_1 }
+			}
+			else = {
+				add_country_modifier = { name = raised_vassal_taxes_1 duration = -1 }
+			}
+			hidden_effect = {
+				change_variable = { which = vassal_tax_level value = 1 }
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
