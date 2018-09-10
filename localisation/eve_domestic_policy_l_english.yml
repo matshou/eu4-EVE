@@ -73,3 +73,7 @@
 
  raise_vassal_taxes:0 "Raise Vassal Taxes"
 
+ tooltip_can_raise_vassal_taxes:0 "[This.GetName] can further raise vassal tax rate."
+ tooltip_policy_gov_not_neutral_max:0 "Governance policy rating NOT maximum or neutral."
+ tooltip_has_raised_vassal_taxes:0 "[This.GetName] has raised vassal tax rate."
+ 
