@@ -85,6 +85,19 @@ on_monthly_pulse = {
 			initialize_country = yes
 		}
 	}
+	# Handle vassal tax rate initialization when a country gains
+	# its first or loses its only vassal
+	if = {
+		limit = { country_has_vassal = yes }
+		if = {
+			limit = { has_vassal_tax_rate = no }
+			enact_vassal_tax_rate = yes
+		}
+	}
+	else_if = {
+		limit = { has_vassal_tax_rate = yes }
+		repeal_vassal_taxes = yes
+	}
 
 	update_all_states = yes
 	update_non_state_provinces = yes
