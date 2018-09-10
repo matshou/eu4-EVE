@@ -425,16 +425,73 @@ get_mint_advisor_lvl = {
 	}
 }
 
+##################################
+# EVE - Vassal Tax Rate Scripts
+##################################
+
 # Scope: country
 # Used in governance decisions when enacting new vassal taxes
 #
-# NEW - country modifier to be applied
-# OLD - country modifier to be removed
+# NEW_RATE  - New tax rate to enact
+# PAST_RATE - Old tax rate to repeal
 #
-increase_vassal_taxes = {
+change_vassal_tax_rate = {
 
-	add_country_modifier = { name = $NEW$ duration = -1 }
+	add_country_modifier = { name = vassal_tax_rate_$NEW_RATE$ duration = -1 }
 	hidden_effect = {
-		remove_country_modifier = $OLD$
+		remove_vassal_tax_rate = { RATE = $PAST_RATE$ }
 	}
+}
+
+# Scope: country
+# Used in governance decisions when lowering vassal tax rates
+#
+remove_vassal_tax_rate = {
+
+	set_variable = { which = arg_var value = $RATE$ }
+	if = {
+		limit = { is_in_val_range = { VAR = arg_var MIN = 1 MAX = 5 } }
+		remove_country_modifier = vassal_tax_rate_$RATE$
+	}
+	else = { log = "EVE: Error 450 >> rate value '[This.arg_var.GetValue]' out of range." }
+}
+
+# Scope: country
+# Used to initialize tax rate after gaining a first vassal
+#
+enact_vassal_tax_rate = {
+
+	add_country_modifier = { name = vassal_tax_rate_1 duration = -1 }
+	set_country_flag = vassal_tax_rate
+}
+
+# Scope: country
+# Remove current vassal tax rate from country.
+# Note that 'enact_vassal_tax_rate' will have to be called to
+# initialize if we want to have tax rates again.
+#
+repeal_vassal_taxes = {
+
+	if = {
+		limit = { has_country_modifier = vassal_tax_rate_5 }
+		remove_country_modifier = vassal_tax_rate_5
+	}
+	if = {
+		limit = { has_country_modifier = vassal_tax_rate_4 }
+		remove_country_modifier = vassal_tax_rate_4
+	}
+	else_if = {
+		limit = { has_country_modifier = vassal_tax_rate_3 }
+		remove_country_modifier = vassal_tax_rate_3
+	}
+	else_if = {
+		limit = { has_country_modifier = vassal_tax_rate_2 }
+		remove_country_modifier = vassal_tax_rate_2
+	}
+	else_if = {
+		limit = { has_country_modifier = vassal_tax_rate_1 }
+		remove_country_modifier = vassal_tax_rate_1
+	}
+	else = { log = "EVE: Error 474 >> Unable to repeal vassal taxes, missing rate modifier." }
+	clr_country_flag = vassal_tax_rate
 }
