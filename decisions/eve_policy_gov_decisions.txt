@@ -14,7 +14,15 @@ country_decisions = {
 			is_policy_gov_max_rating = no
 		}
 		allow = {
-			always = yes
+			custom_trigger_tooltip = {
+				tooltip = tooltip_can_raise_vassal_taxes
+				can_raise_vassal_taxes = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = tooltip_policy_gov_not_neutral_max
+				is_policy_gov_rating_neutral = no
+				is_policy_gov_max_rating = no
+			}
 		}
 		effect = {
 			if = {

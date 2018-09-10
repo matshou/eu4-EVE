@@ -37,6 +37,14 @@ is_global_scope = {
 # EVE - Math Triggers
 ##############################
 
+is_in_val_range = {
+	check_variable = { which = $VAR$ which = $MIN$ }
+	OR = {
+		is_variable_equal = { which = $VAR$ value = $MAX$ }
+		is_var_less_than_val = { VAR = $VAR$ VAL = $MAX$ }
+	}
+}
+
 is_var_less_than = {
 	NOT = { check_variable = { which = $VAR1$ which = $VAR2$ } }
 }
@@ -88,6 +96,12 @@ has_regency_council = {
 has_interregnum = {
 	has_non_consort_regency = yes
 	has_heir = no
+}
+
+country_has_vassal = {
+	any_subject_country = {
+		vassal_of = PREV
+	}
 }
 
 ##############################
@@ -156,6 +170,14 @@ is_policy_gov_relative_rating = {
 
 can_raise_vassal_taxes = {
 	is_var_less_than = { VAR1 = vassal_tax_level VAR2 = policy_gov_rating }
+}
+
+has_raised_vassal_taxes = {
+	check_variable = { which = vassal_tax_level value = 1 }
+}
+
+has_vassal_tax_rate = {
+	has_country_flag = vassal_tax_rate
 }
 
 ##############################
