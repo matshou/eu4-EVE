@@ -15,75 +15,42 @@ country_decisions = {
 				tooltip = tooltip_can_raise_vassal_taxes
 				can_raise_vassal_taxes = yes
 			}
-			custom_trigger_tooltip = {
-				tooltip = tooltip_policy_gov_not_neutral_max
-				is_policy_gov_rating_neutral = no
-				is_policy_gov_max_rating = no
-			}
 		}
 		effect = {
 			if = {
-				limit = { has_country_modifier = vassal_tax_rate_4 }
-				change_vassal_tax_rate = { NEW_RATE = 5 PAST_RATE = 4 }
 			}
 			else_if = {
-				limit = { has_country_modifier = vassal_tax_rate_3 }
-				change_vassal_tax_rate = { NEW_RATE = 4 PAST_RATE = 3 }
 			}
 			else_if = {
-				limit = { has_country_modifier = vassal_tax_rate_2 }
-				change_vassal_tax_rate = { NEW_RATE = 3 PAST_RATE = 2 }
 			}
 			else_if = {
-				limit = { has_country_modifier = vassal_tax_rate_1 }
-				change_vassal_tax_rate = { NEW_RATE = 2 PAST_RATE = 1 }
 			}
-			else = {
-				enact_vassal_tax_rate = yes
 			}
-			hidden_effect = {
-				change_variable = { which = vassal_tax_level value = 1 }
 			}
 		}
 		ai_will_do = {
 			factor = 0
 		}
 	}
-
 	lower_vassal_taxes = {
 		major = no
 		potential = {
 			country_has_vassal = yes
-			has_raised_vassal_taxes = yes
 		}
 		allow = {
 			custom_trigger_tooltip = {
-				tooltip = tooltip_has_raised_vassal_taxes
-				always = yes
 			}
 		}
 		effect = {
 			if = {
-				limit = { has_country_modifier = vassal_tax_rate_5 }
-				change_vassal_tax_rate = { NEW_RATE = 4 PAST_RATE = 5 }
 			}
 			else_if = {
-				limit = { has_country_modifier = vassal_tax_rate_4 }
-				change_vassal_tax_rate = { NEW_RATE = 3 PAST_RATE = 4 }
 			}
 			else_if = {
-				limit = { has_country_modifier = vassal_tax_rate_3 }
-				change_vassal_tax_rate = { NEW_RATE = 2 PAST_RATE = 3 }
 			}
 			else_if = {
-				limit = { has_country_modifier = vassal_tax_rate_2 }
-				change_vassal_tax_rate = { NEW_RATE = 1 PAST_RATE = 2 }
 			}
-			else = {
-				repeal_vassal_taxes = yes
 			}
-			hidden_effect = {
-				subtract_variable = { which = vassal_tax_level value = 1 }
 			}
 		}
 		ai_will_do = {

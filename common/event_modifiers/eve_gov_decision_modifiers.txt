@@ -3,26 +3,12 @@
 # EVE - Vassal Tax Rates
 ############################
 
-vassal_tax_rate_1 = {
-	vassal_income = 0.1
 }
 
-vassal_tax_rate_2 = {
-	vassal_income = 0.2
-	liberty_desire = 8
 }
 
-vassal_tax_rate_3 = {
-	vassal_income = 0.3
-	liberty_desire = 16
 }
 
-vassal_tax_rate_4 = {
-	vassal_income = 0.4
-	liberty_desire = 24
 }
 
-vassal_tax_rate_5 = {
-	vassal_income = 0.5
-	liberty_desire = 32
 }

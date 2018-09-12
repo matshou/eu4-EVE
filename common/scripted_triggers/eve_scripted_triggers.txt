@@ -169,15 +169,11 @@ is_policy_gov_relative_rating = {
 }
 
 can_raise_vassal_taxes = {
-	is_var_less_than = { VAR1 = vassal_tax_level VAR2 = policy_gov_rating }
 }
 
-has_raised_vassal_taxes = {
-	check_variable = { which = vassal_tax_level value = 1 }
 }
 
 has_vassal_tax_rate = {
-	has_country_flag = vassal_tax_rate
 }
 
 ##############################
