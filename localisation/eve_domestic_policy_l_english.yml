@@ -61,12 +61,6 @@
  string_policy_gov_mod_c_desc_2:0 ", as provincial administrative and economic functions are more controlled by state authorities"
  string_policy_gov_mod_c_desc_3:0 " and provincial administrative and economic functions are fully controlled by state authorities"
 
- vassal_tax_rate_1:0 "Standard Vassal Tax Rate"
- vassal_tax_rate_2:0 "Increased Vassal Tax Rate"
- vassal_tax_rate_3:0 "Medium Vassal Tax Rate"
- vassal_tax_rate_4:0 "High Vassal Tax Rate"
- vassal_tax_rate_5:0 "Outrageous Vassal Tax Rate"
-
  ##########################
  # Decisions Localization #
  ##########################
@@ -77,5 +71,3 @@
  lower_vassal_taxes_desc:0 ""
 
  tooltip_can_raise_vassal_taxes:0 "[This.GetName] can further raise vassal tax rate."
- tooltip_policy_gov_not_neutral_max:0 "Governance policy rating NOT maximum or neutral."
- tooltip_has_raised_vassal_taxes:0 "[This.GetName] has raised vassal tax rate."
