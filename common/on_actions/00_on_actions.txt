@@ -16,7 +16,7 @@ on_startup = {
 			set_variable = { which = init_num value = 0 }
 
 			# set country_id for every country in the game
-			every_country = { initialize_country = yes }
+			every_country = { core.init_country = yes }
 
 			# set flag after running mod for the first time
 			set_global_flag = eve_initialized
