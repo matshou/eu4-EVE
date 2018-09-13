@@ -18,17 +18,17 @@ autonomy.check_for_change = {
 		# For some reason each time a province becomes uncolonized it
 		# loses all custom data, so we need to set 'owner_id' again
 		if = {
-			limit = { is_var_less_than_val = { VAR = owner_id VAL = 1 } }
+			limit = { is_var_less_than_val = { var = owner_id val = 1 } }
 			autonomy.call_for_province_update = yes
 			core.set_prov_owner_id = yes
 		}
 		else = {
 			# do this after handling uncolonized territory
-			core.export_var_to_prev = { VAR = owner_id }
+			core.export_var_to_prev = { var = owner_id }
 
 			if = {			# newly gained province
 				limit = {
-					owner = { is_var_not_equal_to = { VAR1 = output_var VAR2 = country_id } }
+					owner = { is_var_not_equal_to = { var1 = output_var var2 = country_id } }
 				}
 
 				# Conquered another nation's capital province

@@ -9,16 +9,16 @@ centralization_level_1 = {
 	}
 
 	trigger = {
-		is_policy_gov_rating = { VAL = 1 }
+		is_policy_gov_rating = { val = 1 }
 	}
-	
+
 	all_power_cost = -0.03
 	global_autonomy = -0.07
 	administrative_efficiency = 0.04
 	inflation_reduction = 0.03
 	global_spy_defence = 0.06
 	spy_offence = 0.03
-	
+
 	fort_maintenance_modifier = 0.05
 	state_maintenance_modifier = 0.1
 }
@@ -29,16 +29,16 @@ centralization_level_2 = {
 	}
 
 	trigger = {
-		is_policy_gov_rating = { VAL = 2 }
+		is_policy_gov_rating = { val = 2 }
 	}
-	
+
 	all_power_cost = -0.06
 	global_autonomy = -0.14
 	administrative_efficiency = 0.08
 	inflation_reduction = 0.06
 	global_spy_defence = 0.12
 	spy_offence = 0.06
-	
+
 	fort_maintenance_modifier = 0.1
 	state_maintenance_modifier = 0.2
 }
@@ -49,16 +49,16 @@ centralization_level_3 = {
 	}
 
 	trigger = {
-		is_policy_gov_rating = { VAL = 3 }
+		is_policy_gov_rating = { val = 3 }
 	}
-	
+
 	all_power_cost = -0.09
 	global_autonomy = -0.21
 	administrative_efficiency = 0.12
 	inflation_reduction = 0.09
 	global_spy_defence = 0.18
 	spy_offence = 0.09
-	
+
 	fort_maintenance_modifier = 0.15
 	state_maintenance_modifier = 0.3
 }
@@ -69,16 +69,16 @@ centralization_level_4 = {
 	}
 
 	trigger = {
-		is_policy_gov_rating = { VAL = 4 }
+		is_policy_gov_rating = { val = 4 }
 	}
-	
+
 	all_power_cost = -0.12
 	global_autonomy = -0.28
 	administrative_efficiency = 0.16
 	inflation_reduction = 0.12
 	global_spy_defence = 0.24
 	spy_offence = 0.12
-	
+
 	fort_maintenance_modifier = 0.2
 	state_maintenance_modifier = 0.4
 }
@@ -89,16 +89,16 @@ centralization_level_5 = {
 	}
 
 	trigger = {
-		is_policy_gov_rating = { VAL = 5 }
+		is_policy_gov_rating = { val = 5 }
 	}
-	
+
 	all_power_cost = -0.15
 	global_autonomy = -0.35
 	administrative_efficiency = 0.20
 	inflation_reduction = 0.15
 	global_spy_defence = 0.30
 	spy_offence = 0.15
-	
+
 	fort_maintenance_modifier = 0.25
 	state_maintenance_modifier = 0.5
 }
@@ -113,13 +113,13 @@ decentralization_level_1 = {
 	}
 
 	trigger = {
-		is_policy_gov_rating = { VAL = -1 }
+		is_policy_gov_rating = { val = -1 }
 	}
-	
+
 	all_power_cost = 0.03
 	global_spy_defence = -0.07
 	spy_offence = -0.04
-	
+
 	state_maintenance_modifier = -0.15
 	war_exhaustion_cost = -0.1
 	num_accepted_cultures = 1
@@ -132,13 +132,13 @@ decentralization_level_2 = {
 	}
 
 	trigger = {
-		is_policy_gov_rating = { VAL = -2 }
+		is_policy_gov_rating = { val = -2 }
 	}
-	
+
 	all_power_cost = 0.06
 	global_spy_defence = -0.14
 	spy_offence = -0.08
-	
+
 	state_maintenance_modifier = -0.3
 	war_exhaustion_cost = -0.2
 	num_accepted_cultures = 2
@@ -151,13 +151,13 @@ decentralization_level_3 = {
 	}
 
 	trigger = {
-		is_policy_gov_rating = { VAL = -3 }
+		is_policy_gov_rating = { val = -3 }
 	}
 
 	all_power_cost = 0.09
 	global_spy_defence = -0.21
 	spy_offence = -0.12
-	
+
 	state_maintenance_modifier = -0.45
 	war_exhaustion_cost = -0.3
 	num_accepted_cultures = 3
@@ -170,13 +170,13 @@ decentralization_level_4 = {
 	}
 
 	trigger = {
-		is_policy_gov_rating = { VAL = -4 }
+		is_policy_gov_rating = { val = -4 }
 	}
-	
+
 	all_power_cost = 0.12
 	global_spy_defence = -0.28
 	spy_offence = -0.16
-	
+
 	state_maintenance_modifier = -0.6
 	war_exhaustion_cost = -0.4
 	num_accepted_cultures = 4
@@ -189,13 +189,13 @@ decentralization_level_5 = {
 	}
 
 	trigger = {
-		is_policy_gov_rating = { VAL = -5 }
+		is_policy_gov_rating = { val = -5 }
 	}
 
 	all_power_cost = 0.15
 	global_spy_defence = -0.35
 	spy_offence = -0.2
-	
+
 	state_maintenance_modifier = -0.75
 	war_exhaustion_cost = -0.5
 	num_accepted_cultures = 5

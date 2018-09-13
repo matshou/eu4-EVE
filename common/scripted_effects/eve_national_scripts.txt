@@ -11,12 +11,12 @@ capital.lose_status = {
 	capital.remove_modifiers = yes
 
 	owner = {
-		ROOT = { core.export_var_to_prev = { VAR = owner_id } }
+		ROOT = { core.export_var_to_prev = { var = owner_id } }
 
 		# This province was gained as a concession in a war or
 		# for other reasons has ended up as territory of another country
 		if = {
-			limit = { is_var_not_equal_to = { VAR1 = output_var VAR2 = country_id } }
+			limit = { is_var_not_equal_to = { var1 = output_var var2 = country_id } }
 
 			# Find capital province previous owner.
 			# Normally we would do this by using 'previous_owner' variable,
@@ -27,7 +27,7 @@ capital.lose_status = {
 					# output variable will be set to -1 if country is found
 					NOT = { PREV = { is_variable_equal = { which = output_var value = -1 } } }
 				}
-				PREV = { core.export_var_to_prev = { VAR = output_var } }	# capital owner_id
+				PREV = { core.export_var_to_prev = { var = output_var } }	# capital owner_id
 				if = {
 					limit = { is_variable_equal = { which = output_var which = country_id } }
 					PREV = { set_variable = { which = output_var value = -1 } }	# break loop
@@ -49,7 +49,7 @@ capital.lose_status = {
 				# by owner when checking for territorial change
 				if = {
 					limit = { NOT = { has_province_flag = conquered_capital } }
-					autonomy.call_for_update = yes
+					autonomy.call_for_province_update = yes
 					capital_scope = { core.fire_monthly_pulse = yes }
 				}
 				else = { clr_province_flag = conquered_capital }
