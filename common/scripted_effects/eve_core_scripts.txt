@@ -158,7 +158,8 @@ core.set_prov_owner_id = {
 # Currently performing an interlaced scan with intervals using while loops
 # is the only way to transfer variable values between scopes.
 # @scope anywhere
-# @param var variable to export
+# @param var (variable to export)
+# @return output_var
 #
 core.export_var_to_prev = {
 

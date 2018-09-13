@@ -13,11 +13,11 @@
 # @scope anywhere
 # @access public
 #
-# @param output var to export result to
-# @param value val for calculation
-# @param steps max modifier step val
-# @param mod base modifier value
-# @param inc increase value
+# @param output (var to export result to)
+# @param val (value for calculation)
+# @param steps (max modifier step value)
+# @param mod (base modifier value)
+# @param inc (increase value)
 #
 calculate_progressive_mod = {
 
@@ -54,9 +54,12 @@ calculate_progressive_mod = {
 # @scope country
 # @access public
 #
-# @param round returns closest float or int to the argument
-# @param floor returns largest int less than or equal to the argument
-# @param ceil returns smallest int greater than or equal to the argument
+# @param val (value to round)
+# @param int (num of decimal places to round)
+#
+# @method round (returns closest float or int to the argument)
+# @method floor (returns largest int less than or equal to the argument)
+# @method ceil (returns smallest int greater than or equal to the argument)
 #
 math_round = {
 	math_round_func = { VALUE = $VAL$ DECIMALS = $DEC$ MODE = 0 }
@@ -74,9 +77,9 @@ math_ceil = {
 # @scope country
 # @access private
 #
-# @param value val to round
-# @param decimals num of decimal places
-# @param mode rounding operation
+# @param val (value to round)
+# @param decimals (num of decimal places)
+# @param mode (rounding operation)
 #
 math_round_func = {
 
@@ -147,6 +150,7 @@ math_round_func = {
 
 # Force argument value inside designated range
 # @scope anywhere
+# @param var, val
 #
 clamp_to_max_value = {
 
@@ -158,6 +162,7 @@ clamp_to_max_value = {
 
 # Force argument value inside designated range
 # @scope anywhere
+# @param var, val
 #
 clamp_to_min_value = {
 
