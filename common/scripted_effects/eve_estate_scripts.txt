@@ -3,9 +3,9 @@
 # EVE - Estate Scripts
 ##################################
 
-# Scope: province
 # Apply an estate modifier that gives temporary loyalty
 # bonus when developing their provinces
+# @scope province
 #
 develop_estate_land = {
 	if = {

@@ -10,8 +10,8 @@
 #  adm_center_found			# country
 
 
-# Scope: country
-# Update all states and all provinces belonging to states
+# Update all states and provinces belonging to states
+# @scope country
 #
 update_all_states = {
 
@@ -43,9 +43,9 @@ update_all_states = {
 	}
 }
 
-# Scope: province
 # Update every province in the currently scoped state.
 # This scope will be entered once for every province in current state
+# @scope province
 #
 update_state_in_scope = {
 
@@ -92,8 +92,8 @@ update_state_in_scope = {
 	}
 }
 
-# Scope: country
 # Update every province that does not belong to a state
+# @scope country
 #
 update_non_state_provinces = {
 
@@ -110,9 +110,9 @@ update_non_state_provinces = {
 	}
 }
 
-# Scope: province
 # Calculate development of each province in current state scope
-# and export the value to owner scope as 'output_var'
+# @scope province
+# @return owner:output_var
 #
 get_state_development = {
 
@@ -126,9 +126,9 @@ get_state_development = {
 	}
 }
 
-# Scope: country
 # Calculate the ratio of $DEV$ in relation to total country development.
-# Value will be exported as 'output_var'
+# @scope country
+# @return output_var
 #
 get_state_dev_ratio = {
 
@@ -138,9 +138,9 @@ get_state_dev_ratio = {
 	set_variable = { which = int_var value = 0 }
 }
 
-# Scope: province
-# Apply jurisdiction province modifiers to current state
+# Apply jurisdiction province modifiers to current state.
 # Needs to be called from a province with an administrative building
+# @scope province
 #
 apply_state_jurisdiction = {
 
@@ -152,8 +152,8 @@ apply_state_jurisdiction = {
 	}
 }
 
-# Scope: province
 # Remove jurisdiction province modifiers to current state
+# @scope province
 #
 remove_state_jurisdiction = {
 
