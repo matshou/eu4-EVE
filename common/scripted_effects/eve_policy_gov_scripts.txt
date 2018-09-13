@@ -31,11 +31,11 @@
 reinit_gov_policy_values = {
 
 	if = {
-		limit = { is_var_null = { VAR = policy_gov_max } }
+		limit = { is_var_null = { var = policy_gov_max } }
 		set_variable = { which = policy_gov_max value = 0 }
 	}
 	if = {
-		limit = { is_var_null = { VAR = policy_gov_gui_val } }
+		limit = { is_var_null = { var = policy_gov_gui_val } }
 		set_variable = { which = policy_gov_gui_val value = 0 }
 	}
 }
@@ -101,7 +101,7 @@ update_gov_policy = {
 
 	if = {
 		# Update only if modifier would affect policy
-		limit = { is_var_not_null = { VAR = policy_gov_mod } }
+		limit = { is_var_not_null = { var = policy_gov_mod } }
 		if = {
 			limit = { is_policy_gov_centalizing = yes }
 			if = {
@@ -183,13 +183,13 @@ calc_gov_policy_mod = {
 		get_mint_advisor_lvl = yes
 
 		calculate_progressive_mod = {											# advisor skill
-			VALUE = output_var STEPS = 5 MOD = 0.015							# min: 0, max: 0.091
-			INC = 0.004 OUTPUT = policy_gov_adv_mod
+			val = output_var steps = 5 mod = 0.015							# min: 0, max: 0.091
+			inc = 0.004 output = policy_gov_adv_mod
 		}
 		change_variable = { which = policy_gov_mod which = policy_gov_adv_mod }
 	}
 	else_if = {
-		limit = { is_var_not_null = { VAR = policy_gov_adv_mod } }
+		limit = { is_var_not_null = { var = policy_gov_adv_mod } }
 		set_variable = { which = policy_gov_adv_mod value = 0 }
 	}
 }
@@ -208,7 +208,7 @@ update_gov_policy_rating = {
 			clr_country_flag = policy_gov_neutral
 		}
 		else_if = {
-			limit = { is_var_less_than_val = { VAR = policy_gov_val VAL = -4.999 } }
+			limit = { is_var_less_than_val = { var = policy_gov_val val = -4.999 } }
 			set_variable = { which = policy_gov_rating value = -1 }
 			set_country_flag = policy_gov_decentralized                 # just became decentralized
 			clr_country_flag = policy_gov_neutral
@@ -223,7 +223,7 @@ update_gov_policy_rating = {
 				set_variable = { which = policy_gov_rating value = 2 }
 			}
 			else_if = {
-				limit = { is_var_less_than_val = { VAR = policy_gov_val VAL = 5 } }
+				limit = { is_var_less_than_val = { var = policy_gov_val val = 5 } }
 				set_variable = { which = policy_gov_rating value = 0 }
 				clr_country_flag = policy_gov_centralized					# no longer centralized
 				set_country_flag = policy_gov_neutral
@@ -236,7 +236,7 @@ update_gov_policy_rating = {
 				set_variable = { which = policy_gov_rating value = 3 }
 			}
 			else_if = {
-				limit = { is_var_less_than_val = { VAR = policy_gov_val VAL = 15 } }
+				limit = { is_var_less_than_val = { var = policy_gov_val val = 15 } }
 				set_variable = { which = policy_gov_rating value = 1 }
 			}
 		}
@@ -247,7 +247,7 @@ update_gov_policy_rating = {
 				set_variable = { which = policy_gov_rating value = 4 }
 			}
 			else_if = {
-				limit = { is_var_less_than_val = { VAR = policy_gov_val VAL = 25 } }
+				limit = { is_var_less_than_val = { var = policy_gov_val val = 25 } }
 				set_variable = { which = policy_gov_rating value = 2 }
 			}
 		}
@@ -258,12 +258,12 @@ update_gov_policy_rating = {
 				set_variable = { which = policy_gov_rating value = 5 }
 			}
 			else_if = {
-				limit = { is_var_less_than_val = { VAR = policy_gov_val VAL = 35 } }
+				limit = { is_var_less_than_val = { var = policy_gov_val val = 35 } }
 				set_variable = { which = policy_gov_rating value = 3 }
 			}
 		}
 		else_if = {
-			limit = { is_var_less_than_val = { VAR = policy_gov_val VAL = 45 } }	   # Rating: 5
+			limit = { is_var_less_than_val = { var = policy_gov_val val = 45 } }	   # Rating: 5
 			set_variable = { which = policy_gov_rating value = 4 }
 		}
 	}
@@ -272,7 +272,7 @@ update_gov_policy_rating = {
 		if = {
 			limit = { is_variable_equal = { which = policy_gov_rating value = -1 } }	# Rating: -1
 			if = {
-				limit = { is_var_less_than_val = { VAR = policy_gov_val VAL = -14.999 } }
+				limit = { is_var_less_than_val = { var = policy_gov_val val = -14.999 } }
 				set_variable = { which = policy_gov_rating value = -2 }
 			}
 			else_if = {
@@ -285,7 +285,7 @@ update_gov_policy_rating = {
 		else_if = {
 			limit = { is_variable_equal = { which = policy_gov_rating value = -2 } }    # Rating: -2
 			if = {
-				limit = { is_var_less_than_val = { VAR = policy_gov_val VAL = -24.999 } }
+				limit = { is_var_less_than_val = { var = policy_gov_val val = -24.999 } }
 				set_variable = { which = policy_gov_rating value = -3 }
 			}
 			else_if = {
@@ -296,7 +296,7 @@ update_gov_policy_rating = {
 		else_if = {
 			limit = { is_variable_equal = { which = policy_gov_rating value = -3 } }    # Rating: -3
 			if = {
-				limit = { is_var_less_than_val = { VAR = policy_gov_val VAL = -34.999 } }
+				limit = { is_var_less_than_val = { var = policy_gov_val val = -34.999 } }
 				set_variable = { which = policy_gov_rating value = -4 }
 			}
 			else_if = {
@@ -307,7 +307,7 @@ update_gov_policy_rating = {
 		else_if = {
 			limit = { is_variable_equal = { which = policy_gov_rating value = -4 } }    # Rating: -4
 			if = {
-				limit = { is_var_less_than_val = { VAR = policy_gov_val VAL = -44.999 } }
+				limit = { is_var_less_than_val = { var = policy_gov_val val = -44.999 } }
 				set_variable = { which = policy_gov_rating value = -5 }
 			}
 			else_if = {
@@ -349,7 +349,7 @@ calc_gov_policy_increase_time = {
 	#
 	divide_variable = { which = policy_gov_time which = policy_gov_mod }
 	if = {
-		limit = { is_var_less_than_val = { VAR = policy_gov_time VAL = 0 } }
+		limit = { is_var_less_than_val = { var = policy_gov_time val = 0 } }
 		multiply_variable = { which = policy_gov_time value = -1 }
 	}
 
@@ -370,9 +370,9 @@ round_gov_policy_gui_values = {
 	if = {
 		limit = { ai = no }
 
-		math_round = { VAL = policy_gov_mod DEC = 2 }
-		math_round = { VAL = policy_gov_gui_val DEC = 1 }
-		math_ceil = { VAL = policy_gov_time DEC = 0 }
+		math_round = { val = policy_gov_mod int = 2 }
+		math_round = { val = policy_gov_gui_val int = 1 }
+		math_ceil = { val = policy_gov_time int = 0 }
 	}
 }
 
@@ -390,8 +390,8 @@ calc_gov_policy_ruler_mod = {
 			has_regency = no
 		}
 		calculate_progressive_mod = {
-			VALUE = output_var STEPS = 6 MOD = 0.022
-			INC = 0.005 OUTPUT = policy_gov_rul_mod
+			val = output_var steps = 6 mod = 0.022
+			inc = 0.005 output = policy_gov_rul_mod
 		}
 	}
 	else = {

@@ -27,22 +27,22 @@ calculate_progressive_mod = {
 	# increase:	 	22    27     32 [mid] 27	   22     17
 	# output:		0.022 - 0.049 - 0.081 - 0.108 - 0.13 - 0.147
 
-	set_variable = { which = $OUTPUT$ value = 0 }
+	set_variable = { which = $output$ value = 0 }
 	set_variable = { which = counter_var value = 0 }
-	set_variable = { which = mod_val value = $MOD$ }
+	set_variable = { which = mod_val value = $mod$ }
 
-	set_variable = { which = counter2_var value = $STEPS$ }
+	set_variable = { which = counter2_var value = $steps$ }
 	divide_variable = { which = counter2_var value = 2 }
 	subtract_variable = { which = counter2_var value = 1 }    # take lower half value
 
 	while = {
-		limit = { NOT = { is_variable_equal = { which = counter_var which = $VALUE$ } } }
-		change_variable = { which = $OUTPUT$ which = mod_val }
+		limit = { NOT = { is_variable_equal = { which = counter_var which = $val$ } } }
+		change_variable = { which = $output$ which = mod_val }
 		if = {
 			limit = { check_variable = { which = counter_var which = counter2_var} }
-			subtract_variable = { which = mod_val value = $INC$ }
+			subtract_variable = { which = mod_val value = $inc$ }
 		}
-		else = { change_variable = { which = mod_val value = $INC$ } }
+		else = { change_variable = { which = mod_val value = $inc$ } }
 		change_variable = { which = counter_var value = 1 }
 	}
 	set_variable = { which = mod_val value = 0 }  # cleanup
@@ -62,13 +62,13 @@ calculate_progressive_mod = {
 # @method ceil (returns smallest int greater than or equal to the argument)
 #
 math_round = {
-	math_round_func = { VALUE = $VAL$ DECIMALS = $DEC$ MODE = 0 }
+	math_round_func = { val = $val$ decimals = $int$ mode = 0 }
 }
 math_floor = {
-	math_round_func = { VALUE = $VAL$ DECIMALS = $DEC$ MODE = -1 }
+	math_round_func = { val = $val$ decimals = $int$ mode = -1 }
 }
 math_ceil = {
-	math_round_func = { VALUE = $VAL$ DECIMALS = $DEC$ MODE = 1 }
+	math_round_func = { val = $val$ decimals = $int$ mode = 1 }
 }
 
 # Round variable to designated decimal places,
@@ -83,24 +83,24 @@ math_ceil = {
 #
 math_round_func = {
 
-	set_variable = { which = decimals value = $DECIMALS$ }
-	set_variable = { which = arg_var value = $MODE$ }
+	set_variable = { which = decimals value = $decimals$ }
+	set_variable = { which = arg_var value = $mode$ }
 
 	if = {
-		limit = { is_var_less_than_val = { VAR = $VALUE$ VAL = 0 } }
-		multiply_variable = { which = $VALUE$ value = -1 }
+		limit = { is_var_less_than_val = { var = $val$ val = 0 } }
+		multiply_variable = { which = $val$ value = -1 }
 		set_country_flag = round_to_negative
 	}
 	set_variable = { which = counter_var value = 1 }
-	set_variable = { which = counter2_var value = 1 }    # if '$VALUE$' >= 1
+	set_variable = { which = counter2_var value = 1 }    # if '$val$' >= 1
 	while = {
-		limit = { check_variable = { which = $VALUE$ which = counter2_var } }
+		limit = { check_variable = { which = $val$ which = counter2_var } }
 		multiply_variable = { which = counter_var value = 10 }
 		multiply_variable = { which = counter2_var value = 10 }
 	}
 	while = {
 		limit = { check_variable = { which = decimals value = 1 } }
-		multiply_variable = { which = $VALUE$ value = 10 }
+		multiply_variable = { which = $val$ value = 10 }
 		multiply_variable = { which = counter_var value = 10 }
 		subtract_variable = { which = decimals value = 1 }
 	}
@@ -109,15 +109,15 @@ math_round_func = {
 	divide_variable = { which = normalize_var which = counter2_var }   # used to normalize value
 
 	while = {
-		limit = { is_var_not_equal_to_val = { VAR = counter_var VAL = -1 } }
+		limit = { is_var_not_equal_to_val = { var = counter_var val = -1 } }
 		if = {
-			limit = { check_variable = { which = $VALUE$ which = counter_var } }
+			limit = { check_variable = { which = $val$ which = counter_var } }
 
 			if = {
 				limit = { is_variable_equal = { which = arg_var value = 0 } }	# round
 				change_variable = { which = counter_var value = 0.5 }
 				if = {
-					limit = { check_variable = { which = $VALUE$ which = counter_var } }
+					limit = { check_variable = { which = $val$ which = counter_var } }
 					change_variable = { which = counter_var value = 0.5 }
 				}
 				else = { change_variable = { which = counter_var value = -0.5 } }
@@ -127,19 +127,19 @@ math_round_func = {
 				change_variable = { which = counter_var value = 1 }
 			}
 			else_if = {
-				limit = { is_var_not_equal_to_val = { VAR = arg_var VAL = -1 } }
+				limit = { is_var_not_equal_to_val = { var = arg_var val = -1 } }
 				log = "EVE: Error 104 >> invalid rounding mode '[This.arg_var.GetValue]'."
 			}
 
-			set_variable = { which = $VALUE$ which = counter_var }
+			set_variable = { which = $val$ which = counter_var }
 			set_variable = { which = counter_var value = -1 }               # break loop
 		}
 		else = { subtract_variable = { which = counter_var value = 1 } }
 	}
-	divide_variable = { which = $VALUE$ which = normalize_var }   # normalize value
+	divide_variable = { which = $val$ which = normalize_var }   # normalize value
 	if = {
 		limit = { has_country_flag = round_to_negative }
-		multiply_variable = { which = $VALUE$ value = -1 }
+		multiply_variable = { which = $val$ value = -1 }
 		clr_country_flag = round_to_negative
 	}
 	# cleanup
@@ -155,8 +155,8 @@ math_round_func = {
 clamp_to_max_value = {
 
 	if = {
-		limit = { is_var_greater_than_val = { VAR = $VAR$ VAL = $VAL$ } }
-		set_variable = { which = $VAR$ value = $VAL$ }
+		limit = { is_var_greater_than_val = { var = $var$ val = $val$ } }
+		set_variable = { which = $var$ value = $val$ }
 	}
 }
 
@@ -167,7 +167,7 @@ clamp_to_max_value = {
 clamp_to_min_value = {
 
 	if = {
-		limit = { is_var_less_than_val = { VAR = $VAR$ VAL = $VAL$ } }
-		set_variable = { which = $VAR$ value = $VAL$ }
+		limit = { is_var_less_than_val = { var = $var$ val = $val$ } }
+		set_variable = { which = $var$ value = $val$ }
 	}
 }
