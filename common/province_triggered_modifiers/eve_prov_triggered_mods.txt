@@ -3,10 +3,9 @@
 # EVE - Province Triggered Modifiers
 ######################################
 
-
-# Scope: province(ROOT)
 # Main EVE update mechanism.
 # Every capital province should ALWAYS have this modifier
+# @scope province
 #
 capital_province = {
 	potential = {
