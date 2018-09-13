@@ -1,8 +1,9 @@
 #When adding effects directly in on_actions always consider if it would be best to do so through a scripted effect. on_actions with a lot of script in them are harder to get an overview of.
 
-# Scope: country
-# Fires for every country immediately after your load or start a new campaign (once per session)
-# NOTE: it will NOT fire for player (not ai) when using the 'load game' feature when inside a campaign
+# Fires for every country immediately after your load or start a new campaign.
+# It will NOT fire for player when using the loading a game inside an existing campaign
+# @scope country
+#
 on_startup = {
 
 	# Mod initialization phase
