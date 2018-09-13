@@ -3,6 +3,63 @@
 # EVE - Capital Scripts
 ##################################
 
+# Scope: province
+# Fired from province that stops being a nation's capital
+#
+capital.lose_status = {
+
+	capital.remove_modifiers = yes
+
+	owner = {
+		ROOT = { core.export_var_to_prev = { VAR = owner_id } }
+
+		# This province was gained as a concession in a war or
+		# for other reasons has ended up as territory of another country
+		if = {
+			limit = { is_var_not_equal_to = { VAR1 = output_var VAR2 = country_id } }
+
+			# Find capital province previous owner.
+			# Normally we would do this by using 'previous_owner' variable,
+			# but for some reason it gets set to null after loading a campaign
+
+			every_known_country = {
+				limit = {
+					# output variable will be set to -1 if country is found
+					NOT = { PREV = { is_variable_equal = { which = output_var value = -1 } } }
+				}
+				PREV = { core.export_var_to_prev = { VAR = output_var } }	# capital owner_id
+				if = {
+					limit = { is_variable_equal = { which = output_var which = country_id } }
+					PREV = { set_variable = { which = output_var value = -1 } }	# break loop
+					capital.changed_province = yes
+				}
+			}
+			# Previous owner has been annexed/integrated
+			# This can also point to an error if the owner exists but is not listed as a 'known_country'
+			# but this shouldn't happen and would be a bug on Paradox's side
+			#if = {
+			#	limit = { NOT = { has_country_flag = territorial_change } }
+			#	log = "EVE: Error 120 >> conquered capital [Root.GetName] with unknown previous owner."
+			#}
+
+			ROOT = {
+				core.set_prov_owner_id = yes
+
+				# Do not do anything further if this has already been done
+				# by owner when checking for territorial change
+				if = {
+					limit = { NOT = { has_province_flag = conquered_capital } }
+					autonomy.call_for_update = yes
+					capital_scope = { core.fire_monthly_pulse = yes }
+				}
+				else = { clr_province_flag = conquered_capital }
+			}
+		}
+		# Owner changed its capital province with diplomatic power or an event
+		else = { capital.changed_province = yes }
+	}
+}
+
 # Scope: country
 # Called once after a country moves its capital to another province
 #
