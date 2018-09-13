@@ -1,0 +1,51 @@
+
+##################################
+# EVE - Capital Scripts
+##################################
+
+# Scope: country
+# Called once after a country moves its capital to another province
+#
+capital.changed_province = {
+
+	capital.init = yes
+	set_country_flag = territorial_change
+	core.fire_monthly_pulse = yes
+}
+
+# Scope: country
+# Apply all capital modifiers in capital province for country scope
+#
+capital.init = {
+
+	capital_scope = {
+		add_province_triggered_modifier = capital_province
+		add_province_modifier = { name = prov_nation_capital duration = -1 }
+	}
+}
+
+# Scope: province
+# Remove all capital modifiers from current province scope
+#
+capital.remove_modifiers = {
+
+	if = {
+		limit = { has_province_modifier = capital_province }
+
+		remove_province_triggered_modifier = capital_province
+		remove_province_modifier = prov_nation_capital
+	}
+	else = { log = "EVE: Error 309 >> tried to remove capital mods from non-capital province [This.GetName]" }
+}
+
+##################################
+# EVE - Domestic Policy Scripts
+##################################
+
+# Scope: country
+# Initialize all domestic policies for country scope
+#
+init_domestic_policies = {
+
+	init_gov_policy = yes
+}
