@@ -3,9 +3,6 @@
 # EVE - Math Scripts
 ##################################
 
-# Scope: anywhere
-# Access: public
-#
 # Calculate a unique type of modifier for argument value.
 # This modifier increases progressively each step by increasing the value added
 # to the next step by base mod value respective to the current step defined with 'counter_var'.
@@ -13,11 +10,14 @@
 # This is intended to be used with ruler and advisor skills to show how higher skill ratings
 # become less impactful with each point. Midpoint skill ratings (ex. 3-6 adm) are worth the most.
 #
-# OUTPUT -(var) variable to export result to
-# VALUE  -(var) value to calculate modifier for
-# STEPS  -(val) maximum modifier steps
-# MOD    -(val) base modifier value
-# INC    -(val) progressive increase value
+# @scope anywhere
+# @access public
+#
+# @param output var to export result to
+# @param value val for calculation
+# @param steps max modifier step val
+# @param mod base modifier value
+# @param inc increase value
 #
 calculate_progressive_mod = {
 
@@ -48,15 +48,15 @@ calculate_progressive_mod = {
 	set_variable = { which = mod_val value = 0 }  # cleanup
 }
 
-# Scope: country
-# Access: public
-#
 # Public helper methods that redirect the call to main methods.
 # Read more about rounding in 'math_round_func'
 #
-# round - returns the closest float or int to the argument
-# floor - returns the largest int that is less than or equal to the argument
-# ceil - returns the smallest int that is greater than or equal to the argument
+# @scope country
+# @access public
+#
+# @param round returns closest float or int to the argument
+# @param floor returns largest int less than or equal to the argument
+# @param ceil returns smallest int greater than or equal to the argument
 #
 math_round = {
 	math_round_func = { VALUE = $VAL$ DECIMALS = $DEC$ MODE = 0 }
@@ -68,15 +68,15 @@ math_ceil = {
 	math_round_func = { VALUE = $VAL$ DECIMALS = $DEC$ MODE = 1 }
 }
 
-# Scope: country
-# Access: private
-#
 # Round variable to designated decimal places,
 # depending on the mode of operation passed as argument
 #
-# VALUE    -(var) value to round
-# DECIMALS -(val) num of decimal places
-# MODE     -(val) rounding operation mode
+# @scope country
+# @access private
+#
+# @param value val to round
+# @param decimals num of decimal places
+# @param mode rounding operation
 #
 math_round_func = {
 
@@ -145,8 +145,9 @@ math_round_func = {
 	set_variable = { which = normalize_var value = 0 }
 }
 
-# Scope: anywhere
 # Force argument value inside designated range
+# @scope anywhere
+#
 clamp_to_max_value = {
 
 	if = {
@@ -155,8 +156,9 @@ clamp_to_max_value = {
 	}
 }
 
-# Scope: anywhere
 # Force argument value inside designated range
+# @scope anywhere
+#
 clamp_to_min_value = {
 
 	if = {

@@ -23,10 +23,10 @@
 #  policy_gov_adv_mod		# from advisor administrative skill
 #  policy_gov_time			# months or years until rating change
 
-# Scope: country
 # Re-initialize policy values that display in GUI.
 # This is called immediately after loading a game to initialize variables
 # with null values that have not been written in the save game file
+# @scope country
 #
 reinit_gov_policy_values = {
 
@@ -41,8 +41,8 @@ reinit_gov_policy_values = {
 }
 
 
-# Scope: country
 # Called from initialization phase for every country
+# @scope country
 #
 init_gov_policy = {
 
@@ -88,8 +88,8 @@ init_gov_policy = {
 	add_active_policy = domestic_policy_governance
 }
 
-# Scope: country
 # Update policy modifiers, rating and GUI values
+# @scope country
 #
 update_gov_policy = {
 
@@ -137,9 +137,9 @@ update_gov_policy = {
 	round_gov_policy_gui_values = yes	 								  # round values for display
 }
 
-# Scope: country
 # Reset and calculate all policy modifiers.
 # Should be called on each monthly pulse update
+# @scope country
 #
 calc_gov_policy_mod = {
 
@@ -194,8 +194,8 @@ calc_gov_policy_mod = {
 	}
 }
 
-# Scope: country
 # Update rating value and country modifiers
+# @scope country
 #
 update_gov_policy_rating = {
 
@@ -322,9 +322,9 @@ update_gov_policy_rating = {
 	}
 }
 
-# Scope: country
 # Calculate time remaining until we change our policy rating
 # based on current policy modifier value
+# @scope country
 #
 calc_gov_policy_increase_time = {
 
@@ -361,9 +361,9 @@ calc_gov_policy_increase_time = {
 	else = { set_country_flag = policy_gov_time_months }
 }
 
-# Scope: country
-# Used to display clean values in game UI
-# Note: do only for player to reduce CPU usage
+# Used to display clean values in game UI.
+# Do only for player to reduce CPU usage
+# @scope country
 #
 round_gov_policy_gui_values = {
 
@@ -376,8 +376,8 @@ round_gov_policy_gui_values = {
 	}
 }
 
-# Scope: country
 # Called once every time a new ruler rises to throne
+# @scope country
 #
 calc_gov_policy_ruler_mod = {
 
@@ -399,9 +399,9 @@ calc_gov_policy_ruler_mod = {
 	}
 }
 
-# Scope: country
 # Advisor level cannot be exported as a variable so we have to
 # find it with like this. Only call if master of mint advisor is hired
+# @scope country
 #
 get_mint_advisor_lvl = {
 

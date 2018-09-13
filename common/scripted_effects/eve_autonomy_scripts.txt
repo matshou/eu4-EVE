@@ -3,9 +3,9 @@
 # EVE - Autonomy Scripts
 ##################################
 
-# Scope: country
-# Called on each monthly pulse to check if country gained new territory
-# Note: this will also update owner id for each new province
+# Called each month to check if country gained new territory.
+# This will also update owner id for each new province
+# @scope country
 #
 autonomy.check_for_change = {
 
@@ -19,14 +19,14 @@ autonomy.check_for_change = {
 		# loses all custom data, so we need to set 'owner_id' again
 		if = {
 			limit = { is_var_less_than_val = { VAR = owner_id VAL = 1 } }
-			autonomy.call_for_update = yes
+			autonomy.call_for_province_update = yes
 			core.set_prov_owner_id = yes
 		}
 		else = {
 			# do this after handling uncolonized territory
 			core.export_var_to_prev = { VAR = owner_id }
 
-			if = {			# Newly gained province
+			if = {			# newly gained province
 				limit = {
 					owner = { is_var_not_equal_to = { VAR1 = output_var VAR2 = country_id } }
 				}
@@ -38,21 +38,21 @@ autonomy.check_for_change = {
 					limit = { has_province_modifier = capital_province }
 					set_province_flag = conquered_capital
 				}
-				else = { core.set_prov_owner_id = yes }	# update owner id
+				else = { core.set_prov_owner_id = yes }		# update owner id
 
-				clr_province_flag = distant_province	# don't try to remove modifier
-				autonomy.call_for_update = yes		# call for an autonomy update
+				clr_province_flag = distant_province		# don't try to remove modifier
+				autonomy.call_for_province_update = yes		# call for an autonomy update
 			}
 		}
 	}
 }
 
-# Scope: province
-# Call for autonomy update only for this province
+# Call for autonomy update for scope province
+# @scope province
 #
-autonomy.call_for_update = {
+autonomy.call_for_province_update = {
 
-	set_province_flag = new_territory		# update autonomy only for this province
+	set_province_flag = new_territory		# update only this province
 
 	owner = {
 		set_country_flag = territorial_change   	# call for autonomy update
@@ -60,9 +60,9 @@ autonomy.call_for_update = {
 	}
 }
 
-# Scope: country
-# Set local autonomy floor for every owned distance based on distance from capital
-# Should ONLY be called from a provice with ROOT as that province
+# Set local autonomy floor for every owned distance based on distance from capital.
+# Should ONLY be called from scope with ROOT a capital province
+# @scope country
 #
 autonomy.update_distance = {
 
@@ -84,9 +84,9 @@ autonomy.update_distance = {
 	clr_country_flag = territorial_change
 }
 
-# Scope: province
-# Remove old distance modifier before applying a new one
-# Called when recalculating province distance autonomy
+# Remove old distance modifier before applying new one
+# Called when recalculating distance autonomy
+# @scope province
 #
 autonomy.remove_distance_mod = {
 
@@ -105,9 +105,9 @@ autonomy.remove_distance_mod = {
 	}
 }
 
-# Scope: province
 # Add autonomy modifiers based on province distance from capital
-# Should ONLY be called from capital provinces (registered for monthly pulses)
+# Should ONLY be called from scope with ROOT a capital province
+# @scope province
 #
 autonomy.set_distance = {
 
