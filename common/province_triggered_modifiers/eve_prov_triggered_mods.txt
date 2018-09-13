@@ -31,7 +31,7 @@ capital_province = {
 	#
 	on_activation = {
 		owner = {
-			on_daily_pulse = yes
+			core.on_daily_pulse = yes
 		}
 	}
 	# Doesn't seem to get called under any circumstances
