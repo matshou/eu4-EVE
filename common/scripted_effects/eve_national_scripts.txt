@@ -1,10 +1,10 @@
 
 ##################################
-# EVE - Capital Scripts
+# EVE - National Scripts
 ##################################
 
-# Scope: province
 # Fired from province that stops being a nation's capital
+# @scope capital
 #
 capital.lose_status = {
 
@@ -60,8 +60,8 @@ capital.lose_status = {
 	}
 }
 
-# Scope: country
-# Called once after a country moves its capital to another province
+# Called after a country moves its capital
+# @scope country
 #
 capital.changed_province = {
 
@@ -70,8 +70,8 @@ capital.changed_province = {
 	core.fire_monthly_pulse = yes
 }
 
-# Scope: country
-# Apply all capital modifiers in capital province for country scope
+# Apply all capital modifiers in capital province
+# @scope country
 #
 capital.init = {
 
@@ -81,8 +81,8 @@ capital.init = {
 	}
 }
 
-# Scope: province
-# Remove all capital modifiers from current province scope
+# Remove all capital modifiers from capital province
+# @scope capital
 #
 capital.remove_modifiers = {
 
