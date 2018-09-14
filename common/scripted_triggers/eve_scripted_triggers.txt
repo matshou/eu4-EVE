@@ -30,7 +30,7 @@ has_territorial_changes = {
 }
 
 is_global_scope = {
-	tag = event_target:global_scope
+	tag = event_target:global
 }
 
 ##############################
