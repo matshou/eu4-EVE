@@ -5,23 +5,24 @@
 
 # List of flags:
 # ====================
-#  eve_initialized			# global
-#  found_country			# global
-#  inagurated				# ruler
-#  immediate_update			# country
-#  is_initialized			# country
-#  territorial_change		# country
-#  gained_new_territory		# country
-#  new_territory			# province
-#  conquered_capital		# province
-#  distant_province			# province
+#  eve_initialized				# global
+#  found_country				# global
+#  inagurated					# ruler
+#  immediate_update				# country
+#  is_initialized				# country
+#  territorial_change			# country
+#  gained_new_territory			# country
+#  new_territory				# province
+#  conquered_capital			# province
+#  distant_province				# province
 
 
 # List of variables:
 # ====================
-#  last_month				# last month that pulse fired
-#  country_id				# used as substitude for 'province_id'
-#  owner_id					# used by provinces to pair with 'country_id'
+#  error_code               	# global
+#  last_month					# country
+#  country_id					# country
+#  owner_id						# province
 
 
 # When called monthly pulse will fire next day in capital province
@@ -42,9 +43,7 @@ core.on_daily_pulse = {
 		limit = { ROOT = { is_not_capital = yes } }
 		ROOT = { capital.lose_status = yes }
 	}
-	# Don't do anything else if no longer a capital province
-	else = {
-		# Check if a new ruler has rised to throne
+	else = {	# Don't do anything else if no longer capital
 		if = {
 			limit = { has_new_ruler = yes }
 
@@ -63,16 +62,9 @@ core.on_daily_pulse = {
 #
 core.on_monthly_pulse = {
 
-	export_to_variable = {
-		which = last_month
-		value = trigger_value:is_month
-	}
-	if = {
-		limit = { has_country_flag = immediate_update }
-		clr_country_flag = immediate_update
-	}
+	export_to_variable = { which = last_month value = trigger_value:is_month }
+	clr_country_flag = immediate_update
 
-	# Triggers only for player, do all GLOBAL stuff here:
 	if = {
 		limit = { is_global_scope = yes }
 
@@ -88,7 +80,7 @@ core.on_monthly_pulse = {
 	update_gov_policy = yes
 	autonomy.check_for_change = yes
 
-	# Owner has gained new territory or changed capital province
+	# Gained new territory or changed capital
 	if = {
 		limit = { has_territorial_changes = yes }
 		autonomy.update_distance = yes
@@ -96,7 +88,7 @@ core.on_monthly_pulse = {
 }
 
 # Assign country and province id's and enable monthly pulse for scoped country.
-# This is called in mod init phase and when a new country is formed
+# Called in mod init phase and when a new country is formed
 # @scope country
 #
 core.init_country = {
@@ -119,15 +111,15 @@ core.init_country = {
 	}
 }
 
-# Assign a unique id for scoped country.
-# Should ONLY be called from global scope!
+# Assign a unique id for scoped country
 # @scope country
 #
 core.set_country_id = {
 
-	if = {
-		limit = { PREV = { is_global_scope = yes } }
-
+	if = {			# only call from global scope
+		limit = {
+			PREV = { is_global_scope = yes }
+		}
 		PREV = { core.export_var_to_prev = { var = init_num } }
 		set_variable = { which = country_id which = output_var }
 
@@ -137,7 +129,7 @@ core.set_country_id = {
 	else = { core.print_error = { code = 199 } }
 }
 
-# Assign a unique id for province that coresponds to owner country id
+# Assign a unique id for province that corresponds to owner country id
 # Each owned province should ALWAYS have the same id as its current owner
 # @scope country
 #
@@ -156,6 +148,7 @@ core.set_prov_owner_id = {
 # Export argument variable to PREV scope so it can be used for comparison.
 # Currently performing an interlaced scan with intervals using while loops
 # is the only way to transfer variable values between scopes.
+#
 # @scope anywhere
 # @param var (variable to export)
 # @return output_var
@@ -164,9 +157,6 @@ core.export_var_to_prev = {
 
 	set_variable = { which = counter_var value = 1000 }
 	PREV = { set_variable = { which = output_var value = 1000 } }
-
-	# Do an interlaced scan alternating between adding and subtracting,
-	# until we find an approximate value that we can use in a final loop
 
 	while = {
 		limit = {
@@ -207,3 +197,4 @@ core.print_error = {
 		set_variable = { which = error_code value = $code$ }
 		PREV = { log = "EVE: Error [Prev.error_code.GetValue] >> [This.error_log_txt]" }
 	}
+}

@@ -9,9 +9,6 @@
 #
 autonomy.check_for_change = {
 
-	# Check only for gained territory because lost territory doesn't
-	# need an update from our side, the country that gained it will handle that
-
 	every_owned_province = {
 
 		# Gained territory is uncolonized land

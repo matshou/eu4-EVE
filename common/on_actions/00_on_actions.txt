@@ -12,17 +12,11 @@ on_startup = {
 		limit = { NOT = { has_global_flag = eve_initialized } }
 		if = {
 			limit = { ai = no }
+			
+			save_global_event_target_as = global			# set player as global scope
+			set_variable = { which = init_num value = 0 }	# id of last initialized country
 
-			# set player as global scope
-			save_global_event_target_as = global
-
-			# id of last initialized country
-			set_variable = { which = init_num value = 0 }
-
-			# set country_id for every country in the game
 			every_country = { core.init_country = yes }
-
-			# set flag after running mod for the first time
 			set_global_flag = eve_initialized
 
 			log = "EVE: Running this mod for the first time this campaign."
@@ -36,7 +30,6 @@ on_startup = {
 
 		# When loading a save file the monthly pulse stop firing for some reason.
 		# Reset the modifier here to force the game to start firing 'on_activation'
-		#
 		capital_scope = {
 			remove_province_triggered_modifier = capital_province
 			add_province_triggered_modifier = capital_province

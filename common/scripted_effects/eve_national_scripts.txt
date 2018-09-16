@@ -19,6 +19,7 @@ capital.lose_status = {
 			limit = { is_var_not_equal_to = { var1 = output_var var2 = country_id } }
 
 			# Find capital province previous owner.
+			# If previous owner is not found then he has been annexed.
 			# Normally we would do this by using 'previous_owner' variable,
 			# but for some reason it gets set to null after loading a campaign
 
@@ -34,14 +35,7 @@ capital.lose_status = {
 					capital.changed_province = yes
 				}
 			}
-			# Previous owner has been annexed/integrated
-			# This can also point to an error if the owner exists but is not listed as a 'known_country'
-			# but this shouldn't happen and would be a bug on Paradox's side
-			#if = {
-			#	limit = { NOT = { has_country_flag = territorial_change } }
-			#	log = "EVE: Error 120 >> conquered capital [Root.GetName] with unknown previous owner."
-			#}
-
+			# Update previous capital province
 			ROOT = {
 				core.set_prov_owner_id = yes
 
