@@ -195,7 +195,7 @@ courthouse = {
 
 	on_built = {
 		hidden_effect = {
-			apply_state_jurisdiction = yes
+			states.apply_jurisdiction = yes
 		}
 	}
 	# Will not be called if the buildings was automatically removed
@@ -204,7 +204,7 @@ courthouse = {
 	on_destroyed = {
 		if = {
 			limit = { has_province_modifier = prov_state_adm_center }
-			remove_state_jurisdiction = yes
+			states.remove_jurisdiction = yes
 		}
 	}
 

@@ -75,8 +75,8 @@ core.on_monthly_pulse = {
 		}
 	}
 
-	update_all_states = yes
-	update_non_state_provinces = yes
+	states.update_all = yes
+	states.update_non_states = yes
 	governance.update_policy = yes
 	autonomy.check_for_change = yes
 
