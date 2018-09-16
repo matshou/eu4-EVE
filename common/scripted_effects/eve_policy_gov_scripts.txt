@@ -182,7 +182,7 @@ calc_gov_policy_mod = {
 		limit = { advisor = master_of_mint }
 		get_mint_advisor_lvl = yes
 
-		calculate_progressive_mod = {											# advisor skill
+		math.calculate_progressive_mod = {											# advisor skill
 			val = output_var steps = 5 mod = 0.015							# min: 0, max: 0.091
 			inc = 0.004 output = policy_gov_adv_mod
 		}
@@ -370,9 +370,9 @@ round_gov_policy_gui_values = {
 	if = {
 		limit = { ai = no }
 
-		math_round = { val = policy_gov_mod int = 2 }
-		math_round = { val = policy_gov_gui_val int = 1 }
-		math_ceil = { val = policy_gov_time int = 0 }
+		math.round = { val = policy_gov_mod int = 2 }
+		math.round = { val = policy_gov_gui_val int = 1 }
+		math.ceil = { val = policy_gov_time int = 0 }
 	}
 }
 
@@ -389,7 +389,7 @@ calc_gov_policy_ruler_mod = {
 			check_variable = { which = output_var value = 1 }
 			has_regency = no
 		}
-		calculate_progressive_mod = {
+		math.calculate_progressive_mod = {
 			val = output_var steps = 6 mod = 0.022
 			inc = 0.005 output = policy_gov_rul_mod
 		}
