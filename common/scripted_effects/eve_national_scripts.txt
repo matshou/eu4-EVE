@@ -98,5 +98,5 @@ capital.remove_modifiers = {
 #
 init_domestic_policies = {
 
-	init_gov_policy = yes
+	governance.init_policy = yes
 }
