@@ -4,7 +4,7 @@
 ###############################
 
 # Empty event modifiers that act kind of like flags with a timer
-# They are applied in 'develop_estate_land' and used as triggers in 'common\estates'
+# They are applied in 'estates.develop_land' and used as triggers in 'common\estates'
 
 estate_developed_burghers = {}
 estate_developed_church = {}

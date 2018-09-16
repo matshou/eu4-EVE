@@ -7,7 +7,7 @@
 # bonus when developing their provinces
 # @scope province
 #
-develop_estate_land = {
+estates.develop_land = {
 	if = {
 		limit = {
 			AND = {
