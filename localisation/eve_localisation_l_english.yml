@@ -65,3 +65,14 @@
  color_key_r:0 "R"
  color_key_g:0 "G+"
  color_key_n:0 "Y"
+
+ # Error logs have to end with '.' so they can be parsed correctly.
+ # When adding a new error log string don't forget to create a new 'error_log_txt'
+ # defined text entry in 'customizable_localization'
+
+ error.199:0 "[This.GetName] called to set country_id out of global scope."
+ error.279:0 "'country_id' var not initialized for country [This.GetName]."
+ error.309:0 "tried to remove capital mods from non-capital province [This.GetName]."
+ error.104:0 "invalid rounding mode '[This.arg_var.GetValue]'."
+ error_unknown:0 "Unknown error code."
+

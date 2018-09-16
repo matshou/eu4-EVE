@@ -78,3 +78,43 @@ defined_text = {
         }
     }
 }
+
+###########################
+# EVE: Error Log Text
+###########################
+
+defined_text = {
+	name = error_log_txt
+	random = no
+
+	text = {
+		localisation_key = error.199
+        trigger = {
+			is_error = { code = 199 }
+		}
+	}
+	text = {
+		localisation_key = error.279
+        trigger = {
+			is_error = { code = 279 }
+		}
+	}
+	text = {
+		localisation_key = error.309
+        trigger = {
+			is_error = { code = 309 }
+		}
+	}
+	text = {
+		localisation_key = error.104
+        trigger = {
+			is_error = { code = 104 }
+		}
+	}
+	text = {
+		localisation_key = error_unknown
+		trigger = {
+			always = yes
+		}
+	}
+}

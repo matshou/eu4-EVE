@@ -92,7 +92,7 @@ capital.remove_modifiers = {
 		remove_province_triggered_modifier = capital_province
 		remove_province_modifier = prov_nation_capital
 	}
-	else = { log = "EVE: Error 309 >> tried to remove capital mods from non-capital province [This.GetName]" }
+	else = { core.print_error = { code = 309 } }
 }
 
 ##################################
