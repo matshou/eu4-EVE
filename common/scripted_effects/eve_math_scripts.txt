@@ -128,7 +128,7 @@ math_round_func = {
 			}
 			else_if = {
 				limit = { is_var_not_equal_to_val = { var = arg_var val = -1 } }
-				log = "EVE: Error 104 >> invalid rounding mode '[This.arg_var.GetValue]'."
+				core.print_error = { code = 104 }
 			}
 
 			set_variable = { which = $val$ which = counter_var }

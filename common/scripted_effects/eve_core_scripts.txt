@@ -134,7 +134,7 @@ core.set_country_id = {
 		PREV = { change_variable = { which = init_num value = 1 } }
 		change_variable = { which = country_id value = 1 }
 	}
-	else = { log = "EVE: Error 199 >> [This.GetName] called to set country_id out of global scope." }
+	else = { core.print_error = { code = 199 } }
 }
 
 # Assign a unique id for province that coresponds to owner country id
@@ -149,9 +149,7 @@ core.set_prov_owner_id = {
 			core.export_var_to_prev = { var = country_id }
 			PREV = { set_variable = { which = owner_id which = output_var } }
 		}
-		else = {
-			owner = { log = "EVE: Error 279 >> 'country_id' var not initialized for country [This.GetName]." }
-		}
+		else = { core.print_error = { code = 279 } }
 	}
 }
 
@@ -198,3 +196,14 @@ core.export_var_to_prev = {
 		PREV = { subtract_variable = { which = output_var value = 1 } }
 	}
 }
+
+# Helper method to print error messages in game log
+# Strings are stored in localization files
+# @scope anywhere
+#
+core.print_error = {
+
+	event_target:global = {
+		set_variable = { which = error_code value = $code$ }
+		PREV = { log = "EVE: Error [Prev.error_code.GetValue] >> [This.error_log_txt]" }
+	}

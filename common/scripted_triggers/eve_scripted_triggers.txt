@@ -33,6 +33,12 @@ is_global_scope = {
 	tag = event_target:global
 }
 
+is_error = {
+	event_target:global = {
+		is_variable_equal = { which = error_code value = $code$ }
+	}
+}
+
 ##############################
 # EVE - Math Triggers
 ##############################
