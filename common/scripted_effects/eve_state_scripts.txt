@@ -13,7 +13,7 @@
 # Update all states and provinces belonging to states
 # @scope country
 #
-update_all_states = {
+states.update_all = {
 
 	# reset governance state administrative mod so we can recalculate it
 	set_variable = { which = policy_gov_state_adm_mod value = 0 }
@@ -24,7 +24,7 @@ update_all_states = {
 		# This scope will be entered once for each state
 		if = {
 			limit = { NOT = { has_province_flag = state_prov_updated } }
-			update_state_in_scope = yes
+			states.update_state = yes
 		}
 
 		clr_province_flag = state_prov_updated
@@ -34,7 +34,7 @@ update_all_states = {
 				limit = { has_country_flag = adm_center_in_state }
 				if = {
 					limit = { NOT = { has_country_flag = adm_center_found } }
-					PREV = { remove_state_jurisdiction = yes }
+					PREV = { states.remove_jurisdiction = yes }
 				}
 				else = { clr_country_flag = adm_center_found }
 				clr_country_flag = adm_center_in_state
@@ -45,9 +45,10 @@ update_all_states = {
 
 # Update every province in the currently scoped state.
 # This scope will be entered once for every province in current state
+# @access private
 # @scope province
 #
-update_state_in_scope = {
+states.update_state = {
 
 	every_province_in_state = {
 
@@ -62,8 +63,8 @@ update_state_in_scope = {
 
 			# Calculate state administrative modifier for governance policy
 			owner = {
-				PREV = { get_state_development = yes }
-				get_state_dev_ratio = { DEV = output_var }
+				PREV = { states.get_development = yes }
+				states.get_dev_ratio = { DEV = output_var }
 				change_variable = { which = policy_gov_state_adm_mod which = output_var }
 			}
 
@@ -83,7 +84,7 @@ update_state_in_scope = {
 				has_admin_building = yes
 				can_build_courthouse = yes
 			}
-			apply_state_jurisdiction = yes
+			states.apply_jurisdiction = yes
 			owner = { set_country_flag = adm_center_found }
 		}
 
@@ -95,7 +96,7 @@ update_state_in_scope = {
 # Update every province that does not belong to a state
 # @scope country
 #
-update_non_state_provinces = {
+states.update_non_states = {
 
 	every_owned_province = {
 		limit = { NOT = { is_state = yes } }
@@ -114,7 +115,7 @@ update_non_state_provinces = {
 # @scope province
 # @return owner:output_var
 #
-get_state_development = {
+states.get_development = {
 
 	owner = { set_variable = { which = output_var value = 0 } }
 	every_province_in_state = {
@@ -130,7 +131,7 @@ get_state_development = {
 # @scope country
 # @return output_var
 #
-get_state_dev_ratio = {
+states.get_dev_ratio = {
 
 	export_to_variable = { which = int_var value = total_development }
 	divide_variable = { which = $DEV$ which = int_var }
@@ -142,7 +143,7 @@ get_state_dev_ratio = {
 # Needs to be called from a province with an administrative building
 # @scope province
 #
-apply_state_jurisdiction = {
+states.apply_jurisdiction = {
 
 	add_province_modifier = { name = prov_state_adm_center duration = -1 }
 
@@ -155,7 +156,7 @@ apply_state_jurisdiction = {
 # Remove jurisdiction province modifiers to current state
 # @scope province
 #
-remove_state_jurisdiction = {
+states.remove_jurisdiction = {
 
 	if = {
 		limit = { has_province_modifier = prov_state_adm_center }
