@@ -48,7 +48,7 @@ core.on_daily_pulse = {
 			limit = { has_new_ruler = yes }
 
 			set_ruler_flag = inagurated
-			calc_gov_policy_ruler_mod = yes
+			governance.calc_ruler_mod = yes
 		}
 		if = {
 			limit = { should_do_monthly_update = yes }
@@ -77,7 +77,7 @@ core.on_monthly_pulse = {
 
 	update_all_states = yes
 	update_non_state_provinces = yes
-	update_gov_policy = yes
+	governance.update_policy = yes
 	autonomy.check_for_change = yes
 
 	# Gained new territory or changed capital

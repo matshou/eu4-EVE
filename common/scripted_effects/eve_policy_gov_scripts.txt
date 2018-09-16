@@ -28,7 +28,7 @@
 # with null values that have not been written in the save game file
 # @scope country
 #
-reinit_gov_policy_values = {
+governance.reinit_values = {
 
 	if = {
 		limit = { is_var_null = { var = policy_gov_max } }
@@ -44,7 +44,7 @@ reinit_gov_policy_values = {
 # Called from initialization phase for every country
 # @scope country
 #
-init_gov_policy = {
+governance.init_policy = {
 
 	set_variable = { which = policy_gov_min value = -50 }
 	set_variable = { which = policy_gov_max value = 50 }
@@ -91,13 +91,13 @@ init_gov_policy = {
 # Update policy modifiers, rating and GUI values
 # @scope country
 #
-update_gov_policy = {
+governance.update_policy = {
 
 	# Reset the modifier so we can recalculate it
 	set_variable = { which = policy_gov_mod value = 0 }
 
 	# Calculate modifier to add to rating
-	calc_gov_policy_mod = yes
+	governance.calc_policy_mod = yes
 
 	if = {
 		# Update only if modifier would affect policy
@@ -112,8 +112,8 @@ update_gov_policy = {
 					limit = { is_policy_gov_above_max = yes }
 					set_variable = { which = policy_gov_val which = policy_gov_max }
 				}
-				update_gov_policy_rating = yes
-				calc_gov_policy_increase_time = yes
+				governance.update_rating = yes
+				governance.calc_policy_time  = yes
 			}
 			else = { set_variable = { which = policy_gov_mod value = 0 } }
 		}
@@ -126,22 +126,23 @@ update_gov_policy = {
 					limit = { is_policy_gov_below_min = yes }
 					set_variable = { which = policy_gov_val which = policy_gov_min }
 				}
-				update_gov_policy_rating = yes
-				calc_gov_policy_increase_time = yes
+				governance.update_rating = yes
+				governance.calc_policy_time  = yes
 			}
 			else = { set_variable = { which = policy_gov_mod value = 0 } }
 		}
 	}
 
-	set_variable = { which = policy_gov_gui_val which = policy_gov_val }  # used only in GUI
-	round_gov_policy_gui_values = yes	 								  # round values for display
+	set_variable = { which = policy_gov_gui_val which = policy_gov_val }
+	governance.round_values = yes
 }
 
 # Reset and calculate all policy modifiers.
 # Should be called on each monthly pulse update
+# @access private
 # @scope country
 #
-calc_gov_policy_mod = {
+governance.calc_policy_mod = {
 
 	# Variables with "_mod" suffix below are used in localisation
 	# to give information about modifiers affecting policy change each month
@@ -182,7 +183,7 @@ calc_gov_policy_mod = {
 		limit = { advisor = master_of_mint }
 		get_mint_advisor_lvl = yes
 
-		math.calculate_progressive_mod = {											# advisor skill
+		math.calculate_progressive_mod = {									# advisor skill
 			val = output_var steps = 5 mod = 0.015							# min: 0, max: 0.091
 			inc = 0.004 output = policy_gov_adv_mod
 		}
@@ -195,9 +196,10 @@ calc_gov_policy_mod = {
 }
 
 # Update rating value and country modifiers
+# @access private
 # @scope country
 #
-update_gov_policy_rating = {
+governance.update_rating = {
 
 	if = {
 		limit = { has_country_flag = policy_gov_neutral }   # Rating: 0
@@ -324,9 +326,10 @@ update_gov_policy_rating = {
 
 # Calculate time remaining until we change our policy rating
 # based on current policy modifier value
+# @access private
 # @scope country
 #
-calc_gov_policy_increase_time = {
+governance.calc_policy_time = {
 
 	clr_country_flag = policy_gov_time_months
 	clr_country_flag = policy_gov_time_years
@@ -365,7 +368,7 @@ calc_gov_policy_increase_time = {
 # Do only for player to reduce CPU usage
 # @scope country
 #
-round_gov_policy_gui_values = {
+governance.round_values = {
 
 	if = {
 		limit = { ai = no }
@@ -379,7 +382,7 @@ round_gov_policy_gui_values = {
 # Called once every time a new ruler rises to throne
 # @scope country
 #
-calc_gov_policy_ruler_mod = {
+governance.calc_ruler_mod = {
 
 	export_to_variable = { which = output_var value = trigger_value:adm }
 	subtract_variable = { which = output_var value = 1 } # normalize
