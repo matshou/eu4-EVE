@@ -69,16 +69,3 @@
  color_key_r:0 "R"
  color_key_g:0 "G+"
  color_key_n:0 "Y"
-
- string_error_log:0 "EVE: Error [Prev.error_code.GetValue][Prev.error_method_txt] >> [This.error_log_content_txt]"
- string_error_code:0 " in '[Prev.error_method_name_txt]'"
-
- error.000:0 "Unknown error code."
- error.199:0 "[This.GetName] called to set 'country_id' out of global scope."
- error.279:0 "'country_id' not initialized for country [This.GetName]."
- error.309:0 "tried to remove capital mods from non-capital province [This.GetName]."
- error.104:0 "invalid rounding mode \"[This.arg_var.GetValue]\"."
- error.140:0 "Access violation for [This.caller_scope_txt] caller [This.GetName]."
-
- error_pointer.0:0 "unknown method"
- error_pointer.1:0 "core.set_prov_owner_id"

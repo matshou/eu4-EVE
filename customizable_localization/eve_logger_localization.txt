@@ -1,0 +1,107 @@
+
+###########################
+# EVE: Error Log Text
+###########################
+
+defined_text = {
+	name = error_code_txt
+	random = no
+
+	text = {
+		localisation_key = string_error_code
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = error_method_txt
+	random = no
+
+	text = {
+		localisation_key = string_error_code
+        trigger = {
+			is_var_not_null = { var = error_point }
+		}
+	}
+
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = error_log_txt
+	random = no
+
+	text = {
+		localisation_key = string_error_log
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = error_log_content_txt
+	random = no
+
+	text = {
+		localisation_key = error.199
+        trigger = {
+			is_error = { code = 199 }
+		}
+	}
+	text = {
+		localisation_key = error.279
+        trigger = {
+			is_error = { code = 279 }
+		}
+	}
+	text = {
+		localisation_key = error.309
+        trigger = {
+			is_error = { code = 309 }
+		}
+	}
+	text = {
+		localisation_key = error.104
+        trigger = {
+			is_error = { code = 104 }
+		}
+	}
+	text = {
+		localisation_key = error.140
+        trigger = {
+			is_error = { code = 140 }
+		}
+	}
+	text = {
+		localisation_key = error.000
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = error_method_name_txt
+	random = no
+
+	text = {
+		localisation_key = error_pointer.1
+        trigger = {
+			is_variable_equal = { which = error_point value = 1 }
+		}
+	}
+	text = {
+		localisation_key = error_pointer.0
+		trigger = {
+			always = yes
+		}
+	}
+}
