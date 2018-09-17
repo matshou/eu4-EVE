@@ -99,6 +99,12 @@ defined_text = {
 		}
 	}
 	text = {
+		localisation_key = error_pointer.2
+        trigger = {
+			is_variable_equal = { which = error_point value = 2 }
+		}
+	}
+	text = {
 		localisation_key = error_pointer.0
 		trigger = {
 			always = yes

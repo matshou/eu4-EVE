@@ -11,3 +11,5 @@
 
  error_pointer.0:0 "unknown method"
  error_pointer.1:0 "core.set_prov_owner_id"
+ error_pointer.2:0 "core.init_country"
+
