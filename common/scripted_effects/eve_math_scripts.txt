@@ -128,7 +128,7 @@ math.round_func = {
 			}
 			else_if = {
 				limit = { is_var_not_equal_to_val = { var = arg_var val = -1 } }
-				core.print_error = { code = 104 }
+				core.print_error = { code = 104 method = 0 }
 			}
 
 			set_variable = { which = $val$ which = counter_var }

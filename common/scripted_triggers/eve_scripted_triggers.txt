@@ -39,6 +39,14 @@ is_error = {
 	}
 }
 
+is_country = {
+	capital_scope = { always = yes }
+}
+
+is_province = {
+	owner = { always = yes }
+}
+
 ##############################
 # EVE - Math Triggers
 ##############################
@@ -172,14 +180,6 @@ is_policy_gov_relative_rating = {
 		is_variable_equal = { which = policy_gov_rating value = $val$ }
 		is_variable_equal = { which = policy_gov_rating value = -$val$ }
 	}
-}
-
-can_raise_vassal_taxes = {
-}
-
-}
-
-has_vassal_tax_rate = {
 }
 
 ##############################

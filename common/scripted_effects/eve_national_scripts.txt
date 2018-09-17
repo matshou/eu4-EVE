@@ -86,7 +86,7 @@ capital.remove_modifiers = {
 		remove_province_triggered_modifier = capital_province
 		remove_province_modifier = prov_nation_capital
 	}
-	else = { core.print_error = { code = 309 } }
+	else = { core.print_error = { code = 309 method = 0 } }
 }
 
 ##################################
