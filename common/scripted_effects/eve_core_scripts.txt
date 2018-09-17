@@ -126,7 +126,7 @@ core.set_country_id = {
 		PREV = { change_variable = { which = init_num value = 1 } }
 		change_variable = { which = country_id value = 1 }
 	}
-	else = { core.print_error = { code = 199 } }
+	else = { core.print_error = { code = 199 method = 0 } }
 }
 
 # Assign a unique id for province that corresponds to owner country id
@@ -141,7 +141,7 @@ core.set_prov_owner_id = {
 			core.export_var_to_prev = { var = country_id }
 			PREV = { set_variable = { which = owner_id which = output_var } }
 		}
-		else = { core.print_error = { code = 279 } }
+		else = { core.print_error = { code = 279 method = 1 } }
 	}
 }
 
@@ -195,6 +195,7 @@ core.print_error = {
 
 	event_target:global = {
 		set_variable = { which = error_code value = $code$ }
-		PREV = { log = "EVE: Error [Prev.error_code.GetValue] >> [This.error_log_txt]" }
+		set_variable = { which = error_point value = $method$ }
+		PREV = { log = "[This.error_log_txt]" }
 	}
 }

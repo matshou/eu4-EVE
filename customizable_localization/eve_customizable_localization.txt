@@ -15,6 +15,30 @@ defined_text = {
 	}
 }
 
+defined_text = {
+	name = caller_scope_txt
+	random = no
+
+	text = {
+		localisation_key = string_country
+		trigger = {
+			is_country = yes
+		}
+	}
+	text = {
+		localisation_key = string_province
+		trigger = {
+			is_province = yes
+		}
+	}
+	text = {
+		localisation_key = string_unknown
+		trigger = {
+			always = yes
+		}
+	}
+}
+
 ###########################
 # EVE: Color Keys
 ###########################
@@ -84,7 +108,50 @@ defined_text = {
 ###########################
 
 defined_text = {
+	name = error_code_txt
+	random = no
+
+	text = {
+		localisation_key = string_error_code
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = error_method_txt
+	random = no
+
+	text = {
+		localisation_key = string_error_code
+        trigger = {
+			is_var_not_null = { var = error_point }
+		}
+	}
+
+	text = {
+		localisation_key = string_null
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
 	name = error_log_txt
+	random = no
+
+	text = {
+		localisation_key = string_error_log
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = error_log_content_txt
 	random = no
 
 	text = {
@@ -112,7 +179,31 @@ defined_text = {
 		}
 	}
 	text = {
-		localisation_key = error_unknown
+		localisation_key = error.140
+        trigger = {
+			is_error = { code = 140 }
+		}
+	}
+	text = {
+		localisation_key = error.000
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = error_method_name_txt
+	random = no
+
+	text = {
+		localisation_key = error_pointer.1
+        trigger = {
+			is_variable_equal = { which = error_point value = 1 }
+		}
+	}
+	text = {
+		localisation_key = error_pointer.0
 		trigger = {
 			always = yes
 		}
