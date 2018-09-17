@@ -94,6 +94,10 @@ core.on_monthly_pulse = {
 core.init_country = {
 
 	if = {
+		limit = { is_country = no }
+		core.print_error = { code = 140 method = 2 }
+	}
+	else_if = {
 		# can only be called once per country
 		limit = { is_country_initialized = no }
 
@@ -135,6 +139,10 @@ core.set_country_id = {
 #
 core.set_prov_owner_id = {
 
+	if = {
+		limit = { is_province = no }
+		core.print_error = { code = 140 method = 1 }
+	}
 	owner = {
 		if = {
 			limit = { check_variable = { which = country_id value = 1 } }
