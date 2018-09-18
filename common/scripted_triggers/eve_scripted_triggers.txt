@@ -43,6 +43,10 @@ is_country = {
 	capital_scope = { always = yes }
 }
 
+is_neutral_faction = {
+	OR = { tag = PIR tag = NAT tag = REB }
+}
+
 is_province = {
 	owner = { always = yes }
 }

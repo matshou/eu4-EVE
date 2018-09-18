@@ -67,12 +67,7 @@ core.on_monthly_pulse = {
 
 	if = {
 		limit = { is_global_scope = yes }
-
-		# Check on each pulse to see if a new country formed
-		every_country = {
-			limit = { is_country_initialized = no }
-			core.init_country = yes
-		}
+		core.global_update = yes
 	}
 
 	states.update_all = yes
@@ -87,6 +82,18 @@ core.on_monthly_pulse = {
 	}
 }
 
+# Called from global scope each month
+# @scope global
+#
+core.global_update = {
+
+	# Check to see if a new country formed
+	every_country = {
+		limit = { is_country_initialized = no }
+		core.init_country = yes
+	}
+}
+
 # Assign country and province id's and enable monthly pulse for scoped country.
 # Called in mod init phase and when a new country is formed
 # @scope country
@@ -94,24 +101,24 @@ core.on_monthly_pulse = {
 core.init_country = {
 
 	if = {
-		limit = { is_country = no }
-		core.print_error = { code = 140 method = 2 }
-	}
-	else_if = {
-		# can only be called once per country
-		limit = { is_country_initialized = no }
+		limit = { is_neutral_faction = no }
+		if = {
+			limit = { is_country = yes }
 
-		core.set_country_id = yes
-		every_owned_province = {
-			core.set_prov_owner_id = yes
+			core.set_country_id = yes
+			every_owned_province = {
+				core.set_prov_owner_id = yes
+			}
+			capital.init = yes						# apply capital modifiers
+			core.fire_monthly_pulse = yes    		# force an immediate update
+			init_domestic_policies = yes
+
+			set_country_flag = is_initialized
+			set_country_flag = territorial_change
 		}
-
-		capital.init = yes						# apply capital modifiers
-		core.fire_monthly_pulse = yes    		# force an immediate update
-		init_domestic_policies = yes
-
-		set_country_flag = is_initialized
-		set_country_flag = territorial_change
+		else = {
+			core.print_error = { code = 140 method = 2 }
+		}
 	}
 }
 
