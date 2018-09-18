@@ -123,7 +123,7 @@ core.init_country = {
 }
 
 # Assign a unique id for scoped country
-# @scope country
+# @scope this:country prev:global
 #
 core.set_country_id = {
 
@@ -205,6 +205,7 @@ core.export_var_to_prev = {
 # Helper method to print error messages in game log
 # Strings are stored in localization files
 # @scope anywhere
+# @param code, method (localization)
 #
 core.print_error = {
 
