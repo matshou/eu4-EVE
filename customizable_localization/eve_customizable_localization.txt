@@ -102,3 +102,39 @@ defined_text = {
         }
     }
 }
+
+defined_text = {
+	name = lower_tax_liberty_desire_txt_c
+	random = no
+
+	text = {
+		localisation_key = color_key_r2
+		trigger = {
+			check_variable = { which = vassal_tax_rate value = 1 }
+		}
+	}
+	text = {
+        localisation_key = color_key_g2
+        trigger = {
+            always = yes
+        }
+    }
+}
+
+defined_text = {
+	name = raise_tax_liberty_desire_txt_c
+	random = no
+
+	text = {
+		localisation_key = color_key_r2
+		trigger = {
+			check_variable = { which = vassal_tax_rate value = 0 }
+		}
+	}
+	text = {
+        localisation_key = color_key_g2
+        trigger = {
+            always = yes
+        }
+    }
+}
