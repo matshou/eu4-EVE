@@ -9,49 +9,74 @@ country_decisions = {
 		major = no
 		potential = {
 			country_has_vassal = yes
+			vassals.is_tax_rate_max = no
 		}
 		allow = {
 			custom_trigger_tooltip = {
 				tooltip = tooltip_can_raise_vassal_taxes
-				can_raise_vassal_taxes = yes
+				vassals.can_raise_taxes = yes
 			}
 		}
 		effect = {
-			if = {
-			}
-			else_if = {
-			}
-			else_if = {
-			}
-			else_if = {
-			}
-			}
-			}
+			vassals.raise_taxes = yes
+			custom_tooltip = tooltip_raise_tax_liberty_desire
 		}
 		ai_will_do = {
 			factor = 0
 		}
 	}
+
 	lower_vassal_taxes = {
 		major = no
 		potential = {
 			country_has_vassal = yes
+			vassals.is_tax_exemption_max = no
 		}
 		allow = {
 			custom_trigger_tooltip = {
+				tooltip = tooltip_can_lower_vassal_taxes
+				vassals.can_lower_taxes = yes
 			}
 		}
 		effect = {
-			if = {
-			}
-			else_if = {
-			}
-			else_if = {
-			}
-			else_if = {
-			}
-			}
-			}
+			vassals.lower_taxes = yes
+			custom_tooltip = tooltip_lower_tax_liberty_desire
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	repeal_vassal_taxes = {
+		major = no
+		potential = {
+			country_has_vassal = yes
+			vassals.has_raised_tax_rate = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			vassals.remove_active_tax_rate = yes
+			custom_tooltip = tooltip_repeal_vassal_taxes
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	abolish_vassal_tax_exemption = {
+		major = no
+		potential = {
+			country_has_vassal = yes
+			vassals.has_tax_exemption = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			vassals.remove_active_tax_rate = yes
+			custom_tooltip = tooltip_abolish_vassal_tax_exemption
 		}
 		ai_will_do = {
 			factor = 0

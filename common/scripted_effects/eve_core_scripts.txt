@@ -74,6 +74,7 @@ core.on_monthly_pulse = {
 	states.update_non_states = yes
 	governance.update_policy = yes
 	autonomy.check_for_change = yes
+	vassals.update = yes
 
 	# Gained new territory or changed capital
 	if = {

@@ -1,0 +1,238 @@
+
+###############################
+# EVE - Vassal Tax Scripts
+###############################
+
+# Used in governance decisions when enacting new vassal taxes.
+# New and past rate arguments are numerical representations of tax modifiers
+# @scope overlord
+# @param new, past
+#
+vassals.change_tax_rate = {
+
+	vassals.enact_tax_rate = { rate = $new$ }
+	vassals.remove_tax_rate = { rate = $past$ }
+}
+
+# Add specific tax rate modifier to both overlord and all vassals.
+# Acts as a tax initialization method for new vassals
+# @scope overlord
+# @param rate
+#
+vassals.enact_tax_rate = {
+
+	add_country_modifier = { name = vassal_tax_rate$rate$ duration = -1 }
+	vassals.set_tax_rate = { rate = $rate$ }
+
+	hidden_effect = {
+		every_subject_country = {
+			limit = { is_vassal = yes }
+			vassals.set_tax_lib_desire = { rate = $rate$ }
+			set_country_flag = vassal_tax_rate
+		}
+	}
+}
+
+# Remove specific tax rate modifier from both overlord and all vassals
+# @scope overlord
+# @param rate
+#
+vassals.remove_tax_rate = {
+
+	hidden_effect = {
+		remove_country_modifier = vassal_tax_rate$rate$
+		every_subject_country = {
+			limit = { is_vassal = yes }
+			remove_country_modifier = vassal_tax_rate_ld$rate$
+		}
+	}
+}
+
+# This method that acts similar to 'remove_tax_rate' but is called only for repealing taxes.
+# If current rate is unknown, 'remove_active_tax_rate' should be called instead
+# @scope overlord
+# @param rate
+#
+vassals.repeal_tax_rate = {
+
+	remove_country_modifier = vassal_tax_rate$rate$
+	vassals.set_tax_rate = { rate = 0 }
+
+	hidden_effect = {
+		every_subject_country = {
+			limit = { is_vassal = yes }
+			remove_country_modifier = vassal_tax_rate_ld$rate$
+			clr_country_flag = vassal_tax_rate
+		}
+	}
+}
+
+# Helper method to update tax rate variable
+# @scope overlord
+# @param rate
+vassals.set_tax_rate = {
+
+	hidden_effect = {
+		set_variable = { which = vassal_tax_rate value = $rate$ }
+	}
+}
+
+
+# Helper method to initialize tax rate for vassal
+# @scope vassal
+# @param rate
+vassals.set_tax_lib_desire = {
+
+	set_country_flag = vassal_tax_rate
+	add_country_modifier = { name = vassal_tax_rate_ld$rate$ duration = -1 }
+}
+
+# Called on each monthly pulse
+# @scope overlord
+vassals.update = {
+
+	if = {
+		limit = { is_vassal = yes }
+		if = {
+			limit = {
+				vassals.has_tax_rate = no
+				overlord = { vassals.has_tax_rate = yes }
+			}
+			vassals.set_taxes_for_new = yes					# add tax rate mod for new vassal
+		}
+	}
+	else_if = {
+		limit = { has_country_flag = vassal_tax_rate }		# remove liberty desire modifier
+		vassals.remove_tax_liberty_desire = yes				# for countries that are no longer vassals
+	}
+	else_if = {
+		limit = {
+			vassals.has_tax_rate = yes
+			vassals.is_valid_tax_rate = no							# if current vassal income value
+		}													# is below 0% or above 100%
+
+		vassals.export_income = yes
+
+		while = {
+			limit = {
+				is_var_negative_value = { var = output_var }
+				is_var_negative_value = { var = vassal_tax_rate }
+			}
+			vassals.raise_taxes = yes
+			vassals.export_income = yes
+		}
+		while = {
+			limit = {
+				is_var_greater_than_val = { var = output_var val = 1 }
+				check_variable = { which = vassal_tax_rate value = 1 }
+			}
+			vassals.lower_taxes = yes
+			vassals.export_income = yes
+		}
+	}
+}
+
+vassals.export_income = {
+	export_to_variable = { which = output_var value = modifier:vassal_income }
+}
+
+# Called from governance decisions
+# @ scope overlord
+vassals.raise_taxes = {
+
+	if = {
+		limit = { vassals.is_tax_rate = { value = 2 } }
+		vassals.change_tax_rate = { new = 3 past = 2 }
+	}
+	else_if = {
+		limit = { vassals.is_tax_rate = { value = 1 } }
+		vassals.change_tax_rate = { new = 2 past = 1 }
+	}
+	else_if = {
+		limit = { vassals.is_tax_rate = { value = 0 } }
+		vassals.enact_tax_rate = { rate = 1 }
+	}
+	else_if = {
+		limit = { vassals.is_tax_rate = { value = -2 } }
+		vassals.change_tax_rate = { new = -1 past = -2 }
+	}
+	else_if = {
+		limit = { vassals.is_tax_rate = { value = -3 } }
+		vassals.change_tax_rate = { new = -2 past = -3 }
+	}
+}
+
+# Called from governance decisions
+# @ scope overlord
+vassals.lower_taxes = {
+
+	if = {
+		limit = { vassals.is_tax_rate = { value = 3 } }
+		vassals.change_tax_rate = { new = 2 past = 3 }
+	}
+	else_if = {
+		limit = { vassals.is_tax_rate = { value = 2 } }
+		vassals.change_tax_rate = { new = 1 past = 2 }
+	}
+	else_if = {
+		limit = { vassals.is_tax_rate = { value = 0 } }
+		vassals.enact_tax_rate = { rate = -1 }
+	}
+	else_if = {
+		limit = { vassals.is_tax_rate = { value = -1 } }
+		vassals.change_tax_rate = { new = -2 past = -1 }
+	}
+	else_if = {
+		limit = { vassals.is_tax_rate = { value = -2 } }
+		vassals.change_tax_rate = { new = -3 past = -2 }
+	}
+}
+
+# Find and remove currently active tax rate/exemption
+# @scope overlord
+vassals.remove_active_tax_rate = {
+
+	trigger_switch = {
+		on_trigger = has_country_modifier
+		vassal_tax_rate3 = { vassals.repeal_tax_rate = { rate = 3 } }
+		vassal_tax_rate2 = { vassals.repeal_tax_rate = { rate = 2 } }
+		vassal_tax_rate1 = { vassals.repeal_tax_rate = { rate = 1 } }
+		vassal_tax_rate-3 = { vassals.repeal_tax_rate = { rate = -3 } }
+		vassal_tax_rate-2 = { vassals.repeal_tax_rate = { rate = -2 } }
+		vassal_tax_rate-1 = { vassals.repeal_tax_rate = { rate = -1 } }
+	}
+}
+
+# Find and remove currently active liberty desire modifier
+# @scope vassal
+vassals.remove_tax_liberty_desire = {
+
+	clr_country_flag = vassal_tax_rate
+	trigger_switch = {
+		on_trigger = has_country_modifier
+		vassal_tax_rate_ld3 = { remove_country_modifier = vassal_tax_rate_ld3 }
+		vassal_tax_rate_ld2 = { remove_country_modifier = vassal_tax_rate_ld2 }
+		vassal_tax_rate_ld1 = { remove_country_modifier = vassal_tax_rate_ld1 }
+		vassal_tax_rate_ld-3 = { remove_country_modifier = vassal_tax_rate_ld-3 }
+		vassal_tax_rate_ld-2 = { remove_country_modifier = vassal_tax_rate_ld-2 }
+		vassal_tax_rate_ld-1 = { remove_country_modifier = vassal_tax_rate_ld-1 }
+	}
+}
+
+# Apply appropriate liberty desire modifier depending on
+# overlord tax rate for newly vassalized country
+# @scope vassal
+vassals.set_taxes_for_new = {
+
+	overlord = {
+		trigger_switch = {
+			on_trigger = has_country_modifier
+			vassal_tax_rate3 = { PREV = { vassals.set_tax_lib_desire = { rate = 3 } } }
+			vassal_tax_rate2 = { PREV = { vassals.set_tax_lib_desire = { rate = 2 } } }
+			vassal_tax_rate1 = { PREV = { vassals.set_tax_lib_desire = { rate = 1 } } }
+			vassal_tax_rate-3 = { PREV = { vassals.set_tax_lib_desire = { rate = -3 } } }
+			vassal_tax_rate-2 = { PREV = { vassals.set_tax_lib_desire = { rate = -2 } } }
+			vassal_tax_rate-1 = { PREV = { vassals.set_tax_lib_desire = { rate = -1 } } }
+		}
+	}
+}
