@@ -40,18 +40,18 @@ core.on_daily_pulse = {
 	# This triggers when the capital gets moved to another
 	# province or the previous owner gets annexed
 	if = {
-		limit = { ROOT = { is_not_capital = yes } }
+		limit = { ROOT = { core.is_not_capital = yes } }
 		ROOT = { capital.lose_status = yes }
 	}
 	else = {	# Don't do anything else if no longer capital
 		if = {
-			limit = { has_new_ruler = yes }
+			limit = { nation.has_new_ruler = yes }
 
 			set_ruler_flag = inagurated
 			governance.calc_ruler_mod = yes
 		}
 		if = {
-			limit = { should_do_monthly_update = yes }
+			limit = { core.can_update = yes }
 			core.on_monthly_pulse = yes
 		}
 	}
@@ -66,7 +66,7 @@ core.on_monthly_pulse = {
 	clr_country_flag = immediate_update
 
 	if = {
-		limit = { is_global_scope = yes }
+		limit = { core.is_global_scope = yes }
 		core.global_update = yes
 	}
 
@@ -78,7 +78,7 @@ core.on_monthly_pulse = {
 
 	# Gained new territory or changed capital
 	if = {
-		limit = { has_territorial_changes = yes }
+		limit = { nation.has_territory_changes = yes }
 		autonomy.update_distance = yes
 	}
 }
@@ -90,7 +90,7 @@ core.global_update = {
 
 	# Check to see if a new country formed
 	every_country = {
-		limit = { is_country_initialized = no }
+		limit = { nation.is_initialized = no }
 		core.init_country = yes
 	}
 }
@@ -102,9 +102,9 @@ core.global_update = {
 core.init_country = {
 
 	if = {
-		limit = { is_neutral_faction = no }
+		limit = { nation.is_neutral_faction = no }
 		if = {
-			limit = { is_country = yes }
+			limit = { core.is_country = yes }
 
 			core.set_country_id = yes
 			every_owned_province = {
@@ -130,7 +130,7 @@ core.set_country_id = {
 
 	if = {			# only call from global scope
 		limit = {
-			PREV = { is_global_scope = yes }
+			PREV = { core.is_global_scope = yes }
 		}
 		PREV = { core.export_var_to_prev = { var = init_num } }
 		set_variable = { which = country_id which = output_var }
@@ -148,7 +148,7 @@ core.set_country_id = {
 core.set_prov_owner_id = {
 
 	if = {
-		limit = { is_province = no }
+		limit = { core.is_province = no }
 		core.print_error = { code = 140 method = 1 }
 	}
 	owner = {

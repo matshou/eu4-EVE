@@ -8,7 +8,7 @@ country_decisions = {
 	raise_vassal_taxes = {
 		major = no
 		potential = {
-			country_has_vassal = yes
+			nation.has_vassal = yes
 			vassals.is_tax_rate_max = no
 		}
 		allow = {
@@ -29,7 +29,7 @@ country_decisions = {
 	lower_vassal_taxes = {
 		major = no
 		potential = {
-			country_has_vassal = yes
+			nation.has_vassal = yes
 			vassals.is_tax_exemption_max = no
 		}
 		allow = {
@@ -50,7 +50,7 @@ country_decisions = {
 	repeal_vassal_taxes = {
 		major = no
 		potential = {
-			country_has_vassal = yes
+			nation.has_vassal = yes
 			vassals.has_raised_tax_rate = yes
 		}
 		allow = {
@@ -68,7 +68,7 @@ country_decisions = {
 	abolish_vassal_tax_exemption = {
 		major = no
 		potential = {
-			country_has_vassal = yes
+			nation.has_vassal = yes
 			vassals.has_tax_exemption = yes
 		}
 		allow = {

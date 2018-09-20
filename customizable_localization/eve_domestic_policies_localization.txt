@@ -205,13 +205,13 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_1.a
 		trigger = {
-			has_regency_council = yes
+			nation.has_regency_council = yes
 		}
 	}
 	text = {
 		localisation_key = string_gov_policy_mod_1.b
 		trigger = {
-			has_interregnum = yes
+			nation.has_interregnum = yes
 		}
 	}
 	text = {

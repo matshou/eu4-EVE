@@ -167,7 +167,7 @@ governance.calc_policy_mod = {
 		change_variable = { which = policy_gov_mod value = -0.05 }
 	}
 	if = {
-		limit = { has_non_consort_regency = yes }
+		limit = { nation.has_lone_regency = yes }
 		if = {
 			limit = { has_heir = yes }										# regency council
 			change_variable = { which = policy_gov_mod value = -0.05 }
