@@ -48,7 +48,7 @@ defined_text = {
     random = no
 
     text = {
-        localisation_key = color_key_g
+        localisation_key = color_key_g2
         trigger = {
              stability = 1
         }
