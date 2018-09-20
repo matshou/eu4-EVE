@@ -1,0 +1,112 @@
+
+###########################
+# EVE: Vassal Tax Text
+###########################
+
+defined_text = {
+	name = vassal_tax_rate_txt
+	random = no
+
+	text = {
+		localisation_key = string_vassal_tax_rate
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = vassal_tax_exemption_txt
+	random = no
+
+	text = {
+		localisation_key = string_vassal_tax_exemption
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = vassal_tax_rate_ld_txt
+	random = no
+
+	text = {
+		localisation_key = string_vassal_tax_rate_ld
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = vassal_tax_exemption_ld_txt
+	random = no
+
+	text = {
+		localisation_key = string_vassal_tax_exemption_ld
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = raise_tax_liberty_desire_txt
+	random = no
+
+	text = {
+		localisation_key = string_tax_liberty_desire.3
+		trigger = {
+			vassals.is_tax_rate = { value = 2 }
+		}
+	}
+	text = {
+		localisation_key = string_tax_liberty_desire.2
+		trigger = {
+			OR = {
+				vassals.is_tax_rate = { value = 1 }
+				vassals.is_tax_rate = { value = -3 }
+			}
+		}
+	}
+	text = {
+		localisation_key = string_tax_liberty_desire.1
+		trigger = {
+			OR = {
+				vassals.is_tax_rate = { value = 0 }
+				vassals.is_tax_rate = { value = -2 }
+			}
+		}
+	}
+}
+
+defined_text = {
+	name = lower_tax_liberty_desire_txt
+	random = no
+
+	text = {
+		localisation_key = string_tax_liberty_desire.2
+		trigger = {
+			OR = {
+				vassals.is_tax_rate = { value = 3 }
+				vassals.is_tax_rate = { value = -1 }
+			}
+		}
+	}
+	text = {
+		localisation_key = string_tax_liberty_desire.1
+		trigger = {
+			OR = {
+				vassals.is_tax_rate = { value = 2 }
+				vassals.is_tax_rate = { value = 0 }
+			}
+		}
+	}
+	text = {
+		localisation_key = string_tax_liberty_desire.3
+		trigger = {
+			vassals.is_tax_rate = { value = -2 }
+		}
+	}
+}
