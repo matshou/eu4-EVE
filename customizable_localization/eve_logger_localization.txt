@@ -53,31 +53,31 @@ defined_text = {
 	text = {
 		localisation_key = error.199
         trigger = {
-			is_error = { code = 199 }
+			core.is_error = { code = 199 }
 		}
 	}
 	text = {
 		localisation_key = error.279
         trigger = {
-			is_error = { code = 279 }
+			core.is_error = { code = 279 }
 		}
 	}
 	text = {
 		localisation_key = error.309
         trigger = {
-			is_error = { code = 309 }
+			core.is_error = { code = 309 }
 		}
 	}
 	text = {
 		localisation_key = error.104
         trigger = {
-			is_error = { code = 104 }
+			core.is_error = { code = 104 }
 		}
 	}
 	text = {
 		localisation_key = error.140
         trigger = {
-			is_error = { code = 140 }
+			core.is_error = { code = 140 }
 		}
 	}
 	text = {

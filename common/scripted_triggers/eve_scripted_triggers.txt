@@ -3,7 +3,7 @@
 # EVE - Core Triggers
 ##############################
 
-should_do_monthly_update = {
+core.can_update = {
 	OR = {
 		has_country_flag = immediate_update
 		variable_arithmetic_trigger = {
@@ -13,42 +13,67 @@ should_do_monthly_update = {
 	}
 }
 
-is_not_capital = {
+core.is_not_capital = {
 	NOT = { is_capital = yes }
 }
 
-has_new_ruler = {
-	NOT = { has_ruler_flag = inagurated }
-}
-
-is_country_initialized = {
-	has_country_flag = is_initialized
-}
-
-has_territorial_changes = {
-	has_country_flag = territorial_change
-}
-
-is_global_scope = {
+core.is_global_scope = {
 	tag = event_target:global
 }
 
-is_error = {
+core.is_error = {
 	event_target:global = {
 		is_variable_equal = { which = error_code value = $code$ }
 	}
 }
 
-is_country = {
+core.is_country = {
 	capital_scope = { always = yes }
 }
 
-is_neutral_faction = {
+core.is_province = {
+	owner = { always = yes }
+}
+
+##############################
+# EVE - Country Triggers
+##############################
+
+nation.has_territory_changes = {
+	has_country_flag = territorial_change
+}
+
+nation.is_neutral_faction = {
 	OR = { tag = PIR tag = NAT tag = REB }
 }
 
-is_province = {
-	owner = { always = yes }
+nation.has_new_ruler = {
+	NOT = { has_ruler_flag = inagurated }
+}
+
+nation.is_initialized = {
+	has_country_flag = is_initialized
+}
+
+nation.has_lone_regency = {
+	has_regency = yes
+	has_consort_regency = no
+}
+
+nation.has_regency_council = {
+	nation.has_lone_regency = yes
+	has_heir = yes
+}
+
+nation.has_interregnum = {
+	nation.has_lone_regency = yes
+	has_heir = no
+}
+
+nation.has_vassal = {
+	any_subject_country = {
+		is_vassal = yes
+	}
 }
 
 ##############################
@@ -99,31 +124,6 @@ is_var_not_null = {
 
 is_var_null = {
 	is_variable_equal = { which = $var$ value = 0 }
-}
-
-##############################
-# EVE - Country Triggers
-##############################
-
-has_non_consort_regency = {
-	has_regency = yes
-	has_consort_regency = no
-}
-
-has_regency_council = {
-	has_non_consort_regency = yes
-	has_heir = yes
-}
-
-has_interregnum = {
-	has_non_consort_regency = yes
-	has_heir = no
-}
-
-country_has_vassal = {
-	any_subject_country = {
-		is_vassal = yes
-	}
 }
 
 ##############################

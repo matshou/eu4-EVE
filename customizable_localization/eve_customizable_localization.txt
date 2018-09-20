@@ -22,13 +22,13 @@ defined_text = {
 	text = {
 		localisation_key = string_country
 		trigger = {
-			is_country = yes
+			core.is_country = yes
 		}
 	}
 	text = {
 		localisation_key = string_province
 		trigger = {
-			is_province = yes
+			core.is_province = yes
 		}
 	}
 	text = {
