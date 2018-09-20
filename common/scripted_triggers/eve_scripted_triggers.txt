@@ -193,63 +193,63 @@ vassals.is_tax_exemption_max = {
 # EVE - Policy Triggers
 ##############################
 
-is_policy_gov_below_min = {
+governance.is_below_min = {
 	is_var_less_than = { var1 = policy_gov_val var2 = policy_gov_min }
 }
-is_policy_gov_above_max = {
+governance.is_above_max = {
 	is_var_greater_than = { var1 = policy_gov_val var2 = policy_gov_max }
 }
-is_policy_gov_max_rating = {
-	is_policy_gov_relative_rating = { val = 5 }
+governance.is_rating_max = {
+	governance.is_relative_rating = { value = 5 }
 }
 
-is_policy_gov_rating_centralized = {
+governance.is_centralized = {
 	has_country_flag = policy_gov_centralized
 }
-is_policy_gov_rating_decentralized = {
+governance.is_decentralized = {
 	has_country_flag = policy_gov_decentralized
 }
-is_policy_gov_rating_neutral = {
+governance.is_neutral = {
 	has_country_flag = policy_gov_neutral
 }
 
-is_policy_gov_fully_centralized = {
+governance.is_max_centralized = {
 	is_variable_equal = { which = policy_gov_val which = policy_gov_max }
 }
-is_policy_gov_fully_decentralized = {
+governance.is_max_decentralized = {
 	is_variable_equal = { which = policy_gov_val which = policy_gov_min }
 }
 
-is_policy_gov_decentalizing = {
+governance.is_decentralizing = {
 	is_var_less_than_val = { var = policy_gov_mod val = 0 }
 }
-is_policy_gov_centalizing = {
+governance.is_centralizing = {
 	is_var_greater_than_val = { var = policy_gov_mod val = 0 }
 }
-is_policy_gov_idle = {
+governance.is_idle = {
 	is_variable_equal = { which = policy_gov_mod value = 0 }
 }
-is_policy_gov_moving_to_neutral = {
+governance.becoming_neutral = {
 	OR = {
 		AND = {
-			is_policy_gov_rating_decentralized = yes
-			is_policy_gov_centalizing = yes
+			governance.is_decentralized = yes
+			governance.is_centralizing = yes
 		}
 		AND = {
-			is_policy_gov_rating_centralized = yes
-			is_policy_gov_decentalizing = yes
+			governance.is_centralized = yes
+			governance.is_decentralizing = yes
 		}
 	}
 }
 
-is_policy_gov_rating = {
-	is_variable_equal = { which = policy_gov_rating value = $val$ }
+governance.is_rating = {
+	is_variable_equal = { which = policy_gov_rating value = $value$ }
 }
 
-is_policy_gov_relative_rating = {
+governance.is_relative_rating = {
 	OR = {
-		is_variable_equal = { which = policy_gov_rating value = $val$ }
-		is_variable_equal = { which = policy_gov_rating value = -$val$ }
+		is_variable_equal = { which = policy_gov_rating value = $value$ }
+		is_variable_equal = { which = policy_gov_rating value = -$value$ }
 	}
 }
 
