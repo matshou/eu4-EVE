@@ -22,13 +22,13 @@ defined_text = {
 	text = {
 		localisation_key = string_null
 		trigger = {
-			is_policy_gov_idle = yes
+			governance.is_idle = yes
 		}
 	}
 	text = {
 		localisation_key = string_gov_policy_desc_c
 		trigger = {
-			is_policy_gov_centalizing = yes
+			governance.is_centralizing = yes
 		}
 	}
 	text = {
@@ -53,8 +53,8 @@ defined_text = {
 		localisation_key = string_policy_gov_increase_time_1
 		trigger = {
 			OR = {
-				is_policy_gov_max_rating = no
-				is_policy_gov_moving_to_neutral = yes
+				governance.is_rating_max = no
+				governance.becoming_neutral = yes
 			}
 		}
 	}
@@ -127,7 +127,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_stance
 		trigger = {
-			is_policy_gov_rating_neutral = no
+			governance.is_neutral = no
 		}
 	}
 	text = {
@@ -145,13 +145,13 @@ defined_text = {
 	text = {
 		localisation_key = string_centralized
 		trigger = {
-			is_policy_gov_rating_centralized = yes
+			governance.is_centralized = yes
 		}
 	}
 	text = {
 		localisation_key = string_decentralized
 		trigger = {
-			is_policy_gov_rating_decentralized = yes
+			governance.is_decentralized = yes
 		}
 	}
 }
@@ -163,13 +163,13 @@ defined_text = {
 	text = {
 		localisation_key = string_null
 		trigger = {
-			is_policy_gov_idle = yes
+			governance.is_idle = yes
 		}
 	}
 	text = {
 		localisation_key = string_centralized
 		trigger = {
-			is_policy_gov_centalizing = yes
+			governance.is_centralizing = yes
 		}
 	}
 	text = {
@@ -349,7 +349,7 @@ defined_text = {
 	text = {
 		localisation_key = string_policy_gov_mod_d_desc_3
 		trigger = {
-			is_policy_gov_rating = { val = -5 }
+			governance.is_rating = { value = -5 }
 		}
 	}
 	text = {
@@ -379,7 +379,7 @@ defined_text = {
 	text = {
 		localisation_key = string_policy_gov_mod_c_desc_3
 		trigger = {
-			is_policy_gov_rating = { val = 5 }
+			governance.is_rating = { value = 5 }
 		}
 	}
 	text = {
@@ -421,7 +421,7 @@ defined_text = {
 	text = {
 		localisation_key = string_quant.1
 		trigger = {
-			is_policy_gov_max_rating = no
+			governance.is_rating_max = no
 		}
 	}
 	text = {
@@ -440,8 +440,8 @@ defined_text = {
 		localisation_key = string_quant.1
 		trigger = {
 			OR = {
-				is_policy_gov_moving_to_neutral = yes
-				NOT = { is_policy_gov_relative_rating = { val = 4 } }
+				governance.becoming_neutral = yes
+				NOT = { governance.is_relative_rating = { value = 4 } }
 			}
 		}
 	}
@@ -460,31 +460,31 @@ defined_text = {
 	text = {
 		localisation_key = string_adj.a.1
 		trigger = {
-			is_policy_gov_relative_rating = { val = 1 }
+			governance.is_relative_rating = { value = 1 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.2
 		trigger = {
-			is_policy_gov_relative_rating = { val = 2 }
+			governance.is_relative_rating = { value = 2 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.3
 		trigger = {
-			is_policy_gov_relative_rating = { val = 3 }
+			governance.is_relative_rating = { value = 3 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.4
 		trigger = {
-			is_policy_gov_relative_rating = { val = 4 }
+			governance.is_relative_rating = { value = 4 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.5
 		trigger = {
-			is_policy_gov_relative_rating = { val = 5 }
+			governance.is_relative_rating = { value = 5 }
 		}
 	}
 	text = {
@@ -502,37 +502,37 @@ defined_text = {
 	text = {
 		localisation_key = string_null
 		trigger = {
-			is_policy_gov_moving_to_neutral = yes
+			governance.becoming_neutral = yes
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.1
 		trigger = {
-			is_policy_gov_rating_neutral = yes
+			governance.is_neutral = yes
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.2
 		trigger = {
-			is_policy_gov_relative_rating = { val = 1 }
+			governance.is_relative_rating = { value = 1 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.3
 		trigger = {
-			is_policy_gov_relative_rating = { val = 2 }
+			governance.is_relative_rating = { value = 2 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.4
 		trigger = {
-			is_policy_gov_relative_rating = { val = 3 }
+			governance.is_relative_rating = { value = 3 }
 		}
 	}
 	text = {
 		localisation_key = string_adj.a.5
 		trigger = {
-			is_policy_gov_relative_rating = { val = 4 }
+			governance.is_relative_rating = { value = 4 }
 		}
 	}
 	text = {
@@ -554,13 +554,13 @@ defined_text = {
     text = {
         localisation_key = color_key_g
         trigger = {
-             is_policy_gov_centalizing = yes
+             governance.is_centralizing = yes
         }
     }
     text = {
         localisation_key = color_key_r
         trigger = {
-            is_policy_gov_idle = no
+            governance.is_idle = no
         }
     }
 	text = {
