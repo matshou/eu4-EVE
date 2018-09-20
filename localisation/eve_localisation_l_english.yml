@@ -67,5 +67,9 @@
  string_unknown:0 "unknown"
 
  color_key_r:0 "R"
- color_key_g:0 "G+"
+ color_key_r2:0 "R+"
+ color_key_r3:0 "R-"
+ color_key_g:0 "G"
+ color_key_g2:0 "G+"
+ color_key_g3:0 "G-"
  color_key_n:0 "Y"
