@@ -3,12 +3,56 @@
 # EVE - Vassal Tax Rates
 ############################
 
+# When changing income values here don't forget to
+# update values in related scripted triggers
+
+vassal_tax_rate-3 = {
+	vassal_income = -0.3
 }
 
+vassal_tax_rate-2 = {
+	vassal_income = -0.2
 }
 
+vassal_tax_rate-1 = {
+	vassal_income = -0.1
 }
 
+vassal_tax_rate1 = {
+	vassal_income = 0.1
 }
 
+vassal_tax_rate2 = {
+	vassal_income = 0.2
+}
+
+vassal_tax_rate3 = {
+	vassal_income = 0.3
+}
+
+# When changing liberty desire values here don't
+# forget to update related localization strings
+
+vassal_tax_rate_ld-1 = {
+	liberty_desire = -5
+}
+
+vassal_tax_rate_ld-2 = {
+	liberty_desire = -20
+}
+
+vassal_tax_rate_ld-3 = {
+	liberty_desire = -35
+}
+
+vassal_tax_rate_ld1 = {
+	liberty_desire = 5
+}
+
+vassal_tax_rate_ld2 = {
+	liberty_desire = 20
+}
+
+vassal_tax_rate_ld3 = {
+	liberty_desire = 35
 }
