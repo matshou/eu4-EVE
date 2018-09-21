@@ -165,7 +165,7 @@ estate_dhimmi = {
 		trigger = {
 			full_idea_group = humanist_ideas
 		}
-		loyalty = 10
+		loyalty = 35
 	}
 
 	# Does the AI want to give any extra territory beyond the minimum?

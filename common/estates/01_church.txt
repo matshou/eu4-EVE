@@ -46,7 +46,7 @@ estate_church =
 	start_territory_weight = 25
 
 	# Min autonomy in estate provinces
-	min_autonomy = 25
+	min_autonomy = 20
 
 	# Estate cancels out the following multiplicative local autonomy effects:
 	autonomy_does_not_affect = local_tax_modifier
@@ -75,14 +75,14 @@ estate_church =
 	# These do not scale, but only applied in provinces owned by the estate
 	province_modifier_happy = {
 		local_missionary_strength = 0.02
-		local_tax_modifier = 0.1
-		local_unrest = -2
+		local_tax_modifier = 0.15
+		local_unrest = -3.5
 	}
 	province_modifier_neutral = {
 		local_unrest = -2
 	}
 	province_modifier_angry = {
-		local_unrest = 5
+		local_unrest = 6
 	}
 
 	# Influence modifiers
@@ -181,6 +181,36 @@ estate_church =
 		influence = -10
 	}
 
+	####################################
+	# EVE - Church Estate Modifiers
+	####################################
+
+	influence_modifier = {
+		desc = EST_VAL_FULL_RELIGIOUS_INF
+		trigger = {
+			full_idea_group = religious_ideas
+		}
+		influence = 5
+	}
+	influence_modifier = {
+		desc = EST_VAL_FULL_HUMANIST
+		trigger = {
+			full_idea_group = humanist_ideas
+		}
+		influence = -10
+	}
+
+	loyalty_modifier = {
+		desc = EST_VAL_DEVELOPED
+		trigger = {
+			has_country_modifier = estate_developed_church
+		}
+		loyalty = 250
+	}
+
+	####################################
+	####################################
+
 	# Loyalty modifiers
 	loyalty_modifier = {
 		desc = EST_VAL_PIOUS
@@ -276,7 +306,7 @@ estate_church =
 		trigger = {
 			full_idea_group = religious_ideas
 		}
-		loyalty = 10
+		loyalty = 35
 	}
 
 	custom_name = {
