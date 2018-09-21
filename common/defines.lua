@@ -384,6 +384,11 @@ NDiplomacy = {
 	KNOWLEDGE_SHARING_INSTITUTION_GROWTH_MONTHLY = 1.0,
 	KNOWLEDGE_SHARING_DURATION_YEARS = 10,
 	KNOWLEDGE_SHARING_COST_PERCENT_MONTHLY = 10.0,
+	SCORNFUL_INSULT_PRESTIGE_COST = 5.0,
+	SCORNFUL_INSULT_FOUL_MOUTHED_COUNT = 10,
+
+	CHARTER_COMPANY_BASE_COST = 1000,
+	CHARTER_COMPANY_MINIMUM_COST = 100,
 },
 
 NCountry = {
@@ -452,10 +457,9 @@ NCountry = {
 	ESTATE_PROVINCE_HAPPINESS_CHANGE_MAX_POS = 20,	-- Loyalty cannot change more than this from a single province add
 	ESTATE_PROVINCE_HAPPINESS_CHANGE_MAX_NEG = 30,	-- Loyalty cannot change more than this from a single province revoke
 	ESTATE_PROVINCE_POWER = 1.5,				-- Per % of non overseas development in the country they manage
-	ESTATE_PROVINCE_POWER_MAX = 40,
-	ESTATE_DANGER_THRESHOLD = 80,				-- Estates with more influence than this become a danger to the state
+	ESTATE_PROVINCE_POWER_MAX = 50,
+	ESTATE_DANGER_THRESHOLD = 100,				-- Estates with more influence than this become a danger to the state
 	ESTATE_GRANT_PROVINCE_COOLDOWN = 5,			-- A province cannot be revoked for this amount of years after being granted to an estate
-	ESTATE_LACK_OF_TERRITORY_EFFECT = -0.25,		-- Monthly loyalty loss from having too little territory
 
 	CULTURAL_UNION_MIN_DEV = 1000,				-- Minimum development to get cultural union effect without Common Sense, or if CULTURAL_UNION_MIN_RANK is set to negative value.
 	CULTURAL_UNION_MIN_RANK = 3,				-- Minimum rank to get cultural union effect with Common Sense.
@@ -515,7 +519,10 @@ NCountry = {
 	ELECTIVE_HEIR_CLAIM_STRENGTH = 80,
 	MAX_ACTIVE_POLICIES = 8,						-- how many active policies at once.
 	MINIMUM_POLICY_TIME = 500,						-- how many years minimum for a policy
-	POLICY_COST = 0,								-- Monthly cost per policy
+	POLICY_COST = 1,								-- Monthly cost per policy
+	BASE_POSSIBLE_POLICIES = 4,						-- How many policies in a category a nation can have as a base
+	BASE_FREE_POLICIES = 2,							-- How many policies in a category a nation get for free
+
 	MIN_FEDERAL_AUTHORITY = -100,					-- federal authority cannot go lower than -100
 	MAX_WAR_EXHAUSTION = 20,
 	VICTORY_CARD_DECAY_MONTHS = 120,		-- months to lose all score.
@@ -832,7 +839,15 @@ NCountry = {
 	INNOVATIVENESS_DAYS_AFTER_FIRST_PICK_VIABLE = 90, -- How many days you cna still get innov
 	INNOVATIVENESS_MAX = 100.0, -- Innovativeness Cap
 	MIN_HARSH_TREATMENT_COST = 5, -- Minimum harsh treatment cost
-
+	CAN_CONVERT_TERRITORY_CULTURE = 0, -- Defines if you are allowed to culture convert territory provinces
+	CAN_CONVERT_TERRITORY_RELIGION = 0, -- Defines if you are allowed to convert religion of territory provinces
+	ALLOWED_TERRITORY_VS_MAX_STATES = 1.0, -- Defines how much percentage compared to your max states you are allowed to have as territory without penalty
+	TERRITORY_PENALTY_CAP = 40,				-- How many territories maximum can penalize you
+	SETTLEMENT_GROWTH_DEVELOPMENT_INCREASE = 1, -- How much development may increase per year if a colonist is working on Settlement Growth.
+	SETTLMENT_GROWTH_CHANCE_MULTIPLIER = 2.5, -- Affects chance of development increase per year if a colonist is working on Settlement Growth.
+	SETTLMENT_GROWTH_CHANCE_MIN = 0.05, -- Minimum chance of increasing development for colonists promoting Settlement Growth
+	SETTLEMENT_GROWTH_CHECK_INTERVAL = 365, -- Interval in days between checks for random development increase when working in Settlement Growth.
+	FREE_POLICIES_PER_CATEGORY = 1, -- Available free policies per monarch power category
 },
 
 NEconomy = {
@@ -924,8 +939,11 @@ NEconomy = {
 	CARAVAN_POWER_MAX = 50,
 	CARAVAN_POWER_MIN = 2,
 	MAX_BUILDING_SLOTS = 12,						-- Maximum number of buildings slots, i.e. max buildings possible.
+	COT_BUILDING_SLOTS = 2,							-- Number of slots used by a Center of Trade.
+	COT_DOWNGRADE_PRESTIGE_COST = -10,				-- Cost in prestige to downgrade a Center of Trade.
 	MAX_LD_FOR_CONSTRUCT_IN_SUBJECT = 50,			-- Maximum liberty desire at which an overlord can recruit regiments and build ships in a subject's glorious lands.
 	CONSTRUCT_IN_SUBJECT_TIME_MULTIPLIER = 1.25,
+	BANK_LOAN_DURATION = 60,						-- Default bank loan duration in months
 	MIN_NEW_CACHED_STARTING_INCOME = 1.0,			-- Minimum historic starting income for newly created/released countries
 },
 
@@ -1125,6 +1143,8 @@ NMilitary = {
 	NAVAL_DOCTRINE_SAILORS_COST = 0.1,				-- Cost for switching naval doctrine (Share of sailors)
 	NAVAL_DOCTRINE_MIN_FORCE_LIMIT = 20,			-- Minimum naval force limit to be able to select a naval doctrine
 	LEAGUE_LEADER_CHANGE_SCORE_THRESHOLD = 1.5,		-- Score * factor needed for leader change (Compared to current leader)
+	MAX_DRILL_DECAY = 0.9,							-- Drill can never Decay with more than this value.
+	AREA_REBEL_SUPPRESSION_MULTIPLIER = 5.0,		-- Armies suppressing rebels in areas adds this/<number of suppressed provinces> to rebel suppression in affected provinces.
 },
 
 NAI = {
@@ -1484,8 +1504,12 @@ NAI = {
 	MIN_FORCE_LIMIT_SHARE_REGION_ASSIGN = 0.10,					-- AI will only assign armies larger that this to a region
 	MAX_ARMIES_NEW_REGION_ASSIGN_ALGORITHM = 0,					-- Max. amount of armies to use in new region assignment algorithm (fall back to old one)
 	MAX_TASKS_NEW_REGION_ASSIGN_ALGORITHM = 0,					-- Max. amount of tasks to use in new region assignment algorithm (fall back to old one)
-
-	ELECTORAL_REFORMATION_CONVERT_TRESHOLD = 0.1				-- How much of an electors development needs to be a reformed religion for it to try and reform
+	ELECTORAL_REFORMATION_CONVERT_TRESHOLD = 0.1,				-- How much of an electors development needs to be a reformed religion for it to try and reform
+	TRADE_COMPANY_INVESTMENT_COST_THRESHOLD = 1.0,				-- How many times the cost of the investment must be in the treasury to consider buying it
+	ASSIMILATION_INTEREST_AMOUNT_FACTOR = 10,					-- Influence on assimilation interest from number of provinces left to conquer
+	INVASION_ARMY_LOOKUP_INTERVAL_ON_FAILURE = 15,				-- If AI fails to find an army for an invasion it will try again in this number of days
+	CHARTER_COMPANY_BASE_RELUCTANCE = -3,						-- Base reluctance to giving away provinces in charter company diplo action
+	CHARTER_COMPANY_DEVELOPMENT_RELUCTANCE = 3,				-- How much development needed to add one reluctance
 },
 
 NGraphics = {
@@ -1595,6 +1619,14 @@ NGraphics = {
 	AGGRESSIVE_EXPANSION_MAX_B = 0.0,
 	AGGRESSIVE_EXPANSION_MAX_A = 1.0,
 	AG_FOR_MAX_COLOR_IN_COALITION_MAPMODE = 150,
+	TRUCE_LENGTH_MIN_R = 1.0,
+	TRUCE_LENGTH_MIN_G = 0.75,
+	TRUCE_LENGTH_MIN_B = 0.0,
+	TRUCE_LENGTH_MAX_R = 1.0,
+	TRUCE_LENGTH_MAX_G = 0.0,
+	TRUCE_LENGTH_MAX_B = 0.0,
+	TRUCE_LENGTH_A = 1.0,
+	MAX_NUM_YEAR_OF_TRUCE_FOR_MAPMODE = 15,
 	COLONIAL_COLOR_INTERPOLATION_FACTOR = 0.35,
 
 	MINIMAP_LAND_COLOR_R 			= 2,
@@ -1790,7 +1822,6 @@ NReligion = {
 	CHURCH_POWER_RATE_SCALE = 0.1,								-- Scaling value for rate at which church power is gained.
 
 	KARMA_FOR_OFFENSIVE_WAR = -10,
-	KARMA_FOR_DEFENSIVE_WAR = 10,
 	KARMA_FOR_HONORING_CTA = 25,
 	KARMA_PER_RELEASED_PROVINCE = 1,
 	KARMA_PER_TAKEN_PROVINCE = -1,
@@ -1906,6 +1937,23 @@ NGovernment = {
 	ENLIST_GENERAL_TRADITION = 40,
 	SANCTION_HOLY_WAR_LIST_SIZE = 7,
 	INVITE_MINORITIES_GAIN = 1,
+	GOVERNMENT_REFORM_BASE_COST = 100.0,
+	GOVERNMENT_REFORM_COST_INCREASE = 50.0,
+	GOVERNMENT_REFORM_YEARLY_BASE_PROGRESS = 10.0,
+	GOVERNMENT_REFORM_HISTORIC_AUTONOMY = 0.25,
+	GOVERNMENT_REFORM_CHANGE_CORRUPTION = 10.0,
+	GOVERNMENT_REFORM_CHANGE_MAX_CORRUPTION = 50.0,
+	GOVERNMENT_REFORM_MAX_SURPLUS_PROGRESS = 100.0,
+	DICTATORSHIP_TO_MONARCHY_REFORM_PENALTY = 4,
+	NATIVE_REFORM_REFORM_PENALTY = 2,
+	RECEIVE_SERFS_DEVELOPMENT = 1,
+	RECEIVE_SERFS_MODIFIER_ON_RIVAL_DURATION_DAYS = 3650,
+	COSSACKS_ABILITY_COSSACKS_SPAWN_SIZE = 0.2,
+	COSSACKS_ABILITY_COSSACKS_WE_CHANGE = -2,
+	RAIDING_PARTIES_MODIFIER_DURATION = 10,
+	LEGACY_NATIVES_REFORM_REPUBLIC_SPONSOR = "oligarchic_republic",
+	LEGACY_NATIVES_REFORM_MONARCHY_SPONSOR = "despotic_monarchy",
+	LEGACY_NATIVES_REFORM_THEOCRACY_SPONSOR = "theocratic_government",
 },
 
 }

@@ -3,17 +3,21 @@
 # EVE - Domestic Policies
 ###############################
 
-domestic_policy_governance = {
+# Each policy uses two idea group icons that must be defined as
+# triggers in the 'allow' block. We can use custom icons by defining
+# dummy idea groups and assigning them our own dds files in 'ideas.gfx'
+
+governance.policy_neutral = {
 
 	monarch_power = ADM
 	potential = {
-		always = yes
+		governance.is_neutral = yes
 	}
 	allow = {
-		always = yes
+		governance.define_policy_icon = yes
 	}
 
-	# Use this modifier just to get the right icon
+	# As close as we can get to null value
 	administrative_efficiency = 0.001
 
 	ai_will_do = {
