@@ -457,9 +457,9 @@ NCountry = {
 	ESTATE_PROVINCE_HAPPINESS_CHANGE_MAX_POS = 20,	-- Loyalty cannot change more than this from a single province add
 	ESTATE_PROVINCE_HAPPINESS_CHANGE_MAX_NEG = 30,	-- Loyalty cannot change more than this from a single province revoke
 	ESTATE_PROVINCE_POWER = 1.5,				-- Per % of non overseas development in the country they manage
-	ESTATE_GRANT_PROVINCE_COOLDOWN = 5,			-- A province cannot be revoked for this amount of years after being granted to an estate
 	ESTATE_PROVINCE_POWER_MAX = 50,
 	ESTATE_DANGER_THRESHOLD = 100,				-- Estates with more influence than this become a danger to the state
+	ESTATE_GRANT_PROVINCE_COOLDOWN = 5,			-- A province cannot be revoked for this amount of years after being granted to an estate
 
 	CULTURAL_UNION_MIN_DEV = 1000,				-- Minimum development to get cultural union effect without Common Sense, or if CULTURAL_UNION_MIN_RANK is set to negative value.
 	CULTURAL_UNION_MIN_RANK = 3,				-- Minimum rank to get cultural union effect with Common Sense.
