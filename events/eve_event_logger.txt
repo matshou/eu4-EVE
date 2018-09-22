@@ -1,0 +1,25 @@
+namespace = eve_logger_error
+
+country_event = {
+	id = eve_logger_error.0
+	title = eve_logger_error.0.t	# unlocalized
+	desc = "" picture = ""
+	hidden = yes
+
+	trigger = {
+		always = yes
+	}
+
+	# THIS = caller FROM = country
+	immediate = {
+
+		# THIS = global PREV = caller
+		event_target:global = {
+			log = "[This.error_log_txt]"
+		}
+	}
+
+	option = {
+		# Do not remove this or we'll get errors
+	}
+}
