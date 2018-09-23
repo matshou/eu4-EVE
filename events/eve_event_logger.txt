@@ -13,6 +13,8 @@ country_event = {
 	desc = "" picture = ""
 	hidden = yes
 
+	is_triggered_only = yes
+
 	trigger = {
 		always = yes
 	}
@@ -34,6 +36,8 @@ country_event = {
 	title = eve_print_info.0.t	  # unlocalized
 	desc = "" picture = ""
 	hidden = yes
+
+	is_triggered_only = yes
 
 	trigger = {
 		always = yes

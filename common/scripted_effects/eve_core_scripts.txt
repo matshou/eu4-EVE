@@ -204,7 +204,7 @@ core.export_var_to_prev = {
 	}
 }
 
-# Helper method to print error messages in game log
+# Print error message to game.log
 # Strings are stored in localization files
 # @scope anywhere
 # @param code, method (localization)
@@ -215,15 +215,7 @@ core.print_error = {
 		set_variable = { which = error_code value = $code$ }
 		set_variable = { which = error_point value = $method$ }
 	}
-	if = {
-		limit = { core.is_country = yes }
-		country_event = { id = eve_print_error.0 }
-	}
-	else_if = {
-		limit = { core.is_province = yes }
-		province_event = { id = eve_print_error.0 }
-	}
-	else = { log = "EVE: Tried to print error from unknown scope!" }
+	core.call_logger = { event = print_error }
 }
 
 # Print variable value to game.log
@@ -232,9 +224,23 @@ core.print_error = {
 #
 core.print_variable_info = {
 
-	log = "$info$"
-	event_target:global = {
-		set_variable = { which = loc_var which = $var$ }
-		country_event = { id = eve_print_info.0 }
+	set_variable = { which = loc_var which = $var$ }
+	core.call_logger = { event = print_info }
+}
+
+# Helper method that calls appropriate logger event
+# @scope anywhere
+# @param event$
+#
+core.call_logger = {
+
+	if = {
+		limit = { core.is_country = yes }
+		country_event = { id = eve_$event$.0 }
 	}
+	else_if = {
+		limit = { core.is_province = yes }
+		province_event = { id = eve_$event$.0 }
+	}
+	else = { log = "EVE: Error >> Tried to print log from unknown scope!" }
 }
