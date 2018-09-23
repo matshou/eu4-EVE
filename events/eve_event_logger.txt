@@ -1,3 +1,4 @@
+namespace = eve_print_info
 namespace = eve_print_error
 
 # Normally we would print error logs directly from scripted files however
@@ -25,7 +26,22 @@ country_event = {
 		}
 	}
 
-	option = {
-		# Do not remove this or we'll get errors
+	option = {}
+}
+
+country_event = {
+	id = eve_print_info.0
+	title = eve_print_info.0.t	  # unlocalized
+	desc = "" picture = ""
+	hidden = yes
+
+	trigger = {
+		always = yes
 	}
+
+	immediate = {
+		log = "EVE: Variable value: [This.loc_var.GetValue]"
+	}
+
+	option = {}
 }

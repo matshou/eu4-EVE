@@ -226,4 +226,15 @@ core.print_error = {
 	else = { log = "EVE: Tried to print error from unknown scope!" }
 }
 
+# Print variable value to game.log
+# @scope anywhere
+# @param var
+#
+core.print_variable_info = {
+
+	log = "$info$"
+	event_target:global = {
+		set_variable = { which = loc_var which = $var$ }
+		country_event = { id = eve_print_info.0 }
+	}
 }
