@@ -1,8 +1,14 @@
-namespace = eve_logger_error
+namespace = eve_print_error
+
+# Normally we would print error logs directly from scripted files however
+# since Dharma update (1.26) the game would crash when printing a log containing
+# customizable localization tags from scripted effects and scripted triggers.
+
+#! NOTE: Do not remove option tags or we will get errors!
 
 country_event = {
-	id = eve_logger_error.0
-	title = eve_logger_error.0.t	# unlocalized
+	id = eve_print_error.0
+	title = eve_print_error.0.t	  # unlocalized
 	desc = "" picture = ""
 	hidden = yes
 
@@ -10,7 +16,7 @@ country_event = {
 		always = yes
 	}
 
-	# THIS = caller FROM = country
+	# FROM = country
 	immediate = {
 
 		# THIS = global PREV = caller

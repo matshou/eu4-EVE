@@ -217,11 +217,11 @@ core.print_error = {
 	}
 	if = {
 		limit = { core.is_country = yes }
-		country_event = { id = eve_logger_error.0 }
+		country_event = { id = eve_print_error.0 }
 	}
 	else_if = {
 		limit = { core.is_province = yes }
-		province_event = { id = eve_logger_error.0 }
+		province_event = { id = eve_print_error.0 }
 	}
 	else = { log = "EVE: Tried to print error from unknown scope!" }
 }
