@@ -517,11 +517,11 @@ NCountry = {
 	SUPPORT_OWN_HEIR_PRESTIGE_COST = 10,
 	SUPPORT_OWN_HEIR_SUPPORT_BONUS = 5,
 	ELECTIVE_HEIR_CLAIM_STRENGTH = 80,
-	MAX_ACTIVE_POLICIES = 5,						-- how many active policies at once.
-	MINIMUM_POLICY_TIME = 10,						-- how many years minimum for a policy
+	MAX_ACTIVE_POLICIES = 12,						-- how many active policies at once.
+	MINIMUM_POLICY_TIME = 1,						-- how many years minimum for a policy
 	POLICY_COST = 1,								-- Monthly cost per policy
-	BASE_POSSIBLE_POLICIES = 3,						-- How many policies in a category a nation can have as a base
-	BASE_FREE_POLICIES = 1,							-- How many policies in a category a nation get for free
+	BASE_POSSIBLE_POLICIES = 4,						-- How many policies in a category a nation can have as a base
+	BASE_FREE_POLICIES = 2,							-- How many policies in a category a nation get for free
 
 	MIN_FEDERAL_AUTHORITY = -100,					-- federal authority cannot go lower than -100
 	MAX_WAR_EXHAUSTION = 20,
