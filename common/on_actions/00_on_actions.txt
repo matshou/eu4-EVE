@@ -53,6 +53,39 @@ on_startup = {
 on_religion_change = {
 	if = {
 		limit = {
+			has_dlc = "Dharma"
+			has_reform = indian_sultanate_reform
+			NOT = { religion_group = muslim }
+		}
+		remove_government_reform = indian_sultanate_reform
+	}
+	else_if = {
+		limit = {
+			has_reform = indian_sultanate_reform
+			NOT = { religion_group = muslim }
+		}
+		set_legacy_government = despotic_monarchy
+	}
+
+	if = {
+		limit = {
+			has_reform = feudal_theocracy
+			NOT = { religion_group = muslim }
+		}
+		remove_government_reform = feudal_theocracy
+	}
+	else_if = {
+		limit = {
+			has_reform = feudal_theocracy
+			NOT = { religion_group = muslim }
+		}
+		set_legacy_government = despotic_monarchy
+	}
+
+
+
+	if = {
+		limit = {
 			has_heir = yes
 		}
 		set_heir_religion = ROOT
@@ -863,7 +896,16 @@ on_mandate_of_heaven_gained = {
 		change_technology_group = chinese
 		change_unit_type = chinese
 	}
-	change_government = celestial_empire
+	if = {
+		limit = {
+			OR = {
+				NOT = { government = monarchy }
+				government = tribal
+			}
+		}
+		change_government = monarchy
+	}
+	add_government_reform = celestial_empire
 	set_mandate = 60
 	china_superregion = {
 		limit = {
@@ -902,7 +944,15 @@ on_mandate_of_heaven_gained = {
 # When a nation loses the Mandate of Heaven
 # FROM = New Emperor, ROOT = Old Emperor
 on_mandate_of_heaven_lost = {
-	change_government = despotic_monarchy
+	if = {
+		limit = {
+			has_dlc = "Dharma"
+		}
+		remove_government_reform = celestial_empire
+	}
+	else = {
+		set_legacy_government = despotic_monarchy
+	}
 	set_government_rank = 2
 	add_country_modifier = {
 		name = lost_mandate_of_heaven
@@ -918,7 +968,16 @@ on_mandate_of_heaven_lost = {
 }
 
 on_dismantle_revolution = {
-	change_government = despotic_monarchy
+	if = {
+		limit = {
+			has_dlc = "Dharma"
+		}
+		remove_government_reform = revolutionary_empire_reform
+		change_government = monarchy
+	}
+	else = {
+		set_legacy_government = despotic_monarchy
+	}
 	kill_ruler = yes
 	set_revolution_target = ---
 	if = {
@@ -1501,6 +1560,18 @@ on_bi_yearly_pulse = {
 		100 = innovativeness_events.13
 		100 = innovativeness_events.14
 		100 = innovativeness_events.15
+
+		# Trade Company Investments
+		100 = investment_events.1
+		100 = investment_events.2
+		100 = investment_events.3
+		100 = investment_events.4
+		100 = investment_events.5
+		100 = investment_events.6
+		100 = investment_events.7
+		100 = investment_events.8
+		100 = investment_events.9
+		100 = investment_events.10
 
 		1250 = 0
 	}
@@ -2367,7 +2438,61 @@ on_five_year_pulse_2 = {
 		150 = tribal_estate_events.12 #Demands
 		150 = tribal_estate_events.13 #Demands
 		150 = tribal_estate_events.14 #Demands
-
+		# Marathas
+		100 = marathas_estate_events.2
+		100 = marathas_estate_events.3
+		100 = marathas_estate_events.4
+		100 = marathas_estate_events.5
+		100 = marathas_estate_events.6
+		400 = marathas_estate_events.7 # Demands
+		100 = marathas_estate_events.8
+		100 = marathas_estate_events.9
+		100 = marathas_estate_events.10
+		400 = marathas_estate_events.11 # Disloyal
+		# Brahmins
+		400 = brahmins_estate_events.2 # demands
+		100 = brahmins_estate_events.3
+		100 = brahmins_estate_events.4
+		100 = brahmins_estate_events.5
+		400 = brahmins_estate_events.6 # disloyal
+		100 = brahmins_estate_events.7
+		100 = brahmins_estate_events.8
+		100 = brahmins_estate_events.9
+		100 = brahmins_estate_events.10
+		100 = brahmins_estate_events.11
+		# Jains
+		100 = jains_estate_events.2
+		100 = jains_estate_events.3
+		100 = jains_estate_events.4
+		100 = jains_estate_events.5
+		100 = jains_estate_events.6
+		100 = jains_estate_events.7
+		400 = jains_estate_events.8 # Disloyal
+		100 = jains_estate_events.9
+		400 = jains_estate_events.10 # Demands
+		100 = jains_estate_events.11
+		# Vaishyas
+		100 = vaisyas_estate_events.2
+		100 = vaisyas_estate_events.3
+		100 = vaisyas_estate_events.4
+		100 = vaisyas_estate_events.5
+		100 = vaisyas_estate_events.6
+		100 = vaisyas_estate_events.7
+		100 = vaisyas_estate_events.8
+		400 = vaisyas_estate_events.9
+		100 = vaisyas_estate_events.10
+		100 = vaisyas_estate_events.11
+		# Rajputs
+		100 = rajputs_estate_events.2
+		100 = rajputs_estate_events.3
+		100 = rajputs_estate_events.4
+		100 = rajputs_estate_events.5
+		400 = rajputs_estate_events.6
+		100 = rajputs_estate_events.7
+		400 = rajputs_estate_events.8
+		100 = rajputs_estate_events.9
+		100 = rajputs_estate_events.10
+		100 = rajputs_estate_events.11
 		1000 = 0
 	}
 }
@@ -2520,9 +2645,17 @@ on_remove_free_city = {
 }
 
 on_revoke_estate_land_ai = { #AI can't handle the rebels atm or perform a gradual revoke, sorry
+	add_province_modifier = {
+		name = revoked_estate_modifier
+		duration = 5475 #15 years
+	}
 }
 
 on_revoke_estate_land = {
+	add_province_modifier = {
+		name = revoked_estate_modifier
+		duration = 5475 #15 years
+	}
 	if = {
 		limit = {
 			has_estate = estate_cossacks
@@ -2651,9 +2784,134 @@ on_revoke_estate_land = {
 		}
 		province_event = { id = tribal_estate_events.10 }
 	}
+	if = {
+		limit = {
+			has_estate = estate_brahmins
+			owner = {
+				NOT = {
+					religion = hinduism
+				}
+				NOT = {
+					estate_loyalty = {
+						estate = estate_brahmins
+						loyalty = 40
+					}
+				}
+			}
+		}
+		spawn_rebels = {
+			type = religious_rebels
+			size = 1
+		}
+		province_event = { id = brahmins_estate_events.1 }
+	}
+	if = {
+		limit = {
+			has_estate = estate_brahmins
+			owner = {
+				religion = hinduism
+				NOT = {
+					estate_loyalty = {
+						estate = estate_brahmins
+						loyalty = 40
+					}
+				}
+			}
+		}
+		spawn_rebels = {
+			type = particularist_rebels
+			size = 1
+		}
+		province_event = { id = brahmins_estate_events.1 }
+	}
+	if = {
+		limit = {
+			has_estate = estate_vaisyas
+			owner = {
+				NOT = {
+					estate_loyalty = {
+						estate = estate_vaisyas
+						loyalty = 40
+					}
+				}
+			}
+		}
+		spawn_rebels = {
+			type = particularist_rebels
+			size = 1
+		}
+		province_event = { id = vaisyas_estate_events.1 }
+	}
+	if = {
+		limit = {
+			has_estate = estate_rajput
+			owner = {
+				NOT = {
+					estate_loyalty = {
+						estate = estate_rajput
+						loyalty = 40
+					}
+				}
+			}
+		}
+		spawn_rebels = {
+			type = noble_rebels
+			size = 1
+		}
+		province_event = { id = rajputs_estate_events.1 }
+	}
+	if = {
+		limit = {
+			has_estate = estate_jains
+			owner = {
+				NOT = {
+					estate_loyalty = {
+						estate = estate_jains
+						loyalty = 40
+					}
+				}
+			}
+		}
+		spawn_rebels = {
+			type = particularist_rebels
+			size = 1
+		}
+		province_event = { id = jains_estate_events.1 }
+	}
+	if = {
+		limit = {
+			has_estate = estate_maratha
+			owner = {
+				NOT = {
+					estate_loyalty = {
+						estate = estate_maratha
+						loyalty = 40
+					}
+				}
+			}
+		}
+		spawn_rebels = {
+			type = noble_rebels
+			size = 1
+		}
+		province_event = { id = marathas_estate_events.1 }
+	}
+}
+
+on_revoke_estate_land_ai_post = {
+	add_local_autonomy = 25
+}
+on_revoke_estate_land_post = {
+	add_local_autonomy = 25
 }
 
 on_grant_estate_land = {
+	if = {
+		limit = {
+			has_province_modifier = revoked_estate_modifier
+		}
+		remove_province_modifier = revoked_estate_modifier
+	}
 }
 
 on_death_has_harem = {
@@ -2697,6 +2955,13 @@ on_lose_great_power_status = {
 
 # province
 on_province_religion_converted = {
+	if = {
+		limit = {
+			religion_group = muslim
+			has_estate = estate_dhimmi
+		}
+		remove_estate = estate_dhimmi
+	}
 }
 
 # province
@@ -2892,4 +3157,57 @@ on_remove_pasha = {
 
 # THIS = Province
 on_janissaries_raised = {
+}
+
+on_reform_enacted = {
+}
+
+on_reform_changed = {
+}
+
+on_trade_company_investment = {
+}
+
+on_center_of_trade_upgrade = {
+
+}
+
+on_center_of_trade_downgrade = {
+
+}
+
+on_culture_promoted = {
+
+}
+
+# FROM = Previous Country, ROOT = Province
+on_company_chartered = {
+	if = {
+		limit = {
+			OR = {
+				region = bengal_region
+				region = hindusthan_region
+				region = west_india_region
+				region = deccan_region
+				region = coromandel_region
+			}
+		}
+		ROOT = {
+			owner = {
+				set_country_flag = the_coin_is_stronger_than_the_sword
+			}
+		}
+	}
+}
+
+# ROOT = Overlord, FROM = Minor
+on_dependency_gained = {
+	events = {
+		dutch_republic.31 # States General falls under a PU
+	}
+}
+
+# ROOT = Overlord, FROM = Minor
+on_dependency_lost = {
+
 }
