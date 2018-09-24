@@ -1,3 +1,4 @@
 ﻿l_english:
  NOT_CANCEL_POLICY_UNTIL:0 ""
+ CONFIRMADDPOLICY_TEXT:1 "Enacting $NAME$ will raise our policy cost to $COST|Y$ $TYPE$ power each month, and it has to be active for at least §Y10§! years before it can be repealed. It will give you the following benefits:\n$EFFECTS$\nAre you sure?"
 
