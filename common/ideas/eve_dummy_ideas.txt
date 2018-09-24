@@ -1,0 +1,36 @@
+
+##############################
+# EVE - Dummy Idea Groups
+##############################
+
+# These idea groups have no content and are intended to be used to
+# define iconsfor custom policies. Add sprite definitions to these
+# entries in 'interface/ideas.gfx'
+
+dummy_governance_1 = {
+	category = ADM
+
+	bonus = { }
+
+	trigger = {
+		always = no		# do not show in-game
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+dummy_governance_2 = {
+	category = ADM
+
+	bonus = { }
+
+	trigger = {
+		always = no
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}

@@ -253,6 +253,15 @@ governance.is_relative_rating = {
 	}
 }
 
+# used in policies, always returns true
+governance.define_policy_icon = {
+	OR = {
+		always = yes
+		has_idea_group = dummy_governance_1
+		has_idea_group = dummy_governance_2
+	}
+}
+
 ##############################
 # EVE - Building Triggers
 ##############################
