@@ -7,7 +7,7 @@
 # triggers in the 'allow' block. We can use custom icons by defining
 # dummy idea groups and assigning them our own dds files in 'ideas.gfx'
 
-governance.policy_neutral = {
+governance_policy = {
 
 	monarch_power = ADM
 	potential = {

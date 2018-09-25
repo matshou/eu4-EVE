@@ -85,7 +85,7 @@ governance.init_policy = {
 	set_variable = { which = policy_gov_gui_val which = policy_gov_val }
 
 	# Set policy as active and add to GUI
-	add_active_policy = governance.policy_neutral
+	add_active_policy = governance_policy
 }
 
 # Update policy modifiers, rating and GUI values
