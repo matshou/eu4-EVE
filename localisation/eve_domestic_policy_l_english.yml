@@ -24,8 +24,8 @@
  string_gov_policy_mod_6:0 "\n Corruption: §[Root.corruption_txt_c][Root.corruption_mod.GetValue]§!"
  string_gov_policy_mod_7:0 "\n Member of HRE: §R-0.05§!"
 
- string_centralized: "centralized"
- string_decentralized: "decentralized"
+ string_centralized:0 "centralized"
+ string_decentralized:0 "decentralized"
 
  #########################
  # Modifier Localization #
