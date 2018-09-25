@@ -3,16 +3,17 @@
  # Policy Localization #
  #######################
 
- governance.policy_neutral:0 "Governance Policy"
- desc_governance.policy_neutral:0 "Governance domestic policy rating is §Y[Root.policy_gov_gui_val.GetValue]§!.[Root.policy_gov_txt]\nMaximum rating for §Y[Root.GovernmentName]§! is §Y[Root.policy_gov_max.GetValue]§!.[Root.policy_gov_change_txt][Root.separator_txt][Root.policy_gov_desc_txt]"
- string_gov_policy_desc:0 "[Root.policy_gov_desc_2_txt]This policy reflects our ability to exercise state jurisdiction in core provinces through enforcing laws, culture and religion mandated by the state."
+ governance_policy:0 "Governance Policy"
+ desc_governance_policy:0 "[Root.policy_gov_txt]"
+ string_governance_policy:0 "Governance domestic policy rating is §Y[Root.policy_gov_gui_val.GetValue]§!.[Root.policy_gov_stance_txt]\nMaximum rating for §Y[Root.GovernmentName]§! is §Y[Root.policy_gov_max.GetValue]§!.[Root.policy_gov_change_txt] [Root.separator_txt][Root.policy_gov_desc_2_txt][Root.policy_gov_desc_txt]"
+ string_gov_policy_desc:0 "This policy reflects our ability to exercise state jurisdiction in core provinces through enforcing laws, culture and religion mandated by the state."
  string_gov_policy_desc_c:0 "We are currently working on increasing the concentration of nation's political, administrative and economic power in our capital city. [Root.policy_gov_increase_time_txt][Root.separator_txt]"
  string_gov_policy_desc_d:0 "We are currently working on transferring national responsibilities and functions from central government to provincial or state levels of government. [Root.policy_gov_increase_time_txt][Root.separator_txt]"
  string_policy_gov_increase_time_1:0 "[Root.Adm_Advisor.GetName] estimates it will take us [Root.policy_gov_time_format_txt] before our government becomes[Root.policy_gov_mod_pref_2_txt] [Root.policy_gov_result_2_txt]."
  string_policy_gov_time_format:0 "§Y[Root.policy_gov_time.GetValue]§! [Root.policy_gov_time_frame_txt][Root.policy_gov_time_frame_s_txt]"
  string_policy_gov_increase_time_2:0 "[Root.Adm_Advisor.GetName] reports that we will not be able to strengthen our government policy much more then we already have."
- string_gov_policy_stance:0 "\nAs a result our government is[Root.policy_gov_mod_desc_adj_1_txt] §Y[Root.policy_gov_result_txt]§!"
- string_gov_policy_change:0 "\nIt changes by §[Root.policy_gov_txt_c][Root.policy_gov_mod.GetValue]§! every month due to:[policy_gov_mod_1_txt] [policy_gov_mod_2_txt] [policy_gov_mod_3_txt] [policy_gov_mod_4_txt] [policy_gov_mod_5_txt] [policy_gov_mod_6_txt] [policy_gov_mod_7_txt]"
+ string_policy_gov_stance:0 "\nAs a result our government is[Root.policy_gov_mod_desc_adj_1_txt] §Y[Root.policy_gov_result_txt]§!"
+ string_policy_gov_change:0 "\nIt changes by §[Root.policy_gov_txt_c][Root.policy_gov_mod.GetValue]§! every month due to:[policy_gov_mod_1_txt] [policy_gov_mod_2_txt] [policy_gov_mod_3_txt] [policy_gov_mod_4_txt] [policy_gov_mod_5_txt] [policy_gov_mod_6_txt] [policy_gov_mod_7_txt]"
 
  string_gov_policy_mod_1:0 "\n [Root.Monarch.GetName]'s Administrative Skill: §G+[Root.policy_gov_rul_mod.GetValue]§!"
  string_gov_policy_mod_1.a:0 "\n Regency Council: §R-0.05§!"
