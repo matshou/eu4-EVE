@@ -4,6 +4,24 @@
 ###########################
 
 defined_text = {
+	name = policy_gov_txt
+	random = no
+
+	text = {
+		localisation_key = string_governance_policy
+		trigger = {
+			has_active_policy = governance_policy
+		}
+	}
+	text = {
+		localisation_key = string_gov_policy_desc
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
 	name = policy_gov_desc_txt
 	random = no
 
@@ -121,11 +139,11 @@ defined_text = {
 }
 
 defined_text = {
-	name = policy_gov_txt
+	name = policy_gov_stance_txt
 	random = no
 
 	text = {
-		localisation_key = string_gov_policy_stance
+		localisation_key = string_policy_gov_stance
 		trigger = {
 			governance.is_neutral = no
 		}
@@ -185,7 +203,7 @@ defined_text = {
 	random = no
 
 	text = {
-		localisation_key = string_gov_policy_change
+		localisation_key = string_policy_gov_change
 		trigger = {
 			always = yes
 		}
