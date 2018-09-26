@@ -92,5 +92,5 @@ prov_state_jurisdiction = {
 ###############################
 
 province_developing = {
-	local_development_cost = 10
+	local_development_cost = 3
 }
