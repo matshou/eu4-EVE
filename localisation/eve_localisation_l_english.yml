@@ -36,7 +36,7 @@
  EST_VAL_FULL_TRADE_INF:0 "Merchant Class: §Y$VAL$%§!"
  EST_VAL_FULL_INFLUENCE_INF:0 "Sphere of Influence: §Y$VAL$%§!"
  EST_VAL_FULL_INNOVATIVE:0 "Focus on Innovation: §Y$VAL$%§!"
- EST_VAL_DEVELOPED:0 "Recently Increased Development: "
+ EST_VAL_DEVELOPED:0 "Estate Land Recently Developed: "
 
  eve_autonomy_flavor.1.t:0 "Autonomy in distant provinces"
  eve_autonomy_flavor.1.d:0 "The population of any country always strives for more local autonomy for their communities as a response to government's continuous efforts to centralize territory under its control. Many factors hindered countries ability to exercise local jurisdiction, physical distance from capital city was one of them. As a result, it will be more difficult to collect income from distant provinces."
