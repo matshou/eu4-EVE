@@ -3,57 +3,47 @@
 # EVE - Estate Scripts
 ##################################
 
+# Called from 'province_scripts' when country develops a province
+# TODO: Add more estates here
+# @scope province
+# @access public
+#
+estates.on_development = {
+
+	if = {
+		limit = {
+			has_estate = estate_burghers
+			NOT = { province.is_estate_developing = { estate = burghers } }
+		}
+		estates.set_developing = { estate = burghers }
+	}
+	else_if = {
+		limit = {
+			has_estate = estate_church
+			NOT = { province.is_estate_developing = { estate = church } }
+		}
+		estates.set_developing = { estate = church }
+	}
+	else_if = {
+		limit = {
+			has_estate = estate_nobles
+			NOT = { province.is_estate_developing = { estate = nobles } }
+		}
+		estates.set_developing = { estate = nobles }
+	}
+}
+
 # Apply an estate modifier that gives temporary loyalty
 # bonus when developing their provinces
 # @scope province
+# @access private
 #
-estates.develop_land = {
-	if = {
-		limit = {
-			AND = {
-				has_estate = estate_burghers
-				NOT = { owner = { has_country_modifier = estate_developed_burghers } }
-			}
-		}
-		owner = {
-			add_country_modifier = {
-				name = estate_developed_burghers
-				duration = 60
-				desc = EST_VAL_DEVELOPED
-				hidden = yes
-			}
-		}
-	}
-	else_if = {
-		limit = {
-			AND = {
-				has_estate = estate_church
-				NOT = { owner = { has_country_modifier = estate_developed_church } }
-			}
-		}
-		owner = {
-			add_country_modifier = {
-				name = estate_developed_church
-				duration = 60
-				desc = EST_VAL_DEVELOPED
-				hidden = yes
-			}
-		}
-	}
-	else_if = {
-		limit = {
-			AND = {
-				has_estate = estate_nobles
-				NOT = { owner = { has_country_modifier = estate_developed_nobles } }
-			}
-		}
-		owner = {
-			add_country_modifier = {
-				name = estate_developed_nobles
-				duration = 60
-				desc = EST_VAL_DEVELOPED
-				hidden = yes
-			}
+estates.set_developing = {
+
+	owner = {
+		add_country_modifier = {
+			name = estate_developed_$estate$
+			duration = 60 hidden = yes
 		}
 	}
 }

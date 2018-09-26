@@ -77,6 +77,20 @@ nation.has_vassal = {
 }
 
 ##############################
+# EVE - Province Triggers
+##############################
+
+province.is_developing = {
+	has_province_modifier = province_developing
+}
+
+province.is_estate_developing = {
+	owner = {
+		has_country_modifier = estate_developed_$estate$
+	}
+}
+
+##############################
 # EVE - Math Triggers
 ##############################
 

@@ -1,0 +1,33 @@
+
+##################################
+# EVE - Province Scripts
+##################################
+
+# Called from 'on_actions' when country develops a province
+# @scope province
+# @access public
+#
+province.develop = {
+
+	if = {
+		limit = { province.is_developing = no }
+		province.set_developing = yes
+	}
+	if = {
+		limit = { has_estate = yes }
+		estates.on_development = yes
+	}
+}
+
+# Dramatically develop province development cost to make it
+# more difficult to further develop for a few months
+# @scope province
+# @access private
+#
+province.set_developing = {
+
+	add_province_modifier = {
+		name = province_developing
+		duration = 124 hidden = no
+	}
+}

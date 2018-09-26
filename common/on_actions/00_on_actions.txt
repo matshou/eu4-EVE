@@ -988,56 +988,17 @@ on_dismantle_revolution = {
 
 # province
 on_adm_development = {
-	if = {
-		limit = {
-			NOT = { has_province_modifier = province_developing }
-		}
-		add_province_modifier = {
-			name = province_developing
-			duration = 124
-			hidden = no
-		}
-	}
-	if = {
-		limit = { has_estate = yes }
-		estates.develop_land = yes
-	}
+	province.develop = yes
 }
 
 # province
 on_dip_development = {
-	if = {
-		limit = {
-			NOT = { has_province_modifier = province_developing }
-		}
-		add_province_modifier = {
-			name = province_developing
-			duration = 124
-			hidden = no
-		}
-	}
-	if = {
-		limit = { has_estate = yes }
-		estates.develop_land = yes
-	}
+	province.develop = yes
 }
 
 # province
 on_mil_development = {
-		if = {
-		limit = {
-			NOT = { has_province_modifier = province_developing }
-		}
-		add_province_modifier = {
-			name = province_developing
-			duration = 124
-			hidden = no
-		}
-	}
-	if = {
-		limit = { has_estate = yes }
-		estates.develop_land = yes
-	}
+	province.develop = yes
 }
 
 on_overextension_pulse = {
