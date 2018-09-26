@@ -13,10 +13,6 @@ core.can_update = {
 	}
 }
 
-core.is_not_capital = {
-	NOT = { is_capital = yes }
-}
-
 core.is_global_scope = {
 	tag = event_target:global
 }
@@ -79,6 +75,10 @@ nation.has_vassal = {
 ##############################
 # EVE - Province Triggers
 ##############################
+
+province.is_not_capital = {
+	NOT = { is_capital = yes }
+}
 
 province.is_developing = {
 	has_province_modifier = province_developing
