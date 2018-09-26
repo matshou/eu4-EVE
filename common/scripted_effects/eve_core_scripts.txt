@@ -41,7 +41,7 @@ core.on_daily_pulse = {
 	# This triggers when the capital gets moved to another
 	# province or the previous owner gets annexed
 	if = {
-		limit = { ROOT = { core.is_not_capital = yes } }
+		limit = { ROOT = { province.is_not_capital = yes } }
 		ROOT = { capital.lose_status = yes }
 	}
 	else = {	# Don't do anything else if no longer capital
