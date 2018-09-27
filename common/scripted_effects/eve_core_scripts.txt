@@ -73,7 +73,7 @@ core.on_monthly_pulse = {
 
 	states.update_all = yes
 	states.update_non_states = yes
-	governance.update_policy = yes
+	core.update_policies = yes
 	autonomy.check_for_change = yes
 	vassals.update = yes
 
@@ -113,7 +113,6 @@ core.init_country = {
 			}
 			capital.init = yes						# apply capital modifiers
 			core.fire_monthly_pulse = yes    		# force an immediate update
-			init_domestic_policies = yes
 
 			set_country_flag = is_initialized
 			set_country_flag = territorial_change
@@ -201,6 +200,22 @@ core.export_var_to_prev = {
 		limit = { is_var_not_equal_to = { var1 = counter_var var2 = $var$ } }
 		subtract_variable = { which = counter_var value = 1 }
 		PREV = { subtract_variable = { which = output_var value = 1 } }
+	}
+}
+
+# Update all domestic policies
+# @scope country
+core.update_policies = {
+
+	if = {
+		limit = { adm_tech = 3 }	# Medieval Admin
+		if = {
+			limit = { governance.is_initialized = no }
+			governance.init_policy = yes
+		}
+		else = {
+			governance.update_policy = yes
+		}
 	}
 }
 

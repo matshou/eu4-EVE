@@ -207,6 +207,10 @@ vassals.is_tax_exemption_max = {
 # EVE - Policy Triggers
 ##############################
 
+governance.is_initialized = {
+	has_country_flag = policy_gov_init
+}
+
 governance.is_below_min = {
 	is_var_less_than = { var1 = policy_gov_val var2 = policy_gov_min }
 }
