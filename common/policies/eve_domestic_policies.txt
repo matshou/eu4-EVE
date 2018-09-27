@@ -17,8 +17,7 @@ governance_policy = {
 		governance.define_policy_icon = yes
 	}
 
-	# As close as we can get to null value
-	administrative_efficiency = 0.001
+	administrative_efficiency = 0.05
 
 	ai_will_do = {
 		factor = 0
