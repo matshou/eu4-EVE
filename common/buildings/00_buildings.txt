@@ -196,6 +196,7 @@ courthouse = {
 	on_built = {
 		hidden_effect = {
 			states.apply_jurisdiction = yes
+			province_event = { id = eve_flavor_event.2 }
 		}
 	}
 	# Will not be called if the buildings was automatically removed
