@@ -5,6 +5,7 @@
 
 # List of flags:
 # ====================
+#  policy_gov_initialized       #
 #  policy_gov_neutral			#
 #  policy_gov_centralized		# all
 #  policy_gov_decentralized		# country
@@ -86,6 +87,7 @@ governance.init_policy = {
 
 	# Set policy as active and add to GUI
 	add_active_policy = governance_policy
+	set_country_flag = policy_gov_init
 }
 
 # Update policy modifiers, rating and GUI values

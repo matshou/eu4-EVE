@@ -88,15 +88,3 @@ capital.remove_modifiers = {
 	}
 	else = { core.print_error = { code = 309 method = 0 } }
 }
-
-##################################
-# EVE - Domestic Policy Scripts
-##################################
-
-# Scope: country
-# Initialize all domestic policies for country scope
-#
-init_domestic_policies = {
-
-	governance.init_policy = yes
-}
