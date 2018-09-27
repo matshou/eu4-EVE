@@ -3,6 +3,7 @@
 # EVE: Localization Text
 ###########################
 
+#Used to separate text paragraphs
 defined_text = {
     name = separator_txt
     random = no
@@ -15,6 +16,8 @@ defined_text = {
 	}
 }
 
+#Get caller scope
+#Ex: "country" or "province"
 defined_text = {
 	name = caller_scope_txt
 	random = no
@@ -42,6 +45,15 @@ defined_text = {
 ###########################
 # EVE: Color Keys
 ###########################
+
+# Use color keys to add color to text.
+# Read the full list of entries in main loc file.
+# These are commonly used to display modifiers:
+#
+#  negative(red): color_key_r
+#  positive(green): color_key_g
+#  neutral(yellow): color_key_n
+
 
 defined_text = {
     name = stability_txt_c
