@@ -1,9 +1,9 @@
-namespace = eve_autonomy_flavor
+namespace = eve_flavor_event
 
 country_event = {
-	id = eve_autonomy_flavor.1
-	title = eve_autonomy_flavor.1.t
-	desc = eve_autonomy_flavor.1.d
+	id = eve_flavor_event.1					# Distant Provinces
+	title = eve_flavor_event.1.t
+	desc = eve_flavor_event.1.d
 	picture = CITY_VIEW_eventPicture
 
 	fire_only_once = yes
@@ -20,6 +20,7 @@ country_event = {
 	}
 
 	option = {
-		name = eve_autonomy_flavor.1.a
+		name = eve_flavor_event.1.a
 	}
 }
+
