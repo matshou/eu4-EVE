@@ -35,11 +35,11 @@ logger.call_logger = {
 
 	if = {
 		limit = { core.is_country = yes }
-		country_event = { id = eve_$event$.0 }
+		country_event = { id = eve_$event$.1 }
 	}
 	else_if = {
 		limit = { core.is_province = yes }
-		province_event = { id = eve_$event$.0 }
+		province_event = { id = eve_$event$.2 }
 	}
 	else = { log = "EVE: Error >> Tried to print log from unknown scope!" }
 }

@@ -8,8 +8,8 @@ namespace = eve_print_error
 #! NOTE: Do not remove option tags or we will get errors!
 
 country_event = {
-	id = eve_print_error.0
-	title = eve_print_error.0.t	  # unlocalized
+	id = eve_print_error.1
+	title = eve_print_error.1.t	  # unlocalized
 	desc = "" picture = ""
 	hidden = yes
 
@@ -19,21 +19,37 @@ country_event = {
 		always = yes
 	}
 
-	# FROM = country
 	immediate = {
-
-		# THIS = global PREV = caller
 		event_target:global = {
 			log = "[This.error_log_txt]"
 		}
 	}
+	option = {}
+}
 
+province_event = {
+	id = eve_print_error.2
+	title = eve_print_error.2.t	  # unlocalized
+	desc = "" picture = ""
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		always = yes
+	}
+
+	immediate = {
+		event_target:global = {
+			log = "[This.error_log_txt]"
+		}
+	}
 	option = {}
 }
 
 country_event = {
-	id = eve_print_info.0
-	title = eve_print_info.0.t	  # unlocalized
+	id = eve_print_info.1
+	title = eve_print_info.1.t	  # unlocalized
 	desc = "" picture = ""
 	hidden = yes
 
@@ -46,6 +62,23 @@ country_event = {
 	immediate = {
 		log = "EVE: Variable value: [This.loc_var.GetValue]"
 	}
+	option = {}
+}
 
+province_event = {
+	id = eve_print_info.2
+	title = eve_print_info.2.t	  # unlocalized
+	desc = "" picture = ""
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		always = yes
+	}
+
+	immediate = {
+		log = "EVE: Variable value: [This.loc_var.GetValue]"
+	}
 	option = {}
 }
