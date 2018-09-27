@@ -118,7 +118,7 @@ core.init_country = {
 			set_country_flag = territorial_change
 		}
 		else = {
-			core.print_error = { code = 140 method = 2 }
+			logger.print_error = { code = 140 method = 2 }
 		}
 	}
 }
@@ -138,7 +138,7 @@ core.set_country_id = {
 		PREV = { change_variable = { which = init_num value = 1 } }
 		change_variable = { which = country_id value = 1 }
 	}
-	else = { core.print_error = { code = 199 method = 0 } }
+	else = { logger.print_error = { code = 199 method = 0 } }
 }
 
 # Assign a unique id for province that corresponds to owner country id
@@ -149,7 +149,7 @@ core.set_prov_owner_id = {
 
 	if = {
 		limit = { core.is_province = no }
-		core.print_error = { code = 140 method = 1 }
+		logger.print_error = { code = 140 method = 1 }
 	}
 	owner = {
 		if = {
@@ -157,7 +157,7 @@ core.set_prov_owner_id = {
 			core.export_var_to_prev = { var = country_id }
 			PREV = { set_variable = { which = owner_id which = output_var } }
 		}
-		else = { core.print_error = { code = 279 method = 1 } }
+		else = { logger.print_error = { code = 279 method = 1 } }
 	}
 }
 
@@ -217,45 +217,4 @@ core.update_policies = {
 			governance.update_policy = yes
 		}
 	}
-}
-
-# Print error message to game.log
-# Strings are stored in localization files
-# @scope anywhere
-# @param code, method (localization)
-#
-core.print_error = {
-
-	event_target:global = {
-		set_variable = { which = error_code value = $code$ }
-		set_variable = { which = error_point value = $method$ }
-	}
-	core.call_logger = { event = print_error }
-}
-
-# Print variable value to game.log
-# @scope anywhere
-# @param var
-#
-core.print_variable_info = {
-
-	set_variable = { which = loc_var which = $var$ }
-	core.call_logger = { event = print_info }
-}
-
-# Helper method that calls appropriate logger event
-# @scope anywhere
-# @param event$
-#
-core.call_logger = {
-
-	if = {
-		limit = { core.is_country = yes }
-		country_event = { id = eve_$event$.0 }
-	}
-	else_if = {
-		limit = { core.is_province = yes }
-		province_event = { id = eve_$event$.0 }
-	}
-	else = { log = "EVE: Error >> Tried to print log from unknown scope!" }
 }
