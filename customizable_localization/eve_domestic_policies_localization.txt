@@ -3,6 +3,7 @@
 # EVE: Modifier Text
 ###########################
 
+#Main policy text entry
 defined_text = {
 	name = policy_gov_txt
 	random = no
@@ -14,13 +15,14 @@ defined_text = {
 		}
 	}
 	text = {
-		localisation_key = string_gov_policy_desc
+		localisation_key = string_gov_policy_desc		# Adding new policy
 		trigger = {
 			always = yes
 		}
 	}
 }
 
+#Policy description
 defined_text = {
 	name = policy_gov_desc_txt
 	random = no
@@ -33,6 +35,8 @@ defined_text = {
 	}
 }
 
+#Policy value increasing or decreasing
+#Ex: "currently working on..."
 defined_text = {
 	name = policy_gov_desc_2_txt
 	random = no
@@ -57,12 +61,14 @@ defined_text = {
 	}
 }
 
+#Advisor report on estimated time to increase rating
+#Ex: "estimates it will take us..."
 defined_text = {
 	name = policy_gov_increase_time_txt
 	random = no
 
 	text = {
-		localisation_key = string_null
+		localisation_key = string_null		# No Advisor
 		trigger = {
 			is_var_null = { var = policy_gov_adv_mod }
 		}
@@ -77,13 +83,15 @@ defined_text = {
 		}
 	}
 	text = {
-		localisation_key = string_policy_gov_increase_time_2
+		localisation_key = string_policy_gov_increase_time_2	# Reached max
 		trigger = {
 			always = yes
 		}
 	}
 }
 
+#Time to increase/decrease rating
+#Ex: "4 months" or "20 years"
 defined_text = {
 	name = policy_gov_time_format_txt
 	random = no
@@ -95,7 +103,6 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
 	name = policy_gov_time_frame_txt
 	random = no
@@ -119,7 +126,7 @@ defined_text = {
 		}
 	}
 }
-
+#Append 's' to time frame string (if plural)
 defined_text = {
 	name = policy_gov_time_frame_s_txt
 	random = no
@@ -138,6 +145,8 @@ defined_text = {
 	}
 }
 
+#Additional information about current policy stance
+#Ex: "As a result our government is..."
 defined_text = {
 	name = policy_gov_stance_txt
 	random = no
@@ -149,13 +158,12 @@ defined_text = {
 		}
 	}
 	text = {
-		localisation_key = string_null
+		localisation_key = string_null		# neutral policy
 		trigger = {
 			always = yes
 		}
 	}
 }
-
 defined_text = {
 	name = policy_gov_result_txt
 	random = no
@@ -173,7 +181,7 @@ defined_text = {
 		}
 	}
 }
-
+#Used in 'policy_gov_increase_time_txt'
 defined_text = {
 	name = policy_gov_result_2_txt
 	random = no
@@ -198,6 +206,8 @@ defined_text = {
 	}
 }
 
+#Policy value change each month
+#Ex: "It changes by 0.4 every month..."
 defined_text = {
 	name = policy_gov_change_txt
 	random = no
@@ -210,24 +220,26 @@ defined_text = {
 	}
 }
 
+#Modifiers that affect policy change
+#Ex: "Stability: +0.25"
 defined_text = {
     name = policy_gov_mod_1_txt
     random = no
 
 	text = {
-		localisation_key = string_gov_policy_mod_1
+		localisation_key = string_gov_policy_mod_1				# Ruler Adm skill
 		trigger = {
 			is_var_not_null = { var = policy_gov_rul_mod }
 		}
 	}
 	text = {
-		localisation_key = string_gov_policy_mod_1.a
+		localisation_key = string_gov_policy_mod_1.a			# Regency Council
 		trigger = {
 			nation.has_regency_council = yes
 		}
 	}
 	text = {
-		localisation_key = string_gov_policy_mod_1.b
+		localisation_key = string_gov_policy_mod_1.b			# Interregnum
 		trigger = {
 			nation.has_interregnum = yes
 		}
@@ -239,13 +251,12 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
     name = policy_gov_mod_2_txt
     random = no
 
 	text = {
-		localisation_key = string_gov_policy_mod_2
+		localisation_key = string_gov_policy_mod_2				# Advisor Adm skill
 		trigger = {
 			is_var_not_null = { var = policy_gov_adv_mod }
 		}
@@ -257,13 +268,12 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
     name = policy_gov_mod_3_txt
     random = no
 
 	text = {
-		localisation_key = string_gov_policy_mod_3
+		localisation_key = string_gov_policy_mod_3				# State Administration
 		trigger = {
 			is_var_not_null = { var = policy_gov_state_adm_mod }
 		}
@@ -275,13 +285,12 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
     name = policy_gov_mod_4_txt
     random = no
 
 	text = {
-		localisation_key = string_gov_policy_mod_4
+		localisation_key = string_gov_policy_mod_4				# Autonomy
 		trigger = {
 			is_var_not_null = { var = autonomy_mod }
 		}
@@ -293,13 +302,12 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
     name = policy_gov_mod_5_txt
     random = no
 
 	text = {
-		localisation_key = string_gov_policy_mod_5
+		localisation_key = string_gov_policy_mod_5				# Stability
 		trigger = {
 			is_var_not_null = { var = stability_mod }
 		}
@@ -311,13 +319,12 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
     name = policy_gov_mod_6_txt
     random = no
 
 	text = {
-		localisation_key = string_gov_policy_mod_6
+		localisation_key = string_gov_policy_mod_6				# Corruption
 		trigger = {
 			is_var_not_null = { var = corruption_mod }
 		}
@@ -329,13 +336,12 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
     name = policy_gov_mod_7_txt
     random = no
 
 	text = {
-		localisation_key = string_gov_policy_mod_7
+		localisation_key = string_gov_policy_mod_7				# Part of HRE
 		trigger = {
 			is_part_of_hre = yes
 		}
@@ -348,8 +354,10 @@ defined_text = {
 	}
 }
 
+#Policy country modifier descriptions
+#Ex: "...our government is more decentralized."
 defined_text = {
-	name = policy_gov_mod_d_desc_txt
+	name = policy_gov_mod_d_desc_txt		# Decentralized
 	random = no
 
 	text = {
@@ -359,27 +367,25 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
 	name = policy_gov_mod_d_desc_2_txt
 	random = no
 
 	text = {
-		localisation_key = string_policy_gov_mod_d_desc_3
+		localisation_key = string_policy_gov_mod_d_desc_3		# Fully controlled
 		trigger = {
 			governance.is_rating = { value = -5 }
 		}
 	}
 	text = {
-		localisation_key = string_policy_gov_mod_d_desc_2
+		localisation_key = string_policy_gov_mod_d_desc_2		# More controlled
 		trigger = {
 			always = yes
 		}
 	}
 }
-
 defined_text = {
-	name = policy_gov_mod_c_desc_txt
+	name = policy_gov_mod_c_desc_txt		# Centralized
 	random = no
 
 	text = {
@@ -389,27 +395,28 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
 	name = policy_gov_mod_c_desc_2_txt
 	random = no
 
 	text = {
-		localisation_key = string_policy_gov_mod_c_desc_3
+		localisation_key = string_policy_gov_mod_c_desc_3		# Fully controlled
 		trigger = {
 			governance.is_rating = { value = 5 }
 		}
 	}
 	text = {
-		localisation_key = string_policy_gov_mod_c_desc_2
+		localisation_key = string_policy_gov_mod_c_desc_2		# More controlled
 		trigger = {
 			always = yes
 		}
 	}
 }
 
+#Policy quantifier and prefix descriptors
+#Ex: "slightly more" or "moderately less"
 defined_text = {
-	name = policy_gov_mod_pref_1_txt
+	name = policy_gov_mod_pref_1_txt			# Modifiers
 	random = no
 
 	text = {
@@ -419,9 +426,8 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
-	name = policy_gov_mod_pref_2_txt
+	name = policy_gov_mod_pref_2_txt			# Advisor report
 	random = no
 
 	text = {
@@ -431,9 +437,8 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
-	name = policy_gov_mod_quant_1_txt
+	name = policy_gov_mod_quant_1_txt			# Modifiers
 	random = no
 
 	text = {
@@ -449,9 +454,8 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
-	name = policy_gov_mod_quant_2_txt
+	name = policy_gov_mod_quant_2_txt			# Advisor report
 	random = no
 
 	text = {
@@ -470,7 +474,6 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
 	name = policy_gov_mod_desc_adj_1_txt
 	random = no
@@ -512,7 +515,6 @@ defined_text = {
 		}
 	}
 }
-
 defined_text = {
 	name = policy_gov_mod_desc_adj_2_txt
 	random = no

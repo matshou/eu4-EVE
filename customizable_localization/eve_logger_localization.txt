@@ -3,18 +3,22 @@
 # EVE: Error Log Text
 ###########################
 
+#Error report text
+#Ex: "EVE: Error 140 >>..."
 defined_text = {
-	name = error_code_txt
+	name = error_log_txt
 	random = no
 
 	text = {
-		localisation_key = string_error_code
+		localisation_key = string_error_log
 		trigger = {
 			always = yes
 		}
 	}
 }
 
+#Method error originated from
+#Ex: "in core.init_country"
 defined_text = {
 	name = error_method_txt
 	random = no
@@ -34,18 +38,8 @@ defined_text = {
 	}
 }
 
-defined_text = {
-	name = error_log_txt
-	random = no
-
-	text = {
-		localisation_key = string_error_log
-		trigger = {
-			always = yes
-		}
-	}
-}
-
+#Contents of the error log
+#Ex: "Access violation for France..."
 defined_text = {
 	name = error_log_content_txt
 	random = no
@@ -88,6 +82,8 @@ defined_text = {
 	}
 }
 
+#Origin method name
+#Ex: "core.init_country"
 defined_text = {
 	name = error_method_name_txt
 	random = no
