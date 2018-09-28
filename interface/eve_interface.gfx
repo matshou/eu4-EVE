@@ -1,0 +1,8 @@
+spriteTypes = {
+
+	spriteType = {
+		name = "COURTHOUSE_eventPicture"
+		texturefile = "gfx/event_pictures/eve_courthouse_picture.dds"
+		allwaystransparent = yes
+	}
+}
