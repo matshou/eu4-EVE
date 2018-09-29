@@ -1400,6 +1400,7 @@ epic_to_monarch = {
 
 commedia_dellarte = {
 	prestige = 1
+	global_unrest = -0.5
 }
 
 enlightenment_movement = {
