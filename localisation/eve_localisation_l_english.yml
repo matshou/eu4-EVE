@@ -18,6 +18,7 @@
  desc_prov_autonomy_from_dist_300:0 "The population here is significantly more difficult to properly govern due to the distance of this province from our capital city."
  prov_autonomy_from_dist_350:0 "Self-Governance"
  desc_prov_autonomy_from_dist_350:0 "The population here is extremely more difficult to properly govern due to the distance of this province from our capital city."
+ tooltip_autonomy_distance:0 "Every province with a fair distance from the capital will receive the §YSelf-Governance§! scaling modifier that affects local autonomy."
 
  province_developing:0 "Province Developing"
  desc_province_developing:0 "This province is currently being developed, so it would be much harder to develop it further."
