@@ -76,6 +76,10 @@ nation.has_vassal = {
 # EVE - Province Triggers
 ##############################
 
+province.is_player_owned = {
+	owner = { ai = no }
+}
+
 province.is_not_capital = {
 	NOT = { is_capital = yes }
 }
