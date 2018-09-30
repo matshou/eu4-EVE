@@ -21,6 +21,7 @@ country_event = {
 
 	option = {
 		name = eve_flavor_event.1.a
+		custom_tooltip = tooltip_autonomy_distance
 	}
 }
 
