@@ -1,7 +1,6 @@
+![](https://yooksi.github.io/eu4-EVE/images/eve-readme-banner.png)
+
 # Extended Vanilla Experience
-Extended Vanilla Experience was a EUIV *general overhaul mod* that aimed to deliver an enhanced game experience without 
-destroying the look, feel or performance of the base game. Its continual development ended on 21 Oct, 2016 (*version v1.18.x*).
+Extended Vanilla Experience is a personal project to create a series of unofficial expansions for Europa Universalis IV, a grand strategy game developed by Paradox Interactive. It aims to deliver an enhanced game experience while maintaining the game's original graphical and conceptual tone.
 
-This will be an attempt at remaking this mod with the same vision in mind, employing different ideas to achieve it.
-
-You can find the original mod on [Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=196181867) and [Paradoxwikis](https://eu4.paradoxwikis.com/Extended_Vanilla_Experience).
+Find more information in the project [wiki](https://github.com/yooksi/eu4-EVE/wiki).
