@@ -43,7 +43,9 @@
               <TagType>
                 <Description>[Variable]</Description>
                 <BuildIn>false</BuildIn>
-                <RegexPatterns />
+                <RegexPatterns>
+                  <string>/(\bset_variable\b)\s*[\=]\s*\{\s*(\bwhich\b)\s*[\=]\s*(\w+)/\3/v/ei</string>
+                </RegexPatterns>
                 <Show>true</Show>
                 <TrackCaret>true</TrackCaret>
                 <IconFilename>c_field.png</IconFilename>
