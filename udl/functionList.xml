@@ -91,9 +91,12 @@
 			<association id=  "javascript_function"   langID="58"                          />
 			<association id=       "baanc_section"    langID="60"                          />
 			<!-- ======================================================================== -->
+
 			<association id=         "krl_function"   userDefinedLangName="KRL"            />
 			<association id=         "krl_function"   ext=".src"                           />
 			<association id=         "krl_function"   ext=".sub"                           />
+			<association id=         "eve_function"   userDefinedLangName="Paradox Script" />
+
 			<!-- ======================================================================== -->
 			<association id=   "sinumerik_function"   userDefinedLangName="Sinumerik"      />
 			<association id=   "sinumerik_function"   ext=".arc"                           />
@@ -103,6 +106,21 @@
 			<!-- ======================================================================== -->
 		</associationMap>
 		<parsers>
+
+			<!-- ========================================================= [ EVE ] -->
+			<!-- EVE -	 EU4 Paradox Script sub-language  				           -->
+
+			<parser
+				id="eve_function"
+				displayName="Eve Function"
+				commentExpr="#"
+			>
+				<!-- Update list of keywords when new ones are added to UDL -->
+				<function
+					mainExpr="^(core|autonomy|capital|estates|math|governance|states|vassals|nation|province|logger)?\.(.*?)[^\s=]+"
+					displayMode="$functionName">
+				</function>
+			</parser>
 
 			<!-- ========================================================= [ PHP ] -->
 			<!-- PHP - Personal Home Page / PHP Hypertext Preprocessor             -->
