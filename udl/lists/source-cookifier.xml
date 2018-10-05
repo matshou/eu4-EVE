@@ -9,6 +9,7 @@
         <BuildIn>false</BuildIn>
         <Extensions>
           <string>.txt</string>
+          <string>.yml</string>
         </Extensions>
         <DisplayAccess>false</DisplayAccess>
         <DisplayReturnType>false</DisplayReturnType>
@@ -26,11 +27,11 @@
                 <Description>[Method]</Description>
                 <BuildIn>true</BuildIn>
                 <RegexPatterns>
-                  <string>/^(core|autonomy|capital|estates|math|governance|states|vassals|nation|province|logger)?(\.)([^ ]+)/\1\2\3/m/ei</string>
+                  <string>/^(core|autonomy|capital|estates|math|governance|states|vassals|nation|province|logger)?(\.)([a-z0-9_.-]+)/\1\2\3/m/ei</string>
                 </RegexPatterns>
                 <Show>true</Show>
                 <TrackCaret>false</TrackCaret>
-                <IconFilename>c_method.png</IconFilename>
+                <IconFilename>method.png</IconFilename>
                 <ForeColor>5832775</ForeColor>
               </TagType>
             </value>
@@ -44,7 +45,7 @@
                 <Description>[Variable]</Description>
                 <BuildIn>false</BuildIn>
                 <RegexPatterns>
-                  <string>/(\bset_variable\b)\s*[\=]\s*\{\s*(\bwhich\b)\s*[\=]\s*(\w+)/\3/v/ei</string>
+                  <string>/(\bset_variable\b)\s*[\=]\s*\{\s*(\bwhich\b)\s*[\=]\s*([a-z0-9_.-]+)/\3/v/ei</string>
                 </RegexPatterns>
                 <Show>true</Show>
                 <TrackCaret>true</TrackCaret>
@@ -62,10 +63,10 @@
                 <Description>[Flags]</Description>
                 <BuildIn>false</BuildIn>
                 <RegexPatterns>
-                  <string>/(\bset_country_flag\b)\s*(\=)\s*([\w-]*[a-zA-Z0-9_]*)/\3/f/ei</string>
+                  <string>/(\bset_country_flag\b)\s*(\=)\s*([a-z0-9_.-]+)/\3/f/ei</string>
                 </RegexPatterns>
                 <Show>true</Show>
-                <TrackCaret>false</TrackCaret>
+                <TrackCaret>true</TrackCaret>
                 <IconFilename>flag.png</IconFilename>
                 <ForeColor>-16777216</ForeColor>
               </TagType>
