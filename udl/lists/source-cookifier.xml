@@ -72,6 +72,43 @@
               </TagType>
             </value>
           </item>
+          <item>
+            <key>
+              <string>e</string>
+            </key>
+            <value>
+              <TagType>
+                <Description>[Event]</Description>
+                <BuildIn>false</BuildIn>
+                <RegexPatterns>
+                  <string>/^\s*\bid\b\s*\=\s*?([a-z0-9_.-]+)/\1/e/ei</string>
+                </RegexPatterns>
+                <Show>true</Show>
+                <TrackCaret>false</TrackCaret>
+                <IconFilename>c_enumitem.png</IconFilename>
+                <ForeColor>-16777216</ForeColor>
+              </TagType>
+            </value>
+          </item>
+          <item>
+            <key>
+              <string>l</string>
+            </key>
+            <value>
+              <TagType>
+                <Description>[Localization]</Description>
+                <BuildIn>false</BuildIn>
+                <RegexPatterns>
+                  <string>/^\s*\bname\b\s*?\=\s*?([a-z0-9_.-]+)/\1/l/ei</string>
+                  <string>/^\s{1}([a-z0-9_.-]+)\:[[:digit:]]+/\1/l/ei</string>
+                </RegexPatterns>
+                <Show>true</Show>
+                <TrackCaret>false</TrackCaret>
+                <IconFilename>c_namespace.png</IconFilename>
+                <ForeColor>-16776961</ForeColor>
+              </TagType>
+            </value>
+          </item>
         </TagTypes>
       </Language>
     </value>
