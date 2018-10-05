@@ -15,7 +15,7 @@
         <DisplayScope>false</DisplayScope>
         <DisplaySignature>false</DisplaySignature>
         <CaseSensitive>false</CaseSensitive>
-        <ScopeOperator>::</ScopeOperator>
+        <ScopeOperator />
         <TagTypes>
           <item>
             <key>
@@ -23,13 +23,13 @@
             </key>
             <value>
               <TagType>
-                <Description>[Function]</Description>
-                <BuildIn>false</BuildIn>
+                <Description>[Method]</Description>
+                <BuildIn>true</BuildIn>
                 <RegexPatterns>
-                  <string>/^(core|autonomy|capital|estates|math|governance|states|vassals|nation|province|logger)?(\.)([^ ]+)(.*$)/\1\2\3/f/e</string>
+                  <string>/^(core|autonomy|capital|estates|math|governance|states|vassals|nation|province|logger)?(\.)([^ ]+)/\1\2\3/f/ei</string>
                 </RegexPatterns>
                 <Show>true</Show>
-                <TrackCaret>true</TrackCaret>
+                <TrackCaret>false</TrackCaret>
                 <IconFilename>c_method.png</IconFilename>
                 <ForeColor>5832775</ForeColor>
               </TagType>
