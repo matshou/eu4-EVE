@@ -19,14 +19,14 @@
         <TagTypes>
           <item>
             <key>
-              <string>f</string>
+              <string>m</string>
             </key>
             <value>
               <TagType>
                 <Description>[Method]</Description>
                 <BuildIn>true</BuildIn>
                 <RegexPatterns>
-                  <string>/^(core|autonomy|capital|estates|math|governance|states|vassals|nation|province|logger)?(\.)([^ ]+)/\1\2\3/f/ei</string>
+                  <string>/^(core|autonomy|capital|estates|math|governance|states|vassals|nation|province|logger)?(\.)([^ ]+)/\1\2\3/m/ei</string>
                 </RegexPatterns>
                 <Show>true</Show>
                 <TrackCaret>false</TrackCaret>
@@ -50,6 +50,24 @@
                 <TrackCaret>true</TrackCaret>
                 <IconFilename>c_field.png</IconFilename>
                 <ForeColor>19015</ForeColor>
+              </TagType>
+            </value>
+          </item>
+          <item>
+            <key>
+              <string>f</string>
+            </key>
+            <value>
+              <TagType>
+                <Description>[Flags]</Description>
+                <BuildIn>false</BuildIn>
+                <RegexPatterns>
+                  <string>/(\bset_country_flag\b)\s*(\=)\s*([\w-]*[a-zA-Z0-9_]*)/\3/f/ei</string>
+                </RegexPatterns>
+                <Show>true</Show>
+                <TrackCaret>false</TrackCaret>
+                <IconFilename>flag.png</IconFilename>
+                <ForeColor>-16777216</ForeColor>
               </TagType>
             </value>
           </item>
