@@ -1,0 +1,19 @@
+
+#######################
+# EVE - Variables
+#######################
+
+# Methods here are used by SourceCookifier to parse variable tags
+
+# Declare variable for the first time
+variable.declare = {
+
+	[[from] set_variable = { which = $which$ which = $from$ } ]
+	[[value] set_variable = { which = $which$ value = $value$ } ]
+}
+
+# Short-hand for export_to_variable
+variable.export = {
+
+	export_to_variable = { which = $which$ value = $value$ }
+}

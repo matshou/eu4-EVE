@@ -47,11 +47,14 @@ governance.reinit_values = {
 #
 governance.init_policy = {
 
-	set_variable = { which = policy_gov_min value = -50 }
-	set_variable = { which = policy_gov_max value = 50 }
-	set_variable = { which = policy_gov_val value = 0 }        # These are base values,
-	set_variable = { which = policy_gov_rating value = 0 }     # DO NOT CHANGE!
-	set_variable = { which = policy_gov_mod value = 0 }
+	variable.declare = { which = policy_gov_min value = -50 }
+	variable.declare = { which = policy_gov_max value = 50 }
+	variable.declare = { which = policy_gov_val value = 0 }        #*! These are base values,
+	variable.declare = { which = policy_gov_rating value = 0 }     #*! DO NOT CHANGE!
+	variable.declare = { which = policy_gov_mod value = 0 }
+
+	variable.declare = { which = policy_gov_rul_mod value = 0 }
+	variable.declare = { which = policy_gov_time from = policy_gov_rating }
 
 	set_country_flag = policy_gov_neutral
 
@@ -83,7 +86,7 @@ governance.init_policy = {
 	}
 
 	# Initialize GUI values here so we don't get errors
-	set_variable = { which = policy_gov_gui_val which = policy_gov_val }
+	variable.declare = { which = policy_gov_gui_val from = policy_gov_val }
 
 	# Set policy as active and add to GUI
 	add_active_policy = governance_policy
@@ -152,16 +155,16 @@ governance.calc_policy_mod = {
 	multiply_variable = { which = policy_gov_state_adm_mod value = 0.125 }			# state admin
 	change_variable = { which = policy_gov_mod which = policy_gov_state_adm_mod }	# min: 0, max: 0.125
 
-	export_to_variable = { which = stability_mod value = stability }			# stability
-	multiply_variable = { which = stability_mod value = 0.025 }					# min: -0.075, max: 0.075
+	variable.export = { which = stability_mod value = stability }			# stability
+	multiply_variable = { which = stability_mod value = 0.025 }				# min: -0.075, max: 0.075
 	change_variable = { which = policy_gov_mod which = stability_mod }
 
-	export_to_variable = { which = corruption_mod value = corruption }			# corruption
-	multiply_variable = { which = corruption_mod value = -0.003 }				# min: 0, max: -0.3
+	variable.export = { which = corruption_mod value = corruption }			# corruption
+	multiply_variable = { which = corruption_mod value = -0.003 }			# min: 0, max: -0.3
 	change_variable = { which = policy_gov_mod which = corruption_mod }
 
-	export_to_variable = { which = autonomy_mod value = average_autonomy }		# autonomy
-	multiply_variable = { which = autonomy_mod value = -0.008 }					# min: 0, max: -0.8
+	variable.export = { which = autonomy_mod value = average_autonomy }		# autonomy
+	multiply_variable = { which = autonomy_mod value = -0.008 }				# min: 0, max: -0.8
 	change_variable = { which = policy_gov_mod which = autonomy_mod }
 
 	if = {

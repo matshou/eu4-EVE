@@ -63,7 +63,7 @@ core.on_daily_pulse = {
 #
 core.on_monthly_pulse = {
 
-	export_to_variable = { which = last_month value = trigger_value:is_month }
+	variable.export = { which = last_month value = trigger_value:is_month }
 	clr_country_flag = immediate_update
 
 	if = {
@@ -133,7 +133,7 @@ core.set_country_id = {
 			PREV = { core.is_global_scope = yes }
 		}
 		PREV = { core.export_var_to_prev = { var = init_num } }
-		set_variable = { which = country_id which = output_var }
+		variable.declare = { which = country_id from = output }
 
 		PREV = { change_variable = { which = init_num value = 1 } }
 		change_variable = { which = country_id value = 1 }
@@ -155,7 +155,7 @@ core.set_prov_owner_id = {
 		if = {
 			limit = { check_variable = { which = country_id value = 1 } }
 			core.export_var_to_prev = { var = country_id }
-			PREV = { set_variable = { which = owner_id which = output_var } }
+			PREV = { variable.declare = { which = owner_id from = output } }
 		}
 		else = { logger.print_error = { code = 279 method = 1 } }
 	}
