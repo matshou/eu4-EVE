@@ -1,5 +1,5 @@
 ﻿l_english:
- string_error_log:0 "EVE: Error [This.error_code.GetValue][This.error_method_txt] >> [Prev.error_log_content_txt]"
+ string_error_log:0 "EVE: Error [This.c.GetValue][This.error_method_txt] >> [Prev.error_log_content_txt]"
  string_error_code:0 " in '[This.error_method_name_txt]'"
 
  error.000:0 "Unknown error code."

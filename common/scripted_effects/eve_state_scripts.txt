@@ -64,8 +64,8 @@ states.update_state = {
 			# Calculate state administrative modifier for governance policy
 			owner = {
 				PREV = { states.get_development = yes }
-				states.get_dev_ratio = { DEV = output_var }
-				change_variable = { which = policy_gov_state_adm_mod which = output_var }
+				states.get_dev_ratio = { DEV = output }
+				change_variable = { which = policy_gov_state_adm_mod which = output }
 			}
 
 			# Check to make sure every province in state is under jurisdiction
@@ -113,30 +113,30 @@ states.update_non_states = {
 
 # Calculate development of each province in current state scope
 # @scope province
-# @return owner:output_var
+# @return owner:output
 #
 states.get_development = {
 
-	owner = { set_variable = { which = output_var value = 0 } }
+	owner = { set_variable = { which = output value = 0 } }
 	every_province_in_state = {
 		owner = {
-			export_to_variable = { which = int_var value = development who = PREV }
-			change_variable = { which = output_var which = int_var }
-			set_variable = { which = int_var value = 0 }
+			export_to_variable = { which = i value = development who = PREV }
+			change_variable = { which = output which = i }
+			set_variable = { which = i value = 0 }
 		}
 	}
 }
 
 # Calculate the ratio of $DEV$ in relation to total country development.
 # @scope country
-# @return output_var
+# @return output
 #
 states.get_dev_ratio = {
 
-	export_to_variable = { which = int_var value = total_development }
-	divide_variable = { which = $DEV$ which = int_var }
-	set_variable = { which = output_var which = $DEV$ }
-	set_variable = { which = int_var value = 0 }
+	export_to_variable = { which = i value = total_development }
+	divide_variable = { which = $DEV$ which = i }
+	set_variable = { which = output which = $DEV$ }
+	set_variable = { which = i value = 0 }
 }
 
 # Apply jurisdiction province modifiers to current state.
