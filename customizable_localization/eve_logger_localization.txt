@@ -26,7 +26,7 @@ defined_text = {
 	text = {
 		localisation_key = string_error_code
         trigger = {
-			is_var_not_null = { var = error_point }
+			is_var_not_null = { var = m }
 		}
 	}
 
@@ -91,13 +91,13 @@ defined_text = {
 	text = {
 		localisation_key = error_pointer.1
         trigger = {
-			is_variable_equal = { which = error_point value = 1 }
+			is_variable_equal = { which = m value = 1 }
 		}
 	}
 	text = {
 		localisation_key = error_pointer.2
         trigger = {
-			is_variable_equal = { which = error_point value = 2 }
+			is_variable_equal = { which = m value = 2 }
 		}
 	}
 	text = {

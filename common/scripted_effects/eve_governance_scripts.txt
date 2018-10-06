@@ -186,7 +186,7 @@ governance.calc_policy_mod = {
 		get_mint_advisor_lvl = yes
 
 		math.calculate_progressive_mod = {									# advisor skill
-			val = output_var steps = 5 mod = 0.015							# min: 0, max: 0.091
+			val = output steps = 5 mod = 0.015							# min: 0, max: 0.091
 			inc = 0.004 output = policy_gov_adv_mod
 		}
 		change_variable = { which = policy_gov_mod which = policy_gov_adv_mod }
@@ -386,16 +386,16 @@ governance.round_values = {
 #
 governance.calc_ruler_mod = {
 
-	export_to_variable = { which = output_var value = trigger_value:adm }
-	subtract_variable = { which = output_var value = 1 } # normalize
+	export_to_variable = { which = output value = trigger_value:adm }
+	subtract_variable = { which = output value = 1 } # normalize
 
 	if = {
 		limit = {
-			check_variable = { which = output_var value = 1 }
+			check_variable = { which = output value = 1 }
 			has_regency = no
 		}
 		math.calculate_progressive_mod = {
-			val = output_var steps = 6 mod = 0.022
+			val = output steps = 6 mod = 0.022
 			inc = 0.005 output = policy_gov_rul_mod
 		}
 	}
@@ -414,18 +414,18 @@ get_mint_advisor_lvl = {
 	# for some odd reason the game crashes when we do
 
 	if = { limit = { master_of_mint = 5 }
-		set_variable = { which = output_var value = 5 }
+		set_variable = { which = output value = 5 }
 	}
 	else_if = { limit = { master_of_mint = 4 }
-		set_variable = { which = output_var value = 4 }
+		set_variable = { which = output value = 4 }
 	}
 	else_if = { limit = { master_of_mint = 3 }
-		set_variable = { which = output_var value = 3 }
+		set_variable = { which = output value = 3 }
 	}
 	else_if = { limit = { master_of_mint = 2 }
-		set_variable = { which = output_var value = 2 }
+		set_variable = { which = output value = 2 }
 	}
 	else_if = { limit = { master_of_mint = 1 }
-		set_variable = { which = output_var value = 1 }
+		set_variable = { which = output value = 1 }
 	}
 }

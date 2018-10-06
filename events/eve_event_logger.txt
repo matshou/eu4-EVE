@@ -60,7 +60,8 @@ country_event = {
 	}
 
 	immediate = {
-		log = "EVE: Variable value: [This.loc_var.GetValue]"
+		log = "EVE: Variable value: [This.k.GetValue]"
+		set_variable = { which = k value = 0 }
 	}
 	option = {}
 }

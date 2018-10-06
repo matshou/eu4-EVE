@@ -167,39 +167,39 @@ core.set_prov_owner_id = {
 #
 # @scope anywhere
 # @param var (variable to export)
-# @return output_var
+# @return output
 #
 core.export_var_to_prev = {
 
-	set_variable = { which = counter_var value = 1000 }
-	PREV = { set_variable = { which = output_var value = 1000 } }
+	set_variable = { which = count value = 1000 }
+	PREV = { set_variable = { which = output value = 1000 } }
 
 	while = {
 		limit = {
-			is_var_greater_than = { var1 = $var$ var2 = counter_var }
+			is_var_greater_than = { var1 = $var$ var2 = count }
 		}
-		change_variable = { which = counter_var value = 1000 }
-		PREV = { change_variable = { which = output_var value = 1000 } }
+		change_variable = { which = count value = 1000 }
+		PREV = { change_variable = { which = output value = 1000 } }
 	}
 	while = {
 		limit = {
-			is_var_less_than = { var1 = $var$ var2 = counter_var }
+			is_var_less_than = { var1 = $var$ var2 = count }
 		}
-		subtract_variable = { which = counter_var value = 100 }
-		PREV = { subtract_variable = { which = output_var value = 100 } }
+		subtract_variable = { which = count value = 100 }
+		PREV = { subtract_variable = { which = output value = 100 } }
 	}
 	while = {
 		limit = {
-			is_var_greater_than = { var1 = $var$ var2 = counter_var }
+			is_var_greater_than = { var1 = $var$ var2 = count }
 		}
-		change_variable = { which = counter_var value = 10 }
-		PREV = { change_variable = { which = output_var value = 10 } }
+		change_variable = { which = count value = 10 }
+		PREV = { change_variable = { which = output value = 10 } }
 	}
 
 	while = {
-		limit = { is_var_not_equal_to = { var1 = counter_var var2 = $var$ } }
-		subtract_variable = { which = counter_var value = 1 }
-		PREV = { subtract_variable = { which = output_var value = 1 } }
+		limit = { is_var_not_equal_to = { var1 = count var2 = $var$ } }
+		subtract_variable = { which = count value = 1 }
+		PREV = { subtract_variable = { which = output value = 1 } }
 	}
 }
 

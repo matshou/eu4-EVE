@@ -19,7 +19,7 @@ core.is_global_scope = {
 
 core.is_error = {
 	event_target:global = {
-		is_variable_equal = { which = error_code value = $code$ }
+		is_variable_equal = { which = c value = $code$ }
 	}
 }
 
