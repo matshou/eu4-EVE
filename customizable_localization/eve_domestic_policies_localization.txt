@@ -70,7 +70,7 @@ defined_text = {
 	text = {
 		localisation_key = string_null		# No Advisor
 		trigger = {
-			is_var_null = { var = policy_gov_adv_mod }
+			is_var_null = { var = policy_gov_adv_m }
 		}
 	}
 	text = {
@@ -229,7 +229,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_1				# Ruler Adm skill
 		trigger = {
-			is_var_not_null = { var = policy_gov_rul_mod }
+			is_var_not_null = { var = policy_gov_rul_m }
 		}
 	}
 	text = {
@@ -258,7 +258,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_2				# Advisor Adm skill
 		trigger = {
-			is_var_not_null = { var = policy_gov_adv_mod }
+			is_var_not_null = { var = policy_gov_adv_m }
 		}
 	}
 	text = {
@@ -275,7 +275,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_3				# State Administration
 		trigger = {
-			is_var_not_null = { var = policy_gov_state_adm_mod }
+			is_var_not_null = { var = policy_gov_state_adm_m }
 		}
 	}
 	text = {
@@ -292,7 +292,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_4				# Autonomy
 		trigger = {
-			is_var_not_null = { var = autonomy_mod }
+			is_var_not_null = { var = autonomy_m }
 		}
 	}
 	text = {
@@ -309,7 +309,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_5				# Stability
 		trigger = {
-			is_var_not_null = { var = stability_mod }
+			is_var_not_null = { var = stability_m }
 		}
 	}
 	text = {
@@ -326,7 +326,7 @@ defined_text = {
 	text = {
 		localisation_key = string_gov_policy_mod_6				# Corruption
 		trigger = {
-			is_var_not_null = { var = corruption_mod }
+			is_var_not_null = { var = corruption_m }
 		}
 	}
 	text = {

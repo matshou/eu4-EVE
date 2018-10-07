@@ -37,7 +37,7 @@ capital.lose_status = {
 			}
 			# Update previous capital province
 			ROOT = {
-				core.set_prov_owner_id = yes
+				province.set_owner_id = yes
 
 				# Do not do anything further if this has already been done
 				# by owner when checking for territorial change

@@ -243,13 +243,13 @@ governance.is_max_decentralized = {
 }
 
 governance.is_decentralizing = {
-	is_var_less_than_val = { var = policy_gov_mod val = 0 }
+	is_var_less_than_val = { var = policy_gov_m val = 0 }
 }
 governance.is_centralizing = {
-	is_var_greater_than_val = { var = policy_gov_mod val = 0 }
+	is_var_greater_than_val = { var = policy_gov_m val = 0 }
 }
 governance.is_idle = {
-	is_variable_equal = { which = policy_gov_mod value = 0 }
+	is_variable_equal = { which = policy_gov_m value = 0 }
 }
 governance.becoming_neutral = {
 	OR = {

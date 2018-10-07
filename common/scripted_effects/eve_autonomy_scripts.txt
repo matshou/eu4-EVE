@@ -17,7 +17,7 @@ autonomy.check_for_change = {
 		if = {
 			limit = { is_var_less_than_val = { var = owner_id val = 1 } }
 			autonomy.call_for_province_update = yes
-			core.set_prov_owner_id = yes
+			province.set_owner_id = yes
 		}
 		else = {
 			# do this after handling uncolonized territory
@@ -35,7 +35,7 @@ autonomy.check_for_change = {
 					limit = { has_province_modifier = capital_province }
 					set_province_flag = conquered_capital
 				}
-				else = { core.set_prov_owner_id = yes }		# update owner id
+				else = { province.set_owner_id = yes }		# update owner id
 
 				clr_province_flag = distant_province		# don't try to remove modifier
 				autonomy.call_for_province_update = yes		# call for an autonomy update
@@ -74,7 +74,7 @@ autonomy.update_distance = {
 	}
 	else = {
 		every_owned_province = {
-			autonomy.remove_distance_mod = yes
+			autonomy.remove_distance_m = yes
 			autonomy.set_distance = yes
 		}
 	}
@@ -85,7 +85,7 @@ autonomy.update_distance = {
 # Called when recalculating distance autonomy
 # @scope province
 #
-autonomy.remove_distance_mod = {
+autonomy.remove_distance_m = {
 
 	if = {
 		limit = { has_province_flag = distant_province }

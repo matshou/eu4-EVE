@@ -19,7 +19,7 @@
 # @param mod (base modifier value)
 # @param inc (increase value)
 #
-math.calculate_progressive_mod = {
+math.calculate_progressive_m = {
 
 	# Here is an example of output result for each step with
 	# arg2 = 6, arg3 = 0.022 and arg4 = 0.005:
