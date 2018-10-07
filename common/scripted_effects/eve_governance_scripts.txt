@@ -47,11 +47,14 @@ governance.reinit_values = {
 #
 governance.init_policy = {
 
-	set_variable = { which = policy_gov_min value = -50 }
-	set_variable = { which = policy_gov_max value = 50 }
-	set_variable = { which = policy_gov_val value = 0 }        # These are base values,
-	set_variable = { which = policy_gov_rating value = 0 }     # DO NOT CHANGE!
-	set_variable = { which = policy_gov_mod value = 0 }
+	declare_variable = { which = policy_gov_min value = -50 }
+	declare_variable = { which = policy_gov_max value = 50 }
+	declare_variable = { which = policy_gov_val value = 0 }        #*! These are base values,
+	declare_variable = { which = policy_gov_rating value = 0 }     #*! DO NOT CHANGE!
+	declare_variable = { which = policy_gov_m value = 0 }
+
+	declare_variable = { which = policy_gov_rul_m value = 0 }
+	declare_variable = { which = policy_gov_time from = policy_gov_rating }
 
 	set_country_flag = policy_gov_neutral
 
@@ -83,7 +86,7 @@ governance.init_policy = {
 	}
 
 	# Initialize GUI values here so we don't get errors
-	set_variable = { which = policy_gov_gui_val which = policy_gov_val }
+	declare_variable = { which = policy_gov_gui_val from = policy_gov_val }
 
 	# Set policy as active and add to GUI
 	add_active_policy = governance_policy
@@ -96,19 +99,19 @@ governance.init_policy = {
 governance.update_policy = {
 
 	# Reset the modifier so we can recalculate it
-	set_variable = { which = policy_gov_mod value = 0 }
+	set_variable = { which = policy_gov_m value = 0 }
 
 	# Calculate modifier to add to rating
-	governance.calc_policy_mod = yes
+	governance.calc_policy_m = yes
 
 	if = {
 		# Update only if modifier would affect policy
-		limit = { is_var_not_null = { var = policy_gov_mod } }
+		limit = { is_var_not_null = { var = policy_gov_m } }
 		if = {
 			limit = { governance.is_centralizing = yes }
 			if = {
 				limit = { governance.is_max_centralized = no }
-				change_variable = { which = policy_gov_val which = policy_gov_mod }
+				change_variable = { which = policy_gov_val which = policy_gov_m }
 
 				if = { # Do not allow value to go above maximum
 					limit = { governance.is_above_max = yes }
@@ -117,12 +120,12 @@ governance.update_policy = {
 				governance.update_rating = yes
 				governance.calc_policy_time  = yes
 			}
-			else = { set_variable = { which = policy_gov_mod value = 0 } }
+			else = { set_variable = { which = policy_gov_m value = 0 } }
 		}
 		else = {	# decentralizing
 			if = {
 				limit = { governance.is_max_decentralized = no }
-				change_variable = { which = policy_gov_val which = policy_gov_mod }
+				change_variable = { which = policy_gov_val which = policy_gov_m }
 
 				if = { # Do not allow value to go below minimum
 					limit = { governance.is_below_min = yes }
@@ -131,7 +134,7 @@ governance.update_policy = {
 				governance.update_rating = yes
 				governance.calc_policy_time  = yes
 			}
-			else = { set_variable = { which = policy_gov_mod value = 0 } }
+			else = { set_variable = { which = policy_gov_m value = 0 } }
 		}
 	}
 
@@ -144,56 +147,56 @@ governance.update_policy = {
 # @access private
 # @scope country
 #
-governance.calc_policy_mod = {
+governance.calc_policy_m = {
 
 	# Variables with "_mod" suffix below are used in localisation
 	# to give information about modifiers affecting policy change each month
 
-	multiply_variable = { which = policy_gov_state_adm_mod value = 0.125 }			# state admin
-	change_variable = { which = policy_gov_mod which = policy_gov_state_adm_mod }	# min: 0, max: 0.125
+	multiply_variable = { which = policy_gov_state_m value = 0.125 }		# state admin
+	change_variable = { which = policy_gov_m which = policy_gov_state_m }	# min: 0, max: 0.125
 
-	export_to_variable = { which = stability_mod value = stability }			# stability
-	multiply_variable = { which = stability_mod value = 0.025 }					# min: -0.075, max: 0.075
-	change_variable = { which = policy_gov_mod which = stability_mod }
+	variable.export = { which = stability_m value = stability }			# stability
+	multiply_variable = { which = stability_m value = 0.025 }				# min: -0.075, max: 0.075
+	change_variable = { which = policy_gov_m which = stability_m }
 
-	export_to_variable = { which = corruption_mod value = corruption }			# corruption
-	multiply_variable = { which = corruption_mod value = -0.003 }				# min: 0, max: -0.3
-	change_variable = { which = policy_gov_mod which = corruption_mod }
+	variable.export = { which = corruption_m value = corruption }			# corruption
+	multiply_variable = { which = corruption_m value = -0.003 }			# min: 0, max: -0.3
+	change_variable = { which = policy_gov_m which = corruption_m }
 
-	export_to_variable = { which = autonomy_mod value = average_autonomy }		# autonomy
-	multiply_variable = { which = autonomy_mod value = -0.008 }					# min: 0, max: -0.8
-	change_variable = { which = policy_gov_mod which = autonomy_mod }
+	variable.export = { which = autonomy_m value = average_autonomy }		# autonomy
+	multiply_variable = { which = autonomy_m value = -0.008 }				# min: 0, max: -0.8
+	change_variable = { which = policy_gov_m which = autonomy_m }
 
 	if = {
 		limit = { is_part_of_hre = yes }
-		change_variable = { which = policy_gov_mod value = -0.05 }
+		change_variable = { which = policy_gov_m value = -0.05 }
 	}
 	if = {
 		limit = { nation.has_lone_regency = yes }
 		if = {
 			limit = { has_heir = yes }										# regency council
-			change_variable = { which = policy_gov_mod value = -0.05 }
+			change_variable = { which = policy_gov_m value = -0.05 }
 		}
 		else = {															# interregnum
-			change_variable = { which = policy_gov_mod value = -0.65 }
+			change_variable = { which = policy_gov_m value = -0.65 }
 		}
 	}																					 # ruler skill
-	else = { change_variable = { which = policy_gov_mod which = policy_gov_rul_mod } }	 # min: 0, max: 0.147
+	else = { change_variable = { which = policy_gov_m which = policy_gov_rul_m } }	 # min: 0, max: 0.147
 
 	# Advisor's Administrative Skill
 	if = {
 		limit = { advisor = master_of_mint }
 		get_mint_advisor_lvl = yes
 
-		math.calculate_progressive_mod = {									# advisor skill
-			val = output_var steps = 5 mod = 0.015							# min: 0, max: 0.091
+		math.calculate_progressive_m = {									# advisor skill
+			val = output steps = 5 mod = 0.015							# min: 0, max: 0.091
 			inc = 0.004 output = policy_gov_adv_mod
 		}
-		change_variable = { which = policy_gov_mod which = policy_gov_adv_mod }
+		change_variable = { which = policy_gov_m which = policy_gov_adv_m }
 	}
 	else_if = {
-		limit = { is_var_not_null = { var = policy_gov_adv_mod } }
-		set_variable = { which = policy_gov_adv_mod value = 0 }
+		limit = { is_var_not_null = { var = policy_gov_adv_m } }
+		set_variable = { which = policy_gov_adv_m value = 0 }
 	}
 }
 
@@ -340,7 +343,7 @@ governance.calc_policy_time = {
 	multiply_variable = { which = policy_gov_time value = 10 }
 
 	if = {
-		limit = { check_variable = { which = policy_gov_mod value = 0 } }  			# centralizing
+		limit = { check_variable = { which = policy_gov_m value = 0 } }  			# centralizing
 		change_variable = { which = policy_gov_time value = 5 }
 		subtract_variable = { which = policy_gov_time which = policy_gov_val }
 	}
@@ -352,7 +355,7 @@ governance.calc_policy_time = {
 	# If government is decentralizing the change time will
 	# become a negative value which will mess up our calculation
 	#
-	divide_variable = { which = policy_gov_time which = policy_gov_mod }
+	divide_variable = { which = policy_gov_time which = policy_gov_m }
 	if = {
 		limit = { is_var_less_than_val = { var = policy_gov_time val = 0 } }
 		multiply_variable = { which = policy_gov_time value = -1 }
@@ -375,7 +378,7 @@ governance.round_values = {
 	if = {
 		limit = { ai = no }
 
-		math.round = { val = policy_gov_mod int = 2 }
+		math.round = { val = policy_gov_m int = 2 }
 		math.round = { val = policy_gov_gui_val int = 1 }
 		math.ceil = { val = policy_gov_time int = 0 }
 	}
@@ -384,23 +387,23 @@ governance.round_values = {
 # Called once every time a new ruler rises to throne
 # @scope country
 #
-governance.calc_ruler_mod = {
+governance.calc_ruler_m = {
 
-	export_to_variable = { which = output_var value = trigger_value:adm }
-	subtract_variable = { which = output_var value = 1 } # normalize
+	export_to_variable = { which = output value = trigger_value:adm }
+	subtract_variable = { which = output value = 1 } # normalize
 
 	if = {
 		limit = {
-			check_variable = { which = output_var value = 1 }
+			check_variable = { which = output value = 1 }
 			has_regency = no
 		}
-		math.calculate_progressive_mod = {
-			val = output_var steps = 6 mod = 0.022
+		math.calculate_progressive_m = {
+			val = output steps = 6 mod = 0.022
 			inc = 0.005 output = policy_gov_rul_mod
 		}
 	}
 	else = {
-		set_variable = { which = policy_gov_rul_mod value = 0 }
+		set_variable = { which = policy_gov_rul_m value = 0 }
 	}
 }
 
@@ -414,18 +417,18 @@ get_mint_advisor_lvl = {
 	# for some odd reason the game crashes when we do
 
 	if = { limit = { master_of_mint = 5 }
-		set_variable = { which = output_var value = 5 }
+		set_variable = { which = output value = 5 }
 	}
 	else_if = { limit = { master_of_mint = 4 }
-		set_variable = { which = output_var value = 4 }
+		set_variable = { which = output value = 4 }
 	}
 	else_if = { limit = { master_of_mint = 3 }
-		set_variable = { which = output_var value = 3 }
+		set_variable = { which = output value = 3 }
 	}
 	else_if = { limit = { master_of_mint = 2 }
-		set_variable = { which = output_var value = 2 }
+		set_variable = { which = output value = 2 }
 	}
 	else_if = { limit = { master_of_mint = 1 }
-		set_variable = { which = output_var value = 1 }
+		set_variable = { which = output value = 1 }
 	}
 }

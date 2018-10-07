@@ -49,10 +49,16 @@ core.on_daily_pulse = {
 			limit = { nation.has_new_ruler = yes }
 
 			set_ruler_flag = inagurated
-			governance.calc_ruler_mod = yes
+			governance.calc_ruler_m = yes
 		}
 		if = {
-			limit = { core.can_update = yes }
+			limit = { has_country_flag = immediate_update }
+			core.on_monthly_pulse = yes
+			clr_country_flag = immediate_update
+		}
+		else_if = {
+			limit = { core.has_month_passed = yes }
+			variable.export = { which = last_month from = is_month }
 			core.on_monthly_pulse = yes
 		}
 	}
@@ -62,9 +68,6 @@ core.on_daily_pulse = {
 # @scope country
 #
 core.on_monthly_pulse = {
-
-	export_to_variable = { which = last_month value = trigger_value:is_month }
-	clr_country_flag = immediate_update
 
 	if = {
 		limit = { core.is_global_scope = yes }
@@ -109,7 +112,7 @@ core.init_country = {
 
 			core.set_country_id = yes
 			every_owned_province = {
-				core.set_prov_owner_id = yes
+				province.set_owner_id = yes
 			}
 			capital.init = yes						# apply capital modifiers
 			core.fire_monthly_pulse = yes    		# force an immediate update
@@ -133,32 +136,12 @@ core.set_country_id = {
 			PREV = { core.is_global_scope = yes }
 		}
 		PREV = { core.export_var_to_prev = { var = init_num } }
-		set_variable = { which = country_id which = output_var }
+		declare_variable = { which = country_id from = output }
 
 		PREV = { change_variable = { which = init_num value = 1 } }
 		change_variable = { which = country_id value = 1 }
 	}
 	else = { logger.print_error = { code = 199 method = 0 } }
-}
-
-# Assign a unique id for province that corresponds to owner country id
-# Each owned province should ALWAYS have the same id as its current owner
-# @scope country
-#
-core.set_prov_owner_id = {
-
-	if = {
-		limit = { core.is_province = no }
-		logger.print_error = { code = 140 method = 1 }
-	}
-	owner = {
-		if = {
-			limit = { check_variable = { which = country_id value = 1 } }
-			core.export_var_to_prev = { var = country_id }
-			PREV = { set_variable = { which = owner_id which = output_var } }
-		}
-		else = { logger.print_error = { code = 279 method = 1 } }
-	}
 }
 
 # Export argument variable to PREV scope so it can be used for comparison.
@@ -167,39 +150,39 @@ core.set_prov_owner_id = {
 #
 # @scope anywhere
 # @param var (variable to export)
-# @return output_var
+# @return output
 #
 core.export_var_to_prev = {
 
-	set_variable = { which = counter_var value = 1000 }
-	PREV = { set_variable = { which = output_var value = 1000 } }
+	set_variable = { which = count value = 1000 }
+	PREV = { set_variable = { which = output value = 1000 } }
 
 	while = {
 		limit = {
-			is_var_greater_than = { var1 = $var$ var2 = counter_var }
+			is_var_greater_than = { var1 = $var$ var2 = count }
 		}
-		change_variable = { which = counter_var value = 1000 }
-		PREV = { change_variable = { which = output_var value = 1000 } }
+		change_variable = { which = count value = 1000 }
+		PREV = { change_variable = { which = output value = 1000 } }
 	}
 	while = {
 		limit = {
-			is_var_less_than = { var1 = $var$ var2 = counter_var }
+			is_var_less_than = { var1 = $var$ var2 = count }
 		}
-		subtract_variable = { which = counter_var value = 100 }
-		PREV = { subtract_variable = { which = output_var value = 100 } }
+		subtract_variable = { which = count value = 100 }
+		PREV = { subtract_variable = { which = output value = 100 } }
 	}
 	while = {
 		limit = {
-			is_var_greater_than = { var1 = $var$ var2 = counter_var }
+			is_var_greater_than = { var1 = $var$ var2 = count }
 		}
-		change_variable = { which = counter_var value = 10 }
-		PREV = { change_variable = { which = output_var value = 10 } }
+		change_variable = { which = count value = 10 }
+		PREV = { change_variable = { which = output value = 10 } }
 	}
 
 	while = {
-		limit = { is_var_not_equal_to = { var1 = counter_var var2 = $var$ } }
-		subtract_variable = { which = counter_var value = 1 }
-		PREV = { subtract_variable = { which = output_var value = 1 } }
+		limit = { is_var_not_equal_to = { var1 = count var2 = $var$ } }
+		subtract_variable = { which = count value = 1 }
+		PREV = { subtract_variable = { which = output value = 1 } }
 	}
 }
 

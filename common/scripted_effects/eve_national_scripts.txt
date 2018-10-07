@@ -16,7 +16,7 @@ capital.lose_status = {
 		# This province was gained as a concession in a war or
 		# for other reasons has ended up as territory of another country
 		if = {
-			limit = { is_var_not_equal_to = { var1 = output_var var2 = country_id } }
+			limit = { is_var_not_equal_to = { var1 = output var2 = country_id } }
 
 			# Find capital province previous owner.
 			# If previous owner is not found then he has been annexed.
@@ -26,18 +26,18 @@ capital.lose_status = {
 			every_known_country = {
 				limit = {
 					# output variable will be set to -1 if country is found
-					NOT = { PREV = { is_variable_equal = { which = output_var value = -1 } } }
+					NOT = { PREV = { is_variable_equal = { which = output value = -1 } } }
 				}
-				PREV = { core.export_var_to_prev = { var = output_var } }	# capital owner_id
+				PREV = { core.export_var_to_prev = { var = output } }	# capital owner_id
 				if = {
-					limit = { is_variable_equal = { which = output_var which = country_id } }
-					PREV = { set_variable = { which = output_var value = -1 } }	# break loop
+					limit = { is_variable_equal = { which = output which = country_id } }
+					PREV = { set_variable = { which = output value = -1 } }	# break loop
 					capital.changed_province = yes
 				}
 			}
 			# Update previous capital province
 			ROOT = {
-				core.set_prov_owner_id = yes
+				province.set_owner_id = yes
 
 				# Do not do anything further if this has already been done
 				# by owner when checking for territorial change

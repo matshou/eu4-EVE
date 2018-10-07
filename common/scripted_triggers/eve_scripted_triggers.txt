@@ -3,9 +3,8 @@
 # EVE - Core Triggers
 ##############################
 
-core.can_update = {
-	OR = {
-		has_country_flag = immediate_update
+core.has_month_passed = {
+	event_target:global = {
 		variable_arithmetic_trigger = {
 			export_to_variable = { which = current_month value = trigger_value:is_month }
 			is_var_not_equal_to = { var1 = last_month var2 = current_month  }
@@ -19,7 +18,7 @@ core.is_global_scope = {
 
 core.is_error = {
 	event_target:global = {
-		is_variable_equal = { which = error_code value = $code$ }
+		is_variable_equal = { which = c value = $code$ }
 	}
 }
 
@@ -243,13 +242,13 @@ governance.is_max_decentralized = {
 }
 
 governance.is_decentralizing = {
-	is_var_less_than_val = { var = policy_gov_mod val = 0 }
+	is_var_less_than_val = { var = policy_gov_m val = 0 }
 }
 governance.is_centralizing = {
-	is_var_greater_than_val = { var = policy_gov_mod val = 0 }
+	is_var_greater_than_val = { var = policy_gov_m val = 0 }
 }
 governance.is_idle = {
-	is_variable_equal = { which = policy_gov_mod value = 0 }
+	is_variable_equal = { which = policy_gov_m value = 0 }
 }
 governance.becoming_neutral = {
 	OR = {

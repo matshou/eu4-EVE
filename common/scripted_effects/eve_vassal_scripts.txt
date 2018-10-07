@@ -73,7 +73,7 @@ vassals.repeal_tax_rate = {
 vassals.set_tax_rate = {
 
 	hidden_effect = {
-		set_variable = { which = vassal_tax_rate value = $rate$ }
+		declare_variable = { which = vassal_tax_rate value = $rate$ }
 	}
 }
 
@@ -115,7 +115,7 @@ vassals.update = {
 
 		while = {
 			limit = {
-				is_var_negative_value = { var = output_var }
+				is_var_negative_value = { var = output }
 				is_var_negative_value = { var = vassal_tax_rate }
 			}
 			vassals.raise_taxes = yes
@@ -123,7 +123,7 @@ vassals.update = {
 		}
 		while = {
 			limit = {
-				is_var_greater_than_val = { var = output_var val = 1 }
+				is_var_greater_than_val = { var = output val = 1 }
 				check_variable = { which = vassal_tax_rate value = 1 }
 			}
 			vassals.lower_taxes = yes
@@ -133,7 +133,7 @@ vassals.update = {
 }
 
 vassals.export_income = {
-	export_to_variable = { which = output_var value = modifier:vassal_income }
+	export_to_variable = { which = output value = modifier:vassal_income }
 }
 
 # Called from governance decisions
