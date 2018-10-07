@@ -73,7 +73,7 @@ vassals.repeal_tax_rate = {
 vassals.set_tax_rate = {
 
 	hidden_effect = {
-		set_variable = { which = vassal_tax_rate value = $rate$ }
+		declare_variable = { which = vassal_tax_rate value = $rate$ }
 	}
 }
 

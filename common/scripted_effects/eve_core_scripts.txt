@@ -49,7 +49,7 @@ core.on_daily_pulse = {
 			limit = { nation.has_new_ruler = yes }
 
 			set_ruler_flag = inagurated
-			governance.calc_ruler_mod = yes
+			governance.calc_ruler_m = yes
 		}
 		if = {
 			limit = { core.can_update = yes }
@@ -109,7 +109,7 @@ core.init_country = {
 
 			core.set_country_id = yes
 			every_owned_province = {
-				core.set_prov_owner_id = yes
+				province.set_owner_id = yes
 			}
 			capital.init = yes						# apply capital modifiers
 			core.fire_monthly_pulse = yes    		# force an immediate update
@@ -133,32 +133,12 @@ core.set_country_id = {
 			PREV = { core.is_global_scope = yes }
 		}
 		PREV = { core.export_var_to_prev = { var = init_num } }
-		variable.declare = { which = country_id from = output }
+		declare_variable = { which = country_id from = output }
 
 		PREV = { change_variable = { which = init_num value = 1 } }
 		change_variable = { which = country_id value = 1 }
 	}
 	else = { logger.print_error = { code = 199 method = 0 } }
-}
-
-# Assign a unique id for province that corresponds to owner country id
-# Each owned province should ALWAYS have the same id as its current owner
-# @scope country
-#
-core.set_prov_owner_id = {
-
-	if = {
-		limit = { core.is_province = no }
-		logger.print_error = { code = 140 method = 1 }
-	}
-	owner = {
-		if = {
-			limit = { check_variable = { which = country_id value = 1 } }
-			core.export_var_to_prev = { var = country_id }
-			PREV = { variable.declare = { which = owner_id from = output } }
-		}
-		else = { logger.print_error = { code = 279 method = 1 } }
-	}
 }
 
 # Export argument variable to PREV scope so it can be used for comparison.

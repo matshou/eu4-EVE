@@ -31,3 +31,23 @@ province.set_developing = {
 		duration = 124 hidden = no
 	}
 }
+
+# Assign a unique id for province that corresponds to owner country id
+# Each owned province should ALWAYS have the same id as its current owner
+# @scope province
+#
+province.set_owner_id = {
+
+	if = {
+		limit = { core.is_province = no }
+		logger.print_error = { code = 140 method = 1 }
+	}
+	owner = {
+		if = {
+			limit = { check_variable = { which = country_id value = 1 } }
+			core.export_var_to_prev = { var = country_id }
+			PREV = { declare_variable = { which = owner_id from = output } }
+		}
+		else = { logger.print_error = { code = 279 method = 1 } }
+	}
+}

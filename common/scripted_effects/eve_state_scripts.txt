@@ -15,8 +15,8 @@
 #
 states.update_all = {
 
-	# reset governance state administrative mod so we can recalculate it
-	set_variable = { which = policy_gov_state_adm_mod value = 0 }
+	# reset state administration modifier so we can recalculate it
+	set_variable = { which = policy_gov_state_m value = 0 }
 
 	every_owned_province = {
 		limit = { is_state = yes }
@@ -65,7 +65,7 @@ states.update_state = {
 			owner = {
 				PREV = { states.get_development = yes }
 				states.get_dev_ratio = { DEV = output }
-				change_variable = { which = policy_gov_state_adm_mod which = output }
+				change_variable = { which = policy_gov_state_m which = output }
 			}
 
 			# Check to make sure every province in state is under jurisdiction

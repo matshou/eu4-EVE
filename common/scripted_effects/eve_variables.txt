@@ -6,7 +6,7 @@
 # Methods here are used by SourceCookifier to parse variable tags
 
 # Declare variable for the first time
-variable.declare = {
+declare_variable = {
 
 	[[from] set_variable = { which = $which$ which = $from$ } ]
 	[[value] set_variable = { which = $which$ value = $value$ } ]
