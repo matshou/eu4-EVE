@@ -52,7 +52,13 @@ core.on_daily_pulse = {
 			governance.calc_ruler_m = yes
 		}
 		if = {
-			limit = { core.can_update = yes }
+			limit = { has_country_flag = immediate_update }
+			core.on_monthly_pulse = yes
+			clr_country_flag = immediate_update
+		}
+		else_if = {
+			limit = { core.has_month_passed = yes }
+			variable.export = { which = last_month from = is_month }
 			core.on_monthly_pulse = yes
 		}
 	}
@@ -62,9 +68,6 @@ core.on_daily_pulse = {
 # @scope country
 #
 core.on_monthly_pulse = {
-
-	variable.export = { which = last_month value = trigger_value:is_month }
-	clr_country_flag = immediate_update
 
 	if = {
 		limit = { core.is_global_scope = yes }
