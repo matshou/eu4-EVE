@@ -15,5 +15,6 @@ declare_variable = {
 # Short-hand for export_to_variable
 variable.export = {
 
-	export_to_variable = { which = $which$ value = $value$ }
+	[[value] export_to_variable = { which = $which$ value = $value$ } ]
+	[[from] export_to_variable = { which = $which$ value = trigger_value:$from$ } ]
 }
