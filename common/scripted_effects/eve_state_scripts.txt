@@ -3,13 +3,6 @@
 # EVE - State Scripts
 ##############################
 
-# List of flags:
-# ====================
-#  state_prov_updated		# province
-#  adm_center_in_state		# country
-#  adm_center_found			# country
-
-
 # Update all states and provinces belonging to states
 # @scope country
 #

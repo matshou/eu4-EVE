@@ -3,27 +3,6 @@
 # EVE - Governance Policy
 ###############################
 
-# List of flags:
-# ====================
-#  policy_gov_initialized       #
-#  policy_gov_neutral			#
-#  policy_gov_centralized		# all
-#  policy_gov_decentralized		# country
-#  policy_gov_time_months		# scope
-#  policy_gov_time_years		#
-
-# List of variables:
-# ====================
-#  policy_gov_min
-#  policy_gov_max
-#  policy_gov_val			# current rating value for this policy
-#  policy_gov_rating		# short numerical for 'policy_gov_val'
-#  policy_gov_mod			# modifier monthly applied to rating
-#  policy_gov_gui_val		# same as 'policy_gov_val' but used by GUI only
-#  policy_gov_rul_mod		# from ruler administrative skill
-#  policy_gov_adv_mod		# from advisor administrative skill
-#  policy_gov_time			# months or years until rating change
-
 # Re-initialize policy values that display in GUI.
 # This is called immediately after loading a game to initialize variables
 # with null values that have not been written in the save game file

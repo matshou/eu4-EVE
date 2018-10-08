@@ -3,29 +3,6 @@
 # EVE - Core Scripts
 ##################################
 
-# List of flags:
-# ====================
-#  eve_initialized				# global
-#  found_country				# global
-#  inagurated					# ruler
-#  immediate_update				# country
-#  is_initialized				# country
-#  territorial_change			# country
-#  gained_new_territory			# country
-#  new_territory				# province
-#  conquered_capital			# province
-#  distant_province				# province
-
-
-# List of variables:
-# ====================
-#  error_code               	# global
-#  error_point					# global
-#  last_month					# country
-#  country_id					# country
-#  owner_id						# province
-
-
 # When called monthly pulse will fire next day in capital province
 # @scope country
 #
