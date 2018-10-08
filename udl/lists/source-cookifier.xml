@@ -2,7 +2,7 @@
 <SerializableDictionaryOfStringLanguage>
   <item>
     <key>
-      <string>ParadoxScript</string>
+      <string>EveScript</string>
     </key>
     <value>
       <Language xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -27,7 +27,8 @@
                 <Description>[Method]</Description>
                 <BuildIn>true</BuildIn>
                 <RegexPatterns>
-                  <string>/^(core|autonomy|capital|estates|math|governance|states|vassals|nation|province|logger)?(\.)([a-z0-9_.-]+)/\1\2\3/m/ei</string>
+                  <string>/^(core|autonomy|capital|estates|math|governance|states|vassals|nation|province|logger|variable)+(\.)([a-z0-9_.-]+)/\1\2\3/m/ei</string>
+                  <string>/^(\bdeclare_variable\b)\s*?\=\s*?\{/\1/m/ei</string>
                 </RegexPatterns>
                 <Show>true</Show>
                 <TrackCaret>false</TrackCaret>
@@ -45,7 +46,9 @@
                 <Description>[Variable]</Description>
                 <BuildIn>false</BuildIn>
                 <RegexPatterns>
-                  <string>/(\bset_variable\b)\s*[\=]\s*\{\s*(\bwhich\b)\s*[\=]\s*([a-z0-9_.-]+)/\3/v/ei</string>
+                  <string>/\bdeclare_variable\b\s*[\=]\s*\{\s*\bwhich\b\s*[\=]\s*([a-z0-9_.-]+)\s*\bvalue\b\s*\=\s*(-?[1-9]+[0-9]*)/\1 (\2)/v/ei</string>
+                  <string>/\bdeclare_variable\b\s*[\=]\s*\{\s*\bwhich\b\s*[\=]\s*([a-z0-9_.-]+)\s*\bfrom\b\s*\=\s*\w*/\1/v/ei</string>
+                  <string>/\bvariable.export\b\s*[\=]\s*\{\s*\bwhich\b\s*[\=]\s*([a-z0-9_.-]+)\s*(value|from)\s*\=\s*([a-zA-Z][a-z0-9_.-]*)\s*\}/\1 (\3)/v/ei</string>
                 </RegexPatterns>
                 <Show>true</Show>
                 <TrackCaret>true</TrackCaret>
@@ -63,10 +66,12 @@
                 <Description>[Flags]</Description>
                 <BuildIn>false</BuildIn>
                 <RegexPatterns>
-                  <string>/(\bset_country_flag\b)\s*(\=)\s*([a-z0-9_.-]+)/\3/f/ei</string>
+                  <string>/^\s*(\bset_country_flag\b)\s*(\=)\s*([a-z0-9_.-]+)/\3 (c)/f/ei</string>
+                  <string>/(\bset_province_flag\b)\s*(\=)\s*([a-z0-9_.-]+)/\3 (p)/f/ei</string>
+                  <string>/(\bset_ruler_flag\b)\s*(\=)\s*([a-z0-9_.-]+)/\3 (r)/f/ei</string>
                 </RegexPatterns>
                 <Show>true</Show>
-                <TrackCaret>true</TrackCaret>
+                <TrackCaret>false</TrackCaret>
                 <IconFilename>flag.png</IconFilename>
                 <ForeColor>-16777216</ForeColor>
               </TagType>
@@ -99,13 +104,30 @@
                 <Description>[Localization]</Description>
                 <BuildIn>false</BuildIn>
                 <RegexPatterns>
-                  <string>/^\s*\bname\b\s*?\=\s*?([a-z0-9_.-]+)/\1/l/ei</string>
                   <string>/^\s{1}([a-z0-9_.-]+)\:[[:digit:]]+/\1/l/ei</string>
                 </RegexPatterns>
                 <Show>true</Show>
                 <TrackCaret>false</TrackCaret>
-                <IconFilename>c_namespace.png</IconFilename>
-                <ForeColor>-16776961</ForeColor>
+                <IconFilename>text.png</IconFilename>
+                <ForeColor>-14934785</ForeColor>
+              </TagType>
+            </value>
+          </item>
+          <item>
+            <key>
+              <string>k</string>
+            </key>
+            <value>
+              <TagType>
+                <Description>[Localisation Key]</Description>
+                <BuildIn>false</BuildIn>
+                <RegexPatterns>
+                  <string>/^\s*\blocalisation_key\b\s*\=\s*([a-z0-9_.-]+)/\1/k/ei</string>
+                </RegexPatterns>
+                <Show>true</Show>
+                <TrackCaret>false</TrackCaret>
+                <IconFilename>key.png</IconFilename>
+                <ForeColor>-16777216</ForeColor>
               </TagType>
             </value>
           </item>
