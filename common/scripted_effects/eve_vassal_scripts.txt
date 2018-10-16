@@ -198,6 +198,35 @@ vassals.lower_taxes = {
 	}
 }
 
+vassals.renew_taxes = {
+
+
+	if = {
+		limit = { vassals.is_tax_rate = { value = 3 } }
+		vassals.enact_tax_rate = { rate = 3 }
+	}
+	else_if = {
+		limit = { vassals.is_tax_rate = { value = 2 } }
+		vassals.enact_tax_rate = { rate = 2 }
+	}
+	else_if = {
+		limit = { vassals.is_tax_rate = { value = 1 } }
+		vassals.enact_tax_rate = { rate = 1 }
+	}
+	else_if = {
+		limit = { vassals.is_tax_rate = { value = -1 } }
+		vassals.enact_tax_rate = { rate = -1 }
+	}
+	else_if = {
+		limit = { vassals.is_tax_rate = { value = -2 } }
+		vassals.enact_tax_rate = { rate = -2 }
+	}
+	else_if = {
+		limit = { vassals.is_tax_rate = { value = -3 } }
+		vassals.enact_tax_rate = { rate = -3 }
+	}
+}
+
 # Find and remove currently active tax rate/exemption
 # @scope overlord
 vassals.remove_active_tax_rate = {

@@ -68,6 +68,25 @@ country_decisions = {
 		}
 	}
 
+	renew_vassal_taxes = {
+		major = no
+		potential = {
+			nation.has_vassal = yes
+		}
+		allow = {
+			vassals.has_tax_rate_expired = yes
+		}
+		effect = {
+			vassals.renew_taxes = yes
+			hidden_effect = {
+				clr_country_flag = changed_tax_rate
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
 	abolish_vassal_tax_exemption = {
 		major = no
 		potential = {
