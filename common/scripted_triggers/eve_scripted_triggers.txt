@@ -181,8 +181,11 @@ vassals.is_valid_tax_rate = {
 
 vassals.has_tax_rate = {
 	OR = {
-		is_var_not_null = { var = vassal_tax_rate }		# overlord
-		has_country_flag = vassal_tax_rate				# vassal
+		AND = {
+			is_var_not_null = { var = vassal_tax_rate }		# overlord
+			vassals.has_tax_rate_expired = no
+		}
+		has_country_flag = vassal_tax_rate					# vassal
 	}
 }
 
@@ -204,6 +207,12 @@ vassals.is_tax_rate_max = {
 
 vassals.is_tax_exemption_max = {
 	is_variable_equal = { which = vassal_tax_rate value = -3 }
+}
+
+vassals.has_tax_rate_expired = {
+	had_country_flag = {
+		flag = changed_tax_rate days = 1460		# 4 years
+	}
 }
 
 ##############################

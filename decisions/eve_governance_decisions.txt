@@ -10,6 +10,7 @@ country_decisions = {
 		potential = {
 			nation.has_vassal = yes
 			vassals.is_tax_rate_max = no
+			vassals.has_tax_rate_expired = no
 		}
 		allow = {
 			custom_trigger_tooltip = {
@@ -31,6 +32,7 @@ country_decisions = {
 		potential = {
 			nation.has_vassal = yes
 			vassals.is_tax_exemption_max = no
+			vassals.has_tax_rate_expired = no
 		}
 		allow = {
 			custom_trigger_tooltip = {
@@ -52,6 +54,7 @@ country_decisions = {
 		potential = {
 			nation.has_vassal = yes
 			vassals.has_raised_tax_rate = yes
+			vassals.has_tax_rate_expired = no
 		}
 		allow = {
 			always = yes
@@ -70,6 +73,7 @@ country_decisions = {
 		potential = {
 			nation.has_vassal = yes
 			vassals.has_tax_exemption = yes
+			vassals.has_tax_rate_expired = no
 		}
 		allow = {
 			always = yes

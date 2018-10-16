@@ -10,8 +10,8 @@
 #
 vassals.change_tax_rate = {
 
-	vassals.enact_tax_rate = { rate = $new$ }
 	vassals.remove_tax_rate = { rate = $past$ }
+	vassals.enact_tax_rate = { rate = $new$ }
 }
 
 # Add specific tax rate modifier to both overlord and all vassals.
@@ -21,10 +21,16 @@ vassals.change_tax_rate = {
 #
 vassals.enact_tax_rate = {
 
-	add_country_modifier = { name = vassal_tax_rate$rate$ duration = -1 }
+	# when changing rate duration value remember to update
+	# 'vassal_tax_rate_ld' and 'has_tax_rate_expired' trigger
+
+	add_country_modifier = {
+		name = vassal_tax_rate$rate$ duration = 1460 	# 4 years
+	}
 	vassals.set_tax_rate = { rate = $rate$ }
 
 	hidden_effect = {
+		set_country_flag = changed_tax_rate
 		every_subject_country = {
 			limit = { is_vassal = yes }
 			vassals.set_tax_lib_desire = { rate = $rate$ }
@@ -40,6 +46,7 @@ vassals.enact_tax_rate = {
 vassals.remove_tax_rate = {
 
 	hidden_effect = {
+		clr_country_flag = changed_tax_rate
 		remove_country_modifier = vassal_tax_rate$rate$
 		every_subject_country = {
 			limit = { is_vassal = yes }
@@ -59,6 +66,7 @@ vassals.repeal_tax_rate = {
 	vassals.set_tax_rate = { rate = 0 }
 
 	hidden_effect = {
+		clr_country_flag = changed_tax_rate
 		every_subject_country = {
 			limit = { is_vassal = yes }
 			remove_country_modifier = vassal_tax_rate_ld$rate$
@@ -84,7 +92,9 @@ vassals.set_tax_rate = {
 vassals.set_tax_lib_desire = {
 
 	set_country_flag = vassal_tax_rate
-	add_country_modifier = { name = vassal_tax_rate_ld$rate$ duration = -1 }
+	add_country_modifier = {
+		name = vassal_tax_rate_ld$rate$ duration = 1460 	# 4 years
+	}
 }
 
 # Called on each monthly pulse
