@@ -178,3 +178,36 @@ core.update_policies = {
 		}
 	}
 }
+
+# Adds monarch power value to scope (can be negative value).
+# Arguments can be passed as negative values by prepending minus.
+# Multiple arguments can be passed in one call
+# @scope country
+# @access public
+#
+core.add_monarch_power = {
+
+	[[adm] add_monarch_power = { power = adm value = $adm$ } ]
+	[[dip] add_monarch_power = { power = dip value = $dip$ } ]
+	[[mil] add_monarch_power = { power = mil value = $mil$ } ]
+}
+
+# @access private
+add_monarch_power = {
+
+	if = {
+		limit = { is_var_negative_value = { var = $value$ } }
+		while = {
+			limit = { is_var_not_null = { var = $value$ } }
+			add_$power$_power = -1
+			change_variable = { which = $value$ value = 1 }
+		}
+	}
+	else = {
+		while = {
+			limit = { is_var_not_null = { var = $value$ } }
+			add_$power$_power = 1
+			subtract_variable = { which = $value$ value = 1 }
+		}
+	}
+}

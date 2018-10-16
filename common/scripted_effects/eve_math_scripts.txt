@@ -148,6 +148,18 @@ math.round_func = {
 	set_variable = { which = n value = 0 }
 }
 
+# Change argument variable to absolute value
+# @scope anywhere
+# @param which
+#
+math.abs = {
+
+	if = {
+		limit = { is_var_negative_value = { var = $which$ } }
+		multiply_variable = { which = $which$ value = -1 }
+	}
+}
+
 # Force argument value inside designated range
 # @scope anywhere
 # @param var, val

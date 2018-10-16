@@ -60,6 +60,10 @@ country_decisions = {
 			always = yes
 		}
 		effect = {
+			custom_tooltip = tooltip_vassal_tax_repeal_cost
+			hidden_effect = {
+				core.add_monarch_power = { adm = -vassal_tax_repeal_cost }
+			}
 			vassals.remove_active_tax_rate = yes
 			custom_tooltip = tooltip_repeal_vassal_taxes
 		}

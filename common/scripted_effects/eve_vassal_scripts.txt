@@ -82,9 +82,30 @@ vassals.set_tax_rate = {
 
 	hidden_effect = {
 		declare_variable = { which = vassal_tax_rate value = $rate$ }
+		vassals.update_repeal_cost = yes
 	}
 }
 
+# Set new repeal adm power cost after changing rate
+# @scope overlord
+vassals.update_repeal_cost = {
+
+	if = {
+		limit = { vassals.has_tax_exemption = yes }
+		declare_variable = { which = vassal_tax_repeal_cost value = 25 }	# 1.6x over base lower cost
+	}
+	else_if = {
+		limit = { vassals.has_raised_tax_rate = yes }
+		declare_variable = { which = vassal_tax_repeal_cost value = 40 }	# 1.6x base raise cost
+	}
+	else = {
+		set_variable = { which = vassal_tax_repeal_cost value = 0 }
+	}
+	multiply_variable = {
+		which = vassal_tax_repeal_cost which = vassal_tax_rate
+	}
+	math.abs = { which = vassal_tax_repeal_cost }
+}
 
 # Helper method to initialize tax rate for vassal
 # @scope vassal
@@ -150,24 +171,32 @@ vassals.export_income = {
 # @ scope overlord
 vassals.raise_taxes = {
 
+	# base raise cost = 25
+	# exemption discount = 40%
+
 	if = {
 		limit = { vassals.is_tax_rate = { value = 2 } }
+		add_adm_power = -70
 		vassals.change_tax_rate = { new = 3 past = 2 }
 	}
 	else_if = {
 		limit = { vassals.is_tax_rate = { value = 1 } }
+		add_adm_power = -50
 		vassals.change_tax_rate = { new = 2 past = 1 }
 	}
 	else_if = {
 		limit = { vassals.is_tax_rate = { value = 0 } }
+		add_adm_power = -25
 		vassals.enact_tax_rate = { rate = 1 }
 	}
 	else_if = {
 		limit = { vassals.is_tax_rate = { value = -2 } }
+		add_adm_power = -30
 		vassals.change_tax_rate = { new = -1 past = -2 }
 	}
 	else_if = {
 		limit = { vassals.is_tax_rate = { value = -3 } }
+		add_adm_power = -45
 		vassals.change_tax_rate = { new = -2 past = -3 }
 	}
 }
@@ -176,53 +205,69 @@ vassals.raise_taxes = {
 # @ scope overlord
 vassals.lower_taxes = {
 
+	# base lower cost = 15
+	# exemption addition = 30%
+
 	if = {
 		limit = { vassals.is_tax_rate = { value = 3 } }
+		add_adm_power = -45
 		vassals.change_tax_rate = { new = 2 past = 3 }
 	}
 	else_if = {
 		limit = { vassals.is_tax_rate = { value = 2 } }
+		add_adm_power = -30
 		vassals.change_tax_rate = { new = 1 past = 2 }
 	}
 	else_if = {
 		limit = { vassals.is_tax_rate = { value = 0 } }
+		add_adm_power = -20
 		vassals.enact_tax_rate = { rate = -1 }
 	}
 	else_if = {
 		limit = { vassals.is_tax_rate = { value = -1 } }
+		add_adm_power = -25
 		vassals.change_tax_rate = { new = -2 past = -1 }
 	}
 	else_if = {
 		limit = { vassals.is_tax_rate = { value = -2 } }
+		add_adm_power = -30
 		vassals.change_tax_rate = { new = -3 past = -2 }
 	}
 }
 
 vassals.renew_taxes = {
 
+	# renewal cost = base_cost\2
+	# use raise cost for rates and lower cost for exemptions
 
 	if = {
 		limit = { vassals.is_tax_rate = { value = 3 } }
+		add_adm_power = -35
 		vassals.enact_tax_rate = { rate = 3 }
 	}
 	else_if = {
 		limit = { vassals.is_tax_rate = { value = 2 } }
+		add_adm_power = -25
 		vassals.enact_tax_rate = { rate = 2 }
 	}
 	else_if = {
 		limit = { vassals.is_tax_rate = { value = 1 } }
+		add_adm_power = -10
 		vassals.enact_tax_rate = { rate = 1 }
 	}
 	else_if = {
 		limit = { vassals.is_tax_rate = { value = -1 } }
+		add_adm_power = -10
 		vassals.enact_tax_rate = { rate = -1 }
 	}
 	else_if = {
 		limit = { vassals.is_tax_rate = { value = -2 } }
+		add_adm_power = -15
 		vassals.enact_tax_rate = { rate = -2 }
 	}
 	else_if = {
 		limit = { vassals.is_tax_rate = { value = -3 } }
+		add_adm_power = -20
 		vassals.enact_tax_rate = { rate = -3 }
 	}
 }
