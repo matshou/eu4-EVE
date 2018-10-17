@@ -27,7 +27,7 @@
                 <Description>[Method]</Description>
                 <BuildIn>true</BuildIn>
                 <RegexPatterns>
-                  <string>/^(core|autonomy|capital|estates|math|governance|states|vassals|nation|province|logger|variable)+(\.)([a-z0-9_.-]+)/\1\2\3/m/ei</string>
+                  <string>/^(core|autonomy|capital|estates|math|governance|states|vassals|nation|province|logger|variable|ex)+(\.)([a-z0-9_.-]+)/\1\2\3/m/ei</string>
                   <string>/^(\bdeclare_variable\b)\s*?\=\s*?\{/\1/m/ei</string>
                 </RegexPatterns>
                 <Show>true</Show>

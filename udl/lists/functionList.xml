@@ -117,7 +117,7 @@
 			>
 				<!-- Update list of keywords when new ones are added to UDL -->
 				<function
-					mainExpr="(?:^\bdeclare_variable\b)|(?:^(core|autonomy|capital|estates|math|governance|states|vassals|nation|province|logger|variable)(\.)([a-z0-9_.-]+))"
+					mainExpr="(?:^\bdeclare_variable\b)|(?:^(core|autonomy|capital|estates|math|governance|states|vassals|nation|province|logger|variable|ex)(\.)([a-z0-9_.-]+))"
 					displayMode="$functionName">
 				</function>
 			</parser>
