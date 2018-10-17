@@ -121,3 +121,4 @@
 
  tooltip_can_raise_vassal_taxes:0 "Can further raise vassal tax rate."
  tooltip_can_lower_vassal_taxes:0 "Can further lower vassal tax rate."
+ tooltip_has_tax_rate_cooldown:0 "5 years passed since changing tax rate."

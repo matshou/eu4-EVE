@@ -215,6 +215,15 @@ vassals.has_tax_rate_expired = {
 	}
 }
 
+vassals.has_tax_rate_cooldown = {
+	has_country_flag = changed_tax_rate
+	NOT = {
+		had_country_flag = {
+			flag = changed_tax_rate days = 1825		# 5 years
+		}
+	}
+}
+
 ##############################
 # EVE - Policy Triggers
 ##############################

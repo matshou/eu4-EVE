@@ -14,6 +14,10 @@ country_decisions = {
 		}
 		allow = {
 			custom_trigger_tooltip = {
+				tooltip = tooltip_has_tax_rate_cooldown
+				vassals.has_tax_rate_cooldown = no
+			}
+			custom_trigger_tooltip = {
 				tooltip = tooltip_can_raise_vassal_taxes
 				vassals.can_raise_taxes = yes
 			}
@@ -35,6 +39,10 @@ country_decisions = {
 			vassals.has_tax_rate_expired = no
 		}
 		allow = {
+			custom_trigger_tooltip = {
+				tooltip = tooltip_has_tax_rate_cooldown
+				vassals.has_tax_rate_cooldown = no
+			}
 			custom_trigger_tooltip = {
 				tooltip = tooltip_can_lower_vassal_taxes
 				vassals.can_lower_taxes = yes
@@ -58,6 +66,10 @@ country_decisions = {
 		}
 		allow = {
 			always = yes
+			custom_trigger_tooltip = {
+				tooltip = tooltip_has_tax_rate_cooldown
+				vassals.has_tax_rate_cooldown = no
+			}
 		}
 		effect = {
 			custom_tooltip = tooltip_vassal_tax_repeal_cost
@@ -79,6 +91,9 @@ country_decisions = {
 		}
 		allow = {
 			vassals.has_tax_rate_expired = yes
+			custom_trigger_tooltip = {
+				tooltip = tooltip_has_tax_rate_cooldown
+				vassals.has_tax_rate_cooldown = no
 		}
 		effect = {
 			vassals.renew_taxes = yes
