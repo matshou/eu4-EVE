@@ -100,7 +100,7 @@
  tooltip_lower_tax_liberty_desire:0 "Every vassal of §Y[This.GetName]§! receives the following effect for the duration of the active tax rate:\nLiberty Desire: §[This.lower_tax_liberty_desire_txt_c][This.lower_tax_liberty_desire_txt]%§!"
 
  tooltip_repeal_vassal_taxes:0 "Remove active tax rate for every vassal of §Y[This.GetName]§!."
- tooltip_abolish_vassal_tax_exemption:0 "Abolish active tax exemption for every vassal of §Y[This.GetName]§!."
+ tooltip_repeal_vassal_tax_exemption:0 "Remove active tax exemption for every vassal of §Y[This.GetName]§!."
 
  string_tax_liberty_desire.3:0 "35.00"
  string_tax_liberty_desire.2:0 "20.00"
@@ -112,8 +112,8 @@
  lower_vassal_taxes_desc:0 ""
  repeal_vassal_taxes_title:0 "Repeal Vassal Tax Rate"
  repeal_vassal_taxes_desc:0 ""
- abolish_vassal_tax_exemption_title:0 "Abolish Vassal Tax Exemption"
- abolish_vassal_tax_exemption_desc:0 ""
+ repeal_vassal_tax_exemption_title:0 "Repeal Vassal Tax Exemption"
+ repeal_vassal_tax_exemption_desc:0 ""
  renew_vassal_taxes_title:0 "Renew Vassal Tax Rate"
  renew_vassal_taxes_desc:0 ""
 
@@ -122,3 +122,5 @@
  tooltip_can_raise_vassal_taxes:0 "Can further raise vassal tax rate."
  tooltip_can_lower_vassal_taxes:0 "Can further lower vassal tax rate."
  tooltip_has_tax_rate_cooldown:0 "5 years passed since changing tax rate."
+ tooltip_has_tax_rate_expired:0 "Has tax rate expired."
+ tooltip_has_tax_exemption_expired:0 "Has tax exemption expired."

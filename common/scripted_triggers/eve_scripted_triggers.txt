@@ -153,7 +153,6 @@ vassals.can_raise_taxes = {
 		check_variable = { which = policy_gov_rating value = 2 }
 	}
 	is_var_less_than = { var1 = vassal_tax_rate var2 = policy_gov_rating }
-	NOT = { vassals.is_tax_rate = { value = -1 } }	# use abolish decision instead
 
 	variable_arithmetic_trigger = {
 		export_to_variable = { which = income value = modifier:vassal_income }
@@ -163,8 +162,6 @@ vassals.can_raise_taxes = {
 }
 
 vassals.can_lower_taxes = {
-	NOT = { vassals.is_tax_rate = { value = 1 } }		# use repeal decision instead
-
 	variable_arithmetic_trigger = {
 		export_to_variable = { which = income value = modifier:vassal_income }
 		subtract_variable = { which = income value = 0.1 }

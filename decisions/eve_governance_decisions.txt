@@ -11,8 +11,12 @@ country_decisions = {
 			nation.has_vassal = yes
 			vassals.is_tax_rate_max = no
 			vassals.has_tax_rate_expired = no
+
+			# use repeal decision instead
+			NOT = { vassals.is_tax_rate = { value = -1 } }
 		}
 		allow = {
+			adm_power = 15
 			custom_trigger_tooltip = {
 				tooltip = tooltip_has_tax_rate_cooldown
 				vassals.has_tax_rate_cooldown = no
@@ -37,8 +41,12 @@ country_decisions = {
 			nation.has_vassal = yes
 			vassals.is_tax_exemption_max = no
 			vassals.has_tax_rate_expired = no
+
+			# use repeal decision instead
+			NOT = { vassals.is_tax_rate = { value = 1 } }
 		}
 		allow = {
+			adm_power = 15
 			custom_trigger_tooltip = {
 				tooltip = tooltip_has_tax_rate_cooldown
 				vassals.has_tax_rate_cooldown = no
@@ -65,19 +73,56 @@ country_decisions = {
 			vassals.has_tax_rate_expired = no
 		}
 		allow = {
-			always = yes
+			adm_power = 15
 			custom_trigger_tooltip = {
 				tooltip = tooltip_has_tax_rate_cooldown
 				vassals.has_tax_rate_cooldown = no
+			}
+			custom_trigger_tooltip = {
+				tooltip = tooltip_has_tax_rate_expired
+				always = yes
 			}
 		}
 		effect = {
 			custom_tooltip = tooltip_vassal_tax_repeal_cost
 			hidden_effect = {
-				core.add_monarch_power = { adm = -vassal_tax_repeal_cost }
+				multiply_variable = { which = vassal_tax_repeal_cost value = -1 }
+				core.add_monarch_power = { adm = vassal_tax_repeal_cost }
 			}
 			vassals.remove_active_tax_rate = yes
 			custom_tooltip = tooltip_repeal_vassal_taxes
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	repeal_vassal_tax_exemption = {
+		major = no
+		potential = {
+			nation.has_vassal = yes
+			vassals.has_tax_exemption = yes
+			vassals.has_tax_rate_expired = no
+		}
+		allow = {
+			adm_power = 15
+			custom_trigger_tooltip = {
+				tooltip = tooltip_has_tax_rate_cooldown
+				vassals.has_tax_rate_cooldown = no
+			}
+			custom_trigger_tooltip = {
+				tooltip = tooltip_has_tax_exemption_expired
+				always = yes
+			}
+		}
+		effect = {
+			custom_tooltip = tooltip_vassal_tax_repeal_cost
+			hidden_effect = {
+				multiply_variable = { which = vassal_tax_repeal_cost value = -1 }
+				core.add_monarch_power = { adm = vassal_tax_repeal_cost }
+			}
+			vassals.remove_active_tax_rate = yes
+			custom_tooltip = tooltip_repeal_vassal_tax_exemption
 		}
 		ai_will_do = {
 			factor = 0
@@ -88,37 +133,20 @@ country_decisions = {
 		major = no
 		potential = {
 			nation.has_vassal = yes
+			vassals.has_tax_rate_expired = yes
 		}
 		allow = {
-			vassals.has_tax_rate_expired = yes
+			adm_power = 15
 			custom_trigger_tooltip = {
-				tooltip = tooltip_has_tax_rate_cooldown
-				vassals.has_tax_rate_cooldown = no
+				tooltip = tooltip_has_tax_rate_expired
+				always = yes
+			}
 		}
 		effect = {
 			vassals.renew_taxes = yes
 			hidden_effect = {
 				clr_country_flag = changed_tax_rate
 			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
-
-	abolish_vassal_tax_exemption = {
-		major = no
-		potential = {
-			nation.has_vassal = yes
-			vassals.has_tax_exemption = yes
-			vassals.has_tax_rate_expired = no
-		}
-		allow = {
-			always = yes
-		}
-		effect = {
-			vassals.remove_active_tax_rate = yes
-			custom_tooltip = tooltip_abolish_vassal_tax_exemption
 		}
 		ai_will_do = {
 			factor = 0

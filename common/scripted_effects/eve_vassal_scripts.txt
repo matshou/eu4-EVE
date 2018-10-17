@@ -92,19 +92,34 @@ vassals.update_repeal_cost = {
 
 	if = {
 		limit = { vassals.has_tax_exemption = yes }
-		declare_variable = { which = vassal_tax_repeal_cost value = 25 }	# 1.6x over base lower cost
+		if = {
+			limit = { vassals.is_tax_rate = { value = -1 } }
+			set_variable = { which = vassal_tax_repeal_cost value = 15 }
+		}
+		else = {
+			declare_variable = { which = vassal_tax_repeal_cost value = 25 }	# 1.6x over base lower cost
+		}
+		multiply_variable = {
+			which = vassal_tax_repeal_cost which = vassal_tax_rate
+		}
+		math.abs = { which = vassal_tax_repeal_cost }
 	}
 	else_if = {
 		limit = { vassals.has_raised_tax_rate = yes }
-		declare_variable = { which = vassal_tax_repeal_cost value = 40 }	# 1.6x base raise cost
+		if = {
+			limit = { vassals.is_tax_rate = { value = 1 } }
+			set_variable = { which = vassal_tax_repeal_cost value = 15 }
+		}
+		else = {
+			declare_variable = { which = vassal_tax_repeal_cost value = 40 }	# 1.6x base raise cost
+		}
+		multiply_variable = {
+			which = vassal_tax_repeal_cost which = vassal_tax_rate
+		}
 	}
 	else = {
 		set_variable = { which = vassal_tax_repeal_cost value = 0 }
 	}
-	multiply_variable = {
-		which = vassal_tax_repeal_cost which = vassal_tax_rate
-	}
-	math.abs = { which = vassal_tax_repeal_cost }
 }
 
 # Helper method to initialize tax rate for vassal
