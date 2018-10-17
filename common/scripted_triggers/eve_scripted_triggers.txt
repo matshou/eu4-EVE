@@ -211,7 +211,7 @@ vassals.is_tax_exemption_max = {
 
 vassals.has_tax_rate_expired = {
 	had_country_flag = {
-		flag = changed_tax_rate days = 1460		# 4 years
+		flag = changed_tax_rate days = 2920			# 8 years
 	}
 }
 
