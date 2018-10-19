@@ -9,6 +9,7 @@
  error.104:0 "invalid rounding mode \"[This.arg_var.GetValue]\"."
  error.140:0 "Access violation for [This.caller_scope_txt] caller [This.GetName]."
  error.405:0 "Invalid expression result: [This.output.GetValue], expected: [This.t.GetValue]."
+ error.362:0 "Couldn't validate expression right side: 'i' not in range (0-9)."
 
  error_pointer.0:0 "unknown method"
  error_pointer.1:0 "core.set_prov_owner_id"

@@ -359,6 +359,9 @@ build_ex_i = {
 		}
 		build_ex = { k = $k$ h = $h$ x = $x$ i = 0 }
 	}
+	else = {
+		logger.print_error = { code = 362 }
+	}
 }
 
 build_ex = {
