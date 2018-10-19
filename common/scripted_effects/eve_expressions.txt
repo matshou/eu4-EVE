@@ -180,7 +180,7 @@ build_ex_h = {
 		if = {
 			limit = { has_global_flag = ex_not_valid }
 			if = {
-				limit = { is_variable_equal = { which = k value = 1 } }
+				limit = { check_variable = { which = k value = 1 } }
 				build_ex_x = {
 					left = $left$ k = $k$ h = 0
 				}
@@ -283,7 +283,7 @@ build_ex_x = {
 		if = {
 			limit = { has_global_flag = ex_not_valid }
 			if = {
-				limit = { is_variable_equal = { which = h value = 0 } }
+				limit = { check_variable = { which = h value = 0 } }
 				build_ex_i = {
 					left = $left$ k = $k$ h = $h$ x = 0
 				}
@@ -299,14 +299,11 @@ build_ex_x = {
 
 build_ex_i = {
 
-	clr_global_flag = ex_not_valid
-
 	if = {
 		limit = {
 			ex.is_true = { left = $left$ k = $k$ h = $h$ x = $x$ i = 9 }
 		}
 		build_ex = { k = $k$ h = $h$ x = $x$ i = 9 }
-		set_global_flag = ex_not_valid
 	}
 	else_if = {
 		limit = {
@@ -385,4 +382,5 @@ build_ex = {
 	else = {
 		set_variable = { which = output value = $k$$h$$x$$i$ }
 	}
+	clr_global_flag = ex_not_valid
 }
