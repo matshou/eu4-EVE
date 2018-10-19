@@ -1,141 +1,388 @@
 
-##################################
+#################################
 # EVE - Expression Scripts
-##################################
+#################################
 
 ex.build = {
 
-	build_ex = {
-		left = $left$ k = a h = b x = c
-		a = k b = h c = x
-	}
+	set_global_flag = ex_not_valid
 
-	build_ex = {
-		left = $left$ k = a h = b x = x
-		a = k b = h c = c
+	if = {
+		limit = { $left$ = 9000 }
+		build_ex_h = {
+			left = $left$ k = 9
+		}
 	}
-
-	build_ex = {
-		left = $left$ k = a h = h x = c
-		a = k b = b c = x
+	if = {
+		limit = {
+			has_global_flag = ex_not_valid
+			$left$ = 8000
+		}
+		build_ex_h = {
+			left = $left$ k = 8
+		}
 	}
+	if = {
+		limit = {
+			has_global_flag = ex_not_valid
+			$left$ = 7000
+		}
+		build_ex_h = {
+			left = $left$ k = 7
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = ex_not_valid
+			$left$ = 6000
+		}
+		build_ex_h = {
+			left = $left$ k = 6
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = ex_not_valid
+			$left$ = 5000
+		}
+		build_ex_h = {
+			left = $left$ k = 5
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = ex_not_valid
+			$left$ = 4000
+		}
+		build_ex_h = {
+			left = $left$ k = 4
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = ex_not_valid
+			$left$ = 3000
+		}
+		build_ex_h = {
+			left = $left$ k = 3
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = ex_not_valid
+			$left$ = 2000
+		}
+		build_ex_h = {
+			left = $left$ k = 2
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = ex_not_valid
+			$left$ = 1000
+		}
+		build_ex_h = {
+			left = $left$ k = 1
+		}
+	}
+	if = {
+		limit = { has_global_flag = ex_not_valid }
+		build_ex_h = {
+			left = $left$ k = -1
+		}
+	}
+}
 
-	build_ex = {
-		left = $left$ k = k h = b x = c
-		a = a b = h c = x
+build_ex_h = {
+
+	set_variable = { which = k value = $k$ }
+
+	if = {
+		limit = { has_global_flag = ex_not_valid }
+		if = {
+			limit = { ex.is_true_k = { left = $left$ k = $k$ i = 900 } }
+			build_ex_x = {
+				left = $left$ k = $k$ h = 9
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_k = { left = $left$ k = $k$ i = 800 }
+			}
+			build_ex_x = {
+				left = $left$ k = $k$ h = 8
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_k = { left = $left$ k = $k$ i = 700 }
+			}
+			build_ex_x = {
+				left = $left$ k = $k$ h = 7
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_k = { left = $left$ k = $k$ i = 600 }
+			}
+			build_ex_x = {
+				left = $left$ k = $k$ h = 6
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_k = { left = $left$ k = $k$ i = 500 }
+			}
+			build_ex_x = {
+				left = $left$ k = $k$ h = 5
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_k = { left = $left$ k = $k$ i = 400 }
+			}
+			build_ex_x = {
+				left = $left$ k = $k$ h = 4
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_k = { left = $left$ k = $k$ i = 300 }
+			}
+			build_ex_x = {
+				left = $left$ k = $k$ h = 3
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_k = { left = $left$ k = $k$ i = 200 }
+			}
+			build_ex_x = {
+				left = $left$ k = $k$ h = 2
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_k = { left = $left$ k = $k$ i = 100 }
+			}
+			build_ex_x = {
+				left = $left$ k = $k$ h = 1
+			}
+		}
+		if = {
+			limit = { has_global_flag = ex_not_valid }
+			if = {
+				limit = { is_variable_equal = { which = k value = 1 } }
+				build_ex_x = {
+					left = $left$ k = $k$ h = 0
+				}
+			}
+			else = {
+				build_ex_x = {
+					left = $left$ k = $k$ h = -1
+				}
+			}
+		}
+	}
+}
+
+build_ex_x = {
+
+	set_variable = { which = h value = $h$ }
+
+	if = {
+		limit = { has_global_flag = ex_not_valid }
+		if = {
+			limit = {
+				ex.is_true_h = { left = $left$ k = $k$ h = $h$ i = 90 }
+			}
+			build_ex_i = {
+				left = $left$ k = $k$ h = $h$ x = 9
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_h = { left = $left$ k = $k$ h = $h$ i = 80 }
+			}
+			build_ex_i = {
+				left = $left$ k = $k$ h = $h$ x = 8
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_h = { left = $left$ k = $k$ h = $h$ i = 70 }
+			}
+			build_ex_i = {
+				left = $left$ k = $k$ h = $h$ x = 7
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_h = { left = $left$ k = $k$ h = $h$ i = 60 }
+			}
+			build_ex_i = {
+				left = $left$ k = $k$ h = $h$ x = 6
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_h = { left = $left$ k = $k$ h = $h$ i = 50 }
+			}
+			build_ex_i = {
+				left = $left$ k = $k$ h = $h$ x = 5
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_h = { left = $left$ k = $k$ h = $h$ i = 40 }
+			}
+			build_ex_i = {
+				left = $left$ k = $k$ h = $h$ x = 4
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_h = { left = $left$ k = $k$ h = $h$ i = 30 }
+			}
+			build_ex_i = {
+				left = $left$ k = $k$ h = $h$ x = 3
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_h = { left = $left$ k = $k$ h = $h$ i = 20 }
+			}
+			build_ex_i = {
+				left = $left$ k = $k$ h = $h$ x = 2
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ex_not_valid
+				ex.is_true_h = { left = $left$ k = $k$ h = $h$ i = 10 }
+			}
+			build_ex_i = {
+				left = $left$ k = $k$ h = $h$ x = 1
+			}
+		}
+		if = {
+			limit = { has_global_flag = ex_not_valid }
+			if = {
+				limit = { is_variable_equal = { which = h value = 0 } }
+				build_ex_i = {
+					left = $left$ k = $k$ h = $h$ x = 0
+				}
+			}
+			else = {
+				build_ex_i = {
+					left = $left$ k = $k$ h = $h$ x = -1
+				}
+			}
+		}
+	}
+}
+
+build_ex_i = {
+
+	clr_global_flag = ex_not_valid
+
+	if = {
+		limit = {
+			ex.is_true = { left = $left$ k = $k$ h = $h$ x = $x$ i = 9 }
+		}
+		build_ex = { k = $k$ h = $h$ x = $x$ i = 9 }
+		set_global_flag = ex_not_valid
+	}
+	else_if = {
+		limit = {
+			ex.is_true = { left = $left$ k = $k$ h = $h$ x = $x$ i = 8 }
+		}
+		build_ex = { k = $k$ h = $h$ x = $x$ i = 8 }
+	}
+	else_if = {
+		limit = {
+			ex.is_true = { left = $left$ k = $k$ h = $h$ x = $x$ i = 7 }
+		}
+		build_ex = { k = $k$ h = $h$ x = $x$ i = 7 }
+	}
+	else_if = {
+		limit = {
+			ex.is_true = { left = $left$ k = $k$ h = $h$ x = $x$ i = 6 }
+		}
+		build_ex = { k = $k$ h = $h$ x = $x$ i = 6 }
+	}
+	else_if = {
+		limit = {
+			ex.is_true = { left = $left$ k = $k$ h = $h$ x = $x$ i = 5 }
+		}
+		build_ex = { k = $k$ h = $h$ x = $x$ i = 5 }
+	}
+	else_if = {
+		limit = {
+			ex.is_true = { left = $left$ k = $k$ h = $h$ x = $x$ i = 4 }
+		}
+		build_ex = { k = $k$ h = $h$ x = $x$ i = 4 }
+	}
+	else_if = {
+		limit = {
+			ex.is_true = { left = $left$ k = $k$ h = $h$ x = $x$ i = 3 }
+		}
+		build_ex = { k = $k$ h = $h$ x = $x$ i = 3 }
+	}
+	else_if = {
+		limit = {
+			ex.is_true = { left = $left$ k = $k$ h = $h$ x = $x$ i = 2 }
+		}
+		build_ex = { k = $k$ h = $h$ x = $x$ i = 2 }
+	}
+	else_if = {
+		limit = {
+			ex.is_true = { left = $left$ k = $k$ h = $h$ x = $x$ i = 1 }
+		}
+		build_ex = { k = $k$ h = $h$ x = $x$ i = 1 }
+	}
+	else_if = {
+		limit = {
+			ex.is_true = { left = $left$ k = $k$ h = $h$ x = $x$ i = 0 }
+		}
+		build_ex = { k = $k$ h = $h$ x = $x$ i = 0 }
 	}
 }
 
 build_ex = {
 
-	ex.validate = {
-		left = $left$ $k$ = 1 $h$ = 1 $x$ = 1
-		$a$ = "" $b$ = "" $c$ = ""
-	}
 	if = {
-		limit = { has_global_flag = continue_search }
-		ex.validate = {
-			left = $left$ $k$ = 2 $h$ = 2 $x$ = 2
-			$a$ = "" $b$ = "" $c$ = ""
+		limit = { ex.is_k = { k = $k$ } }
+		if = {
+			limit = { ex.is_h = { h = $h$ } }
+			if = {
+				limit = { ex.is_x = { x = $x$ } }
+				set_variable = { which = output value = $i$ }
+			}
+			else = {
+				set_variable = { which = output value = $x$$i$ }
+			}
+		}
+		else = {
+			set_variable = { which = output value = $h$$x$$i$ }
 		}
 	}
-	if = {
-		limit = { has_global_flag = continue_search }
-		ex.validate = {
-			left = $left$ $k$ = 3 $h$ = 3 $x$ = 3
-			$a$ = "" $b$ = "" $c$ = ""
-		}
-	}
-	if = {
-		limit = { has_global_flag = continue_search }
-		ex.validate = {
-			left = $left$ $k$ = 4 $h$ = 4 $x$ = 4
-			$a$ = "" $b$ = "" $c$ = ""
-		}
-	}
-	if = {
-		limit = { has_global_flag = continue_search }
-		ex.validate = {
-			left = $left$ $k$ = 5 $h$ = 5 $x$ = 5
-			$a$ = "" $b$ = "" $c$ = ""
-		}
-	}
-	if = {
-		limit = { has_global_flag = continue_search }
-		ex.validate = {
-			left = $left$ $k$ = 6 $h$ = 6 $x$ = 6
-			$a$ = "" $b$ = "" $c$ = ""
-		}
-	}
-	if = {
-		limit = { has_global_flag = continue_search }
-		ex.validate = {
-			left = $left$ $k$ = 7 $h$ = 7 $x$ = 7
-			$a$ = "" $b$ = "" $c$ = ""
-		}
-	}
-	if = {
-		limit = { has_global_flag = continue_search }
-		ex.validate = {
-			left = $left$ $k$ = 8 $h$ = 8 $x$ = 8
-			$a$ = "" $b$ = "" $c$ = ""
-		}
-	}
-	if = {
-		limit = { has_global_flag = continue_search }
-		ex.validate = {
-			left = $left$ $k$ = 9 $h$ = 9 $x$ = 9
-			$a$ = "" $b$ = "" $c$ = ""
-		}
-	}
-}
-
-ex.validate = {
-
-	set_variable = { which = a value = $a$0 }
-	set_variable = { which = b value = $b$0 }
-	set_variable = { which = c value = $c$0 }
-	clr_global_flag = continue_search
-
-	if = {
-		limit = { $left$ = $k$$h$$x$9 }
-		set_variable = { which = output value = $k$$h$$x$9 }
-		set_global_flag = continue_search
-	}
-	else_if = {
-		limit = { $left$ = $k$$h$$x$8 }
-		set_variable = { which = output value = $k$$h$$x$8 }
-	}
-	else_if = {
-		limit = { $left$ = $k$$h$$x$7 }
-		set_variable = { which = output value = $k$$h$$x$7 }
-	}
-	else_if = {
-		limit = { $left$ = $k$$h$$x$6 }
-		set_variable = { which = output value = $k$$h$$x$6 }
-	}
-	else_if = {
-		limit = { $left$ = $k$$h$$x$5 }
-		set_variable = { which = output value = $k$$h$$x$5 }
-	}
-	else_if = {
-		limit = { $left$ = $k$$h$$x$4 }
-		set_variable = { which = output value = $k$$h$$x$4 }
-	}
-	else_if = {
-		limit = { $left$ = $k$$h$$x$3 }
-		set_variable = { which = output value = $k$$h$$x$3 }
-	}
-	else_if = {
-		limit = { $left$ = $k$$h$$x$2 }
-		set_variable = { which = output value = $k$$h$$x$2 }
-	}
-	else_if = {
-		limit = { $left$ = $k$$h$$x$1 }
-		set_variable = { which = output value = $k$$h$$x$1 }
-	}
-	else_if = {
-		limit = { $left$ = $k$$h$$x$0 }
-		set_variable = { which = output value = $k$$h$$x$0 }
+	else = {
+		set_variable = { which = output value = $k$$h$$x$$i$ }
 	}
 }
