@@ -75,6 +75,12 @@ defined_text = {
 		}
 	}
 	text = {
+		localisation_key = error.405
+		trigger = {
+			core.is_error = { code = 405 }
+		}
+	}
+	text = {
 		localisation_key = error.000
 		trigger = {
 			always = yes

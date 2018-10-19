@@ -8,6 +8,7 @@
  error.309:0 "tried to remove capital mods This non-capital province [This.GetName]."
  error.104:0 "invalid rounding mode \"[This.arg_var.GetValue]\"."
  error.140:0 "Access violation for [This.caller_scope_txt] caller [This.GetName]."
+ error.405:0 "Invalid expression result: [This.output.GetValue], expected: [This.t.GetValue]."
 
  error_pointer.0:0 "unknown method"
  error_pointer.1:0 "core.set_prov_owner_id"
