@@ -125,7 +125,7 @@ ex.is_true = {
 								$left$ = $x$$i$
 							}
 							AND = {
-								check_variable = { which = x value = -1 }
+								is_variable_equal = { which = x value = -1 }
 								$left$ = $i$
 							}
 						}
