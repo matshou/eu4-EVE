@@ -118,7 +118,7 @@ core.set_country_id = {
 		PREV = { change_variable = { which = init_num value = 1 } }
 		change_variable = { which = country_id value = 1 }
 	}
-	else = { logger.print_error = { code = 199 method = 0 } }
+	else = { logger.print_error = { code = 199 } }
 }
 
 # Export argument variable to PREV scope so it can be used for comparison.

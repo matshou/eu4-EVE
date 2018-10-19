@@ -128,7 +128,7 @@ math.round_func = {
 			}
 			else_if = {
 				limit = { is_var_not_equal_to_val = { var = m val = -1 } }
-				logger.print_error = { code = 104 method = 0 }
+				logger.print_error = { code = 104 }
 			}
 
 			set_variable = { which = $val$ which = count }

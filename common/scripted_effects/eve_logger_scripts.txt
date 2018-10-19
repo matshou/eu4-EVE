@@ -12,7 +12,10 @@ logger.print_error = {
 
 	event_target:global = {
 		set_variable = { which = c value = $code$ }
-		set_variable = { which = m value = $method$ }
+		set_variable = { which = m value = 0 }
+		[[method]
+			set_variable = { which = m value = $method$ }
+		]
 	}
 	logger.call_logger = { event = print_error }
 }
@@ -25,6 +28,14 @@ logger.print_variable_info = {
 
 	set_variable = { which = k which = $var$ }
 	logger.call_logger = { event = print_info }
+}
+
+# Prints output variable value to game.log
+# @scope anywhere
+#
+logger.print_output = {
+
+	logger.print_variable_info = { var = output }
 }
 
 # Helper method that calls appropriate logger event
