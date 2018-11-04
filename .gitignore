@@ -1,0 +1,4 @@
+# vanilla-diff files
+*.log
+*.diff
+JREPL.bat
