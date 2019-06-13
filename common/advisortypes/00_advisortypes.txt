@@ -20,6 +20,7 @@ philosopher = {
 
 	# Bonus
 	prestige = 1
+	idea_cost = -0.05
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -63,6 +64,7 @@ natural_scientist = {
 
 	# Bonus
 	production_efficiency = 0.10
+	technology_cost = -0.025
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -92,7 +94,8 @@ artist = {
 	monarch_power = ADM
 
 	# Bonus
-	stability_cost_modifier = -0.10
+	stability_cost_modifier = -0.20
+	prestige_decay = -0.05
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -134,7 +137,8 @@ treasurer = {
 	monarch_power = ADM
 
 	# Bonus
-	global_tax_modifier = 0.1
+	global_tax_modifier = 0.05
+	production_efficiency = 0.025
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -169,6 +173,7 @@ theologian = {
 
 	# Bonus
 	global_unrest = -2
+	tolerance_heretic = 1
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -218,6 +223,7 @@ master_of_mint = {
 
 	# Bonus
 	inflation_reduction = 0.10
+	inflation_action_cost = -0.20
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -251,7 +257,10 @@ inquisitor = {
 	monarch_power = ADM
 
 	# Bonus
-	global_missionary_strength = 0.02
+	global_missionary_strength = 0.01
+	global_heretic_missionary_strength = 0.01
+	global_unrest = -1
+	tolerance_heretic = -1
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -299,6 +308,8 @@ statesman = {
 
 	# Bonus
 	diplomatic_reputation = 1
+	improve_relation_modifier = 0.10
+	adm_tech_cost_modifier = -0.03
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -318,6 +329,7 @@ naval_reformer = {
 	# Bonus
 
 	naval_morale = 0.1
+	dip_tech_cost_modifier = -0.03
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -343,7 +355,8 @@ trader = {
 	monarch_power = DIP
 
 	# Bonus
-	trade_efficiency = 0.10
+	trade_efficiency = 0.05
+	trade_steering = 0.10
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -362,6 +375,7 @@ spymaster = {
 
 	# Bonus
 	spy_offence = 0.25
+	envoy_travel_time = -0.20
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -405,6 +419,7 @@ diplomat = {
 	monarch_power = DIP
 
 	# Bonus
+	diplomatic_upkeep = 1
 	improve_relation_modifier = 0.2
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
@@ -424,6 +439,7 @@ navigator = {
 
 	# Bonus
 	range = 0.20
+	naval_attrition = -0.25
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -451,6 +467,7 @@ army_reformer = {
 
 	# Bonus
 	land_morale = 0.10
+	mil_tech_cost_modifier = -0.03
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -469,6 +486,7 @@ army_organiser = {
 
 	# Bonus
 	land_forcelimit_modifier = 0.10
+	reinforce_speed = 0.25
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -504,7 +522,8 @@ quartermaster = {
 	monarch_power = MIL
 
 	# Bonus
-	reinforce_speed = 0.33
+	manpower_recovery_speed = 0.25
+	recover_army_morale_speed = 0.05
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -527,6 +546,7 @@ recruitmaster = {
 
 	# Bonus
 	global_manpower_modifier = 0.10
+	global_regiment_recruit_speed = -0.20
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -548,7 +568,8 @@ fortification_expert = {
 	monarch_power = MIL
 
 	# Bonus
-	defensiveness = 0.2
+	defensiveness = 0.25
+	siege_ability = 0.10
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -579,6 +600,7 @@ grand_captain = {
 
 	# Bonus
 	land_maintenance_modifier = -0.10
+	prestige_from_land = 0.20
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
