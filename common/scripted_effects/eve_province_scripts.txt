@@ -13,6 +13,14 @@ province.develop = {
 		limit = { province.is_developing = no }
 		province.set_developing = yes
 	}
+	else = {
+		# completely block development for a period of time,
+		# so that the player doesn't accidentally overdevelop.
+		extend_province_modifier = {
+			name = province_developing_0
+			duration = 60
+		}
+	}
 	if = {
 		limit = { has_estate = yes }
 		estates.on_development = yes
@@ -25,6 +33,13 @@ province.develop = {
 # @access private
 #
 province.set_developing = {
+
+	# completely block development for a period of time,
+	# so that the player doesn't accidentally overdevelop.
+	add_province_modifier = {
+		name = province_developing_0
+		duration = 60 hidden = yes
+	}
 
 	add_province_modifier = {
 		name = province_developing

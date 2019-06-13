@@ -91,6 +91,10 @@ prov_state_jurisdiction = {							# hardcoded for 'tooltip_state_jurisdiction'
 # EVE - Other Modifiers
 ###############################
 
+province_developing_0 = {
+	local_development_cost = 100
+}
+
 province_developing = {
 	local_development_cost = 3
 }
