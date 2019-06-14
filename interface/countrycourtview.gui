@@ -1048,7 +1048,7 @@ guiTypes = {
 
 		instantTextBoxType = {
 			name = "title"
-			position = { x = 203 y =34 }
+			position = { x = 203 y = 34 }
 			format = left
 			textureFile = ""
 			font = "vic_18"
@@ -1058,9 +1058,10 @@ guiTypes = {
 			maxHeight = 32
 			Orientation = "UPPER_LEFT"
 		}
+		### MONTHLY COST
 		instantTextBoxType = {
 			name = "value"
-			position = { x = 193 y =34 }
+			position = { x = 165 y = 67 }
 			format = left
 			textureFile = ""
 			font = "vic_18"
@@ -1070,9 +1071,10 @@ guiTypes = {
 			maxHeight = 32
 			Orientation = "UPPER_LEFT"
 		}
+		### ADVISOR AGE
 		instantTextBoxType = {
 			name = "desc"
-			position = { x = 68 y =49 }
+			position = { x = 68 y = 53 }
 			format = left
 			textureFile = ""
 			font = "vic_18"
@@ -1082,10 +1084,10 @@ guiTypes = {
 			maxHeight = 32
 			Orientation = "UPPER_LEFT"
 		}
-
+		### HOMETOWN
 		instantTextBoxType = {
 			name = "home"
-			position = { x = 193 y =49 }
+			position = { x = 165 y = 53 }
 			format = left
 			textureFile = ""
 			font = "vic_18"
@@ -1095,10 +1097,10 @@ guiTypes = {
 			maxHeight = 32
 			Orientation = "UPPER_LEFT"
 		}
-
+		### PURCHASE TEXT
 		instantTextBoxType = {
 			name = "purchase"
-			position = { x = 68 y =34 }
+			position = { x = 68 y = 67 }
 			format = left
 			textureFile = ""
 			font = "vic_18"
@@ -1108,9 +1110,10 @@ guiTypes = {
 			maxHeight = 32
 			Orientation = "UPPER_LEFT"
 		}
+		### PURCHASE VALUE
 		instantTextBoxType = {
 			name = "purchase_cost"
-			position = { x = 113 y =34 }
+			position = { x = 105 y = 67 }
 			format = left
 			textureFile = ""
 			font = "vic_18"
