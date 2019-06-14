@@ -59,6 +59,7 @@ estate_church =
 		church_power_modifier = 0.1
 		monthly_fervor_increase = 1
 		stability_cost_modifier = -0.2
+		legitimacy = 0.30
 	}
 	country_modifier_neutral = {
 		global_tax_modifier = 0.2
@@ -70,6 +71,7 @@ estate_church =
 		church_power_modifier = -0.25
 		monthly_fervor_increase = -1
 		stability_cost_modifier = 0.25
+		legitimacy = -0.4
 		yearly_corruption = 0.2
 	}
 
