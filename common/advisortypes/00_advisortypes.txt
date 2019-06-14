@@ -94,7 +94,7 @@ artist = {
 	monarch_power = ADM
 
 	# Bonus
-	stability_cost_modifier = -0.20
+	stability_cost_modifier = -0.10
 	prestige_decay = -0.05
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
