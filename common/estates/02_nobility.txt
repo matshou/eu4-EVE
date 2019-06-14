@@ -71,6 +71,7 @@ estate_nobles =
 		manpower_recovery_speed = -0.1
 		land_maintenance_modifier = 0.1
 		discipline = -0.08
+		yearly_corruption = 0.2
 	}
 
 	# These do not scale, but only applied in provinces owned by the estate
