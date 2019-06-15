@@ -722,7 +722,7 @@ guiTypes = {
 			name = "advisor_cost"
 			position = { x=86 y=63 }
 			textureFile = ""
-			font = "vic_17"
+			font = "vic_18"
 			borderSize = {x = 4 y = 4}
 			text = ""
 			maxWidth = 152
@@ -734,7 +734,7 @@ guiTypes = {
 			name = "advisor_activefor"
 			position = { x = 271 y = 62 }
 			textureFile = ""
-			font = "vic_17"
+			font = "vic_18"
 			borderSize = {x = 4 y = 4}
 			text = ""
 			maxWidth = 80
