@@ -63,11 +63,11 @@ supporting_rebels_in_rival = {
 }
 
 warned_rival = {
-	power = 0
+	power = 5
 }
 
 guarantee_neighbour_of_rival = {
-	power = 0
+	power = 5
 }
 
 current_age_power_projection = {
