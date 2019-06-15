@@ -40,6 +40,12 @@
  EST_VAL_FULL_INNOVATIVE:0 "Focus on Innovation: §Y$VAL$%§!"
  EST_VAL_DEVELOPED:0 "Estate Land Recently Developed: "
 
+ employed_inquisitor:0 "Inquisitor"
+ employed_statesman:0 "Statesman"
+ employed_naval_reformer:0 "Naval Reformer"
+ employed_philosopher:0 "Philosopher"
+ employed_artist:0 "Artist"
+
  eve_flavor_event.1.t:0 "Autonomy in distant provinces"
  eve_flavor_event.1.d:0 "The population of any country always strives for more local autonomy for their communities as a response to government's continuous efforts to centralize territory under its control. Many factors hindered countries ability to exercise local jurisdiction, physical distance from capital city was one of them. As a result, it will be more difficult to collect income from distant provinces."
  eve_flavor_event.1.a:0 "We will have to accept this"

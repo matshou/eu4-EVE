@@ -57,6 +57,8 @@ core.on_monthly_pulse = {
 	autonomy.check_for_change = yes
 	vassals.update = yes
 
+	core.update_advisor_mods = yes
+
 	# Gained new territory or changed capital
 	if = {
 		limit = { nation.has_territory_changes = yes }
@@ -176,6 +178,36 @@ core.update_policies = {
 		else = {
 			governance.update_policy = yes
 		}
+	}
+}
+
+# Update modifiers triggered by hiring advisors
+# We manually trigger them because we want them to be hidden
+# @scope country
+# @access public
+#
+core.update_advisor_mods = {
+
+	update_advisor_mod = { advisor = inquisitor }
+	update_advisor_mod = { advisor = statesman }
+	update_advisor_mod = { advisor = naval_reformer }
+	update_advisor_mod = { advisor = philosopher }
+	update_advisor_mod = { advisor = artist }
+}
+
+# @access private
+update_advisor_mod = {
+
+	if = {
+		limit = { advisor = $advisor$ }
+		if = {
+			limit = { NOT = { has_country_modifier = employed_$advisor$ } }
+			add_country_modifier = { name = employed_$advisor$ hidden = yes }
+		}
+	}
+	else if = {
+		limit = { has_country_modifier = employed_$advisor$ }
+		remove_country_modifier = employed_$advisor$
 	}
 }
 

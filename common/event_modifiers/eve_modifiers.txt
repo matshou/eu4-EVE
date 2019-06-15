@@ -88,6 +88,32 @@ prov_state_jurisdiction = {							# hardcoded for 'tooltip_state_jurisdiction'
 }
 
 ###############################
+# EVE - Advisor Modifiers
+###############################
+
+employed_inquisitor = {
+	tolerance_heretic = -1
+	global_heretic_missionary_strength = 0.01
+	innovativeness_gain = -0.3
+}
+
+employed_statesman = {
+	adm_tech_cost_modifier = -0.03
+}
+
+employed_naval_reformer = {
+	dip_tech_cost_modifier = -0.03
+}
+
+employed_philosopher = {
+	innovativeness_gain = 0.2
+}
+
+employed_artist = {
+	innovativeness_gain = 0.1
+}
+
+###############################
 # EVE - Other Modifiers
 ###############################
 

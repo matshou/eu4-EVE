@@ -249,9 +249,7 @@ inquisitor = {
 
 	# Bonus
 	global_missionary_strength = 0.01
-	global_heretic_missionary_strength = 0.01
 	global_unrest = -1
-	tolerance_heretic = -1
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -300,7 +298,6 @@ statesman = {
 	# Bonus
 	diplomatic_reputation = 1
 	improve_relation_modifier = 0.10
-	adm_tech_cost_modifier = -0.03
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -318,9 +315,8 @@ naval_reformer = {
 	monarch_power = DIP
 
 	# Bonus
-
 	naval_morale = 0.1
-	dip_tech_cost_modifier = -0.03
+	sailors_recovery_speed = 0.15
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
