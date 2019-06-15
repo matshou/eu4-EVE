@@ -44,16 +44,7 @@ philosopher = {
 		factor = 1
 		modifier = {
 			factor = 1.5
-			variable_arithmetic_trigger = {        # low prestige or high prestige decay
-				export_to_variable = {
-					variable_name = decay_value
-					value = prestige_decay
-				}
-				OR = {
-					NOT = { prestige = -10 }
-					NOT = { check_variable = { which = decay_value value = -2 } }
-				}
-			}
+			NOT = { prestige = -10 }
 		}
 	}
 }
