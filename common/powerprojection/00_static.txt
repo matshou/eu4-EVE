@@ -129,8 +129,8 @@ joined_war_against_rival = {
 
 refused_war_against_rival = {
 	power = -20
-	min = -20
 	yearly_decay = 0.5
+	min = -60
 }
 
 vassalized_rival = {
