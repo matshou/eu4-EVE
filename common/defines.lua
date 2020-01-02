@@ -17,6 +17,8 @@ NGame = {
 	MAX_TRADING_CITIES = 75,				-- Max is 100
 	MAX_CUSTOM_COUNTRIES = 75,				-- Max is 100
 	MAX_OBSERVERS = 10,						-- Max is 100
+
+	SIZE_LIMIT_FOR_ISLANDS = 25000			-- Threshold in pixels to define what is an island and what is a continent
 },
 
 NDiplomacy = {
@@ -385,10 +387,12 @@ NDiplomacy = {
 	KNOWLEDGE_SHARING_DURATION_YEARS = 10,
 	KNOWLEDGE_SHARING_COST_PERCENT_MONTHLY = 10.0,
 	SCORNFUL_INSULT_PRESTIGE_COST = 5.0,
-	SCORNFUL_INSULT_FOUL_MOUTHED_COUNT = 10,
 
 	CHARTER_COMPANY_BASE_COST = 1000,
 	CHARTER_COMPANY_MINIMUM_COST = 100,
+
+	GOOD_RELATIONS = 100,
+	GREAT_RELATIONS = 150,
 },
 
 NCountry = {
@@ -452,14 +456,14 @@ NCountry = {
 	ESTATE_INFLUENCE_LEVEL_1 = 20,
 	ESTATE_INFLUENCE_LEVEL_2 = 40,
 	ESTATE_INFLUENCE_LEVEL_3 = 60,
-	ESTATE_PROVINCE_HAPPINESS_INCREASE = 2.5,		-- Per % of relative development granted to the estate
+	ESTATE_PROVINCE_HAPPINESS_INCREASE = 1.0,		-- Per % of relative development granted to the estate
 	ESTATE_PROVINCE_HAPPINESS_DECREASE = 5.0,		-- Per % of relative development revoked from the estate
 	ESTATE_PROVINCE_HAPPINESS_CHANGE_MAX_POS = 20,	-- Loyalty cannot change more than this from a single province add
 	ESTATE_PROVINCE_HAPPINESS_CHANGE_MAX_NEG = 30,	-- Loyalty cannot change more than this from a single province revoke
 	ESTATE_PROVINCE_POWER = 1.5,				-- Per % of non overseas development in the country they manage
 	ESTATE_PROVINCE_POWER_MAX = 50,
 	ESTATE_DANGER_THRESHOLD = 100,				-- Estates with more influence than this become a danger to the state
-	ESTATE_GRANT_PROVINCE_COOLDOWN = 5,			-- A province cannot be revoked for this amount of years after being granted to an estate
+	ESTATE_GRANT_PROVINCE_COOLDOWN = 1,			-- A province cannot be revoked for this amount of years after being granted to an estate
 
 	CULTURAL_UNION_MIN_DEV = 1000,				-- Minimum development to get cultural union effect without Common Sense, or if CULTURAL_UNION_MIN_RANK is set to negative value.
 	CULTURAL_UNION_MIN_RANK = 3,				-- Minimum rank to get cultural union effect with Common Sense.
@@ -502,6 +506,8 @@ NCountry = {
 	RANDOM_LUCKY_SLOW_TECH_PENALTY = 0.33,			-- Extra penalty on tech groups with more than 75% penalty when rolling for random lucky (lower = more penalty)
 
 	PLAYER_CAN_MOVE_FIXED_CAPITAL = 1,				-- Controls whether player can move capital even if capital is fixed
+	DEVELOPMENT_ON_CONTINENT_FOR_NEW_CAPITAL = 0.5,	-- How many percent of your development needs to be on the other continent to move your capital there
+
 
 	EXPLORE_COAST_EVENT_CHANCE = 2,			-- Chance (in %) of getting an event when exploring coasts
 	MIN_TECH_FOR_CIRCUMNAVIGATE = 9,			-- Must have this level of dip tech to circumnavigate the globe
@@ -517,10 +523,10 @@ NCountry = {
 	SUPPORT_OWN_HEIR_PRESTIGE_COST = 10,
 	SUPPORT_OWN_HEIR_SUPPORT_BONUS = 5,
 	ELECTIVE_HEIR_CLAIM_STRENGTH = 80,
-	MAX_ACTIVE_POLICIES = 8,						-- how many active policies at once.
+	MAX_ACTIVE_POLICIES = 5,						-- how many active policies at once.
 	MINIMUM_POLICY_TIME = 10,						-- how many years minimum for a policy
 	POLICY_COST = 1,								-- Monthly cost per policy
-	BASE_POSSIBLE_POLICIES = 4,						-- How many policies in a category a nation can have as a base
+	BASE_POSSIBLE_POLICIES = 3,						-- How many policies in a category a nation can have as a base
 	BASE_FREE_POLICIES = 1,							-- How many policies in a category a nation get for free
 
 	MIN_FEDERAL_AUTHORITY = -100,					-- federal authority cannot go lower than -100
@@ -550,6 +556,7 @@ NCountry = {
 	CULTURE_COST_DIFF_ORIGINAL = -50,				-- Difference in cost in percent to convert to original culture.
 	CULTURE_COST_DIFF_ADJACENT = -25,				-- Difference in cost in percent to convert to adjacent culture.
 	CULTURE_COST_DIFF_PRIMARY = 0,					-- Difference in cost in percent to convert to primary culture.
+	CULTURE_MIN_DEVELOPMENT_TO_PROMOTE = 20,		-- Minimum development required to promote the culture.
 	MONARCH_DEATH_STABILITY_PENALTY = 1,			-- Stab hit on monarch death
 	MONARCH_DEATH_LEADER_STABILITY_PENALTY = 1,		-- Stab hit on monarch death when a leader
 	MONARCH_DEATH = 4, 								-- _CDEF_MONARCH_DEATH_
@@ -586,6 +593,7 @@ NCountry = {
 	PS_BUY_EXPLORER = 50,
 	PS_ASSAULT = 5,
 	PS_ARTILLERY_BARRAGE = 50,
+	PS_NAVAL_BARRAGE = 50,
 	PS_FORCE_MARCH = 2,
 	PS_DEMAND_NON_WARGOAL_PROVINCE = 50,
 	PS_DEMAND_NON_WARGOAL_PEACE = 3,
@@ -753,6 +761,10 @@ NCountry = {
 	LIBERTY_DESIRE_DEVELOPED_IN_SUBJECT = -5,   	-- Liberty desire decrease from overlord developing province in subject.
 	LOST_INDEPENDANCE_WAR_LIBERTY_DESIRE = -50,		-- How much liberty desire is decreased when an independance war ends
 
+	MIN_LIBERTY_DESIRE = 0,							-- Min total (effective) liberty desire
+	MAX_LIBERTY_DESIRE = 100,						-- Max total (effective) liberty desire
+	MIN_LIBERTY_DESIRE_INFLUENCE = -100,			-- Min influence of a single modifier (e.g. paid of debt)
+	MAX_LIBERTY_DESIRE_INFLUENCE = 100000,			-- Max influence of a single modifier (e.g. seized province)
 
 	MAX_CROWN_COLONIES = 4,							-- How many province a country can hold in a colonial region before creating a colonial nation
 	RIVAL_TECH_THRESHOLD = 0.5,						-- Difference in tech group cost modifiers
@@ -782,6 +794,7 @@ NCountry = {
 	SIPHON_INCOME_LIBERTY = 10,
 	DIVERT_TRADE_FRACTION = 1,
 	RETURN_LAND_LIBERTY_MULTIPLIER = 2.5,
+	COT_DOWNGRADE_LIBERTY_DESIRE = 10,
 	SEIZE_TERRITORY_LIBERTY_MULTIPLIER = 5,
 	SEIZE_TERRITORY_LIBERTY_THRESHOLD = 50,
 	GRANT_PROVINCE_LIBERTY_MULTIPLIER = 0.5,
@@ -832,15 +845,15 @@ NCountry = {
 	TRADING_POLICY_COOLDOWN_MONTHS  = 12,			-- Cooldown until you can change Trading Policy after selecting.
 	INNOVATIVENESS_FIRST_REACHED_TECH_LEVEL = 2.0,  -- Innovativeness bonus to first country (or countries) to reach a certain tech level.
 	INNOVATIVENESS_FIRST_PICKED_IDEA = 1.0,			-- Innovativeness bonus to first country (or countries) to pick an idea.
-	INNOVATIVENESS_BEHIND_IN_TECH_PENALTY = -0.025,  -- Innovativeness penalty if behind neighbors in tech (and not ahead of time).
-	INNOVATIVENESS_ENABLE_ANY_BEHIND_IN_TECH_PENALTY = 1,	-- Enabled that if any tech is behind we apply the penalty. Turning this off will require you only to be ahead in one.
-	INNOVATIVENESS_ENABLE_PER_TECH_BEHIND_IN_TECH_PENALTY = 1, -- Enable that the penalty is applied for each tech we are behind in tech.
-	INNOVATIVENESS_AHEAD_OF_TIME_BONUS = 0.025, -- Bonus for being ahead of time in tech
-	INNOVATIVENESS_DAYS_AFTER_FIRST_PICK_VIABLE = 180, -- How many days you cna still get innov
+	INNOVATIVENESS_BEHIND_IN_TECH_PENALTY = -0.03, 	-- Innovativeness penalty if behind neighbors in tech (and not ahead of time).
+	INNOVATIVENESS_ENABLE_ANY_BEHIND_IN_TECH_PENALTY = 0,	-- Enabled that if any tech is behind we apply the penalty. Turning this off will require you only to be ahead in one.
+	INNOVATIVENESS_ENABLE_PER_TECH_BEHIND_IN_TECH_PENALTY = 0, -- Enable that the penalty is applied for each tech we are behind in tech.
+	INNOVATIVENESS_AHEAD_OF_TIME_BONUS = 0.005, -- Bonus for being ahead of time in tech
+	INNOVATIVENESS_DAYS_AFTER_FIRST_PICK_VIABLE = 90, -- How many days you cna still get innov
 	INNOVATIVENESS_MAX = 100.0, -- Innovativeness Cap
 	MIN_HARSH_TREATMENT_COST = 5, -- Minimum harsh treatment cost
-	CAN_CONVERT_TERRITORY_CULTURE = 0, -- Defines if you are allowed to culture convert territory provinces
-	CAN_CONVERT_TERRITORY_RELIGION = 0, -- Defines if you are allowed to convert religion of territory provinces
+	CAN_CONVERT_TERRITORY_CULTURE = 1, -- Defines if you are allowed to culture convert territory provinces
+	CAN_CONVERT_TERRITORY_RELIGION = 1, -- Defines if you are allowed to convert religion of territory provinces
 	ALLOWED_TERRITORY_VS_MAX_STATES = 1.0, -- Defines how much percentage compared to your max states you are allowed to have as territory without penalty
 	TERRITORY_PENALTY_CAP = 40,				-- How many territories maximum can penalize you
 	SETTLEMENT_GROWTH_DEVELOPMENT_INCREASE = 1, -- How much development may increase per year if a colonist is working on Settlement Growth.
@@ -848,6 +861,8 @@ NCountry = {
 	SETTLMENT_GROWTH_CHANCE_MIN = 0.05, -- Minimum chance of increasing development for colonists promoting Settlement Growth
 	SETTLEMENT_GROWTH_CHECK_INTERVAL = 365, -- Interval in days between checks for random development increase when working in Settlement Growth.
 	FREE_POLICIES_PER_CATEGORY = 1, -- Available free policies per monarch power category
+	TREASURE_SHIP_PASSAGE_FLAG_DECAY_DAYS = 365, -- How long the has_recent_tradeship_passage trigger is true after ship passage (days)
+	LEADER_PIPS_MONARCH_SKILL_INFLUENCE = 1.0, -- Influence of leader pips on monarch skills
 },
 
 NEconomy = {
@@ -896,7 +911,11 @@ NEconomy = {
 	GALLEY_MAINT_FACTOR = 0.04,						-- _EDEF_GALLEY_MAINT_FACTOR_
 	TRANSPORT_MAINT_FACTOR = 0.04,					-- _EDEF_TRANSPORT_MAINT_FACTOR_
 	COLONIAL_MAINTENANCE_FACTOR = 8.0,				-- _EDEF_COLONIAL_MAINTENANCE_FACTOR_
-	MISSIONARY_MAINTENANCE_FACTOR = 5,				-- _EDEF_MISSIONARY_MAINTENANCE_FACTOR_
+	MISSIONARY_MAINTENANCE_FACTOR = 0.0,				-- How much a missionary costs in itself
+	MISSIONARY_MAINTENANCE_DEVELOPMENT_FACTOR = 1.0,	-- How much this is ncreased from development
+	MISSIONARY_MAINTENANCE_AUTONOMY_FACTOR = 1.0,		-- How much this is ncreased from local autonomy
+	MISSIONARY_MAINTENANCE_AUTONOMY_BASE = 1.0,			-- The local autonomy is added to this base in the formula.
+	MISSIONARY_MAINTENANCE_DEVELOPMENT_CAP = 100,				-- Where dev will get capped by the system for calculations.
 	MERCHANT_TIME_DISTANCE = 0.25,					-- _EDEF_MERCHANT_TIME_DISTANCE_
 	MERCHANT_CHANCE = 0.35,							-- _EDEF_MERCHANT_CHANCE_
 	MERCHANT_COMPETE = 0.5,							-- _EDEF_MERCHANT_COMPETE_
@@ -945,6 +964,9 @@ NEconomy = {
 	CONSTRUCT_IN_SUBJECT_TIME_MULTIPLIER = 1.25,
 	BANK_LOAN_DURATION = 60,						-- Default bank loan duration in months
 	MIN_NEW_CACHED_STARTING_INCOME = 1.0,			-- Minimum historic starting income for newly created/released countries
+	EXPELLED_MINORITY_DEV_BONUS_FACTOR = 0.2,		-- Bonus development on minority expulsion completion, multiplied by origin province development
+	EXPELLING_MINORITY_COLONIST_COST_FACTOR = -0.5,	-- Colonist maintenance cost factor when expelling minority
+	EXPELLING_MINORITY_SETTLER_CHANCE_FACTOR = 0.005,	-- Settler chance bonus when expelling minority, multiplied by origin province development
 },
 
 NMilitary = {
@@ -952,11 +974,11 @@ NMilitary = {
 	SLACKEN_MANPOWER_INCREASE = 2.0,
 
 
-	ARMY_DRILL_YEARLY_DECAY = -1.7,					-- Loss from not Drilling
-	ARMY_DRILL_YEARLY_GAIN = 12.0,					-- Gain from Drilling
+	ARMY_DRILL_YEARLY_DECAY = -2.5,					-- Loss from not Drilling
+	ARMY_DRILL_YEARLY_GAIN = 10.0,					-- Gain from Drilling
 	ARMY_DRILL_MAX = 100.0,
 	ARMY_DRILL_MAX_MORALE = 0.5,
-	ARMY_DRILL_SKILL_MONTHS = 90,					-- The average number of months until you get a skill increase if drilling 100% of forcelimit. Set to 0 to disable.
+	ARMY_DRILL_SKILL_MONTHS = 120,					-- The average number of months until you get a skill increase if drilling 100% of forcelimit. Set to 0 to disable.
 
 	COSSACKS_SHOCK_DAMAGE_BONUS = 0.1,
 	STRELTSY_FIRE_DAMAGE_BONUS = 0.1,
@@ -967,6 +989,7 @@ NMilitary = {
 	FORT_DEVASTATION_IMPACT = -10,				-- multiplied by fortlevel/max fortlevel in area per year.
 	REVANCHISM_DEVASTATION_IMPACT = -0.02,			-- 100 revanschism is -2 a year.
 	SURRENDER_DEVASTATION_IMPACT = -3.4,
+	CONTROL_DEVASTATION_IMPACT = -1,				-- devastation recovery given by control
 
 	DEVASTATION_DEVELOPMENT_SCALE = 5,
 
@@ -987,6 +1010,7 @@ NMilitary = {
 	SIEGE_DISEASE_IMPACT = 0.05,						-- Fraction of besieging soldiers lost in a disease outbraek
 	NATIVE_FEROCITY_IMPACT = 0.05,					-- how many percentage each ferocity gives in combat bonus
 	GALLEY_BONUS_INLAND_SEA = 1.0,
+	GALLEY_DICE_MALLUS_HIGH_SEA = 0,				-- Malus dice roll when not fighting in inland sea.
 	INSUFFICIENT_SUPPORT = -0.25,
 	SIEGE_MEMORY = 11,
 	SIEGE_MEMORY_SCALED = 0.5,						-- per fort level
@@ -1145,12 +1169,22 @@ NMilitary = {
 	LEAGUE_LEADER_CHANGE_SCORE_THRESHOLD = 1.5,		-- Score * factor needed for leader change (Compared to current leader)
 	MAX_DRILL_DECAY = 0.9,							-- Drill can never Decay with more than this value.
 	AREA_REBEL_SUPPRESSION_MULTIPLIER = 5.0,		-- Armies suppressing rebels in areas adds this/<number of suppressed provinces> to rebel suppression in affected provinces.
+
+	-- flagship-related defines
+	FLAGSHIP_REQUIRED_NAVY_SIZE_IN_SAILORS = 1500,	-- The number of sailors employed in the navy required to unlock the flagship
+	FLAGSHIP_COST_DUCATS = 100,						-- The cost in ducats of a flagship
+	FLAGSHIP_COST_SAILORS = 300,					-- The cost in sailors of a flagship
+	FLAGSHIP_BUILDTIME = 730,						-- Building time in days of a flagship
+	FLAGSHIP_MAX_MODIFICATION = 3,					-- Maximum number of modifications on a flagship
+	FLAGSHIP_MORALE_HIT_ON_DESTRUCTION = 1.0,		-- Morale hit when the flagship is destroyed
 },
 
 NAI = {
 	ACCEPTABLE_BALANCE_DEFAULT = 1.7, --AI wants this advantage to enter battles typically. (There are some exceptions, e.g. offensives.)
 	ACCEPTABLE_BALANCE_FRIEND_IN_COMBAT = 0.75,
-	EDICT_VALUE_THRESHOLD = 100, -- The higher this value, the less the AI will use Edicts
+	EDICT_VALUE_THRESHOLD = 120, -- The higher this value, the less the AI will use Edicts
+	EDICT_VALUE_THRESHOLD_MULTIPLY_DEFICIT = 10, -- Change to above threshold in case of running deficit
+	EDICT_VALUE_THRESHOLD_MULTIPLY_LOW_INCOME = 3, -- Change to above threshold in case of low income
 	PRESS_THEM_FURTHER = 0, -- This makes AI that has been promised land require that the enemy is pressed further if they think it is possible. Set to 1 to activate
 	CALL_ACCEPTANCE_COALITION_VS_SUBJECT = -60, -- Acceptance penalty when an AI's Tributary (or currently non-existing Subject type with similar mechanic) calls to war against someone who is in a coalition against them
 	WANT_TRIBUTARY_LOST_MANDATE = 10, -- How important it is for Celestial Emperor to make tributaries out of neighbors.
@@ -1201,6 +1235,7 @@ NAI = {
 	MISSION_PICK_CHANCE = 33, -- Monthly chance of AI picking a mission if it lacks one (of 100)
 	TRADE_INTEREST_THRESHOLD = 3, -- Number of merchants required to be a nation with trade interest
 	DEFICIT_SPENDING_MIN_MONTHS = 6, -- AI must have at least this many monthly deficits of savings to be willing to deficit spend
+	DEFICIT_SPENDING_MIN_MONTHS_PEACETIME = 48, -- Same as DEFICIT_SPENDING_MIN_MONTHS, but during peacetime, no rebels and no war exhaustion
 	BIGSHIP_FRACTION = 0.4,	-- The proportion of big ships in an AI navy of light ships and big ships (for coastal sea countries, this fraction is mostly galleys)
 	ARTILLERY_FRACTION = 0.35, 	-- Ratio of artillery to infantry AI will build
 	FORCE_COMPOSITION_CHANGE_TECH_LEVEL = 11, -- Tech level at which AI will double its artillery fraction
@@ -1485,7 +1520,7 @@ NAI = {
 	GUARANTEE_DESIRE_TOO_MANY_RELATIONS = -50,				-- AI desire for guaranteeing when it has or will get too many relations. Multiplies with number of relations above limit.
 
 	INVADING_BRAVERY = 1.0,									-- If (defender strength) / (invader strength) > INVADING_BRAVERY, the AI won't attempt a naval invasion
-	INVADING_MIN_HOME_RATIO = 0.5,							-- AI will attempts to keep at least this much of its troops in home territories, always, assuming it can divide its stacks enough.
+	INVADING_MAX_AWAY_RATIO = 0.45,							-- AI will never send more than this ratio to invade (Measured in strength)
 	HOME_FLEET_MAX_RATIO = 0.85,							-- Maximum proportion of warships in home fleet.
 	TRADE_POLICY_PROPAGATE_RELIGION_SCORE = 50.0,				-- Score for propagate religion trade policy (if selectable)
 	TRADE_POLICY_PREPARING_FOR_WAR_PER_PROVINCE_SCORE = 6.0,	-- Score per enemy province while preparing war for attack bonus trade policy (if selectable)
@@ -1502,14 +1537,21 @@ NAI = {
 	ADVISOR_MIN_SKILL_RELUCTANT_FIRE = 3,						-- AI will be reuluctant to fire advisors with skill above this (due to prior investment)
 	ADVISOR_PROMOTION_AGE_CUTOFF = 40,							-- AI will not promote advisors above this age
 	MIN_FORCE_LIMIT_SHARE_REGION_ASSIGN = 0.10,					-- AI will only assign armies larger that this to a region
-	MAX_ARMIES_NEW_REGION_ASSIGN_ALGORITHM = 0,					-- Max. amount of armies to use in new region assignment algorithm (fall back to old one)
-	MAX_TASKS_NEW_REGION_ASSIGN_ALGORITHM = 0,					-- Max. amount of tasks to use in new region assignment algorithm (fall back to old one)
+	MAX_ARMIES_NEW_REGION_ASSIGN_ALGORITHM = 12,				-- Max. amount of armies to use in new region assignment algorithm (fall back to old one)
+	MAX_TASKS_NEW_REGION_ASSIGN_ALGORITHM = 100,				-- Max. amount of tasks to use in new region assignment algorithm (fall back to old one)
 	ELECTORAL_REFORMATION_CONVERT_TRESHOLD = 0.1,				-- How much of an electors development needs to be a reformed religion for it to try and reform
 	TRADE_COMPANY_INVESTMENT_COST_THRESHOLD = 1.0,				-- How many times the cost of the investment must be in the treasury to consider buying it
 	ASSIMILATION_INTEREST_AMOUNT_FACTOR = 10,					-- Influence on assimilation interest from number of provinces left to conquer
 	INVASION_ARMY_LOOKUP_INTERVAL_ON_FAILURE = 15,				-- If AI fails to find an army for an invasion it will try again in this number of days
 	CHARTER_COMPANY_BASE_RELUCTANCE = -3,						-- Base reluctance to giving away provinces in charter company diplo action
 	CHARTER_COMPANY_DEVELOPMENT_RELUCTANCE = 3,				-- How much development needed to add one reluctance
+	WAR_WARSCORE_TO_JOIN = -100,								-- Minimum warscore for the AI to join a call for arms
+	WAR_MIN_WARSCORE_TO_JOIN = -25,								-- Starting warscore for the AI to join a call for arms
+	ARMY_DISTANCE_SCORE_IMPACT = 0.5,							-- Army <-> province distance impact on province evaluation
+	BORDER_DISTANCE_SCORE_IMPACT = 3.0,							-- Border <-> province distance impact on province evaluation
+	IMPORANT_PROVINCE_THRESHOLD = 0.05,							-- AI will try to defend provinces under threat worth more than this percentage of total development
+	REGION_PLANNING_HOMELAND_PRIORIZATION = 3.5,				-- Homeland priorization when assigning armies to regions (only applied when actually threatened)
+	MISSIONARY_MAINTENANCE_SHARE = 0.2,							-- The most an AI will spend of its income on a missionary
 },
 
 NGraphics = {
@@ -1650,7 +1692,8 @@ NGraphics = {
 
 	MAX_TRADE_NODE_FLAGS_SHOWN = 5,					-- -1 is unlimited
 	SHOW_TRADE_MODIFIERS_IN_TRADE_MAP_MODE = 1,		-- 1 = true, 0 = false
-	END_OF_COMBAT_GFX = 1
+	END_OF_COMBAT_GFX = 1,
+	MAX_MAPMODE_COLOR_UPDATE_DELAY_MS = 200,
 },
 
 NGui = {
@@ -1664,6 +1707,7 @@ NGui = {
 
 NEngine = {
 	EVENT_PROCESS_OFFSET = 20, 						-- Events are checked every X day per character or province (1 is ideal, but CPU heavy)
+	TRIGGER_PROFILING_SAMPLING_RATE = 1000,			-- Sampling rate for trigger profiling (Every nth call is recorded)
 },
 
 NMacroBuildColors = {
@@ -1848,6 +1892,8 @@ NReligion = {
 	RELIGIOUS_CONVERSION_AUTONOMY_WEIGHT = 0.05,			-- How much autonomy affects selection of province to spread religion to (from e.g. Centers of Reformation).
 	RELIGIOUS_CONVERSION_DEVELOPMENT_WEIGHT = 0.05,			-- How much development affects selection of province to spread religion to (from e.g. Centers of Reformation).
 
+	EXPEL_RELIGIOUS_MINORITY_THRESHOLD = -0.1,				-- Minimum conversion chance required to expel a religious minority from a province
+	EXPELLED_MINORITY_DURATION = 18250,						-- Duration of the "expelled_minority" modifier
 },
 
 NNationDesigner = {
@@ -1954,6 +2000,7 @@ NGovernment = {
 	LEGACY_NATIVES_REFORM_REPUBLIC_SPONSOR = "oligarchic_republic",
 	LEGACY_NATIVES_REFORM_MONARCHY_SPONSOR = "despotic_monarchy",
 	LEGACY_NATIVES_REFORM_THEOCRACY_SPONSOR = "theocratic_government",
+	LEADER_AS_MONARCH_TRADITION = 30, -- How much tradition leaders will get when generated for
 },
 
 }

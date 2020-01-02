@@ -171,42 +171,9 @@ fort_15th = {
 courthouse = {
 	cost = 100
 	time = 12
-
-	# Note that we cannot use a scripted trigger to validate this
-	# as vanilla code does not recognize references to building entries
-	# that are made AFTER the calling building. In this situation the town hall
-	# building would not be recognized because it's declared after courthouse
-	#
-	trigger = {
-		is_state = yes
-		NOT = {
-			any_province_in_state = {
-				NOT = { province_id = PREV }
-				OR = { has_building = courthouse has_building = town_hall }
-			}
-		}
-	}
-
 	modifier = {
-		local_state_maintenance_modifier = -0.30
+		local_state_maintenance_modifier = -0.25
 		local_autonomy = -0.1
-		local_unrest = -1
-	}
-
-	on_built = {
-		hidden_effect = {
-			province_event = { id = eve_flavor_event.2 }
-			states.apply_jurisdiction = yes
-		}
-	}
-	# Will not be called if the buildings was automatically removed
-	# when it no longer meets trigger conditions
-	#
-	on_destroyed = {
-		if = {
-			limit = { has_province_modifier = prov_state_adm_center }
-			states.remove_jurisdiction = yes
-		}
 	}
 
 	ai_will_do = {
@@ -222,7 +189,6 @@ dock = {
 	}
 	modifier = {
 		local_sailors_modifier = 0.5
-		province_trade_power_modifier = 0.15
 	}
 
 	ai_will_do = {
@@ -235,7 +201,6 @@ regimental_camp = {
 	time = 12
 	modifier = {
 		land_forcelimit = 1
-		regiment_recruit_speed = -0.35
 	}
 
 #	# THIS = Province, FROM = Builder(not nessecairly owner, can be overlord)
@@ -545,10 +510,8 @@ town_hall = {
 	make_obsolete = courthouse
 
 	modifier = {
-		local_state_maintenance_modifier = -0.70
-		allowed_num_of_buildings = 1
+		local_state_maintenance_modifier = -0.5
 		local_autonomy = -0.2
-		local_unrest = -2
 	}
 
 	ai_will_do = {

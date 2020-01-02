@@ -1400,7 +1400,6 @@ epic_to_monarch = {
 
 commedia_dellarte = {
 	prestige = 1
-	global_unrest = -0.5
 }
 
 enlightenment_movement = {
@@ -1453,6 +1452,7 @@ rebel_sentiment = {
 
 conversion_zeal = {
 	global_heretic_missionary_strength = 0.10
+	missionary_maintenance_cost = -0.33
 }
 
 religious_zeal_at_conv = {
@@ -1795,24 +1795,6 @@ important_natural_harbor = {
 	naval_forcelimit = 1
 	local_development_cost = -0.05
 	local_sailors_modifier = 0.25
-	picture = "province_trade_power_value"
-}
-
-# Important center of trade
-center_of_trade_modifier = {
-	local_institution_spread = 0.10
-	province_trade_power_value = 10
-	naval_forcelimit = 2
-	local_development_cost = -0.05
-	local_sailors_modifier = 0.50
-	picture = "province_trade_power_value"
-}
-
-# Important inland center of trade
-inland_center_of_trade_modifier = {
-	local_institution_spread = 0.10
-	province_trade_power_value = 10
-	local_development_cost = -0.05
 	picture = "province_trade_power_value"
 }
 
@@ -4041,8 +4023,8 @@ bah_bidar_fort = {
 
 #Morocco
 mor_crisis = {
-	global_trade_power = -0.05
-	stability_cost_modifier = 0.1
+	global_trade_power = -0.025
+	stability_cost_modifier = 0.05
 	global_institution_spread = -0.025
 }
 
@@ -6021,7 +6003,7 @@ sce_search_quivira = {
 }
 el_dorado_mod = {
 	trade_goods_size_modifier = 0.5
-	cs_only_local_development_cost = -0.2
+	local_development_cost = -0.2
 	local_unrest = -3
 }
 sce_life_water = {
@@ -6036,28 +6018,28 @@ sce_cibola_silver = {
 sce_sierradelaplata_quartz = {
 	local_tax_modifier = 0.5
 	local_institution_spread = 1
-	cs_only_local_development_cost = -0.2
+	local_development_cost = -0.2
 }
 sce_golden_cups = {
 	local_production_efficiency = 0.25
 	local_tax_modifier = 0.25
 	local_build_cost = -0.5
-	cs_only_local_development_cost = -0.2
+	local_development_cost = -0.2
 }
 sce_norumbega_abandoned = {
-	cs_only_local_development_cost = -0.2
+	local_development_cost = -0.2
 	province_trade_power_modifier = 0.5
 	trade_goods_size_modifier = 0.5
 }
 sce_saguenay_abandoned = {
 	trade_goods_size_modifier = 0.25
 	province_trade_power_modifier = 0.25
-	cs_only_local_development_cost = -0.2
+	local_development_cost = -0.2
 }
 sce_city_of_caesars = {
 	province_trade_power_modifier = 1
 	trade_goods_size_modifier = 0.5
-	cs_only_local_development_cost = -0.2
+	local_development_cost = -0.2
 }
 sce_quivira = {
 	prestige = 0.5
@@ -6595,15 +6577,15 @@ pap_swiss_guard = {
 	global_manpower_modifier = 0.1
 }
 mil_vatican_library = {
-	technology_cost = -0.05
-	discipline = 0.05
+	mil_tech_cost_modifier = -0.05
+	army_tradition_from_battle = 0.5
 }
 dip_vatican_library = {
-	technology_cost = -0.05
+	dip_tech_cost_modifier = -0.05
 	diplomatic_reputation = 1
 }
 adm_vatican_library = {
-	technology_cost = -0.05
+	adm_tech_cost_modifier = -0.05
 	global_unrest = -2
 }
 pap_sistine_chapel = {
@@ -10075,6 +10057,11 @@ angry_nonconformists = {
 # Indian Estates
 look_up_purbias = {
 	is_rajput_modifier = yes
+	fire_damage = 0.1
+}
+
+look_up_purbias_upgraded = {
+	is_rajput_modifier = yes
 	discipline = 0.05
 	fire_damage = 0.1
 }
@@ -10376,7 +10363,7 @@ company_interference = {
 
 failed_monsoon = {
 	local_tax_modifier = -0.2
-	local_monthly_devastation = 0.5
+	local_monthly_devastation = 0.15
 }
 
 good_monsoon_modifier = {
@@ -10396,6 +10383,27 @@ plum_rains = {
 
 revoked_estate_modifier = {
 	local_unrest = 5
+}
+
+pru_confederation_curtailed_modifier = {
+	global_unrest = -1
+}
+
+mayan_dinosaur_cavalry = {
+	cavalry_power = 0.5
+}
+
+mayan_ufo_support = {
+	fire_damage = 0.33
+}
+
+swiss_guard_last_stand = {
+	discipline = 0.1
+}
+
+expelled_minority = {
+	local_missionary_strength = -1
+	local_culture_conversion_cost = 1
 }
 
 ##################################################
@@ -10455,3 +10463,66 @@ rb_eng_divine_common = {
 rb_eng_national_economy = {
 	global_tax_modifier = 0.05
 }
+
+## Tortoise Easter Egg Modifier
+delicious_tortoises = {
+	trade_value_modifier = 1
+}
+
+# Pirate modifiers
+
+thorough_careening = {
+	ship_durability = 0.1
+}
+
+relaxed_careening = {
+	naval_morale = 0.05
+	ship_durability = -0.05
+}
+
+smugglers_struggling = {
+	trade_efficiency = -0.05
+}
+
+blacklisted_crew = {
+	stability_cost_modifier = 0.1
+}
+
+# Misc for GC
+
+sublimis_deus = {
+	establish_order_cost = -0.2
+}
+
+sublimis_deus_not_enforced = {
+	global_trade_goods_size_modifier = 0.05
+}
+
+merino_wool = {
+	local_production_efficiency = 0.2
+	local_development_cost = 0.1
+}
+
+mesta_privileged_revoked = {
+	local_development_cost = -0.2
+}
+
+mor_looks_outward = {
+	diplomatic_annexation_cost = -0.2
+}
+
+mor_looks_inward = {
+	local_development_cost = -0.2
+}
+
+oe_jesuit_unrest = {
+	local_unrest = 3
+}
+
+mufti_event_timer = {}
+
+taqiyya_event_timer = {}
+
+muslim_playing_court_event_timer = {}
+
+converted_natives_colony_timer = {}

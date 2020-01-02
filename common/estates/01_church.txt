@@ -18,7 +18,8 @@ estate_church =
 			}
 			NOT = { has_estate = estate_brahmins }
 		}
-		NOT = { has_reform = merchants_reform }
+		NOT = { has_reform = pirate_republic_reform }
+		NOT = { has_government_attribute = is_merchant_republic }
 		NOT = { has_reform = veche_republic }
 		NOT = { has_reform = trading_city }
 		NOT = { has_reform = cossacks_reform }
@@ -46,45 +47,45 @@ estate_church =
 	start_territory_weight = 25
 
 	# Min autonomy in estate provinces
-	min_autonomy = 20
+	min_autonomy = 25
 
 	# Estate cancels out the following multiplicative local autonomy effects:
 	autonomy_does_not_affect = local_tax_modifier
 
 	# These scale with loyalty & power
 	country_modifier_happy = {
-		global_tax_modifier = 0.15
+		global_tax_modifier = 0.2
 		papal_influence = 1
 		devotion = 0.5
 		church_power_modifier = 0.1
 		monthly_fervor_increase = 1
-		stability_cost_modifier = -0.2
-		legitimacy = 0.20
+		stability_cost_modifier = -0.1
 	}
 	country_modifier_neutral = {
-		global_tax_modifier = 0.15
+		global_tax_modifier = 0.2
 	}
 	country_modifier_angry = {
-		papal_influence = -1.5
+		global_tax_modifier = -0.1
+		papal_influence = -1
 		devotion = -0.5
 		church_power_modifier = -0.25
 		monthly_fervor_increase = -1
-		stability_cost_modifier = 0.3
-		legitimacy = -0.3
-		yearly_corruption = 0.3
+		stability_cost_modifier = 0.1
 	}
 
 	# These do not scale, but only applied in provinces owned by the estate
 	province_modifier_happy = {
 		local_missionary_strength = 0.02
-		local_tax_modifier = 0.15
-		local_unrest = -3.5
+		local_tax_modifier = 0.1
+		local_unrest = -2
+		local_missionary_maintenance_cost = -0.25
 	}
 	province_modifier_neutral = {
 		local_unrest = -2
+		local_missionary_maintenance_cost = -0.10
 	}
 	province_modifier_angry = {
-		local_unrest = 7
+		local_unrest = 5
 	}
 
 	# Influence modifiers
@@ -183,36 +184,6 @@ estate_church =
 		influence = -10
 	}
 
-	####################################
-	# EVE - Church Estate Modifiers
-	####################################
-
-	influence_modifier = {
-		desc = EST_VAL_FULL_RELIGIOUS_INF
-		trigger = {
-			full_idea_group = religious_ideas
-		}
-		influence = 5
-	}
-	influence_modifier = {
-		desc = EST_VAL_FULL_HUMANIST
-		trigger = {
-			full_idea_group = humanist_ideas
-		}
-		influence = -10
-	}
-
-	loyalty_modifier = {
-		desc = EST_VAL_DEVELOPED
-		trigger = {
-			has_country_modifier = estate_developed_church
-		}
-		loyalty = 250
-	}
-
-	####################################
-	####################################
-
 	# Loyalty modifiers
 	loyalty_modifier = {
 		desc = EST_VAL_PIOUS
@@ -308,7 +279,7 @@ estate_church =
 		trigger = {
 			full_idea_group = religious_ideas
 		}
-		loyalty = 35
+		loyalty = 10
 	}
 
 	custom_name = {
@@ -883,7 +854,7 @@ estate_church =
 					type = inquisitor
 					skill = 3
 					culture = event_target:church_estate_province
-					religion = event_target:church_estate_province
+					religion = ROOT
 					location = event_target:church_estate_province
 					cost_multiplier = 0.5
 				}
@@ -900,6 +871,7 @@ estate_church =
 				define_advisor = {
 					type = inquisitor
 					skill = 3
+					religion = ROOT
 					cost_multiplier = 0.5
 				}
 			}
@@ -922,7 +894,7 @@ estate_church =
 					type = inquisitor
 					skill = 3
 					culture = event_target:church_estate_province
-					religion = event_target:church_estate_province
+					religion = ROOT
 					location = event_target:church_estate_province
 					cost_multiplier = 0.75
 				}
@@ -945,6 +917,7 @@ estate_church =
 				define_advisor = {
 					type = inquisitor
 					skill = 3
+					religion = ROOT
 					cost_multiplier = 0.75
 				}
 			}
@@ -963,7 +936,7 @@ estate_church =
 					type = inquisitor
 					skill = 3
 					culture = event_target:church_estate_province
-					religion = event_target:church_estate_province
+					religion = ROOT
 					location = event_target:church_estate_province
 				}
 			}
@@ -981,6 +954,7 @@ estate_church =
 				define_advisor = {
 					type = inquisitor
 					skill = 3
+					religion = ROOT
 				}
 			}
 			else_if = {
@@ -997,7 +971,7 @@ estate_church =
 					skill = 2
 					cost_multiplier = 0.5
 					culture = event_target:church_estate_province
-					religion = event_target:church_estate_province
+					religion = ROOT
 					location = event_target:church_estate_province
 
 				}
@@ -1014,6 +988,7 @@ estate_church =
 				define_advisor = {
 					type = inquisitor
 					skill = 2
+					religion = ROOT
 					cost_multiplier = 0.5
 				}
 			}
@@ -1037,7 +1012,7 @@ estate_church =
 					skill = 2
 					cost_multiplier = 0.75
 					culture = event_target:church_estate_province
-					religion = event_target:church_estate_province
+					religion = ROOT
 					location = event_target:church_estate_province
 
 				}
@@ -1060,6 +1035,7 @@ estate_church =
 				define_advisor = {
 					type = inquisitor
 					skill = 2
+					religion = ROOT
 					cost_multiplier = 0.75
 				}
 			}
@@ -1078,7 +1054,7 @@ estate_church =
 					type = inquisitor
 					skill = 2
 					culture = event_target:church_estate_province
-					religion = event_target:church_estate_province
+					religion = ROOT
 					location = event_target:church_estate_province
 				}
 			}
@@ -1096,6 +1072,7 @@ estate_church =
 				define_advisor = {
 					type = inquisitor
 					skill = 2
+					religion = ROOT
 				}
 			}
 			add_estate_influence_modifier = {

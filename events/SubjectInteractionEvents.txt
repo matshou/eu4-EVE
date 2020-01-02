@@ -1727,6 +1727,7 @@ country_event = {
 	trigger = {
 		has_dlc = "Common Sense"
 		any_subject_country = {
+			is_colonial_nation = no
 			is_subject_other_than_tributary_trigger = yes
 			num_of_cities = 2
 			any_owned_province = {
@@ -2032,6 +2033,7 @@ country_event = {
 		NOT = { manpower_percentage = 0.1 }
 		any_subject_country = {
 			manpower_percentage = 0.75
+			NOT = { is_colonial_nation_of = ROOT }
 		}
 	}
 
@@ -2205,7 +2207,10 @@ country_event = {
 			num_of_cities = 2
 			any_owned_province = {
 				controlled_by = THIS
-				is_core = ROOT
+				OR = {
+					is_claim = ROOT
+					is_core = ROOT
+				}
 			}
 		}
 	}
@@ -2216,7 +2221,10 @@ country_event = {
 				random_owned_province = {
 					limit = {
 						controlled_by = THIS
-						is_core = ROOT
+						OR = {
+							is_claim = ROOT
+							is_core = ROOT
+						}
 					}
 					save_event_target_as = rightful_province
 				}
@@ -2237,6 +2245,7 @@ country_event = {
 		add_prestige = 10
 		event_target:rightful_province = {
 			remove_core = ROOT
+			remove_claim = ROOT
 		}
 	}
 }
@@ -2261,20 +2270,27 @@ country_event = {
 				}
 			}
 			modifier = {
-				factor = 1.25
+				factor = 0.5
 				event_target:rightful_province = {
 					development = 15
 				}
 			}
 			modifier = {
-				factor = 1.5
+				factor = 1.25
 				event_target:rightful_province = {
 					has_owner_culture = no
+				}
+			}
+			modifier = {
+				factor = 1.5
+				event_target:rightful_province = {
+					is_core = FROM
 				}
 			}
 		}
 		event_target:rightful_province = {
 			remove_core = ROOT
+			remove_claim = ROOT
 			cede_province = FROM
 		}
 		FROM = { add_opinion = { who = ROOT modifier = opinion_gave_province } }

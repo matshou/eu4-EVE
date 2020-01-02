@@ -11,7 +11,8 @@ estate_burghers =
 	trigger = {
 		NOT = { has_estate = estate_vaisyas }
 		NOT = { has_estate = estate_jains }
-		NOT = { has_reform = merchants_reform }
+		NOT = { has_reform = pirate_republic_reform }
+		NOT = { has_government_attribute = is_merchant_republic }
 		NOT = { has_reform = veche_republic }
 		NOT = { has_reform = trading_city }
 		NOT = { has_reform = revolutionary_republic_reform }
@@ -39,7 +40,7 @@ estate_burghers =
 	start_territory_weight = 10
 
 	# Min autonomy in estate provinces
-	min_autonomy = 20
+	min_autonomy = 25
 
 	# Estate cancels out the following multiplicative local autonomy effects:
 	autonomy_does_not_affect = local_production_efficiency
@@ -51,31 +52,25 @@ estate_burghers =
 	country_modifier_happy = {
 		trade_efficiency = 0.2
 		development_cost = -0.1
-		build_time = -0.2
-		global_institution_spread = 0.06
 	}
 	country_modifier_neutral = {
 		trade_efficiency = 0.2
 	}
 	country_modifier_angry = {
-		trade_efficiency = -0.25
-		development_cost = 0.2
-		build_cost = 0.2
-		yearly_corruption = 0.4
+		trade_efficiency = -0.1
+		development_cost = 0.1
 	}
 
 	# These do not scale, but only applied in provinces owned by the estate
 	province_modifier_happy = {
-		trade_goods_size_modifier = 0.15
-		province_trade_power_modifier = 0.75
-		local_build_cost = -0.15
+		trade_goods_size_modifier = 0.1
+		province_trade_power_modifier = 0.5
 	}
 	province_modifier_neutral = {
 		province_trade_power_modifier = 0.5
 	}
 	province_modifier_angry = {
 		local_unrest = 5
-		local_build_time = 0.5
 	}
 
 	# Influence modifiers
@@ -108,10 +103,7 @@ estate_burghers =
 		trigger = {
 			NOT = { has_reform = free_city }
 			any_owned_province = {
-				OR = {
-					has_province_modifier = inland_center_of_trade_modifier
-					has_province_modifier = center_of_trade_modifier
-				}
+				province_has_center_of_trade_of_level = 1
 			}
 		}
 		influence = 5
@@ -230,43 +222,6 @@ estate_burghers =
 		influence = -40
 	}
 
-	######################################
-	# EVE - Burghers Estate Modifiers
-	######################################
-
-	influence_modifier = {
-		desc = EST_VAL_FULL_PLUTOCRATIC_INF
-		trigger = {
-			full_idea_group = plutocracy_ideas
-		}
-		influence = 5
-	}
-	influence_modifier = {
-		desc = EST_VAL_FULL_TRADE_INF
-		trigger = {
-			full_idea_group = trade_ideas
-		}
-		influence = 3
-	}
-
-	loyalty_modifier = {
-		desc = EST_VAL_FULL_TRADE
-		trigger = {
-			full_idea_group = trade_ideas
-		}
-		loyalty = 15
-	}
-	loyalty_modifier = {
-		desc = EST_VAL_DEVELOPED
-		trigger = {
-			has_country_modifier = estate_developed_burghers
-		}
-		loyalty = 250
-	}
-
-	######################################
-	######################################
-
 	loyalty_modifier = {
 		desc = EST_VAL_OTHER_ESTATE_IN_POWER_LOY
 		trigger = {
@@ -284,7 +239,7 @@ estate_burghers =
 		trigger = {
 			full_idea_group = plutocracy_ideas
 		}
-		loyalty = 30
+		loyalty = 10
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_MERITOCRATIC_RECRUITMENT_LOY
@@ -873,7 +828,9 @@ estate_burghers =
 		}
 
 		effect = {
-			create_admiral = 40
+			create_admiral = {
+				tradition = 40
+			}
 			add_estate_influence_modifier = {
 				estate = estate_burghers
 				desc = EST_VAL_GRANTED_ADMIRALSHIP
