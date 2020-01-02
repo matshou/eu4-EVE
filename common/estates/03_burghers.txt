@@ -40,7 +40,7 @@ estate_burghers =
 	start_territory_weight = 10
 
 	# Min autonomy in estate provinces
-	min_autonomy = 25
+	min_autonomy = 20
 
 	# Estate cancels out the following multiplicative local autonomy effects:
 	autonomy_does_not_affect = local_production_efficiency
@@ -52,25 +52,31 @@ estate_burghers =
 	country_modifier_happy = {
 		trade_efficiency = 0.2
 		development_cost = -0.1
+		build_time = -0.2
+		global_institution_spread = 0.06
 	}
 	country_modifier_neutral = {
 		trade_efficiency = 0.2
 	}
 	country_modifier_angry = {
-		trade_efficiency = -0.1
-		development_cost = 0.1
+		trade_efficiency = -0.25
+		development_cost = 0.2
+		build_cost = 0.2
+		yearly_corruption = 0.4
 	}
 
 	# These do not scale, but only applied in provinces owned by the estate
 	province_modifier_happy = {
-		trade_goods_size_modifier = 0.1
-		province_trade_power_modifier = 0.5
+		trade_goods_size_modifier = 0.15
+		province_trade_power_modifier = 0.75
+		local_build_cost = -0.15
 	}
 	province_modifier_neutral = {
 		province_trade_power_modifier = 0.5
 	}
 	province_modifier_angry = {
 		local_unrest = 5
+		local_build_time = 0.5
 	}
 
 	# Influence modifiers
@@ -222,6 +228,43 @@ estate_burghers =
 		influence = -40
 	}
 
+	######################################
+	# EVE - Burghers Estate Modifiers
+	######################################
+
+	influence_modifier = {
+		desc = EST_VAL_FULL_PLUTOCRATIC_INF
+		trigger = {
+			full_idea_group = plutocracy_ideas
+		}
+		influence = 5
+	}
+	influence_modifier = {
+		desc = EST_VAL_FULL_TRADE_INF
+		trigger = {
+			full_idea_group = trade_ideas
+		}
+		influence = 3
+	}
+
+	loyalty_modifier = {
+		desc = EST_VAL_FULL_TRADE
+		trigger = {
+			full_idea_group = trade_ideas
+		}
+		loyalty = 15
+	}
+	loyalty_modifier = {
+		desc = EST_VAL_DEVELOPED
+		trigger = {
+			has_country_modifier = estate_developed_burghers
+		}
+		loyalty = 250
+	}
+
+	######################################
+	######################################
+
 	loyalty_modifier = {
 		desc = EST_VAL_OTHER_ESTATE_IN_POWER_LOY
 		trigger = {
@@ -239,7 +282,7 @@ estate_burghers =
 		trigger = {
 			full_idea_group = plutocracy_ideas
 		}
-		loyalty = 10
+		loyalty = 30
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_MERITOCRATIC_RECRUITMENT_LOY

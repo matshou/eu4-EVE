@@ -63,11 +63,11 @@ supporting_rebels_in_rival = {
 }
 
 warned_rival = {
-	power = 0
+	power = 5
 }
 
 guarantee_neighbour_of_rival = {
-	power = 0
+	power = 5
 }
 
 current_age_power_projection = {
@@ -80,7 +80,7 @@ current_age_power_projection = {
 ##################################
 last_age_power_projection = {
 	power = 3
-	yearly_decay = 1
+	yearly_decay = 0.3
 	max = 21
 }
 
@@ -99,61 +99,61 @@ scornfully_insulted_rival = {
 
 humiliated_rival = {
 	power = 30
-	yearly_decay = 1
+	yearly_decay = 0.5
 	max = 30
 }
 
 humiliated_by_rival = {
 	power = -30
-	yearly_decay = 1
+	yearly_decay = 0.5
 	min = -30
 }
 
 eclipsed_rival = {
 	power = 10
-	yearly_decay = 1
+	yearly_decay = 0.5
 	max = 30
 }
 
 declared_war_at_rival = {
 	power = 10
-	yearly_decay = 1
+	yearly_decay = 0.5
 	max = 20
 }
 
 joined_war_against_rival = {
 	power = 10
-	yearly_decay = 1
+	yearly_decay = 0.5
 	max = 20
 }
 
 refused_war_against_rival = {
 	power = -20
-	yearly_decay = 1
-	min = -20
+	yearly_decay = 0.5
+	min = -60
 }
 
 vassalized_rival = {
 	power = 0.5			# multiplied with basetax
-	yearly_decay = 1
+	yearly_decay = 0.5
 	max = 100
 }
 
 took_province_from_rival = {
 	power = 0.5		# multiplied with basetax
-	yearly_decay = 1
+	yearly_decay = 0.5
 	max = 100
 }
 
 lost_province_to_rival = {
 	power = -0.5			# multiplied with basetax
-	yearly_decay = 1
+	yearly_decay = 0.5
 	min = -100
 }
 
 rival_lost_province = {
 	power = 0.5			# multiplied with basetax
-	yearly_decay = 1
+	yearly_decay = 0.5
 	max = 100
 }
 

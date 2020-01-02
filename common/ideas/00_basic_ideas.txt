@@ -105,6 +105,7 @@ innovativeness_ideas = {
 
 	bonus = {
 		advisor_cost = -0.25
+		innovativeness_gain = 0.5
 	}
 
 	patron_of_art  = {
