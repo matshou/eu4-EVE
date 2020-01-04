@@ -809,9 +809,9 @@ occupied_imperial = {
 }
 
 num_of_marriages = {
-	legitimacy = 0.10
+	legitimacy = 0.15
 	heir_chance = 0.05
-	improve_relation_modifier = 0.01
+	improve_relation_modifier = 0.02
 }
 
 num_of_provinces = {
