@@ -55,7 +55,7 @@ natural_scientist = {
 
 	# Bonus
 	production_efficiency = 0.10
-	technology_cost = -0.025
+	technology_cost = -0.05
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -128,8 +128,8 @@ treasurer = {
 	monarch_power = ADM
 
 	# Bonus
-	global_tax_modifier = 0.05
-	production_efficiency = 0.025
+	global_tax_modifier = 0.1
+	build_cost = -0.05
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -362,7 +362,7 @@ spymaster = {
 
 	# Bonus
 	spy_offence = 0.25
-	envoy_travel_time = -0.20
+	global_spy_defence = 0.15
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -472,7 +472,7 @@ army_organiser = {
 	monarch_power = MIL
 
 	# Bonus
-	land_forcelimit_modifier = 0.10
+	manpower_recovery_speed = 0.2
 	reinforce_speed = 0.25
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
@@ -491,7 +491,8 @@ commandant = {
 	monarch_power = MIL
 
 	# Bonus
-	discipline = 0.05
+	discipline = 0.035
+	land_attrition = -0.2
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -509,7 +510,7 @@ quartermaster = {
 	monarch_power = MIL
 
 	# Bonus
-	manpower_recovery_speed = 0.25
+	land_attrition = -0.2
 	recover_army_morale_speed = 0.05
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
