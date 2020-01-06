@@ -55,7 +55,7 @@ natural_scientist = {
 
 	# Bonus
 	production_efficiency = 0.10
-	technology_cost = -0.05
+	innovativeness_gain = 0.35
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -297,7 +297,7 @@ statesman = {
 
 	# Bonus
 	diplomatic_reputation = 1
-	improve_relation_modifier = 0.10
+	administrative_efficiency = 0.05
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -492,7 +492,7 @@ commandant = {
 
 	# Bonus
 	discipline = 0.035
-	land_attrition = -0.2
+	drill_gain_modifier = 0.25
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
