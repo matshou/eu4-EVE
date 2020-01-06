@@ -252,7 +252,7 @@ estate_burghers =
 		trigger = {
 			full_idea_group = trade_ideas
 		}
-		loyalty = 15
+		loyalty = 10
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_DEVELOPED
@@ -275,14 +275,14 @@ estate_burghers =
 				has_disaster = estate_jains_disaster
 			}
 		}
-		loyalty = -20
+		loyalty = -40
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_FULL_PLUTOCRATIC
 		trigger = {
 			full_idea_group = plutocracy_ideas
 		}
-		loyalty = 30
+		loyalty = 20
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_MERITOCRATIC_RECRUITMENT_LOY

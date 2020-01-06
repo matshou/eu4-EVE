@@ -261,14 +261,14 @@ estate_church =
 		trigger = {
 			religion = protestant
 		}
-		loyalty = 10
+		loyalty = 20
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_PAPAL_CONTROLLER
 		trigger = {
 			is_papal_controller = yes
 		}
-		loyalty = 10
+		loyalty = 20
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_STATUTE_IN_RESTRAINTS
@@ -302,14 +302,14 @@ estate_church =
 				has_disaster = estate_jains_disaster
 			}
 		}
-		loyalty = -20
+		loyalty = -40
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_FULL_RELIGIOUS
 		trigger = {
 			full_idea_group = religious_ideas
 		}
-		loyalty = 35
+		loyalty = 20
 	}
 
 	custom_name = {

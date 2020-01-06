@@ -238,7 +238,7 @@ estate_nobles =
 		trigger = {
 			full_idea_group = influence_ideas
 		}
-		loyalty = 15
+		loyalty = 10
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_DEVELOPED
@@ -277,7 +277,7 @@ estate_nobles =
 				has_disaster = estate_jains_disaster
 			}
 		}
-		loyalty = -20
+		loyalty = -40
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_NOBLES_OF_THE_ROBE_LOY
@@ -310,7 +310,7 @@ estate_nobles =
 			government = monarchy
 			legitimacy = 95
 		}
-		loyalty = 10
+		loyalty = 15
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_LEGITIMATE
@@ -319,7 +319,7 @@ estate_nobles =
 			legitimacy = 70
 			NOT = { legitimacy = 95 }
 		}
-		loyalty = 5
+		loyalty = 10
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_NOT_LEGITIMATE
@@ -328,7 +328,7 @@ estate_nobles =
 			NOT = { legitimacy = 50 }
 			legitimacy = 25
 		}
-		loyalty = -5
+		loyalty = -10
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_ILLEGITIMATE
@@ -336,14 +336,14 @@ estate_nobles =
 			government = monarchy
 			NOT = { legitimacy = 25 }
 		}
-		loyalty = -10
+		loyalty = -20
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_FULL_ARISTOCRATIC
 		trigger = {
 			full_idea_group = aristocracy_ideas
 		}
-		loyalty = 30
+		loyalty = 20
 	}
 
 	#Alternative naming of estates
