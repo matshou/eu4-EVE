@@ -218,21 +218,6 @@ estate_nobles =
 		}
 		influence = 5
 	}
-	influence_modifier = {
-		desc = EST_VAL_FULL_INFLUENCE_INF
-		trigger = {
-			full_idea_group = influence_ideas
-		}
-		influence = 3
-	}
-	influence_modifier = {
-		desc = EST_VAL_FULL_INNOVATIVE
-		trigger = {
-			full_idea_group = innovativeness_ideas
-		}
-		influence = -10
-	}
-
 	loyalty_modifier = {
 		desc = EST_VAL_FULL_INFLUENCE
 		trigger = {

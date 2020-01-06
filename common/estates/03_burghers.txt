@@ -239,14 +239,6 @@ estate_burghers =
 		}
 		influence = 5
 	}
-	influence_modifier = {
-		desc = EST_VAL_FULL_TRADE_INF
-		trigger = {
-			full_idea_group = trade_ideas
-		}
-		influence = 3
-	}
-
 	loyalty_modifier = {
 		desc = EST_VAL_FULL_TRADE
 		trigger = {
