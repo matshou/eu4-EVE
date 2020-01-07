@@ -9248,12 +9248,14 @@ reassessement_provinces = {
 gunpowder_core = {
 	drill_gain_modifier = 0.5
 	land_maintenance_modifier = 0.1
-	global_regiment_recruit_speed = 0.25
+	global_regiment_recruit_speed = 0.5
 }
 
 standardized_uniforms_modifier = {
-	drill_gain_modifier = 0.4
+	drill_gain_modifier = 0.25
+	land_morale = 0.1
 	land_maintenance_modifier = 0.1
+	land_attrition = -0.05
 }
 
 #Muslim Schools
