@@ -190,6 +190,7 @@ core.update_advisor_mods = {
 
 	update_advisor_mod = { advisor = inquisitor }
 	update_advisor_mod = { advisor = statesman }
+	update_advisor_mod = { advisor = fortification_expert }
 	update_advisor_mod = { advisor = naval_reformer }
 	update_advisor_mod = { advisor = philosopher }
 	update_advisor_mod = { advisor = artist }

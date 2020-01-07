@@ -101,6 +101,10 @@ employed_statesman = {
 	adm_tech_cost_modifier = -0.03
 }
 
+employed_fortification_expert = {
+	mil_tech_cost_modifier = -0.03
+}
+
 employed_naval_reformer = {
 	dip_tech_cost_modifier = -0.03
 }
