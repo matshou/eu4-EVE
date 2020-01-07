@@ -70,7 +70,7 @@ estate_nobles =
 
 	country_modifier_happy = {
 		manpower_recovery_speed = 0.2
-		land_maintenance_modifier = -0.1
+		general_cost = -0.25
 		army_tradition = 0.4
 		prestige = 0.25
 	}
