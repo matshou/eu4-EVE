@@ -55,7 +55,7 @@ natural_scientist = {
 
 	# Bonus
 	production_efficiency = 0.10
-	innovativeness_gain = 0.35
+	innovativeness_gain = 0.25
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
@@ -342,7 +342,7 @@ trader = {
 	monarch_power = DIP
 
 	# Bonus
-	trade_efficiency = 0.05
+	trade_efficiency = 0.10
 	trade_steering = 0.10
 
 	skill_scaled_modifier = { meritocracy = 0.5 }

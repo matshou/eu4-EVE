@@ -94,7 +94,7 @@ prov_state_jurisdiction = {							# hardcoded for 'tooltip_state_jurisdiction'
 employed_inquisitor = {
 	tolerance_heretic = -1
 	global_heretic_missionary_strength = 0.01
-	innovativeness_gain = -0.3
+	innovativeness_gain = -0.25
 }
 
 employed_statesman = {
@@ -106,11 +106,11 @@ employed_naval_reformer = {
 }
 
 employed_philosopher = {
-	innovativeness_gain = 0.2
+	innovativeness_gain = 0.15
 }
 
 employed_artist = {
-	innovativeness_gain = 0.1
+	innovativeness_gain = 0.15
 }
 
 ###############################
