@@ -250,6 +250,7 @@ knowledge_sharing = {
 
 manpower = {
 	garrison_growth = 0.01					#1% increase from manpower.
+	local_defensiveness = 0.015
 }
 
 sailors = {
