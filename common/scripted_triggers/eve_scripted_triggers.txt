@@ -71,6 +71,24 @@ nation.has_vassal = {
 	}
 }
 
+nation.is_estate_angry = {
+	has_estate = estate_$estate$
+	NOT = {
+		estate_loyalty = {
+			estate = estate_$estate$
+			loyalty = 40
+		}
+	}
+}
+
+nation.is_estate_happy = {
+	has_estate = estate_$estate$
+	estate_loyalty = {
+		estate = estate_$estate$
+		loyalty = 60
+	}
+}
+
 ##############################
 # EVE - Province Triggers
 ##############################
