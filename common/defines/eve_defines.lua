@@ -2,19 +2,19 @@
 --------------------------------------------------------
 -------------------- Estate defines --------------------
 --------------------------------------------------------
-NDefines.NCountry.ESTATE_PROVINCE_HAPPINESS_INCREASE = 1.0
-NDefines.NCountry.ESTATE_GRANT_PROVINCE_COOLDOWN = 1
+NDefines.NCountry.ESTATE_PROVINCE_HAPPINESS_INCREASE = 2.5
+NDefines.NCountry.ESTATE_GRANT_PROVINCE_COOLDOWN = 5
 --------------------------------------------------------
 ---------------- Innovativeness defines ----------------
 --------------------------------------------------------
-NDefines.NCountry.INNOVATIVENESS_BEHIND_IN_TECH_PENALTY = -0.03
-NDefines.NCountry.INNOVATIVENESS_ENABLE_ANY_BEHIND_IN_TECH_PENALTY = 0
-NDefines.NCountry.INNOVATIVENESS_ENABLE_PER_TECH_BEHIND_IN_TECH_PENALTY = 0
-NDefines.NCountry.INNOVATIVENESS_AHEAD_OF_TIME_BONUS = 0.005
-NDefines.NCountry.INNOVATIVENESS_DAYS_AFTER_FIRST_PICK_VIABLE = 90
+NDefines.NCountry.INNOVATIVENESS_BEHIND_IN_TECH_PENALTY = -0.025
+NDefines.NCountry.INNOVATIVENESS_ENABLE_ANY_BEHIND_IN_TECH_PENALTY = 1
+NDefines.NCountry.INNOVATIVENESS_ENABLE_PER_TECH_BEHIND_IN_TECH_PENALTY = 1
+NDefines.NCountry.INNOVATIVENESS_AHEAD_OF_TIME_BONUS = 0.025
+NDefines.NCountry.INNOVATIVENESS_DAYS_AFTER_FIRST_PICK_VIABLE = 135
 --------------------------------------------------------
 ------------------- Military defines -------------------
 --------------------------------------------------------
-NDefines.NMilitary.ARMY_DRILL_YEARLY_DECAY = -2.5
-NDefines.NMilitary.ARMY_DRILL_YEARLY_GAIN = 10.0
-NDefines.NMilitary.ARMY_DRILL_SKILL_MONTHS = 120
+NDefines.NMilitary.ARMY_DRILL_YEARLY_DECAY = -1.7
+NDefines.NMilitary.ARMY_DRILL_YEARLY_GAIN = 12.0
+NDefines.NMilitary.ARMY_DRILL_SKILL_MONTHS = 90
