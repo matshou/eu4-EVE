@@ -55,6 +55,7 @@ core.on_monthly_pulse = {
 	states.update_territories = yes
 	autonomy.check_for_change = yes
 	vassals.update = yes
+#	estates.update = yes
 
 	core.update_advisor_mods = yes
 

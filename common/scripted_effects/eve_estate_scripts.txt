@@ -3,6 +3,101 @@
 # EVE - Estate Scripts
 ##################################
 
+# Called from 'core.on_monthly_pulse' to handle
+# all estate updates that need to happen on a monthly basis
+# @scope country
+# @access public
+#
+estates.update = {
+
+	update_internal = { estate = burghers }
+	update_internal = { estate = church }
+	update_internal = { estate = nobles }
+	# TODO: Add more estates here
+}
+
+# Called only from 'estates.update'
+# @access private
+update_internal = {
+
+	if = {
+		limit = { has_estate = estate_$estate$ }
+
+		declare_variable = { which = est_influence_lvl value = 0 }
+		set_estate_influence_lvl = { estate = $estate$ }
+
+		declare_variable = { which = est_loyalty_lvl value = 0 }
+		set_estate_loyalty_lvl = { estate = $estate$ }
+
+		if = {			# Estate is Happy (60 - 100 loyalty)
+			limit = {
+				check_variable = { which = est_loyalty_lvl value = 3 }
+			}
+			# Do something here
+		}
+		else if = {		# Estate is Neutral (40 -59 loyalty)
+			limit = {
+				check_variable = { which = est_loyalty_lvl value = 2 }
+			}
+			# Do something here
+		}
+		else = {	# Estate is Angry (0 - 39 loyalty)
+			# Do something here
+		}
+	}
+}
+
+
+# Set variable 'est_loyalty_lvl' to an integer value corresponding
+# to the amount of loyalty held by the given $estate$ (1-3)
+# @access private
+set_estate_loyalty_lvl = {
+
+	if = {
+		limit = {
+			estate_loyalty = { estate = estate_$estate$ loyalty = 60 }
+		}
+		set_variable = { which = est_loyalty_lvl value = 3 }	# 60 - 100
+	}
+	else if = {
+		limit = {
+			estate_loyalty = { estate = estate_$estate$ loyalty = 40 }
+		}
+		set_variable = { which = est_loyalty_lvl value = 2 }	# 40 - 59
+	}
+	else = {
+		set_variable = { which = est_loyalty_lvl value = 1 }	# 0 - 39
+	}
+}
+
+# Set variable 'est_influence_lvl' to an integer value corresponding
+# to the amount of influence held by the given $estate$ (1-4)
+# @access private
+set_estate_influence_lvl = {
+
+	if = {
+		limit = {
+			estate_influence = { estate = estate_$estate$ influence = 60 }
+		}
+		set_variable = { which = est_influence_lvl value = 4 }	# 60 - 100
+	}
+	else if = {
+		limit = {
+			estate_influence = { estate = estate_$estate$ influence = 40 }
+		}
+		set_variable = { which = est_influence_lvl value = 3 }	# 40 - 59
+	}
+	else if = {
+		limit = {
+			estate_influence = { estate = estate_$estate$ influence = 20 }
+		}
+		set_variable = { which = est_influence_lvl value = 2 }	# 20 - 39
+	}
+	else = {
+		set_variable = { which = est_influence_lvl value = 1 }	# 0 - 19
+	}
+}
+
 # Called from 'province_scripts' when country develops a province
 # TODO: Add more estates here
 # @scope province
