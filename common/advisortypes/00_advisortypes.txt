@@ -454,7 +454,7 @@ army_reformer = {
 
 	# Bonus
 	land_morale = 0.10
-	mil_tech_cost_modifier = -0.03
+	yearly_army_professionalism = 0.005
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
