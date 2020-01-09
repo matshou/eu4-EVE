@@ -6,33 +6,27 @@
 # Update all states and provinces belonging to states
 # @scope country
 #
-states.update_all = {
-
-	# reset state administration modifier so we can recalculate it
-	set_variable = { which = policy_gov_state_m value = 0 }
+states.update_states = {
 
 	every_owned_province = {
 		limit = { is_state = yes }
-
-		# This scope will be entered once for each state
+		# This scope will be entered ONCE for each state
 		if = {
 			limit = { NOT = { has_province_flag = state_prov_updated } }
-			states.update_state = yes
-		}
-
-		clr_province_flag = state_prov_updated
-
-		owner = {
-			if = {
-				limit = { has_country_flag = adm_center_in_state }
+			update_state = yes
+			owner = {
 				if = {
-					limit = { NOT = { has_country_flag = adm_center_found } }
-					PREV = { states.remove_jurisdiction = yes }
+					limit = { has_country_flag = adm_center_in_state }
+					if = {
+						limit = { NOT = { has_country_flag = adm_center_found } }
+						PREV = { states.remove_jurisdiction = yes }
+					}
+					else = { clr_country_flag = adm_center_found }
+					clr_country_flag = adm_center_in_state
 				}
-				else = { clr_country_flag = adm_center_found }
-				clr_country_flag = adm_center_in_state
 			}
 		}
+		clr_province_flag = state_prov_updated
 	}
 }
 
@@ -41,7 +35,7 @@ states.update_all = {
 # @access private
 # @scope province
 #
-states.update_state = {
+update_state = {
 
 	every_province_in_state = {
 
@@ -53,12 +47,6 @@ states.update_state = {
 		}
 		else_if = {
 			limit = { has_province_modifier = prov_state_adm_center }
-
-			# Calculate state administrative modifier for governance policy
-			owner = {
-				PREV = { states.get_development = yes }
-				states.get_dev_ratio = { DEV = output }
-				change_variable = { which = policy_gov_state_m which = output }
 			}
 
 			# Check to make sure every province in state is under jurisdiction
@@ -75,7 +63,7 @@ states.update_state = {
 		else_if = {
 			limit = {
 				has_admin_building = yes
-				can_build_courthouse = yes
+				can_build_adm_center = yes
 			}
 			states.apply_jurisdiction = yes
 			owner = { set_country_flag = adm_center_found }
@@ -88,8 +76,9 @@ states.update_state = {
 
 # Update every province that does not belong to a state
 # @scope country
+# @access public
 #
-states.update_non_states = {
+states.update_territories = {
 
 	every_owned_province = {
 		limit = { NOT = { is_state = yes } }
@@ -155,7 +144,6 @@ states.remove_jurisdiction = {
 		limit = { has_province_modifier = prov_state_adm_center }
 		remove_province_modifier = prov_state_adm_center
 	}
-
 	# Note that this will not remove modifiers if the provinces are not in state
 	# we will have to manually scan for these and remove them later on
 	#

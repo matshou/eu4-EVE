@@ -35,7 +35,6 @@ province_event = {
 
 	trigger = {
 		province.is_player_owned = yes
-		#has_building = courthouse
 	}
 
 	option = {

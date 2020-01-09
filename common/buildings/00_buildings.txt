@@ -172,19 +172,8 @@ courthouse = {
 	cost = 100
 	time = 12
 
-	# Note that we cannot use a scripted trigger to validate this
-	# as vanilla code does not recognize references to building entries
-	# that are made AFTER the calling building. In this situation the town hall
-	# building would not be recognized because it's declared after courthouse
-	#
 	trigger = {
-		is_state = yes
-		NOT = {
-			any_province_in_state = {
-				NOT = { province_id = PREV }
-				OR = { has_building = courthouse has_building = town_hall }
-			}
-		}
+		can_build_adm_center = yes
 	}
 
 	modifier = {

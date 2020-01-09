@@ -312,7 +312,7 @@ has_admin_building = {
 	}
 }
 
-can_build_courthouse = {
+can_build_adm_center = {
 	is_state = yes
 	NOT = {
 		is_capital = yes
