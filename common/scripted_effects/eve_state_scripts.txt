@@ -47,17 +47,23 @@ update_state = {
 		}
 		else_if = {
 			limit = { has_province_modifier = prov_state_adm_center }
+			if = {
+				limit = { has_admin_building = no }
+				remove_province_modifier = prov_state_adm_center
 			}
-
-			# Check to make sure every province in state is under jurisdiction
-			every_province_in_state = {
-				limit = {
-					NOT = { province_id = PREV }
-					NOT = { has_province_modifier = prov_state_jurisdiction }
+			else = {
+				# Check to make sure every province in state is under jurisdiction
+				every_province_in_state = {
+					limit = {
+						NOT = {
+							province_id = PREV
+							has_province_modifier = prov_state_jurisdiction
+						}
+					}
+					add_province_modifier = { name = prov_state_jurisdiction duration = -1 }
 				}
-				add_province_modifier = { name = prov_state_jurisdiction duration = -1 }
+				owner = { set_country_flag = adm_center_found }
 			}
-			owner = { set_country_flag = adm_center_found }
 		}
 		# Province recently became a state and has administrative building
 		else_if = {
