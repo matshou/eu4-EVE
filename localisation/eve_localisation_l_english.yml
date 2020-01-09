@@ -58,9 +58,6 @@
  string_null:0 ""
  string_period:0 "."
 
- string_prefix.a.1:0 "[Root.policy_gov_mod_desc_adj_1_txt][Root.policy_gov_mod_quant_1_txt]"
- string_prefix.a.2:0 "[Root.policy_gov_mod_desc_adj_2_txt][Root.policy_gov_mod_quant_2_txt]"
-
  string_adj.a.1:0 " slightly"
  string_adj.a.2:0 " increasingly"
  string_adj.a.3:0 " moderately"

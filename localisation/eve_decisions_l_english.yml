@@ -1,0 +1,63 @@
+﻿l_english:
+ ##########################
+ # Decisions Localization #
+ ##########################
+
+ vassal_tax_rate3:0 "High Vassal Tax Rate"
+ desc_vassal_tax_rate3:0 "[This.vassal_tax_rate_txt]"
+ vassal_tax_rate2:0 "Medium Vassal Tax Rate"
+ desc_vassal_tax_rate2:0 "[This.vassal_tax_rate_txt]"
+ vassal_tax_rate1:0 "Increased Vassal Tax Rate"
+ desc_vassal_tax_rate1:0 "[This.vassal_tax_rate_txt]"
+ vassal_tax_rate-3:0 "High Vassal Tax Exemption"
+ desc_vassal_tax_rate-3:0 "[This.vassal_tax_exemption_txt]"
+ vassal_tax_rate-2:0 "Medium Vassal Tax Exemption"
+ desc_vassal_tax_rate-2:0 "[This.vassal_tax_exemption_txt]"
+ vassal_tax_rate-1:0 "Low Vassal Tax Exemption"
+ desc_vassal_tax_rate-1:0 "[This.vassal_tax_exemption_txt]"
+ vassal_tax_rate_ld3:0 "High Vassal Tax Rate"
+ desc_vassal_tax_rate_ld3:0 "[This.vassal_tax_rate_ld_txt]"
+ vassal_tax_rate_ld2:0 "Medium Vassal Tax Rate"
+ desc_vassal_tax_rate_ld2:0 "[This.vassal_tax_rate_ld_txt]"
+ vassal_tax_rate_ld1:0 "Increased Vassal Tax Rate"
+ desc_vassal_tax_rate_ld1:0 "[This.vassal_tax_rate_ld_txt]"
+ vassal_tax_rate_ld-3:0 "High Vassal Tax Exemption"
+ desc_vassal_tax_rate_ld-3:0 "[This.vassal_tax_exemption_ld_txt]"
+ vassal_tax_rate_ld-2:0 "Medium Vassal Tax Exemption"
+ desc_vassal_tax_rate_ld-2:0 "[This.vassal_tax_exemption_ld_txt]"
+ vassal_tax_rate_ld-1:0 "Low Vassal Tax Exemption"
+ desc_vassal_tax_rate_ld-1:0 "[This.vassal_tax_exemption_ld_txt]"
+
+ string_vassal_tax_rate:0 "We have used our legislative power to impose an increased tax rate on our vassal subjects. This action will not be perceived favorably by our subjects and will only further encourage their strive for independence."
+ string_vassal_tax_exemption:0 "Our vassal subjects have been given a partial exemption from regular taxation. This action will ease tensions between us and our subjects, perhaps even persuading them that they are better off under our protection."
+ string_vassal_tax_rate_ld:0 "Our suzerain has imposed an increased tax rate on us. This action will not be taken kindly by our people and will help our strive for independence if we choose to pursue it."
+ string_vassal_tax_exemption_ld:0 "Our suzerain has given us a partial exemption from regular taxation. We wholesomely accept this kind gesture."
+
+ tooltip_raise_tax_liberty_desire:0 "Every vassal of §Y[This.GetName]§! receives the following effect for the duration of the active tax rate:\nLiberty Desire: §[This.raise_tax_liberty_desire_txt_c][This.raise_tax_liberty_desire_txt]%§!"
+ tooltip_lower_tax_liberty_desire:0 "Every vassal of §Y[This.GetName]§! receives the following effect for the duration of the active tax rate:\nLiberty Desire: §[This.lower_tax_liberty_desire_txt_c][This.lower_tax_liberty_desire_txt]%§!"
+
+ tooltip_repeal_vassal_taxes:0 "Remove active tax rate for every vassal of §Y[This.GetName]§!."
+ tooltip_repeal_vassal_tax_exemption:0 "Remove active tax exemption for every vassal of §Y[This.GetName]§!."
+
+ string_tax_liberty_desire.3:0 "35.00"
+ string_tax_liberty_desire.2:0 "20.00"
+ string_tax_liberty_desire.1:0 "5.00"
+
+ raise_vassal_taxes_title:0 "Raise Vassal Tax Rate"
+ raise_vassal_taxes_desc:0 ""
+ lower_vassal_taxes_title:0 "Lower Vassal Tax Rate"
+ lower_vassal_taxes_desc:0 ""
+ repeal_vassal_taxes_title:0 "Repeal Vassal Tax Rate"
+ repeal_vassal_taxes_desc:0 ""
+ repeal_vassal_tax_exemption_title:0 "Repeal Vassal Tax Exemption"
+ repeal_vassal_tax_exemption_desc:0 ""
+ renew_vassal_taxes_title:0 "Renew Vassal Tax Rate"
+ renew_vassal_taxes_desc:0 ""
+
+ tooltip_vassal_tax_repeal_cost:0 "Lose §R[This.vassal_tax_repeal_cost.GetValue]§! Administrative Power."
+
+ tooltip_can_raise_vassal_taxes:0 "Can further raise vassal tax rate."
+ tooltip_can_lower_vassal_taxes:0 "Can further lower vassal tax rate."
+ tooltip_has_tax_rate_cooldown:0 "5 years passed since changing tax rate."
+ tooltip_has_tax_rate_expired:0 "Has tax rate expired."
+ tooltip_has_tax_exemption_expired:0 "Has tax exemption expired."

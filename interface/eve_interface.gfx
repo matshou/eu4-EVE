@@ -5,19 +5,4 @@ spriteTypes = {
 		texturefile = "gfx/event_pictures/eve_courthouse_picture.dds"
 		allwaystransparent = yes
 	}
-
-	spriteType = {
-		name = "GFX_idea_dummy_governance_1"
-		texturefile = "gfx//interface//ideas//idea_governance_1.dds"
-		noOfFrames = 1
-
-		effectFile = "gfx/FX/buttonstate.lua"
-	}
-	spriteType = {
-		name = "GFX_idea_dummy_governance_2"
-		texturefile = "gfx//interface//ideas//idea_governance_2.dds"
-		noOfFrames = 1
-
-		effectFile = "gfx/FX/buttonstate.lua"
-	}
 }
