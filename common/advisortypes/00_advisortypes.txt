@@ -86,7 +86,7 @@ artist = {
 
 	# Bonus
 	stability_cost_modifier = -0.10
-	prestige_decay = -0.05
+	prestige_decay = -0.01
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 
