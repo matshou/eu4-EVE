@@ -190,7 +190,7 @@ courthouse = {
 	modifier = {
 		local_state_maintenance_modifier = -0.30
 		local_autonomy = -0.1
-		local_unrest = -1
+		local_unrest = -2
 	}
 
 	on_built = {

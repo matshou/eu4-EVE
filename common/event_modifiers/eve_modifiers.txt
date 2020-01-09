@@ -82,8 +82,8 @@ prov_state_adm_center = {
 prov_state_jurisdiction = {							# hardcoded for 'tooltip_state_jurisdiction'
 	local_state_maintenance_modifier = -0.20
 	min_local_autonomy = -5
-	local_autonomy = -0.08
-	local_unrest = -0.8
+	local_autonomy = -0.05
+	local_unrest = -1
 	picture = "state_jurisdiction_icon"
 }
 
