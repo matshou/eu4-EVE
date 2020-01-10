@@ -544,11 +544,30 @@ town_hall = {
 
 	make_obsolete = courthouse
 
+	trigger = {
+		can_build_adm_center = yes
+	}
+
 	modifier = {
 		local_state_maintenance_modifier = -0.70
 		allowed_num_of_buildings = 1
 		local_autonomy = -0.2
 		local_unrest = -2
+	}
+
+	on_built = {
+		hidden_effect = {
+			province_event = { id = eve_flavor_event.3 }
+		}
+	}
+	# Will not be called if the buildings was automatically removed
+	# when it no longer meets trigger conditions
+	#
+	on_destroyed = {
+		if = {
+			limit = { has_province_modifier = prov_state_adm_center }
+			states.remove_jurisdiction = yes
+		}
 	}
 
 	ai_will_do = {

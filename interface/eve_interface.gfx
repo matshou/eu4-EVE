@@ -7,6 +7,12 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = "TOWN_HALL_eventPicture"
+		texturefile = "gfx/event_pictures/eve_town_hall_picture.dds"
+		allwaystransparent = yes
+	}
+
+	spriteType = {
 		name = "GFX_idea_dummy_governance_1"
 		texturefile = "gfx//interface//ideas//idea_governance_1.dds"
 		noOfFrames = 1
