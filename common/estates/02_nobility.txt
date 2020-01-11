@@ -270,7 +270,7 @@ estate_nobles =
 				has_disaster = estate_jains_disaster
 			}
 		}
-		loyalty = -40
+		loyalty = -30
 	}
 	loyalty_modifier = {
 		desc = EST_VAL_NOBLES_OF_THE_ROBE_LOY
