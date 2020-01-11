@@ -78,10 +78,10 @@ estate_burghers =
 	}
 	province_modifier_angry = {
 		local_build_time = 0.3
-		local_build_cost = -0.3
-		local_ship_cost = - 0.3
+		local_build_cost = 0.3
+		local_ship_cost = 0.3
 		local_ship_repair = -0.3
-		ship_recruit_speed = -0.3
+		ship_recruit_speed = 0.3
 		local_autonomy = 0.1
 		local_unrest = 4
 	}
