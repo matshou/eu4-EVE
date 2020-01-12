@@ -190,7 +190,7 @@ update_advisor_mod = {
 			add_country_modifier = { name = employed_$advisor$ hidden = yes }
 		}
 	}
-	else if = {
+	else_if = {
 		limit = { has_country_modifier = employed_$advisor$ }
 		remove_country_modifier = employed_$advisor$
 	}
