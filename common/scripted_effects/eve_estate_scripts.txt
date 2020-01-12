@@ -35,7 +35,7 @@ update_internal = {
 			}
 			# Do something here
 		}
-		else if = {		# Estate is Neutral (40 -59 loyalty)
+		else_if = {		# Estate is Neutral (40 -59 loyalty)
 			limit = {
 				check_variable = { which = est_loyalty_lvl value = 2 }
 			}
@@ -59,7 +59,7 @@ set_estate_loyalty_lvl = {
 		}
 		set_variable = { which = est_loyalty_lvl value = 3 }	# 60 - 100
 	}
-	else if = {
+	else_if = {
 		limit = {
 			estate_loyalty = { estate = estate_$estate$ loyalty = 40 }
 		}
@@ -81,13 +81,13 @@ set_estate_influence_lvl = {
 		}
 		set_variable = { which = est_influence_lvl value = 4 }	# 60 - 100
 	}
-	else if = {
+	else_if = {
 		limit = {
 			estate_influence = { estate = estate_$estate$ influence = 40 }
 		}
 		set_variable = { which = est_influence_lvl value = 3 }	# 40 - 59
 	}
-	else if = {
+	else_if = {
 		limit = {
 			estate_influence = { estate = estate_$estate$ influence = 20 }
 		}
