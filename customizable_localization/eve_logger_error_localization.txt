@@ -45,27 +45,27 @@ defined_text = {
 	random = no
 
 	text = {
-		localisation_key = error_log.199
+		localisation_key = error_log.101
         trigger = {
-			core.is_log = { id = 199 }
+			core.is_log = { id = 101 }
 		}
 	}
 	text = {
-		localisation_key = error_log.212
+		localisation_key = error_log.107
         trigger = {
-			core.is_log = { id = 212 }
+			core.is_log = { id = 107 }
 		}
 	}
 	text = {
-		localisation_key = error_log.279
+		localisation_key = error_log.102
         trigger = {
-			core.is_log = { id = 279 }
+			core.is_log = { id = 102 }
 		}
 	}
 	text = {
-		localisation_key = error_log.309
+		localisation_key = error_log.103
         trigger = {
-			core.is_log = { id = 309 }
+			core.is_log = { id = 103 }
 		}
 	}
 	text = {
@@ -75,21 +75,9 @@ defined_text = {
 		}
 	}
 	text = {
-		localisation_key = error_log.140
+		localisation_key = error_log.105
         trigger = {
-			core.is_log = { id = 140 }
-		}
-	}
-	text = {
-		localisation_key = error_log.405
-		trigger = {
-			core.is_log = { id = 405 }
-		}
-	}
-	text = {
-		localisation_key = error_log.362
-		trigger = {
-			core.is_log = { id = 362 }
+			core.is_log = { id = 105 }
 		}
 	}
 	text = {
