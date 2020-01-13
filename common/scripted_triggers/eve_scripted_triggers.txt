@@ -16,9 +16,11 @@ core.is_global_scope = {
 	tag = event_target:global
 }
 
-core.is_error = {
-	event_target:global = {
-		is_variable_equal = { which = c value = $code$ }
+core.is_log = {
+	ROOT = {
+		is_variable_equal = {
+			which = log_id value = $id$
+		}
 	}
 }
 

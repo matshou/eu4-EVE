@@ -55,7 +55,7 @@ province.set_owner_id = {
 
 	if = {
 		limit = { core.is_province = no }
-		logger.print_error = { code = 140 method = 1 }
+		logger.print_error = { id = 140 method = 1 }
 	}
 	owner = {
 		if = {
@@ -63,6 +63,6 @@ province.set_owner_id = {
 			core.export_var_to_prev = { var = country_id }
 			PREV = { declare_variable = { which = owner_id from = output } }
 		}
-		else = { logger.print_error = { code = 279 method = 1 } }
+		else = { logger.print_error = { id = 279 method = 1 } }
 	}
 }
