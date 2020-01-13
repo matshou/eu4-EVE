@@ -51,8 +51,8 @@ core.on_monthly_pulse = {
 		core.global_update = yes
 	}
 
-	states.update_all = yes
-	states.update_non_states = yes
+	states.update_states = yes
+	states.update_territories = yes
 	autonomy.check_for_change = yes
 	vassals.update = yes
 
@@ -173,6 +173,7 @@ core.update_advisor_mods = {
 
 	update_advisor_mod = { advisor = inquisitor }
 	update_advisor_mod = { advisor = statesman }
+	update_advisor_mod = { advisor = fortification_expert }
 	update_advisor_mod = { advisor = naval_reformer }
 	update_advisor_mod = { advisor = philosopher }
 	update_advisor_mod = { advisor = artist }

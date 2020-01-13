@@ -5,4 +5,10 @@ spriteTypes = {
 		texturefile = "gfx/event_pictures/eve_courthouse_picture.dds"
 		allwaystransparent = yes
 	}
+
+	spriteType = {
+		name = "TOWN_HALL_eventPicture"
+		texturefile = "gfx/event_pictures/eve_town_hall_picture.dds"
+		allwaystransparent = yes
+	}
 }

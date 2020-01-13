@@ -1,0 +1,15 @@
+
+###############################
+# EVE - Triggered Modifiers
+###############################
+
+ai_war_taxes_effects = {
+	potential = {
+		ai = yes
+	}
+	trigger = {
+		has_wartaxes = yes
+	}
+	# counter war_taxes changes for ai
+	war_exhaustion = -0.05
+}

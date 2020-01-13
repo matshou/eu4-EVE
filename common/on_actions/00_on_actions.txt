@@ -1,7 +1,41 @@
 #When adding effects directly in on_actions always consider if it would be best to do so through a scripted effect. on_actions with a lot of script in them are harder to get an overview of.
 
-# country
+# Fires for every country immediately after your load or start a new campaign.
+# It will NOT fire for player when using the loading a game inside an existing campaign
+# @scope country
+#
 on_startup = {
+
+	# Mod initialization phase
+	# Loading/starting campaign with this mod for the first time
+	if = {
+		limit = { NOT = { has_global_flag = eve_initialized } }
+		if = {
+			limit = { ai = no }
+
+			save_global_event_target_as = global			# set player as global scope
+			set_variable = { which = init_num value = 0 }	# id of last initialized country
+
+			every_country = { core.init_country = yes }
+			set_global_flag = eve_initialized
+
+			log = "EVE: Running this mod for the first time this campaign."
+			log = "EVE: Successfully initialized [This.init_num.GetValue] countries."
+		}
+	}
+	# Loaded an existing save game file with mod already initialized
+	else = {
+		# initialize null value variables so they display properly in GUI
+		governance.reinit_values = yes
+
+		# When loading a save file the monthly pulse stop firing for some reason.
+		# Reset the modifier here to force the game to start firing 'on_activation'
+		capital_scope = {
+			remove_province_triggered_modifier = capital_province
+			add_province_triggered_modifier = capital_province
+		}
+	}
+
 	events = {
 		muslim_school_events.20 #Pick School
 	}
@@ -1007,14 +1041,17 @@ on_dismantle_revolution = {
 
 # province
 on_adm_development = {
+	province.develop = yes
 }
 
 # province
 on_dip_development = {
+	province.develop = yes
 }
 
 # province
 on_mil_development = {
+	province.develop = yes
 }
 
 on_overextension_pulse = {
