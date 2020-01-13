@@ -16,5 +16,6 @@
  error_pointer.2:0 "core.init_country"
 
  string_info_log:0 "EVE: Log >> [Prev.info_log_content_txt]"
- info_log.000: "Test info log message for [This.GetName]."
 
+ info_log.000: "Test info log message for [This.GetName]."
+ info_log.101: "Running Player tests for [This.GetName]."

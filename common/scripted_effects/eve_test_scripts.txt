@@ -1,0 +1,41 @@
+
+############################
+# EVE - Test Scripts
+############################
+
+# Run all defined tests
+# @scope country
+# @access public
+test.run_tests = {
+
+	test.run_common_tests = yes
+
+	if = {
+		limit = { ai = yes }
+		test.run_ai_tests = yes
+	}
+	else = {
+		test.run_player_tests = yes
+	}
+}
+
+# Run both AI and Player tests
+# @access public
+test.run_common_tests = {
+
+}
+
+# Run AI only tests
+# @access public
+test.run_ai_tests = {
+
+}
+
+# Run Player only tests
+# @access public
+test.run_player_tests = {
+
+	#logger.print_info { id = 101 }
+}
+
+
