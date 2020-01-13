@@ -20,15 +20,18 @@
  desc_prov_autonomy_from_dist_350:0 "The population here is extremely more difficult to properly govern due to the distance of this province from our capital city."
  tooltip_autonomy_distance:0 "Every province with a fair distance from the capital will receive the §YSelf-Governance§! scaling modifier that affects local autonomy."
 
+ province_developing_0:0 "Development Planning"
+ desc_province_developing_0:0 "This province is undergoing development planning so it's not possible to develop it further."
  province_developing:0 "Province Developing"
  desc_province_developing:0 "This province is currently being developed, so it would be much harder to develop it further."
  prov_state_adm_center:0 "State Administrative Center"
  desc_prov_state_adm_center:0 "This province is the state's administrative center and home to a local court of law. It will help enforce governmental jurisdiction and provide additional stability to every province in the state of [This.GetAreaName]."
  prov_state_jurisdiction:0 "State Jurisdiction"
  desc_prov_state_jurisdiction:0 "This province belongs to a state with an established administrative center and local court of law. It will receive the benefits of better governance."
- tooltip_state_jurisdiction:0 "As long [This.GetName] has a courthouse every province in the state of §Y[This.GetAreaName]§! will receive the following effect:\n Local Unrest: §G-0.80§!\n State Maintenance: §G-20.0%§!\n Minimum Local Autonomy: §G5.00§!\n Monthly Autonomy Change: §G-0.08§!"
+ tooltip_state_jurisdiction:0 "As long [This.GetName] has an administrative building every province in the state of §Y[This.GetAreaName]§! will receive the following effect:\n Local Unrest: §G-1§!\n State Maintenance: §G-20.0%§!\n Minimum Local Autonomy: §G5.00§!\n Monthly Autonomy Change: §G-0.05§!"
 
- building_courthouse_desc:0 "Courthouse is a government building that is home to a local court of law and regional county  government. It is also the state's main administrative center. As a result, all state provinces will receive benefits of better governance.\n--------------\n§YBuilding Requirements:§!\n - State does §RNOT§! have a courthouse or town hall.\n - Province belongs to a state.\n--------------\nState Administration: §G+?§!"
+ building_courthouse_desc:0 "Courthouse is a government building that is home to a local court of law and regional county government. It is also the state's main administrative center. As a result, all state provinces will receive benefits of better governance.\n--------------\n§YBuilding Requirements:§!\n - State does §RNOT§! have a courthouse or town hall.\n - Province belongs to a state.\n--------------"
+ building_town_hall_desc:0 "Town Hall is a government building that is home to a local court of law and regional county government as well as place of various civic and cultural activities such as art shows, stage performances, exhibits and festivals. It is also the state's main administrative center. As a result, all state provinces will receive benefits of better governance.\n--------------\n§YBuilding Requirements:§!\n - State does §RNOT§! have a courthouse or town hall.\n - Province belongs to a state.\n--------------"
 
  EST_VAL_FULL_TRADE:0 "Merchant Class: $VAL|Y$"
  EST_VAL_FULL_INFLUENCE:0 "Sphere of Influence: $VAL|Y$"
@@ -53,6 +56,10 @@
  eve_flavor_event.2.t:0 "Courthouse Built"
  eve_flavor_event.2.d:0 "Today is a busy day for the administrative branch of [This.GetName]. Local magistrates, clerks and other state officials can be seen happily gathering their books and scrolls, making their way to the city center where the construction of a local court of law has just finished.\n\nFrom now on all judicial and administrative matters of [This.GetName] ranging from legal disputes and civil complaints to tax collection and local legislations shall be conducted here. The courthouse will also act as a state administrative center enforcing governmental jurisdiction and providing additional stability to every province in the state of [This.GetAreaName]."
  eve_flavor_event.2.a:0 "Legem Terrae"
+
+ eve_flavor_event.3.t:0 "Town Hall Built"
+ eve_flavor_event.3.d:0 "Today is a day of great importance for the people of [This.GetName]. Crowds of people from high and low gather around to enjoy the various festivities in the town center: art shows, stage performances and various other exhibitions; organized to celebrate the finished construction of the city's Town Hall.\n\nLocal magistrates, clerks and other state officials can be seen with books and scrolls in hand, making their way up the stairs of this magnificent building. From now on all judicial and administrative matters of [This.GetName] ranging from legal disputes and civil complaints to tax collection and local legislations shall be conducted here. The Town Hall will also act as a state administrative center enforcing governmental jurisdiction and providing additional stability to every province in the state of [This.GetAreaName]."
+ eve_flavor_event.3.a: "Legem Terrae"
 
  string_separator:0 "\n--------------\n"
  string_null:0 ""

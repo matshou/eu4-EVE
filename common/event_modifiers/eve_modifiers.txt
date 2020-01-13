@@ -74,8 +74,8 @@ prov_state_adm_center = {
 prov_state_jurisdiction = {							# hardcoded for 'tooltip_state_jurisdiction'
 	local_state_maintenance_modifier = -0.20
 	min_local_autonomy = -5
-	local_autonomy = -0.08
-	local_unrest = -0.8
+	local_autonomy = -0.05
+	local_unrest = -1
 	picture = "state_jurisdiction_icon"
 }
 
@@ -93,16 +93,20 @@ employed_statesman = {
 	adm_tech_cost_modifier = -0.03
 }
 
+employed_fortification_expert = {
+	mil_tech_cost_modifier = -0.03
+}
+
 employed_naval_reformer = {
 	dip_tech_cost_modifier = -0.03
 }
 
 employed_philosopher = {
-	innovativeness_gain = 0.2
+	innovativeness_gain = 0.15
 }
 
 employed_artist = {
-	innovativeness_gain = 0.1
+	innovativeness_gain = 0.15
 }
 
 ###############################

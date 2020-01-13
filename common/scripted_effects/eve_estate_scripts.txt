@@ -43,7 +43,7 @@ estates.set_developing = {
 	owner = {
 		add_country_modifier = {
 			name = estate_developed_$estate$
-			duration = 60 hidden = yes
+			duration = 90 hidden = yes
 		}
 	}
 }

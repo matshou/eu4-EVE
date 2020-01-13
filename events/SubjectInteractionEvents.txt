@@ -2192,6 +2192,7 @@ country_event = {
 	}
 }
 
+
 #Rightful Ownership - Subject
 country_event = {
 	id = subject_interaction_events.40
@@ -2207,10 +2208,7 @@ country_event = {
 			num_of_cities = 2
 			any_owned_province = {
 				controlled_by = THIS
-				OR = {
-					is_claim = ROOT
-					is_core = ROOT
-				}
+				is_core = ROOT
 			}
 		}
 	}
@@ -2221,10 +2219,7 @@ country_event = {
 				random_owned_province = {
 					limit = {
 						controlled_by = THIS
-						OR = {
-							is_claim = ROOT
-							is_core = ROOT
-						}
+						is_core = ROOT
 					}
 					save_event_target_as = rightful_province
 				}
@@ -2245,7 +2240,6 @@ country_event = {
 		add_prestige = 10
 		event_target:rightful_province = {
 			remove_core = ROOT
-			remove_claim = ROOT
 		}
 	}
 }
@@ -2270,27 +2264,20 @@ country_event = {
 				}
 			}
 			modifier = {
-				factor = 0.5
+				factor = 1.25
 				event_target:rightful_province = {
 					development = 15
 				}
 			}
 			modifier = {
-				factor = 1.25
-				event_target:rightful_province = {
-					has_owner_culture = no
-				}
-			}
-			modifier = {
 				factor = 1.5
 				event_target:rightful_province = {
-					is_core = FROM
+					has_owner_culture = no
 				}
 			}
 		}
 		event_target:rightful_province = {
 			remove_core = ROOT
-			remove_claim = ROOT
 			cede_province = FROM
 		}
 		FROM = { add_opinion = { who = ROOT modifier = opinion_gave_province } }

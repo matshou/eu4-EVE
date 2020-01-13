@@ -35,11 +35,34 @@ province_event = {
 
 	trigger = {
 		province.is_player_owned = yes
-		#has_building = courthouse
 	}
 
 	option = {
 		name = eve_flavor_event.2.a
 		custom_tooltip = tooltip_state_jurisdiction
+		hidden_effect = {
+			states.apply_jurisdiction = yes
+		}
+	}
+}
+
+province_event = {
+	id = eve_flavor_event.3					# Town Hall Built
+	title = eve_flavor_event.3.t
+	desc = eve_flavor_event.3.d
+	picture = TOWN_HALL_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		province.is_player_owned = yes
+	}
+
+	option = {
+		name = eve_flavor_event.3.a
+		custom_tooltip = tooltip_state_jurisdiction
+		hidden_effect = {
+			states.apply_jurisdiction = yes
+		}
 	}
 }

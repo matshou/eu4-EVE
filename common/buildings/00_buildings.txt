@@ -171,9 +171,30 @@ fort_15th = {
 courthouse = {
 	cost = 100
 	time = 12
+
+	trigger = {
+		can_build_adm_center = yes
+	}
+
 	modifier = {
-		local_state_maintenance_modifier = -0.25
+		local_state_maintenance_modifier = -0.30
 		local_autonomy = -0.1
+		local_unrest = -2
+	}
+
+	on_built = {
+		hidden_effect = {
+			province_event = { id = eve_flavor_event.2 }
+		}
+	}
+	# Will not be called if the buildings was automatically removed
+	# when it no longer meets trigger conditions
+	#
+	on_destroyed = {
+		if = {
+			limit = { has_province_modifier = prov_state_adm_center }
+			states.remove_jurisdiction = yes
+		}
 	}
 
 	ai_will_do = {
@@ -189,6 +210,7 @@ dock = {
 	}
 	modifier = {
 		local_sailors_modifier = 0.5
+		province_trade_power_modifier = 0.15
 	}
 
 	ai_will_do = {
@@ -201,6 +223,7 @@ regimental_camp = {
 	time = 12
 	modifier = {
 		land_forcelimit = 1
+		regiment_recruit_speed = -0.35
 	}
 
 #	# THIS = Province, FROM = Builder(not nessecairly owner, can be overlord)
@@ -505,13 +528,34 @@ counting_house = {
 
 town_hall = {
 	cost = 200
-	time = 12
+	time = 1
 
 	make_obsolete = courthouse
 
+	trigger = {
+		can_build_adm_center = yes
+	}
+
 	modifier = {
-		local_state_maintenance_modifier = -0.5
+		local_state_maintenance_modifier = -0.60
+		local_culture_conversion_cost = -0.3
 		local_autonomy = -0.2
+		local_unrest = -3
+	}
+
+	on_built = {
+		hidden_effect = {
+			province_event = { id = eve_flavor_event.3 }
+		}
+	}
+	# Will not be called if the buildings was automatically removed
+	# when it no longer meets trigger conditions
+	#
+	on_destroyed = {
+		if = {
+			limit = { has_province_modifier = prov_state_adm_center }
+			states.remove_jurisdiction = yes
+		}
 	}
 
 	ai_will_do = {
