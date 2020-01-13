@@ -100,7 +100,7 @@ core.init_country = {
 			set_country_flag = territorial_change
 		}
 		else = {
-			logger.print_error = { code = 140 method = 2 }
+			logger.print_error = { id = 140 method = 2 }
 		}
 	}
 }
@@ -120,7 +120,7 @@ core.set_country_id = {
 		PREV = { change_variable = { which = init_num value = 1 } }
 		change_variable = { which = country_id value = 1 }
 	}
-	else = { logger.print_error = { code = 199 } }
+	else = { logger.print_error = { id = 199 } }
 }
 
 # Export argument variable to PREV scope so it can be used for comparison.

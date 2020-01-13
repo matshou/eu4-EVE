@@ -1,51 +1,15 @@
 namespace = eve_print_info
 namespace = eve_print_error
 
-# Normally we would print error logs directly from scripted files however
-# since Dharma update (1.26) the game would crash when printing a log containing
+# Normally we would print logs directly from scripted files however
+# since Dharma update (1.26) the game would crash when printing logs containing
 # customizable localization tags from scripted effects and scripted triggers.
 
 #! NOTE: Do not remove option tags or we will get errors!
 
-country_event = {
-	id = eve_print_error.1
-	title = eve_print_error.1.t	  # unlocalized
-	desc = "" picture = ""
-	hidden = yes
-
-	is_triggered_only = yes
-
-	trigger = {
-		always = yes
-	}
-
-	immediate = {
-		event_target:global = {
-			log = "[This.error_log_txt]"
-		}
-	}
-	option = {}
-}
-
-province_event = {
-	id = eve_print_error.2
-	title = eve_print_error.2.t	  # unlocalized
-	desc = "" picture = ""
-	hidden = yes
-
-	is_triggered_only = yes
-
-	trigger = {
-		always = yes
-	}
-
-	immediate = {
-		event_target:global = {
-			log = "[This.error_log_txt]"
-		}
-	}
-	option = {}
-}
+####################
+# Info Log Events
+####################
 
 country_event = {
 	id = eve_print_info.1
@@ -60,8 +24,7 @@ country_event = {
 	}
 
 	immediate = {
-		log = "EVE: Variable value: [This.k.GetValue]"
-		set_variable = { which = k value = 0 }
+		ROOT = { log = "[This.info_log_txt]" }
 	}
 	option = {}
 }
@@ -79,7 +42,47 @@ province_event = {
 	}
 
 	immediate = {
-		log = "EVE: Variable value: [This.loc_var.GetValue]"
+		ROOT = { log = "[This.info_log_txt]" }
+	}
+	option = {}
+}
+
+####################
+# Error Log Events
+####################
+
+country_event = {
+	id = eve_print_error.1
+	title = eve_print_error.1.t	  # unlocalized
+	desc = "" picture = ""
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		always = yes
+	}
+
+	immediate = {
+		ROOT = { log = "[This.error_log_txt]" }
+	}
+	option = {}
+}
+
+province_event = {
+	id = eve_print_error.2
+	title = eve_print_error.2.t	  # unlocalized
+	desc = "" picture = ""
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		always = yes
+	}
+
+	immediate = {
+		ROOT = { log = "[This.error_log_txt]" }
 	}
 	option = {}
 }

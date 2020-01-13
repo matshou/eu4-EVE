@@ -3,7 +3,7 @@
 # EVE: Error Log Text
 ###########################
 
-#Error report text
+#Error text format
 #Ex: "EVE: Error 140 >>..."
 defined_text = {
 	name = error_log_txt
@@ -38,56 +38,56 @@ defined_text = {
 	}
 }
 
-#Contents of the error log
+#Content of the error log
 #Ex: "Access violation for France..."
 defined_text = {
 	name = error_log_content_txt
 	random = no
 
 	text = {
-		localisation_key = error.199
+		localisation_key = error_log.199
         trigger = {
-			core.is_error = { code = 199 }
+			core.is_log = { id = 199 }
 		}
 	}
 	text = {
-		localisation_key = error.279
+		localisation_key = error_log.279
         trigger = {
-			core.is_error = { code = 279 }
+			core.is_log = { id = 279 }
 		}
 	}
 	text = {
-		localisation_key = error.309
+		localisation_key = error_log.309
         trigger = {
-			core.is_error = { code = 309 }
+			core.is_log = { id = 309 }
 		}
 	}
 	text = {
-		localisation_key = error.104
+		localisation_key = error_log.104
         trigger = {
-			core.is_error = { code = 104 }
+			core.is_log = { id = 104 }
 		}
 	}
 	text = {
-		localisation_key = error.140
+		localisation_key = error_log.140
         trigger = {
-			core.is_error = { code = 140 }
+			core.is_log = { id = 140 }
 		}
 	}
 	text = {
-		localisation_key = error.405
+		localisation_key = error_log.405
 		trigger = {
-			core.is_error = { code = 405 }
+			core.is_log = { id = 405 }
 		}
 	}
 	text = {
-		localisation_key = error.362
+		localisation_key = error_log.362
 		trigger = {
-			core.is_error = { code = 362 }
+			core.is_log = { id = 362 }
 		}
 	}
 	text = {
-		localisation_key = error.000
+		localisation_key = error_log.000
 		trigger = {
 			always = yes
 		}

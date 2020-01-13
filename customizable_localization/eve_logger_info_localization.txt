@@ -1,0 +1,30 @@
+
+###########################
+# EVE: Info Log Text
+###########################
+
+defined_text = {
+	name = info_log_txt
+	random = no
+
+	text = {
+		localisation_key = string_info_log
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+#Content of the info log
+#Ex: "Hello world from Austria!"
+defined_text = {
+	name = info_log_content_txt
+	random = no
+
+	text = {
+		localisation_key = info_log.000
+        trigger = {
+			core.is_log = { id = 000 }
+		}
+	}
+}

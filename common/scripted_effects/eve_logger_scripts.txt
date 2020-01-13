@@ -3,46 +3,37 @@
 # EVE - Logger Scripts
 #############################
 
-# Print error message to game.log
+# Print info log to game.log
 # Strings are stored in localization files
 # @scope anywhere
-# @param code, method (localization)
+# @param id
+#
+logger.print_info = {
+
+	set_variable = { which = log_id value = $id$ }
+	call_logger = { event = print_info }
+}
+
+# Print error log to game.log
+# Strings are stored in localization files
+# @scope anywhere
+# @param id, method
 #
 logger.print_error = {
 
-	event_target:global = {
-		set_variable = { which = c value = $code$ }
-		set_variable = { which = m value = 0 }
-		[[method]
-			set_variable = { which = m value = $method$ }
-		]
-	}
-	logger.call_logger = { event = print_error }
-}
-
-# Print variable value to game.log
-# @scope anywhere
-# @param var
-#
-logger.print_variable_info = {
-
-	set_variable = { which = k which = $var$ }
-	logger.call_logger = { event = print_info }
-}
-
-# Prints output variable value to game.log
-# @scope anywhere
-#
-logger.print_output = {
-
-	logger.print_variable_info = { var = output }
+	set_variable = { which = log_id value = $id$ }
+	set_variable = { which = m value = 0 }
+	[[method]
+		set_variable = { which = m value = $method$ }
+	]
+	call_logger = { event = print_error }
 }
 
 # Helper method that calls appropriate logger event
-# @scope anywhere
-# @param event$
+# @scope private
+# @param event
 #
-logger.call_logger = {
+call_logger = {
 
 	if = {
 		limit = { core.is_country = yes }
