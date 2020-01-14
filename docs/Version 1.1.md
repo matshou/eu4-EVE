@@ -117,7 +117,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 - <details>
 	<summary><b>Philosopher</b> now also lowers idea cost by -5%.</summary>
 	<ul>
-		<li>This advisor is more likely to join court if the country has completed the Humanist idea group or has taken *Patron of the Arts* idea from the Innovativeness idea group.</li>
+		<li>This advisor is more likely to join court if the country has completed the Humanist idea group or has taken <i>Patron of the Arts</i> idea from the Innovativeness idea group.</li>
 		<li>AI is more likely to hire this advisor if it has low prestige.</li>
 	    <li>Also grants a hidden modifier that increases innovativeness gain by +15%.</li>
 </ul>
@@ -125,7 +125,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 - <details>
 	<summary><b>Natural scientist</b> now also increases innovativeness gain by +25%.</summary>
 	<ul>
-		<li>This advisor is more likely to join court if the country has taken *Scientific Revolution* idea from the Innovativeness idea group.</li>
+		<li>This advisor is more likely to join court if the country has taken <i>Scientific Revolution</i> idea from the Innovativeness idea group.</li>
 		<li>AI is more likely to hire this advisor if it's production income percentage is +30% or higher.</li>
 	</ul>
 </details>
@@ -133,7 +133,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 - <details>
 	<summary><b>Artist</b> now also slows prestige decay by -1%.</summary>
 	<ul>
-		<li>This advisor is more likely to join court if the country has taken *Patron of the Arts* idea from the Innovativeness idea group or is Papal State and has taken *The Vatican Museums* national idea.</li>
+		<li>This advisor is more likely to join court if the country has taken <i>Patron of the Arts</i> idea from the Innovativeness idea group or is Papal State and has taken <i>The Vatican Museums</i> national idea.</li>
 		<li>AI is proportionately more likely to hire this advisor when it has negative stability.</li>
       <li>Also grants a hidden modifier that increases innovativeness gain by +15%.</li>
 	</ul>
@@ -142,7 +142,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 - <details>
 	<summary><b>Treasurer</b> now also decreases build cost by -5%.</summary>
 	<ul>
-		<li>This advisor is more likely to join court if the country has taken *Debt and Loans* or *Bureaucracy* idea from the Economic idea group.</li>
+		<li>This advisor is more likely to join court if the country has taken <i>Debt and Loans</i> or <i>Bureaucracy</i> idea from the Economic idea group.</li>
 		<li>AI is more likely to hire this advisor when its tax income percentage is 30% or higher.</li>
 	</ul>
 </details>
@@ -158,7 +158,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 - <details>
 	<summary><b>Master of Mint</b> now also lowers inflation reduction cost by -20%.</summary>
 	<ul>
-		<li>This advisor is more likely to join court if the country has taken *National Bank* idea from the Economic idea group.</li>
+		<li>This advisor is more likely to join court if the country has taken <i>National Bank</i> idea from the Economic idea group.</li>
 		<li>AI is proportionally more likely to hire this advisor if it's inflation rate is 5% or higher.</li>
 	</ul>
 </details>
@@ -175,7 +175,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 	            <li><code>Innovativeness Gain: -0.3</code></li><br>
 	    	</ul>
 	    </li>
-		<li>This advisor is more likely to join court in the age of reformation and less likely to join court if the country has completed the *Humanist* idea group.</li>
+		<li>This advisor is more likely to join court in the age of reformation and less likely to join court if the country has completed the <i>Humanist</i> idea group.</li>
 		<li>AI is more likely to hire this advisor in the age of reformation.</li>
 	</ul>
 	</details>
@@ -219,7 +219,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 - <details>
 	<summary><b>Military Engineer</b> now increases province defensiveness by +25% <sup>(+20%)</sup> and army siege ability by 10%.</summary>
 	<ul>
-		<li>This advisor is more likely to join court if the country has taken *Defensive Mentality* idea from the Defensive idea group. AI is more likely to hire this advisor if losing a war.</li>
+		<li>This advisor is more likely to join court if the country has taken <i>Defensive Mentality</i> idea from the Defensive idea group. AI is more likely to hire this advisor if losing a war.</li>
 	    <li>Also grants a hidden modifier that reduces Military Technology Cost by -3%.</li>
 </ul>
 </details>
