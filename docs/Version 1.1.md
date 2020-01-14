@@ -56,6 +56,7 @@ Version 1.1 aka "Lex Terrae" is the initial mod release version.
 #### Development
 
 - Province development now increases local defensiveness by +1.5% per development level invested in manpower.
+- Developing provinces will now increase further local development cost by +300% for 4 months.
 - Developing provinces that belong to estates now increases monthly estate loyalty for a while.
 
 ### Diplomacy
@@ -274,6 +275,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 	</details>
 - Warning rivals now gives 5 <sup>(0)</sup> power projection.
 - Guaranteeing independence of countries that are neighboring your rivals now gives 5 <sup>(0)</sup> power projection.
+- Power projection gained from goals achieved in the last age now decay at a rate of 0.3 <sup>(1)</sup> per year.
 
 ### Ideas
 
