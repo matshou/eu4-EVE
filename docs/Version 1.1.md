@@ -35,8 +35,8 @@ Version 1.1 aka "Lex Terrae" is the initial mod release version.
 
 ## New Features
 
-- The peasantry has learned the art of self-governance making sprawling empires more difficult to manage.
-- Terrain once again reduces combat width making smaller nations playable again.
+- The peasantry has learned the art of self-governance making sprawling empires more difficult to manage.[^1]
+- Terrain once again reduces combat width making smaller nations playable again.[^2]
 - Overlords can now negotiate tax rates with their vassals.󠀡
 
 ***
@@ -45,7 +45,7 @@ Version 1.1 aka "Lex Terrae" is the initial mod release version.
 
 ### Economy
 
-- War taxes now decrease land and naval maintenance by -25%<sup>(-15%)</sup> and increases war exhaustion by +0.065 for player countries and +0.015 for AI countries.
+- War taxes now decrease land and naval maintenance by -25%<sup>(-15%)</sup> and increases war exhaustion by +0.065.[^3]
 - *Centralization Edict* now decreases local monthly autonomy by -0.05.<sup>(-0.03)</sup>
 
 #### Capital
@@ -55,8 +55,8 @@ Version 1.1 aka "Lex Terrae" is the initial mod release version.
 
 #### Development
 
-- Province development now increases local defensiveness by +1.5% per development level invested in manpower.
-- Developing provinces will now increase further local development cost by +300% for 4 months.
+- Province development now increases local defensiveness by +1.5% per development level invested in manpower.[^4]
+- Developing provinces will now increase further local development cost by +300% for 4 months.[^5]
 - Developing provinces that belong to estates now increases monthly estate loyalty for a while.
 
 ### Diplomacy
@@ -88,7 +88,7 @@ Version 1.1 aka "Lex Terrae" is the initial mod release version.
 
 #### Administrative
 
-- Courthouse and Town Hall are now considered *administrative buildings*.
+- Courthouse and Town Hall are now considered *administrative buildings*.[^6]
 - <details>
   <summary>Administrative buildings unlock a unique mechanic that provides state-wide governance modifiers.</summary>
   Having this type of building in a province turns that province into a <i>State Administrative Center</i> that in addition to standard building modifiers provides additional bonuses:
@@ -113,7 +113,7 @@ Version 1.1 aka "Lex Terrae" is the initial mod release version.
 
 ### Advisors
 
-All advisor types now have secondary modifiers (some also having hidden tertiary modifiers) to increase their usefulness in more diverse scenarios beyond just providing monarch points.
+All advisor types now have secondary modifiers (some also having hidden tertiary modifiers) to increase their usefulness in more diverse scenarios beyond just providing monarch points.[^7]
 
 - <details>
 	<summary><b>Philosopher</b> now also lowers idea cost by -5%.</summary>
@@ -231,13 +231,13 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 
 ### Military 
 
-- Countries can now maintain up to 2 <sup>(1)</sup> military leaders without incurring a penalty to military power.
+- Countries can now maintain up to 2 <sup>(1)</sup> military leaders without incurring a penalty to military power.[^8]
 - Average number of months for increasing general pips when drilling 100% of force limit decreased to 90.<sup>(120)</sup>
 
 #### Army Professionalism
 
 - <span title="Army Professionalism >= 60%">Conscription Army<sup>?</sup></span> now also decreases regiment reinforce cost by -20%.
-- <span title="Army Professionalism >= 80%">Permanent Army<sup>?</sup></span> now also decreases general cost by -50% .
+- <span title="Army Professionalism >= 80%">Permanent Army<sup>?</sup></span> now also decreases general cost by -50%.
 - <span title="Army Professionalism = 100%">Professional Army<sup>?</sup></span> now increases leader siege by +1.0, increases army drill gain by +50% and no longer decreases general cost by 50% (this was moved to Permanent Army level).
 - Individual regiments now gain reduced land attrition by -25% when drilled at 100%.
 - <details>
@@ -282,7 +282,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 
 - Innovativeness penalty from being behind neighbors in tech decreased to 0.025.<sup>(0.03)</sup>
 - Innovativeness bonus from being ahead of time in tech increased to 0.025 <sup>(0.005)</sup> to match the penalty value.
-- Both penalty and bonus to innovativeness will now be applied for each technology types by additively stacking. For example, if a country is behind in all 3 tech types it will incur `0.075 (0.025 x 3)` penalty to innovativeness.
+- Both penalty and bonus to innovativeness will now be applied for each technology types by additively stacking.[^9]
 - <details>
       <summary>Changed national effects given by innovativeness at 100.</summary>
       <ul>
@@ -299,7 +299,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 - Minimum autonomy in estate provinces lowered to 20.<sup>(25)</sup>
 - Estate loyalty gain from granting provinces increased to 2.5.<sup>(1.0)</sup>
 - Maximum estate loyalty decay per year increased to 2.5.<sup>(2.0)</sup>
-- Developing an estate province increases monthly loyalty gain by `x2.5` for 3 months.
+- Developing an estate province increases monthly loyalty gain by `x2.5` for 3 months.[^10]
 - Cooldown from granting provinces to estates increased to 5 <sup>(1)</sup> years.
 - Single estate seizing control of the nation now lowers monthly estate loyalty gain for -30%.<sup>(+20%)</sup>
 
@@ -562,5 +562,15 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 
 ## Modding
 
+***
 
-[1]: https://github.com/yooksi/eu4-EVE/wiki/Mechanics#estate-loyalty "Estate loyalty mechanics"
+[^1]: This will result in all provinces far away from the capital receiving a penalty to minimum local autonomy and monthly autonomy change proportional to relative distance from the capital.
+[^2]: Combat width reduction from terrain types was removed in patch [1.19](https://eu4.paradoxwikis.com/index.php?title=Land_warfare&diff=84046&oldid=83983), which resulted in a not so [favorable](https://www.reddit.com/r/eu4/comments/5er27c/i_love_the_terrain_combat_width_change/) response from a large portion of the community. The exact reason for this decision is unknown but it is most likely due to player inconvenience coming from not being able to clearly see and understand the influence of terrain on CW, [ability to exploit the AI](https://forum.paradoxplaza.com/forum/index.php?threads/terrain-and-combat-width.1120021/#post-24670463) and [overpowered defence](https://forum.paradoxplaza.com/forum/index.php?threads/why-has-combat_width-for-terrain-types-been-removed.1148942/#post-25113543) after the new fort mechanic changes implemented in patch 1.18.
+[^3]: War taxes give +0.015 war exhaustion for AI countries instead of 0.065 for Player countries. This should prevent the AI from drowning in war exhaustion if overusing the war taxes mechanic. Since war taxes were practically free before the hard-coded AI logic for deciding when to take them will not take into account these new changes.
+[^4]: Investing military power in development now benefits defense as well as offense. 
+[^5]: This prevents the player from rapidly overdeveloping provinces by dumping monarch power.
+[^6]: Vanilla courthouse and town hall buildings were mostly built to affect local autonomy after which they were removed from provinces to open slots for more useful buildings. This change makes courthouse and town hall viable buildings throughout the game. The idea to make them provide state-wide affects originated from [this thread](https://forum.paradoxplaza.com/forum/index.php?threads/making-courthouses-and-town-halls-more-useful.1038730/) on Paradox forum.
+[^7]: Many ideas for secondary advisor modifiers were taken from [Meiou and Taxes](https://meiouandtaxes.fandom.com/wiki/Advisors) mod.
+[^8]: Attempt at reducing the *"tedious micromanagement of continually teleporting your generals between armies"* as so gracefully worded by this forum [post](https://forum.paradoxplaza.com/forum/index.php?threads/why-so-few-military-leaders-allowed.925276/#post-21102343). Even though this does not solve the problem it should at least alleviate it until a better solution is found.
+[^9]: For example, if a country is behind in all 3 tech types it will incur `0.075 (0.025 x 3)` penalty to innovativeness.
+[^10]: Information on how to calculate monthly estate loyalty gain can be found [here](https://github.com/yooksi/eu4-EVE/wiki/Mechanics#estate-loyalty). 
