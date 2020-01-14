@@ -72,17 +72,18 @@ Version 1.1 aka "Lex Terrae" is the initial mod release version.
 - <details>
   <summary>Changed <b>Courthouse</b> local province modifiers.</summary>
   <ul>
-  	<li><code>State Maintenance: -60% <sup>(-50%)</sup></code></li>
-  	<li><code>Local Unrest: -3</code></li>
-  	<li><code>Local Culture Conversion Cost: -30%</code></li>
+  	<li><code>State Maintenance: -30% <sup>(-25%)</sup></code></li>
+    	<li><code>Local Unrest: -2</code></li>
+   	<li><code>Monthly Autonomy Change: -0.1</code></li>
   </ul>
   </details>
 - <details>
   <summary>Changed <b>Town Hall</b> local province modifiers.</summary>
   <ul>
-  	<li><code>State Maintenance: -30% <sup>(-25%)</sup></code></li>
-    <li><code>Local Unrest: -2</code></li>
- 	<li><code>Monthly Autonomy Change: -0.1</code></li>
+  	<li><code>State Maintenance: -60% <sup>(-50%)</sup></code></li>
+  	<li><code>Local Unrest: -3</code></li>
+  	<li><code>Monthly Autonomy Change: -0.2</code></li>
+  	<li><code>Local Culture Conversion Cost: -30%</code></li>
   </ul>
   </details>
 
