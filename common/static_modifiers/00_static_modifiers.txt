@@ -552,8 +552,7 @@ ai_nation = {
 war_taxes = {
 	land_maintenance_modifier = -0.25
 	naval_maintenance_modifier = -0.25
-	possible_mercenaries = 0.05
-	war_exhaustion = 0.065
+	war_exhaustion = 0.06
 }
 
 stability = {

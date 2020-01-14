@@ -11,5 +11,5 @@ ai_war_taxes_effects = {
 		has_wartaxes = yes
 	}
 	# counter war_taxes changes for ai
-	war_exhaustion = -0.05
+	war_exhaustion = -0.03
 }
