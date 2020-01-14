@@ -238,7 +238,11 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 
 - <span title="Army Professionalism >= 60%">Conscription Army<sup>?</sup></span> now also decreases regiment reinforce cost by -20%.
 - <span title="Army Professionalism >= 80%">Permanent Army<sup>?</sup></span> now also decreases general cost by -50%.
-- <span title="Army Professionalism = 100%">Professional Army<sup>?</sup></span> now increases leader siege by +1.0, increases army drill gain by +50% and no longer decreases general cost by 50% (this was moved to Permanent Army level).
+
+- <details><summary><span title="Army Professionalism = 100%">Professional Army<sup>?</sup></span> now increases leader siege by +1.0, increases army drill gain by +50%. <sup>(+100%)</sup> </summary>
+   	No longer decreases general cost by 50% (this was moved to Permanent Army level).
+</details>
+
 - Individual regiments now gain reduced land attrition by -25% when drilled at 100%.
 - <details>
    <summary>Changed national effects of having low and high army professionalism.</summary>
@@ -312,7 +316,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
   <ul>
   <br><li>
   <details>
-  	<summary>Modifiers when estate is <span style="color:green">loyal</span>:</summary>			<br><ul>
+  	<summary>Modifiers when estate is <span style="color:green">loyal</span>:</summary>			<ul><br>
   		<li><b>National modifiers</b>:</li>
          		<ul>
           		<li><code>Development Cost: -10.0%</code></li>
@@ -325,10 +329,10 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
                   <li><code>Local Construction Cost: -25.0%</code></li>
         			<li><code>Local Trade Power: +70.0% <sup>(+50.0%)</sup></code></li>
         			<li><code>Local Goods Produced: +15.0% <sup>(+10.0%)</sup></code></li>
-        		</ul>
+        		</ul><br>
          </ul>
   	</details>
-    	</li><br><li>
+    	</li><li>
   	<details>
   	<summary>Modifiers when estate is neutral:</summary>
    	<br><ul>
@@ -341,11 +345,11 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
         	<li><b>Province modifiers</b>:</li>
         		<ul>
                   <li><code>Local Trade Power: +50.0%</code></li>
-        			<li><code>Local Goods Produced: +10.0%</code></li>
+        			<li><code>Local Goods Produced: +10.0%</code></li><br>
   			</ul>
          </ul>
     </details>
-    </li><br><li>
+    </li><li>
     <details>
         <summary>Modifiers when estate is <span style="color:red">disloyal</span>:</summary>
         <br><ul>
@@ -400,13 +404,13 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 					<li><code><s>Local Missionary Maintenance Cost: -25.0%</s></code></li>
   				<li><code>Local Missionary Strength: +2.0%</code></li>
   				<li><code>Local Unrest: -3.5 <sup>(-2.0)</sup></code></li>
-  			</ul>
+  			</ul><br>
    		</ul>
   	</details>
-  	</li><br><li>
+  	</li><li>
   	<details>
   	<summary>Modifiers when estate is neutral:</summary>
-  	<br><ul>
+  	<ul><br>
   		<li><b>National modifiers</b>:</li>
   			<ul>
   				<li><code>National Tax Modifier: +15.0% <sup>(+20.0%)</sup></code></li>
@@ -419,13 +423,13 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 					<li><code><s>Local Missionary Maintenance Cost: -10.0%</s></code></li>
   				<li><code>Local Missionary Strength: +1.0%</code></li>
   				<li><code>Local Unrest: -2.0</code></li>
-  			</ul>
+  			</ul><br>
   	 	</ul>
   	</details>
-  	</li><br><li>
+  	</li><li>
   	<details>
   	<summary>Modifiers when estate is <span style="color:red">disloyal</span>:</summary>
-  	<br><ul>
+  	<ul><br>
   		<li><b>National modifiers</b>:</li>
   			<ul>
 				<li><code><s>Local Tax Modifier: -10.0%</s></code></li>
@@ -481,10 +485,10 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
      					<li><code>Local Defensiveness: +15.0%</code></li>
      					<li><code>Local Regiment Cost: -25.0%</code></li>
      					<li><code>Local Unrest: -2.0</code></li>
-     				</ul>
+     				</ul><br>
      		   </ul>
      		</details>
-     		</li><br><li>
+     		</li><li>
      		<details>
      		<summary>Modifiers when estate is neutral:</summary>
      			<br><ul>
@@ -500,10 +504,10 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
      					<li><code>Local Recruitment Time: -15.0%</code></li>
      					<li><code>Local Defensiveness: +10.0%</code></li>
      					<li><code>Local Unrest: -1.0</code></li>
-     				</ul>
+     				</ul><br>
      		   </ul>
      	  </details>
-     	  </li><br><li>
+     	  </li><li>
      	  <details>
      		  <summary>Modifiers when estate is <span style="color:red">disloyal</span>:</summary>
      		  <br><ul>
