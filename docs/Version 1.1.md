@@ -37,8 +37,7 @@ Version 1.1 aka "Lex Terrae" is the initial mod release version.
 
 - The peasantry has learned the art of self-governance making sprawling empires more difficult to manage.
 - Terrain once again reduces combat width making smaller nations playable again.
-- Overlords can now negotiate tax rates with their vassals which expands upon subject interactions.
-- All advisor types now have secondary modifiers (some also having hidden tertiary modifiers) to increase their usefulness in more diverse scenarios beyond just providing monarch points.
+- Overlords can now negotiate tax rates with their vassals.󠀡
 
 ***
 
@@ -52,7 +51,7 @@ Version 1.1 aka "Lex Terrae" is the initial mod release version.
 #### Capital
 
 - Nation's capital provinces now increases local taxes by +30%.
-- Nation's capital state now lowers local autonomy by -15% and local unrest by -1.5 in all it's provinces.
+- Nation's capital state now lowers local autonomy by -15% and local unrest by -1.5.
 
 #### Development
 
@@ -113,10 +112,10 @@ Version 1.1 aka "Lex Terrae" is the initial mod release version.
 
 ### Advisors
 
-Modifiers listed below (unless explicitly stated otherwise) should be considered as additions to existing ones.
+All advisor types now have secondary modifiers (some also having hidden tertiary modifiers) to increase their usefulness in more diverse scenarios beyond just providing monarch points.
 
 - <details>
-	<summary><b>Philosopher</b> now lowers idea cost by -5%.</summary>
+	<summary><b>Philosopher</b> now also lowers idea cost by -5%.</summary>
 	<ul>
 		<li>This advisor is more likely to join court if the country has completed the Humanist idea group or has taken *Patron of the Arts* idea from the Innovativeness idea group.</li>
 		<li>AI is more likely to hire this advisor if it has low prestige.</li>
@@ -124,7 +123,7 @@ Modifiers listed below (unless explicitly stated otherwise) should be considered
 </ul>
 </details>
 - <details>
-	<summary><b>Natural scientist</b> now increases innovativeness gain by +25%.</summary>
+	<summary><b>Natural scientist</b> now also increases innovativeness gain by +25%.</summary>
 	<ul>
 		<li>This advisor is more likely to join court if the country has taken *Scientific Revolution* idea from the Innovativeness idea group.</li>
 		<li>AI is more likely to hire this advisor if it's production income percentage is +30% or higher.</li>
@@ -132,7 +131,7 @@ Modifiers listed below (unless explicitly stated otherwise) should be considered
 </details>
 	
 - <details>
-	<summary><b>Artist</b> now slows prestige decay by -1%.</summary>
+	<summary><b>Artist</b> now also slows prestige decay by -1%.</summary>
 	<ul>
 		<li>This advisor is more likely to join court if the country has taken *Patron of the Arts* idea from the Innovativeness idea group or is Papal State and has taken *The Vatican Museums* national idea.</li>
 		<li>AI is proportionately more likely to hire this advisor when it has negative stability.</li>
@@ -141,7 +140,7 @@ Modifiers listed below (unless explicitly stated otherwise) should be considered
 	</details>
 	
 - <details>
-	<summary><b>Treasurer</b> now decreases build cost by -5%.</summary>
+	<summary><b>Treasurer</b> now also decreases build cost by -5%.</summary>
 	<ul>
 		<li>This advisor is more likely to join court if the country has taken *Debt and Loans* or *Bureaucracy* idea from the Economic idea group.</li>
 		<li>AI is more likely to hire this advisor when its tax income percentage is 30% or higher.</li>
@@ -149,7 +148,7 @@ Modifiers listed below (unless explicitly stated otherwise) should be considered
 </details>
 	
 - <details>
-	<summary><b>Theologian</b> now increases tolerance of heretics by +1.</summary>
+	<summary><b>Theologian</b> now also increases tolerance of heretics by +1.</summary>
 	<ul>
 		<li>This advisor is more likely to join court if the country is either Papal State or a Theocracy, or has completed the Religious idea group.</li>
 		<li>AI is proportionally more likely to hire this advisor if it's average national unrest is 4 or lower.</li>
@@ -157,7 +156,7 @@ Modifiers listed below (unless explicitly stated otherwise) should be considered
 </details>
 	
 - <details>
-	<summary><b>Master of Mint</b> now lowers inflation reduction cost by -20%.</summary>
+	<summary><b>Master of Mint</b> now also lowers inflation reduction cost by -20%.</summary>
 	<ul>
 		<li>This advisor is more likely to join court if the country has taken *National Bank* idea from the Economic idea group.</li>
 		<li>AI is proportionally more likely to hire this advisor if it's inflation rate is 5% or higher.</li>
@@ -182,7 +181,7 @@ Modifiers listed below (unless explicitly stated otherwise) should be considered
 	</details>
 	
 - <details>
-	<summary><b>Statesman</b> now increases administrative efficiency by -5%.</summary>
+	<summary><b>Statesman</b> now also increases administrative efficiency by -5%.</summary>
 	<ul>
 		<li>Also grants a hidden modifier that reduces Administrative Technology Cost by -3%.</li>
 	</ul>
@@ -195,15 +194,15 @@ Modifiers listed below (unless explicitly stated otherwise) should be considered
 	</ul>
 </details>
 
-- **Trader** now improves trade steering by +10%.
+- **Trader** now also improves trade steering by +10%.
 
-- **Spymaster** now increases global spy defense by +15%.
+- **Spymaster** now also increases global spy defense by +15%.
 
-- **Diplomat** now increases diplomatic relations cap by +1.
+- **Diplomat** now also increases diplomatic relations cap by +1.
 
-- **Navigator** now decreases naval attrition by -25%.
+- **Navigator** now also decreases naval attrition by -25%.
 
-- **Army Reformer** now increases yearly army professionalism gain by +0.5.
+- **Army Reformer** now also increases yearly army professionalism gain by +0.5.
 
 - **Commandant** now increases discipline by +4% <sup>(+5%)</sup> and monthly drill gain by +25%.
 
@@ -546,9 +545,9 @@ Modifiers listed below (unless explicitly stated otherwise) should be considered
 - <details>
   <summary>Changed <i>Standardized Uniforms</i> event modifier to make the associated decision more flexible.</summary>
   <ul>
-  	<li><code>Land Morale: 0.1</code>.
-  	<li><code>Land Attrition: -0.05</code>.
   	<li><code>Yearly Army Drill Gain: 25.0% <sup>(+40.0%)</sup></code>
+  	<li><code>Land Morale: +10.0%</code>
+  	<li><code>Land Attrition: -50.0%</code>
   </ul>
   </details>
 
