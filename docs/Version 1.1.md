@@ -268,18 +268,15 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 
 #### Power Projection
 
-- <details>
-		<summary>Most power projection yearly decay values are now reduced by 50%.</summary>
-       <sub>See list of changes to <code>common/powerprojection/00_static.txt</code><a href="https://github.com/yooksi/eu4-EVE/commit/eb6b6333cabf5259f5c4e867ac5ff5d32d05e077#diff-88b96238a175258be5eb88b61001238e"></a>📝</sub>
-	</details>
 - Warning rivals now gives 5 <sup>(0)</sup> power projection.
 - Guaranteeing independence of countries that are neighboring your rivals now gives 5 <sup>(0)</sup> power projection.
 - Power projection gained from goals achieved in the last age now decay at a rate of 0.3 <sup>(1)</sup> per year.
+- Most power projection yearly decay values are now reduced by 50%. [<sub>📝</sub>]("https://github.com/yooksi/eu4-EVE/commit/eb6b6333cabf5259f5c4e867ac5ff5d32d05e077#diff-88b96238a175258be5eb88b61001238e")
 
 ### Ideas
 
 - Quality idea group bonus now also increases yearly army drill gain by +50%.
-- Some [idea group bonuses](#estates) now increase estate influence and monthly loyalty gain.
+- Some idea group bonuses now increase estate influence and monthly loyalty gain.
 
 ### Technology
 
