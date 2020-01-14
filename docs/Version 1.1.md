@@ -235,9 +235,9 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 
 #### Army Professionalism
 
-- Conscription Army `(AP>=0.6)` now also decreases regiment reinforce cost by -20%.
-- Permanent Army `(AP>=0.8)` now also decreases general cost by -50% .
-- Professional Army `(AP=1.0)` now increases leader siege by +1.0, increases army drill gain by +50% and no longer decreases general cost by 50% (this was moved to Permanent Army level).
+- <span title="Army Professionalism >= 60%">Conscription Army<sup>?</sup></span> now also decreases regiment reinforce cost by -20%.
+- <span title="Army Professionalism >= 80%">Permanent Army<sup>?</sup></span> now also decreases general cost by -50% .
+- <span title="Army Professionalism = 100%">Professional Army<sup>?</sup></span> now increases leader siege by +1.0, increases army drill gain by +50% and no longer decreases general cost by 50% (this was moved to Permanent Army level).
 - Individual regiments now gain reduced land attrition by -25% when drilled at 100%.
 - <details>
    <summary>Changed national effects of having low and high army professionalism.</summary>
@@ -453,13 +453,13 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 
 - Aristocratic idea group bonus now increases influence for +5% and monthly loyalty gain for +20%.<sup>(+10%)</sup>
 
-- High legitimacy `(>= 95)` now increases monthly estate loyalty gain for +15% *(+10%)*.
+- <span title="Legitimacy higher then 95">High legitimacy<sup>?</sup></span> now increases monthly estate loyalty gain for +15%.<sup>(+10%)</sup>
 
-- Medium legitimacy `(>= 70 & < 94)` now increases monthly estate loyalty gain for +10% *(+5%)*.
+- <span title="Legitimacy between 70 and 94">Medium legitimacy<sup>?</sup></span> now increases monthly estate loyalty gain for +10%.<sup>(+5%)</sup>
 
-- Low legitimacy `(>= 25 & < 49)` now lowers monthly estate loyalty gain for -10% *(-5%)*.
+- <span title="Legitimacy between 25 and 49">Low legitimacy<sup>?</sup></span> now lowers monthly estate loyalty gain for -10%.<sup>(-5%)</sup>
 
-- Very low legitimacy `(< 25)` now lowers monthly estate loyalty gain for -20% *(-10%)*.
+- <span title="Legitimacy lower then 25">Very low legitimacy<sup>?</sup></span> now lowers monthly estate loyalty gain for -20%.<sup>(-10%)</sup>
 
 - <details>
      <summary>Changed Nobility nationwide and province modifiers.</summary>
