@@ -564,11 +564,9 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 - Accepting *Commedia dell'Arte* event now costs 15 <sup>(10)</sup> administrative power.
 - *Rightful Ownership* event no longer triggers when overlord has a claim on subject's province (triggers only on cores now) and no longer removes overlord's claims when accepted.
 
-## Modding
-
 ***
 
-[^1]: This will result in all provinces far away from the capital receiving a penalty to minimum local autonomy and monthly autonomy change proportional to relative distance from the capital.
+[^1]: This will result in all provinces far away from the capital receiving a penalty to minimum local autonomy and monthly autonomy change proportional to relative distance from the capital making it more difficult to maintain sprawling empire.
 [^2]: Combat width reduction from terrain types was removed in patch [1.19](https://eu4.paradoxwikis.com/index.php?title=Land_warfare&diff=84046&oldid=83983), which resulted in a not so [favorable](https://www.reddit.com/r/eu4/comments/5er27c/i_love_the_terrain_combat_width_change/) response from a large portion of the community. The exact reason for this decision is unknown but it is most likely due to player inconvenience coming from not being able to clearly see and understand the influence of terrain on CW, [ability to exploit the AI](https://forum.paradoxplaza.com/forum/index.php?threads/terrain-and-combat-width.1120021/#post-24670463) and [overpowered defence](https://forum.paradoxplaza.com/forum/index.php?threads/why-has-combat_width-for-terrain-types-been-removed.1148942/#post-25113543) after the new fort mechanic changes implemented in patch 1.18.
 [^3]: War taxes give +0.015 war exhaustion for AI countries instead of 0.065 for Player countries. This should prevent the AI from drowning in war exhaustion if overusing the war taxes mechanic. Since war taxes were practically free before the hard-coded AI logic for deciding when to take them will not take into account these new changes.
 [^4]: Investing military power in development now benefits defense as well as offense. 
