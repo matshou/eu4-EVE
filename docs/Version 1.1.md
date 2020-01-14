@@ -244,6 +244,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
       <ul><br>
           <li>Effect of low army professionalism:</li>
           <ul>
+              <li><code><s>Mercenary Cost: -15.0%</s></code></li>
               <li><code>Land Attrition: +20.0%</code></li>
               <li><code>Possible Mercenaries: +15.0%</code></li>
           </ul><br>
@@ -398,6 +399,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
   		<li><b>Province modifiers</b>:</li>
   			<ul>
   				<li><code>Local Tax Modifier: +15.0% <sup>(+10.0%)</sup></code></li>
+				<li><code><s>Local Missionary Maintenance Cost: -25.0%</s></code></li>
   				<li><code>Local Missionary Strength: +2.0%</code></li>
   				<li><code>Local Unrest: -3.5 <sup>(-2.0)</sup></code></li>
   			</ul>
@@ -416,6 +418,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
   		<li><b>Province modifiers</b>:</li>
   			<ul>
   				<li><code>Local Tax Modifier: +10.0%</code></li>
+				<li><code><s>Local Missionary Maintenance Cost: -10.0%</s></code></li>
   				<li><code>Local Missionary Strength: +1.0%</code></li>
   				<li><code>Local Unrest: -2.0</code></li>
   			</ul>
@@ -427,6 +430,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
   	<br><ul>
   		<li><b>National modifiers</b>:</li>
   			<ul>
+				<li><code><s>Local Tax Modifier: -10.0%</s></code></li>
   				<li><code>Stability Cost Modifier: +30.0% <sup>(10.0%)</sup></code></li>
   				<li><code>Yearly Legitimacy: -0.30</code></li>
   				<li><code>Yearly Devotion: -0.50</code></li>
@@ -467,6 +471,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
        	       		<ul>
        	        		<li><code>Manpower Recovery Speed: +25.0% <sup>(+20.0%)</sup></code></li>
        	      			<li><code>Land Maintenance Modifier: -10.0%</code></li>
+					<li><code><s>Monthly Heir Support Gain: +0.33</s></code></li>
        	    			<li><code>Yearly Army Tradition: +0.40</code></li>
        	      			<li><code>Reinforce Speed: +20.0%</code></li>
        	      		</ul>
