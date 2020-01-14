@@ -258,9 +258,8 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
               <li><code>Shock Damage: +10.0%</code></li>
               <li><code>Drill Gain Modifier: +50.0%</code></li>
           </ul>
-     </ul>
+    	</ul>
   </details>
-  
 
 #### Army Drilling
 
@@ -401,7 +400,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
   		<li><b>Province modifiers</b>:</li>
   			<ul>
   				<li><code>Local Tax Modifier: +15.0% <sup>(+10.0%)</sup></code></li>
-				<li><code><s>Local Missionary Maintenance Cost: -25.0%</s></code></li>
+					<li><code><s>Local Missionary Maintenance Cost: -25.0%</s></code></li>
   				<li><code>Local Missionary Strength: +2.0%</code></li>
   				<li><code>Local Unrest: -3.5 <sup>(-2.0)</sup></code></li>
   			</ul>
@@ -420,7 +419,7 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
   		<li><b>Province modifiers</b>:</li>
   			<ul>
   				<li><code>Local Tax Modifier: +10.0%</code></li>
-				<li><code><s>Local Missionary Maintenance Cost: -10.0%</s></code></li>
+					<li><code><s>Local Missionary Maintenance Cost: -10.0%</s></code></li>
   				<li><code>Local Missionary Strength: +1.0%</code></li>
   				<li><code>Local Unrest: -2.0</code></li>
   			</ul>
@@ -465,70 +464,70 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 
 - <details>
      <summary>Changed Nobility nationwide and province modifiers.</summary>
-       	<ul>
-       	<br><li>
-       	<details>
-       		<summary>Modifiers when estate is <span style="color:green">loyal</span>:</summary>			<br><ul>
-       			<li><b>National modifiers</b>:</li>
-       	       		<ul>
-       	        		<li><code>Manpower Recovery Speed: +25.0% <sup>(+20.0%)</sup></code></li>
-       	      			<li><code>Land Maintenance Modifier: -10.0%</code></li>
-					<li><code><s>Monthly Heir Support Gain: +0.33</s></code></li>
-       	    			<li><code>Yearly Army Tradition: +0.40</code></li>
-       	      			<li><code>Reinforce Speed: +20.0%</code></li>
-       	      		</ul>
-       	       	  <br>
-       	      	<li><b>Province modifiers</b>:</li>
-       	      		<ul>
-       	                <li><code>Local Manpower Modifier: +25.0% <sup>(+20.0%)</sup></code></li>
-       	      			<li><code>Garrison Growth: +10.0%</code></li>
-       	      			<li><code>Local Defensiveness: +15.0%</code></li>
-                         <li><code>Local Regiment Cost: -25.0%</code></li>
-       	      			<li><code>Local Unrest: -2.0</code></li>
-       	      		</ul>
-       	       </ul>
-       		</details>
-       	  	</li><br><li>
-       		<details>
-       		<summary>Modifiers when estate is neutral:</summary>
-       	 		<br><ul>
-       	       	<li><b>National modifiers</b>:</li>
-       	       		<ul>
-       	        		<li><code>Manpower Recovery Speed: +20.0%</code></li>
-       	      			<li><code>Land Maintenance Modifier: -5.0%</code></li>
-       	            </ul>
-       	       	  <br>
-       	      	<li><b>Province modifiers</b>:</li>
-       	      		<ul>
-       	                <li><code>Local Manpower Modifier: +15.0% <sup>(+20.0%)</sup></code></li>
-       	      			<li><code>Local Recruitment Time: -15.0%</code></li>
-                         <li><code>Local Defensiveness: +10.0%</code></li>
-       	      			<li><code>Local Unrest: -1.0</code></li>
-       				</ul>
-       	       </ul>
-       	  </details>
-       	  </li><br><li>
-       	  <details>
-       	      <summary>Modifiers when estate is <span style="color:red">disloyal</span>:</summary>
-       	      <br><ul>
-       	       	<li><b>National modifiers</b>:</li>
-       	       		<ul>
+     	<ul>
+     	<br><li>
+     	<details>
+     		<summary>Modifiers when estate is <span style="color:green">loyal</span>:</summary>			<br><ul>
+     			<li><b>National modifiers</b>:</li>
+					<ul>
+						<li><code><s>Monthly Heir Support Gain: +0.33</s></code></li>
+						<li><code>Manpower Recovery Speed: +25.0% <sup>(+20.0%)</sup></code></li>
+						<li><code>Land Maintenance Modifier: -10.0%</code></li>
+     					<li><code>Yearly Army Tradition: +0.40</code></li>
+     					<li><code>Reinforce Speed: +20.0%</code></li>
+     				</ul>
+     			  <br>
+     			<li><b>Province modifiers</b>:</li>
+     				<ul>
+     					<li><code>Local Manpower Modifier: +25.0% <sup>(+20.0%)</sup></code></li>
+     					<li><code>Garrison Growth: +10.0%</code></li>
+     					<li><code>Local Defensiveness: +15.0%</code></li>
+     					<li><code>Local Regiment Cost: -25.0%</code></li>
+     					<li><code>Local Unrest: -2.0</code></li>
+     				</ul>
+     		   </ul>
+     		</details>
+     		</li><br><li>
+     		<details>
+     		<summary>Modifiers when estate is neutral:</summary>
+     			<br><ul>
+     			<li><b>National modifiers</b>:</li>
+     				<ul>
+     					<li><code>Manpower Recovery Speed: +20.0%</code></li>
+     					<li><code>Land Maintenance Modifier: -5.0%</code></li>
+     				</ul>
+     			  <br>
+     			<li><b>Province modifiers</b>:</li>
+     				<ul>
+     					<li><code>Local Manpower Modifier: +15.0% <sup>(+20.0%)</sup></code></li>
+     					<li><code>Local Recruitment Time: -15.0%</code></li>
+     					<li><code>Local Defensiveness: +10.0%</code></li>
+     					<li><code>Local Unrest: -1.0</code></li>
+     				</ul>
+     		   </ul>
+     	  </details>
+     	  </li><br><li>
+     	  <details>
+     		  <summary>Modifiers when estate is <span style="color:red">disloyal</span>:</summary>
+     		  <br><ul>
+     			<li><b>National modifiers</b>:</li>
+     				<ul>
      					<li><code>Manpower Recovery Speed: -30.0% <sup>(-10.0%)</sup></code></li>
-       	      			<li><code>Land Maintenance Modifier: +15.0% <sup>(+10.0%)</sup></code></li>
-       	      			<li><code>Reinforce Speed: -25.0%</code></li>
+     					<li><code>Land Maintenance Modifier: +15.0% <sup>(+10.0%)</sup></code></li>
+     					<li><code>Reinforce Speed: -25.0%</code></li>
      					<li><code>Yearly Corruption: +0.16</code></li>
-       	     		</ul>
-       	       	  <br>
-       			<li><b>Province modifiers</b>:</li>
-       	      		<ul>
-       	                <li><code>Local Manpower Modifier: -30.0%</code></li>
-       	                <li><code>Local Regiment Cost: -30.0%</code></li>
-       	                <li><code>Monthly Autonomy Change: +0.10</code></li>
-       	      			<li><code>Local Unrest: +5.0</code></li>
-       				</ul>
-       	       </ul>
-       	  </details>
-       	</details>
+     				</ul>
+     			  <br>
+     			<li><b>Province modifiers</b>:</li>
+     				<ul>
+     					<li><code>Local Manpower Modifier: -30.0%</code></li>
+     					<li><code>Local Regiment Cost: -30.0%</code></li>
+     					<li><code>Monthly Autonomy Change: +0.10</code></li>
+     					<li><code>Local Unrest: +5.0</code></li>
+     				</ul>
+     		   </ul>
+     	  </details>
+     	</details>
 
 #### Dhimmi
 
@@ -566,6 +565,5 @@ All advisor types now have secondary modifiers (some also having hidden tertiary
 
 ## Modding
 
-This will result in all provinces far away from the capital receiving a penalty to minimum local autonomy and monthly autonomy change proportional to relative distance from the capital.
 
 [1]: https://github.com/yooksi/eu4-EVE/wiki/Mechanics#estate-loyalty "Estate loyalty mechanics"
