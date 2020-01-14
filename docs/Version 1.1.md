@@ -2,6 +2,8 @@
 
 Version 1.1 aka "Lex Terrae" is the initial mod release version.
 
+***
+
 ## Contents
 
 * [New Features](#new-features)
@@ -29,12 +31,16 @@ Version 1.1 aka "Lex Terrae" is the initial mod release version.
    * [Events](#events)
 * [Modding](#modding)
 
+***
+
 ## New Features
 
 - The peasantry has learned the art of self-governance making sprawling empires more difficult to manage.
 - Terrain once again reduces combat width making smaller nations playable again.
 - Overlords can now negotiate tax rates with their vassals which expands upon subject interactions.
 - All advisor types now have secondary modifiers (some also having hidden tertiary modifiers) to increase their usefulness in more diverse scenarios beyond just providing monarch points.
+
+***
 
 ## Game Balance
 
@@ -525,6 +531,8 @@ Modifiers listed below (unless explicitly stated otherwise) should be considered
 #### Dhimmi
 
 - Religious idea group bonus now increases monthly estate loyalty gain for +35%.
+
+***
 
 ## Script
 
