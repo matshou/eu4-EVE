@@ -84,14 +84,14 @@ prov_nation_capital = {
 }
 
 prov_state_adm_center = {
-	min_local_autonomy = -10
+	min_local_autonomy = -15
 	local_development_cost = -0.05
 	picture = "adm_center_icon"
 }
 
 prov_state_jurisdiction = {							# hardcoded for 'tooltip_state_jurisdiction'
 	local_state_maintenance_modifier = -0.20
-	min_local_autonomy = -5
+	min_local_autonomy = -10
 	local_autonomy = -0.05
 	local_unrest = -1
 	picture = "state_jurisdiction_icon"
