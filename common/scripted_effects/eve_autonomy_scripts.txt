@@ -91,13 +91,16 @@ autonomy.remove_distance_m = {
 		limit = { has_province_flag = distant_province }
 		trigger_switch = {
 			on_trigger = has_province_modifier
-			prov_autonomy_from_dist_50 = { remove_province_modifier = prov_autonomy_from_dist_50 }
 			prov_autonomy_from_dist_100 = { remove_province_modifier = prov_autonomy_from_dist_100 }
-			prov_autonomy_from_dist_150 = { remove_province_modifier = prov_autonomy_from_dist_150 }
 			prov_autonomy_from_dist_200 = { remove_province_modifier = prov_autonomy_from_dist_200 }
-			prov_autonomy_from_dist_250 = { remove_province_modifier = prov_autonomy_from_dist_250 }
 			prov_autonomy_from_dist_300 = { remove_province_modifier = prov_autonomy_from_dist_300 }
-			prov_autonomy_from_dist_350 = { remove_province_modifier = prov_autonomy_from_dist_350 }
+			prov_autonomy_from_dist_400 = { remove_province_modifier = prov_autonomy_from_dist_400 }
+			prov_autonomy_from_dist_500 = { remove_province_modifier = prov_autonomy_from_dist_500 }
+			prov_autonomy_from_dist_600 = { remove_province_modifier = prov_autonomy_from_dist_600 }
+			prov_autonomy_from_dist_700 = { remove_province_modifier = prov_autonomy_from_dist_700 }
+			prov_autonomy_from_dist_800 = { remove_province_modifier = prov_autonomy_from_dist_800 }
+			prov_autonomy_from_dist_900 = { remove_province_modifier = prov_autonomy_from_dist_900 }
+			prov_autonomy_from_dist_1000 = { remove_province_modifier = prov_autonomy_from_dist_1000 }
 		}
 	}
 }
@@ -112,32 +115,44 @@ autonomy.set_distance = {
 	set_province_flag = distant_province
 
 	if = {
-		limit = { province_distance = { who = ROOT distance = 350 } }
-		add_province_modifier = { name = "prov_autonomy_from_dist_350" duration = -1 }
+		limit = { province_distance = { who = ROOT distance = 1000 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_1000" duration = -1 }
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 900 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_900" duration = -1 }
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 800 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_800" duration = -1 }
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 700 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_700" duration = -1 }
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 600 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_600" duration = -1 }
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 500 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_500" duration = -1 }
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 400 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_400" duration = -1 }
 	}
 	else_if = {
 		limit = { province_distance = { who = ROOT distance = 300 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_300" duration = -1 }
 	}
 	else_if = {
-		limit = { province_distance = { who = ROOT distance = 250 } }
-		add_province_modifier = { name = "prov_autonomy_from_dist_250" duration = -1 }
-	}
-	else_if = {
 		limit = { province_distance = { who = ROOT distance = 200 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_200" duration = -1 }
 	}
 	else_if = {
-		limit = { province_distance = { who = ROOT distance = 150 } }
-		add_province_modifier = { name = "prov_autonomy_from_dist_150" duration = -1 }
-	}
-	else_if = {
 		limit = { province_distance = { who = ROOT distance = 100 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_100" duration = -1 }
-	}
-	else_if = {
-		limit = { province_distance = { who = ROOT distance = 50 } }
-		add_province_modifier = { name = "prov_autonomy_from_dist_50" duration = -1 }
 	}
 	# province is in the capital zone and shouldn't have a distance modifier
 	else = { clr_province_flag = distant_province }
