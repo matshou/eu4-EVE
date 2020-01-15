@@ -1,0 +1,36 @@
+
+################################
+# EVE - Forcelimit Modifiers
+################################
+
+land_force_limit_free_leaders_1 = {
+	free_leader_pool = 1
+}
+land_force_limit_free_leaders_2 = {
+	free_leader_pool = 2
+}
+land_force_limit_free_leaders_3 = {
+	free_leader_pool = 3
+}
+land_force_limit_free_leaders_4 = {
+	free_leader_pool = 4
+}
+land_force_limit_free_leaders_5 = {
+	free_leader_pool = 5
+}
+
+naval_force_limit_free_leaders_1 = {
+	free_leader_pool = 1
+}
+naval_force_limit_free_leaders_2 = {
+	free_leader_pool = 2
+}
+naval_force_limit_free_leaders_3 = {
+	free_leader_pool = 3
+}
+naval_force_limit_free_leaders_4 = {
+	free_leader_pool = 4
+}
+naval_force_limit_free_leaders_5 = {
+	free_leader_pool = 5
+}
