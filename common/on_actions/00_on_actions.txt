@@ -25,9 +25,6 @@ on_startup = {
 	}
 	# Loaded an existing save game file with mod already initialized
 	else = {
-		# initialize null value variables so they display properly in GUI
-		governance.reinit_values = yes
-
 		# When loading a save file the monthly pulse stop firing for some reason.
 		# Reset the modifier here to force the game to start firing 'on_activation'
 		capital_scope = {

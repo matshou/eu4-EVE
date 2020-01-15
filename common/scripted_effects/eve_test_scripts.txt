@@ -48,13 +48,13 @@ test.check_war_taxes = {
 		if = {
 			limit = { NOT = { has_wartaxes = yes } }
 			clr_country_flag = war_taxes_raised
-			logger.print_info { id = 103 }
+			logger.print_info = { id = 103 }
 		}
 	}
 	else_if = {
 		limit = { has_wartaxes = yes }
 		set_country_flag = war_taxes_raised
-		logger.print_info { id = 102 }
+		logger.print_info = { id = 102 }
 		if = {
 			limit = { NOT = { has_country_modifier = ai_war_taxes_effects } }
 			logger.print_error = { id = 107 }

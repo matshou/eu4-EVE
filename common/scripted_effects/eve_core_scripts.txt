@@ -23,12 +23,6 @@ core.on_daily_pulse = {
 	}
 	else = {	# Don't do anything else if no longer capital
 		if = {
-			limit = { nation.has_new_ruler = yes }
-
-			set_ruler_flag = inagurated
-			governance.calc_ruler_m = yes
-		}
-		if = {
 			limit = { has_country_flag = immediate_update }
 			core.on_monthly_pulse = yes
 			clr_country_flag = immediate_update
