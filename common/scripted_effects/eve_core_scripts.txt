@@ -53,6 +53,7 @@ core.on_monthly_pulse = {
 
 	test.run_tests = yes
 
+	military.calc_free_leaders = yes
 	states.update_states = yes
 	states.update_territories = yes
 	autonomy.check_for_change = yes
