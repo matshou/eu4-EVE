@@ -24,7 +24,7 @@ calc_free_leaders = {
 			}
 			$for$_forcelimit = 20
 		}
-		apply_leaders_from_flimit_mod = { var = $for$ lvl = 1 }
+		apply_leaders_from_flimit_mod = { for = $for$ lvl = 1 }
 	}
 	else_if = {
 		limit = {
@@ -34,7 +34,7 @@ calc_free_leaders = {
 			}
 			$for$_forcelimit = 40
 		}
-		apply_leaders_from_flimit_mod = { var = $for$ lvl = 2 }
+		apply_leaders_from_flimit_mod = { for = $for$ lvl = 2 }
 	}
 	else_if = {
 		limit = {
@@ -44,7 +44,7 @@ calc_free_leaders = {
 			}
 			$for$_forcelimit = 60
 		}
-		apply_leaders_from_flimit_mod = { var = $for$ lvl = 3 }
+		apply_leaders_from_flimit_mod = { for = $for$ lvl = 3 }
 	}
 	else_if = {
 		limit = {
@@ -54,7 +54,7 @@ calc_free_leaders = {
 			}
 			$for$_forcelimit = 80
 		}
-		apply_leaders_from_flimit_mod = { var = $for$ lvl = 4 }
+		apply_leaders_from_flimit_mod = { for = $for$ lvl = 4 }
 	}
 	else_if = {
 		limit = {
@@ -63,7 +63,7 @@ calc_free_leaders = {
 			}
 			$for$_forcelimit = 100
 		}
-		apply_leaders_from_flimit_mod = { var = $for$ lvl = 5 }
+		apply_leaders_from_flimit_mod = { for = $for$ lvl = 5 }
 	}
 }
 
