@@ -1,6 +1,6 @@
 ﻿l_english:
- string_error_log:0 "EVE: Error [This.c.GetValue][This.error_method_txt] >> [Prev.error_log_content_txt]"
- string_error_code:0 " in '[This.error_method_name_txt]'"
+ string_error_log:0 "EVE: Error [This.log_id.GetValue][This.error_method_txt] >> [Prev.error_log_content_txt]"
+ string_error_code:0 ":'[This.error_method_name_txt]'"
 
  error_log.000:0 "Unknown error code."
  error_log.101:0 "[This.GetName] called to set 'country_id' out of global scope."
