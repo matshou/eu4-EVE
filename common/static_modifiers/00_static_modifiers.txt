@@ -1566,7 +1566,7 @@ regiment_drill_modifier = { # Used by individual regiments
 }
 
 army_drill_modifier = { # Used by an entire army, is the average of all subunits drill
-	movement_speed = 0.2
+	movement_speed = 0.25
 }
 
 janissary_regiment = {
