@@ -24,7 +24,7 @@ logger.print_error = {
 	set_variable = { which = log_id value = $id$ }
 	set_variable = { which = m value = 0 }
 	[[method]
-		set_variable = { which = m value = $method$ }
+		set_variable = { which = method value = $method$ }
 	]
 	call_logger = { event = print_error }
 }

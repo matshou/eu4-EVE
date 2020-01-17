@@ -37,7 +37,7 @@ test.run_ai_tests = {
 # @access public
 test.run_player_tests = {
 
-	#logger.print_info { id = 101 }
+	#logger.print_info = { id = 101 }
 }
 
 # Check if war taxes are working correctly
