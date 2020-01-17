@@ -24,3 +24,15 @@ province.invalid_distance_from_capital_0 = {
 	}
 }
 
+# State province has incorrect 'state_dist_from_capital' variable,
+# this value should be identical in all state provinces
+province.invalid_state_dist_from_capital = {
+	PREV = {
+		NOT = {
+			is_variable_equal = {
+				which = state_dist_from_capital
+				which = output
+			}
+		}
+	}
+}

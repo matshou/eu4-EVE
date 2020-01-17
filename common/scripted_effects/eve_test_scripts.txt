@@ -69,6 +69,7 @@ test.validate_province_autonomy = {
 
 	every_owned_province = {
 		validate_province_distance = yes
+		validate_province_state_autonomy = yes
 	}
 }
 
@@ -153,3 +154,32 @@ validate_province_distance = {
 	}
 }
 
+# Test if province has valid state autonomy setup
+# @scope province
+validate_province_state_autonomy = {
+
+	if = {
+		limit = { province.is_distant_province = yes }
+		if = {
+			limit = { is_state = yes }
+			if = {
+				limit = { NOT = { has_province_flag = distant_state } }
+				logger.print_error = { id = 110 } # missing distant_state flag
+			}
+			if = {
+				limit = { is_var_null = { var = state_dist_from_capital } }
+				logger.print_error = { id = 111 } # null state_dist_from_capital variable
+			}
+			else = {
+				every_province_in_state = {
+					limit = { province.is_distant_province = yes }
+					core.export_var_to_prev = { var = state_dist_from_capital }
+					if = {
+						limit = { province.invalid_state_dist_from_capital = yes }
+						logger.print_error = { id = 112 } # invalid state_dist_from_capital variable
+					}
+				}
+			}
+		}
+	}
+}
