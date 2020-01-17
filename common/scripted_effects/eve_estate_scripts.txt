@@ -6,7 +6,6 @@
 # Called from 'core.on_monthly_pulse' to handle
 # all estate updates that need to happen on a monthly basis
 # @scope country
-# @access public
 #
 estates.update = {
 
@@ -17,7 +16,7 @@ estates.update = {
 }
 
 # Called only from 'estates.update'
-# @access private
+# @scope country
 update_internal = {
 
 	if = {
@@ -50,7 +49,7 @@ update_internal = {
 
 # Set variable 'est_loyalty_lvl' to an integer value corresponding
 # to the amount of loyalty held by the given $estate$ (1-3)
-# @access private
+# @scope country
 set_estate_loyalty_lvl = {
 
 	if = {
@@ -72,7 +71,7 @@ set_estate_loyalty_lvl = {
 
 # Set variable 'est_influence_lvl' to an integer value corresponding
 # to the amount of influence held by the given $estate$ (1-4)
-# @access private
+# @scope country
 set_estate_influence_lvl = {
 
 	if = {
@@ -101,7 +100,6 @@ set_estate_influence_lvl = {
 # Called from 'province_scripts' when country develops a province
 # TODO: Add more estates here
 # @scope province
-# @access public
 #
 estates.on_development = {
 
@@ -131,7 +129,6 @@ estates.on_development = {
 # Apply an estate modifier that gives temporary loyalty
 # bonus when developing their provinces
 # @scope province
-# @access private
 #
 estates.set_developing = {
 

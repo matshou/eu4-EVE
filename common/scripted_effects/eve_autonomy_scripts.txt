@@ -27,7 +27,6 @@ autonomy.check_for_change = {
 				limit = {
 					owner = { is_var_not_equal_to = { var1 = output var2 = country_id } }
 				}
-
 				# Conquered another nation's capital province
 				# Raising the flag to let the province ROOT scope know we've already updated autonomy.
 				# Also don't update owner id, it will be used by province ROOT scope to find last province owner

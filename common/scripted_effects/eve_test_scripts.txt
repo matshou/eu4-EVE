@@ -5,7 +5,6 @@
 
 # Run all defined tests
 # @scope country
-# @access public
 test.run_tests = {
 
 	test.run_common_tests = yes
@@ -20,28 +19,28 @@ test.run_tests = {
 }
 
 # Run both AI and Player tests
-# @access public
+# @scope country
 test.run_common_tests = {
 
 	test.validate_province_autonomy = yes
 }
 
 # Run AI only tests
-# @access public
+# @scope country
 test.run_ai_tests = {
 
 	test.check_war_taxes = yes
 }
 
 # Run Player only tests
-# @access public
+# @scope country
 test.run_player_tests = {
 
 	#logger.print_info = { id = 101 }
 }
 
 # Check if war taxes are working correctly
-# @access public
+# @scope country
 test.check_war_taxes = {
 
 	if = {
@@ -64,7 +63,7 @@ test.check_war_taxes = {
 }
 
 # Perform autonomy related tests for every owned province
-# @access public
+# @scope country
 test.validate_province_autonomy = {
 
 	every_owned_province = {

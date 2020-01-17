@@ -32,7 +32,6 @@ states.update_states = {
 
 # Update every province in the currently scoped state.
 # This scope will be entered once for every province in current state
-# @access private
 # @scope province
 #
 update_state = {
@@ -82,7 +81,6 @@ update_state = {
 
 # Update every province that does not belong to a state
 # @scope country
-# @access public
 #
 states.update_territories = {
 
