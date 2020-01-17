@@ -13,3 +13,33 @@ ai_war_taxes_cheat = {
 	# counter war_taxes changes for ai
 	war_exhaustion = -0.03
 }
+
+ai_war_exhaustion_cheat_3 = {
+	potential = {
+		ai = yes
+	}
+	trigger = {
+		war_exhaustion = 15
+	}
+	war_exhaustion = -0.2
+}
+
+ai_war_exhaustion_cheat_2 = {
+	potential = {
+		ai = yes
+	}
+	trigger = {
+		war_exhaustion = 10
+	}
+	war_exhaustion = -0.08
+}
+
+ai_war_exhaustion_cheat_1 = {
+	potential = {
+		ai = yes
+	}
+	trigger = {
+		war_exhaustion = 5
+	}
+	war_exhaustion = -0.04
+}
