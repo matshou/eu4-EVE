@@ -3,7 +3,7 @@
 # EVE - Triggered Modifiers
 ###############################
 
-ai_war_taxes_effects = {
+ai_war_taxes_cheat = {
 	potential = {
 		ai = yes
 	}
