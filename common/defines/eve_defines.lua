@@ -7,6 +7,10 @@ NDefines.NCountry.ESTATE_GRANT_PROVINCE_COOLDOWN = 5
 
 NDefines.NCountry.PS_RAISE_WAR_TAXES = 30
 --------------------------------------------------------
+------------------ Institution defines -----------------
+--------------------------------------------------------
+NDefines.NCountry.INSTITUTION_BONUS_FROM_IMP_DEVELOPMENT = 2
+--------------------------------------------------------
 ---------------- Innovativeness defines ----------------
 --------------------------------------------------------
 NDefines.NCountry.INNOVATIVENESS_BEHIND_IN_TECH_PENALTY = -0.025

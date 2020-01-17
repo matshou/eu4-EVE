@@ -1,0 +1,45 @@
+namespace = shinto_events
+
+# A Kirishitan Realm
+country_event = {
+	id = shinto_events.47
+	title = "shinto_events.47.t"
+	desc = "shinto_events.47.d"
+	picture = SHOGUNATE_AUTHORITY_INCIDENT_eventPicture
+
+	trigger = {
+		is_incident_active = incident_spread_of_christianity
+		has_country_flag = end_of_incident_spread_of_christianity_chain
+		incident_variable_value = {
+			incident = incident_spread_of_christianity
+			value = 11
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	option = {
+		name = "shinto_events.47.a" #
+        custom_tooltip = eve_eci_a_kirishitan_realm
+		set_country_flag = a_kirishitan_realm
+		set_country_flag = shinto_incident_recent
+		clr_country_flag = active_incident_flag
+		if = {
+			limit = { NOT = { religion = shinto } }
+			hidden_effect = {
+				add_isolationism = -1
+				end_incident = incident_spread_of_christianity
+			}
+			else = {
+				add_isolationism = -1
+				end_incident = incident_spread_of_christianity
+			}
+		}
+		add_country_modifier = {
+			name = "shinto_kirishitan_realm"
+			duration = 18250
+		}
+	}
+}
