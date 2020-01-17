@@ -113,6 +113,22 @@ province.is_estate_developing = {
 	}
 }
 
+province.is_distance_from_capital = {
+	check_variable = {
+		which = distance_from_capital value = $dist$
+	}
+}
+
+province.is_distant_province = {
+	province.is_distance_from_capital = { dist = 100 }
+}
+
+province.state_average_dist_from_capital = {
+	check_variable = {
+		which = state_dist_from_capital value = $val$
+	}
+}
+
 ##############################
 # EVE - Math Triggers
 ##############################

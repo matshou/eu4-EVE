@@ -11,6 +11,7 @@
  error_log.106:0 "Couldn't validate expression right side: 'i' not in range (0-9)."
  error_log.107:0 "AI Country [This.GetName] raised war taxes but is missing 'ai_war_taxes_effects' modifier."
  error_log.108:0 "[This.GetName] has invalid distance ([This.distance_from_capital.GetValue]) from capital ([This.Owner.Capital.GetCapitalName])."
+ error_log.109:0 "'every_province_in_state' scope returned 0 entries for [This.GetName]."
 
  method_string.0:0 "unknown method"
  method_string.1:0 "core.set_prov_owner_id"

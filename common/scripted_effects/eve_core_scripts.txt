@@ -58,6 +58,8 @@ core.on_monthly_pulse = {
 		limit = { nation.has_territory_changes = yes }
 		autonomy.update_distance = yes
 	}
+	autonomy.update_state_provinces = yes
+
 	# Run tests after everything else
 	test.run_tests = yes
 }

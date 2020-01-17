@@ -81,6 +81,46 @@ autonomy.update_distance = {
 	clr_country_flag = territorial_change
 }
 
+# Check if there has been changes to provinces belonging to states.
+# Note that we need to check all provinces every month since there
+# are no events that we can use as entry points to trigger this.
+# @scope country
+#
+autonomy.update_state_provinces = {
+
+	every_owned_province = {
+		limit = { province.is_distant_province = yes }
+		update_state_provinces = yes
+	}
+}
+
+# Check if province has just become part or was removed from
+# state and handle all autonomy actions related to states
+# @scope province
+#
+update_state_provinces = {
+
+	# Province was recently added to state
+	if = {
+		limit = { is_state = yes }
+		if = {
+			limit = { NOT = { has_province_flag = distant_state } }
+			autonomy.calculate_state_dist_from_capital = yes
+			set_province_flag = distant_state
+		}
+	}
+	# Province no longer belongs to state because the state was abandoned.
+	# Note that losing a core does not remove the province from state.
+	else_if = {
+		limit = { has_province_flag = distant_state }
+		set_variable = {
+			which = state_dist_from_capital value = 0
+		}
+		set_country_flag = territorial_change 	# call for autonomy update
+		clr_province_flag = distant_state
+	}
+}
+
 # Remove old distance modifier before applying new one
 # Called when recalculating distance autonomy
 # @scope province
@@ -111,7 +151,61 @@ autonomy.remove_distance_m = {
 set_autonomy_variables = {
 
 	set_variable = { which = distance_from_capital value = $dist$ }
+	if = {
+		limit = { is_state = yes }
+		autonomy.calculate_state_dist_from_capital = yes
+	}
 }
+
+# Calculate average distance from capital for all provinces
+# that are a part of the state the current scope province belongs to
+# @scope province
+#
+autonomy.calculate_state_dist_from_capital = {
+
+	set_variable = { which = state_dist_from_capital value = 0 }
+	set_variable = { which = provinces_in_state value = 0 }
+
+	# Go through every province that is a part of the state the current
+	# scope province belongs to and calculate total distance from capital
+	#
+	every_province_in_state = {
+		core.export_var_to_prev = { var = distance_from_capital }
+		PREV = {
+			change_variable = {
+				which = state_dist_from_capital which = output
+			}
+			change_variable = {
+				which = provinces_in_state value = 1
+			}
+		}
+	}
+	# If we checked that province is part of state before calling this method
+	# 'every_province_in_state' should always scope at least 1 entry.
+	# This check also ensures that we are not dividing by 0.
+	if = {
+		limit = { is_var_null = { var = provinces_in_state } }
+		set_variable = { which = state_dist_from_capital value = 0 }
+		logger.print_error = { id = 109 method = 3 }
+	}
+	# Divide by the total amount of provinces in state
+	# to get the average distance from capital
+	else = {
+		divide_variable = {
+			which = state_dist_from_capital
+			which = provinces_in_state
+		}
+		# Need to round down the result because float values cannot be exported
+		# through 'core.export_var_to_prev' by testing methods
+		math.ceil = {
+			val = state_dist_from_capital int = 0
+		}
+		set_variable = {
+			which = provinces_in_state value = 0
+		}
+	}
+}
+
 # Add autonomy modifiers based on province distance from capital
 # Should ONLY be called from scope with ROOT a capital province
 # @scope province
