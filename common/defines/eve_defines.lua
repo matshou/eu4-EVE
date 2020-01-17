@@ -22,6 +22,8 @@ NDefines.NCountry.INNOVATIVENESS_DAYS_AFTER_FIRST_PICK_VIABLE = 135
 ------------------- Military defines -------------------
 --------------------------------------------------------
 NDefines.NMilitary.ARMY_DRILL_YEARLY_DECAY = -1.7
-NDefines.NMilitary.ARMY_DRILL_YEARLY_GAIN = 12.0
+NDefines.NMilitary.ARMY_DRILL_YEARLY_GAIN = 11.0
+NDefines.NMilitary.ARMY_DRILL_MAX_MORALE = 0.4
 NDefines.NMilitary.ARMY_DRILL_SKILL_MONTHS = 90
+NDefines.NAI.DRILL_BONUS_WAR_READINESS = 0.10
 

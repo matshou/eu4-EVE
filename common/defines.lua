@@ -975,9 +975,9 @@ NMilitary = {
 
 
 	ARMY_DRILL_YEARLY_DECAY = -1.7,					-- Loss from not Drilling
-	ARMY_DRILL_YEARLY_GAIN = 12.0,					-- Gain from Drilling
+	ARMY_DRILL_YEARLY_GAIN = 11.0,					-- Gain from Drilling
 	ARMY_DRILL_MAX = 100.0,
-	ARMY_DRILL_MAX_MORALE = 0.5,
+	ARMY_DRILL_MAX_MORALE = 0.4,
 	ARMY_DRILL_SKILL_MONTHS = 90,					-- The average number of months until you get a skill increase if drilling 100% of forcelimit. Set to 0 to disable.
 
 	COSSACKS_SHOCK_DAMAGE_BONUS = 0.1,
@@ -1528,7 +1528,7 @@ NAI = {
 	TRADE_POLICY_MAXIMIZE_PROFITS_SCORE = 9.0,					-- Score for maximize profit trade policy
 	TRADE_POLICY_IMPROVE_RELATIONS_PER_COUNTRY_SCORE = 5.0,		-- Score per country with merchant for improve relations policy
 	TRADE_POLICY_SPY_OFFENCE_PER_COUNTRY_SCORE = 5.0,			-- Score per country with merchant for spy offence policy
-	DRILL_BONUS_WAR_READINESS = 0.08,							-- Bonus for war readiness of drilled units
+	DRILL_BONUS_WAR_READINESS = 0.10,							-- Bonus for war readiness of drilled units
 	MONTHS_STOP_DRILLING_BEFORE_WAR = 5,						-- Months before a prepared war to stop drilling
 	DRILLING_BUDGET_OF_SURPLUS = 0.75,							-- Max amount of surplus to be used for drilling
 	DRILLING_DEBT_SURPLUS_RATIO_THRESHOLD = 0.025,				-- AI will only consider drilling if Surplus / Debt ratio is above
