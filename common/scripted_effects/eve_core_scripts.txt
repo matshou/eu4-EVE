@@ -127,6 +127,7 @@ core.set_country_id = {
 # Export argument variable to PREV scope so it can be used for comparison.
 # Currently performing an interlaced scan with intervals using while loops
 # is the only way to transfer variable values between scopes.
+# NOTE: Trying to export FLOAT values will result in malformed output.
 #
 # @scope anywhere
 # @param var (variable to export)
