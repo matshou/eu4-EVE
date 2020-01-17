@@ -5,14 +5,14 @@
 
 # Calculate how much free leaders country is eligible for
 # based on land and naval force limit and apply the right modifier
-# @scope public
+# @scope country
 military.calc_free_leaders = {
 
 	calc_free_leaders = { for = land }
 	calc_free_leaders = { for = naval }
 }
 
-# @scope private
+# @scope country
 # @param for, lvl
 calc_free_leaders = {
 
@@ -67,7 +67,7 @@ calc_free_leaders = {
 	}
 }
 
-# @scope private
+# @scope country
 # @param for, lvl
 apply_leaders_from_flimit_mod = {
 

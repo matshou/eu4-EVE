@@ -30,7 +30,7 @@ logger.print_error = {
 }
 
 # Helper method that calls appropriate logger event
-# @scope private
+# @scope anywhere
 # @param event
 #
 call_logger = {
