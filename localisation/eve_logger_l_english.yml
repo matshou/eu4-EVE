@@ -10,6 +10,7 @@
  error_log.105:0 "Access violation for [This.caller_scope_txt] caller [This.GetName]."
  error_log.106:0 "Couldn't validate expression right side: 'i' not in range (0-9)."
  error_log.107:0 "AI Country [This.GetName] raised war taxes but is missing 'ai_war_taxes_effects' modifier."
+ error_log.108:0 "[This.GetName] has invalid distance ([This.distance_from_capital.GetValue]) from capital ([This.Owner.Capital.GetCapitalName])."
 
  error_pointer.0:0 "unknown method"
  error_pointer.1:0 "core.set_prov_owner_id"

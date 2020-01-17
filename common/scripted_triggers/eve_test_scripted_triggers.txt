@@ -1,0 +1,26 @@
+
+# Province has invalid or missing 'distance from capital' modifier
+province.invalid_distance_from_capital = {
+	OR = {
+		NOT = { has_province_modifier = prov_autonomy_from_dist_$dist$ }
+		NOT = { is_variable_equal = { which = distance_from_capital value = $dist$ } }
+	}
+}
+
+# Non-distant province is marked as distant
+province.invalid_distance_from_capital_0 = {
+	OR = {
+		has_province_modifier = prov_autonomy_from_dist_1000
+		has_province_modifier = prov_autonomy_from_dist_900
+		has_province_modifier = prov_autonomy_from_dist_800
+		has_province_modifier = prov_autonomy_from_dist_700
+		has_province_modifier = prov_autonomy_from_dist_600
+		has_province_modifier = prov_autonomy_from_dist_500
+		has_province_modifier = prov_autonomy_from_dist_400
+		has_province_modifier = prov_autonomy_from_dist_300
+		has_province_modifier = prov_autonomy_from_dist_200
+		has_province_modifier = prov_autonomy_from_dist_100
+		has_province_flag = distant_province
+	}
+}
+
