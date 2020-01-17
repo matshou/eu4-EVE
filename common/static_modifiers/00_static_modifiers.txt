@@ -684,6 +684,7 @@ war_exhaustion = {
 	global_unrest = 1
 	global_regiment_recruit_speed = 0.02
 	global_ship_recruit_speed = 0.02
+	global_institution_spread = -0.04
 	core_creation = 0.03
 	temples_influence = -0.05
 	mr_aristocrats_influence = -0.05
@@ -692,6 +693,8 @@ war_exhaustion = {
 	manpower_recovery_speed = -0.01
 	sailors_recovery_speed = -0.01
 	siege_ability = -0.01
+	land_morale = -0.01
+	drill_gain_modifier = -0.04
 	global_trade_goods_size_modifier = -0.02
 }
 
