@@ -212,7 +212,49 @@ courthouse = {
 	}
 
 	ai_will_do = {
-		factor = 1
+		factor = 150
+
+		modifier = {
+			factor = 0
+			OR = {
+				is_state = no
+				NOT = {
+					province.state_dist_from_capital = { val = 1 }
+				}
+			}
+		}
+		modifier = {
+			factor = 1.25
+			province.state_dist_from_capital = { val = 100 }			# slightly more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 300 }
+			}
+		}
+		modifier = {
+			factor = 2
+			province.state_dist_from_capital = { val = 300 }			# moderately more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 500 }
+			}
+		}
+		modifier = {
+			factor = 3
+			province.state_dist_from_capital = { val = 500 }			# considerably more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 700 }
+			}
+		}
+		modifier = {
+			factor = 4
+			province.state_dist_from_capital = { val = 700 }			# significantly more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 900 }
+			}
+		}
+		modifier = {
+			factor = 5
+			province.state_dist_from_capital = { val = 1000 }		# extremely more difficult to govern
+		}
 	}
 }
 
@@ -573,7 +615,49 @@ town_hall = {
 	}
 
 	ai_will_do = {
-		factor = 1
+		factor = 250
+
+		modifier = {
+			factor = 0
+			OR = {
+				is_state = no
+				NOT = {
+					province.state_dist_from_capital = { val = 1 }
+				}
+			}
+		}
+		modifier = {
+			factor = 1.25
+			province.state_dist_from_capital = { val = 100 }			# slightly more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 300 }
+			}
+		}
+		modifier = {
+			factor = 2
+			province.state_dist_from_capital = { val = 300 }			# moderately more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 500 }
+			}
+		}
+		modifier = {
+			factor = 3
+			province.state_dist_from_capital = { val = 500 }			# considerably more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 700 }
+			}
+		}
+		modifier = {
+			factor = 4
+			province.state_dist_from_capital = { val = 700 }			# significantly more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 900 }
+			}
+		}
+		modifier = {
+			factor = 5
+			province.state_dist_from_capital = { val = 1000 }		# extremely more difficult to govern
+		}
 	}
 }
 
