@@ -169,8 +169,8 @@ fort_15th = {
 # Tier 2, 16th Century Buildings
 ################################################
 courthouse = {
-	cost = 100
 	time = 12
+	cost = 150
 
 	# Note that we cannot use a scripted trigger to validate this
 	# as vanilla code does not recognize references to building entries
@@ -541,7 +541,7 @@ counting_house = {
 
 
 town_hall = {
-	cost = 200
+	cost = 250
 	time = 12
 
 	make_obsolete = courthouse
