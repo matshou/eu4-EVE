@@ -89,6 +89,9 @@ core.init_country = {
 			core.set_country_id = yes
 			every_owned_province = {
 				province.set_owner_id = yes
+				declare_variable = {
+					which = distance_from_capital value = 0
+				}
 			}
 			capital.init = yes						# apply capital modifiers
 			core.fire_monthly_pulse = yes    		# force an immediate update

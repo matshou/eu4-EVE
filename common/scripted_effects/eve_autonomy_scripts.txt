@@ -89,6 +89,7 @@ autonomy.remove_distance_m = {
 
 	if = {
 		limit = { has_province_flag = distant_province }
+		set_variable = { which = distance_from_capital value = 0 }
 		trigger_switch = {
 			on_trigger = has_province_modifier
 			prov_autonomy_from_dist_100 = { remove_province_modifier = prov_autonomy_from_dist_100 }
@@ -105,6 +106,12 @@ autonomy.remove_distance_m = {
 	}
 }
 
+# Set all autonomy related variables for scope province
+# @scope province
+set_autonomy_variables = {
+
+	set_variable = { which = distance_from_capital value = $dist$ }
+}
 # Add autonomy modifiers based on province distance from capital
 # Should ONLY be called from scope with ROOT a capital province
 # @scope province
@@ -117,42 +124,52 @@ autonomy.set_distance = {
 	if = {
 		limit = { province_distance = { who = ROOT distance = 1000 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_1000" duration = -1 }
+		set_autonomy_variables = { dist = 1000 }
 	}
 	else_if = {
 		limit = { province_distance = { who = ROOT distance = 900 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_900" duration = -1 }
+		set_autonomy_variables = { dist = 900 }
 	}
 	else_if = {
 		limit = { province_distance = { who = ROOT distance = 800 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_800" duration = -1 }
+		set_autonomy_variables = { dist = 800 }
 	}
 	else_if = {
 		limit = { province_distance = { who = ROOT distance = 700 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_700" duration = -1 }
+		set_autonomy_variables = { dist = 700 }
 	}
 	else_if = {
 		limit = { province_distance = { who = ROOT distance = 600 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_600" duration = -1 }
+		set_autonomy_variables = { dist = 600 }
 	}
 	else_if = {
 		limit = { province_distance = { who = ROOT distance = 500 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_500" duration = -1 }
+		set_autonomy_variables = { dist = 500 }
 	}
 	else_if = {
 		limit = { province_distance = { who = ROOT distance = 400 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_400" duration = -1 }
+		set_autonomy_variables = { dist = 400 }
 	}
 	else_if = {
 		limit = { province_distance = { who = ROOT distance = 300 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_300" duration = -1 }
+		set_autonomy_variables = { dist = 300 }
 	}
 	else_if = {
 		limit = { province_distance = { who = ROOT distance = 200 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_200" duration = -1 }
+		set_autonomy_variables = { dist = 200 }
 	}
 	else_if = {
 		limit = { province_distance = { who = ROOT distance = 100 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_100" duration = -1 }
+		set_autonomy_variables = { dist = 100 }
 	}
 	# province is in the capital zone and shouldn't have a distance modifier
 	else = { clr_province_flag = distant_province }
