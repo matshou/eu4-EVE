@@ -170,7 +170,6 @@ core.export_var_to_prev = {
 # Update modifiers triggered by hiring advisors
 # We manually trigger them because we want them to be hidden
 # @scope country
-# @access public
 #
 core.update_advisor_mods = {
 
@@ -182,7 +181,6 @@ core.update_advisor_mods = {
 	update_advisor_mod = { advisor = artist }
 }
 
-# @access private
 update_advisor_mod = {
 
 	if = {
@@ -202,7 +200,6 @@ update_advisor_mod = {
 # Arguments can be passed as negative values by prepending minus.
 # Multiple arguments can be passed in one call
 # @scope country
-# @access public
 #
 core.add_monarch_power = {
 
@@ -211,7 +208,6 @@ core.add_monarch_power = {
 	[[mil] add_monarch_power = { power = mil value = $mil$ } ]
 }
 
-# @access private
 add_monarch_power = {
 
 	if = {

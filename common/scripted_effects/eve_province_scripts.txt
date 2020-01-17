@@ -5,7 +5,6 @@
 
 # Called from 'on_actions' when country develops a province
 # @scope province
-# @access public
 #
 province.develop = {
 
@@ -30,7 +29,6 @@ province.develop = {
 # Dramatically develop province development cost to make it
 # more difficult to further develop for a few months
 # @scope province
-# @access private
 #
 province.set_developing = {
 

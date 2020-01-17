@@ -11,8 +11,6 @@
 # become less effective with each point. Midpoint skill ratings (ex. 3-6 adm) are worth the most.
 #
 # @scope anywhere
-# @access public
-#
 # @param output (var to export result to)
 # @param val (value for calculation)
 # @param steps (max modifier step value)
@@ -52,8 +50,6 @@ math.calculate_progressive_m = {
 # Read more about rounding in 'math_round_func'
 #
 # @scope country
-# @access public
-#
 # @param val (value to round)
 # @param int (num of decimal places to round)
 #
@@ -75,8 +71,6 @@ math.ceil = {
 # depending on the mode of operation passed as argument
 #
 # @scope country
-# @access private
-#
 # @param val (value to round)
 # @param decimals (num of decimal places)
 # @param mode (rounding operation)
