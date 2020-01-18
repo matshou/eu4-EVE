@@ -36,15 +36,39 @@ test.run_ai_tests = {
 # @scope country
 test.run_player_tests = {
 
-	#test.expressions = yes
+	#test.run_expression_test = yes
 }
 
 # Test expression building and validation code.
 # Use after making changes to effect or trigger code
 # @scope country
 #
-test.expressions = {
+test.run_expression_test = {
 
+	if = {
+		# Since expression tests take a long time to complete
+		# it would be best to run them only once per game save
+		limit = {
+			NOT = { has_country_flag = expression_test_completed }
+		}
+		run_expression_test = yes
+	}
+}
+# @scope country
+run_expression_test = {
+
+	set_variable = {
+		which = gold_removed value = 0
+	}
+	# Empty the treasury before performing the test.
+	# The gold will be returned when the test has completed
+	while = {
+		limit = { treasury = 1 }
+		add_treasury = -1
+		change_variable = {
+			which = gold_removed value = 1
+		}
+	}
 	set_variable = { which = l value = 9999 }
 	add_treasury = 9999
 
@@ -65,6 +89,18 @@ test.expressions = {
 		add_treasury = -1
 		subtract_variable = { which = l value = 1 }
 	}
+	# Return the gold that was removed to perform
+    # the test back to country treasury
+	while = {
+		limit = {
+			is_var_not_null = { var = gold_removed }
+		}
+		add_treasury = 1
+		subtract_variable = {
+			which = gold_removed value = 1
+		}
+	}
+	set_country_flag = expression_test_completed
 }
 
 # Check if war taxes are working correctly
