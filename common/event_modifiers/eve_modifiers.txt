@@ -41,7 +41,7 @@ prov_autonomy_from_dist_400 = {
 prov_autonomy_from_dist_500 = {    	# considerably more difficult to govern
 	min_local_autonomy = 25
 	local_autonomy = 0.10
-	picture = "min_autonomy"
+	picture = "local_autonomy"
 }
 
 prov_autonomy_from_dist_600 = {
