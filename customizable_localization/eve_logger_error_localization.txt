@@ -75,12 +75,6 @@ defined_text = {
 		}
 	}
 	text = {
-		localisation_key = error_log.106
-        trigger = {
-			core.is_log = { id = 106 }
-		}
-	}
-	text = {
 		localisation_key = error_log.107
         trigger = {
 			core.is_log = { id = 107 }
@@ -114,6 +108,18 @@ defined_text = {
 		localisation_key = error_log.112
         trigger = {
 			core.is_log = { id = 112 }
+		}
+	}
+	text = {
+		localisation_key = error_log.113
+        trigger = {
+			core.is_log = { id = 113 }
+		}
+	}
+	text = {
+		localisation_key = error_log.114
+        trigger = {
+			core.is_log = { id = 114 }
 		}
 	}
 	text = {
