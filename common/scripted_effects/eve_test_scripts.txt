@@ -53,7 +53,7 @@ test.expressions = {
 
 		ex.build = { left = treasury }
 		export_to_variable = {
-			which = t value = treasury who = THIS
+			which = t value = treasury
 		}
 		math.floor = { val = t int = 0 }
 
