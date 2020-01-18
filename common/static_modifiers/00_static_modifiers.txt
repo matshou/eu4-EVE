@@ -249,7 +249,7 @@ knowledge_sharing = {
 }
 
 manpower = {
-	garrison_growth = 0.01					#1% increase from manpower.
+	garrison_growth = 0.015					#1% increase from manpower.
 	local_defensiveness = 0.013
 }
 
