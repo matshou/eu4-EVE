@@ -35,7 +35,35 @@ test.run_ai_tests = {
 # @scope country
 test.run_player_tests = {
 
-	#logger.print_info { id = 101 }
+	#test.expressions = yes
+}
+
+# Test expression building and validation code.
+# Use after making changes to effect or trigger code
+# @scope country
+#
+test.expressions = {
+
+	set_variable = { which = l value = 9999 }
+	add_treasury = 9999
+
+	while = {
+		limit = { check_variable = { which = l value = 0 } }
+
+		ex.build = { left = treasury }
+		export_to_variable = {
+			which = t value = treasury who = THIS
+		}
+		math.floor = { val = t int = 0 }
+
+		if = {
+			limit = { is_var_not_equal_to = { var1 = output var2 = t } }
+			logger.print_error = { id = 113 }
+		}
+
+		add_treasury = -1
+		subtract_variable = { which = l value = 1 }
+	}
 }
 
 # Check if war taxes are working correctly
