@@ -194,6 +194,20 @@ estate_church =
 	####################################
 
 	influence_modifier = {
+		desc = inquisitor
+		trigger = {
+			advisor = inquisitor
+		}
+		influence = 5
+	}
+	influence_modifier = {
+		desc = theologian
+		trigger = {
+			advisor = theologian
+		}
+		influence = 5
+	}
+	influence_modifier = {
 		desc = EST_VAL_FULL_RELIGIOUS_INF
 		trigger = {
 			full_idea_group = religious_ideas
