@@ -8,8 +8,9 @@
  error_log.103:0 "tried to remove capital mods This non-capital province [This.GetName]."
  error_log.104:0 "invalid rounding mode \"[This.arg_var.GetValue]\"."
  error_log.105:0 "Access violation for [This.caller_scope_txt] caller [This.GetName]."
- error_log.106:0 "Couldn't validate expression right side: 'i' not in range (0-9)."
  error_log.107:0 "AI Country [This.GetName] raised war taxes but is missing 'ai_war_taxes_effects' modifier."
+ error_log.113:0 "Invalid expression result: [This.output.GetValue], expected: [This.t.GetValue]."
+ error_log.114:0 "Could not validate expression right side: 'i'([This.i.GetValue]) not in range (0-9)."
 
  error_pointer.0:0 "unknown method"
  error_pointer.1:0 "core.set_prov_owner_id"
