@@ -24,5 +24,8 @@ NDefines.NCountry.INNOVATIVENESS_DAYS_AFTER_FIRST_PICK_VIABLE = 135
 NDefines.NMilitary.ARMY_DRILL_YEARLY_DECAY = -1.7
 NDefines.NMilitary.ARMY_DRILL_YEARLY_GAIN = 10.0
 NDefines.NMilitary.ARMY_DRILL_SKILL_MONTHS = 90
+--------------------------------------------------------
+---------------------- AI defines ----------------------
+--------------------------------------------------------
 NDefines.NAI.DRILL_BONUS_WAR_READINESS = 0.10
-
+NDefines.NAI.DEVELOPMENT_CAP_BASE = 15
