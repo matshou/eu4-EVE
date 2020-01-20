@@ -88,6 +88,7 @@ estate_nobles =
 
 	# These do not scale, but only applied in provinces owned by the estate
 	province_modifier_happy = {
+		min_local_autonomy = -15
 		local_defensiveness = 0.15
 		local_manpower_modifier = 0.25
 		local_regiment_cost = -0.25
@@ -95,12 +96,14 @@ estate_nobles =
 		local_unrest = -2
 	}
 	province_modifier_neutral = {
+		min_local_autonomy = -15
 		local_defensiveness = 0.1
 		local_manpower_modifier = 0.15
 		regiment_recruit_speed = -0.15
 		local_unrest = -1
 	}
 	province_modifier_angry = {
+		min_local_autonomy = -15
 		local_manpower_modifier = -0.3
 		local_regiment_cost = 0.3
 		local_autonomy = 0.1
