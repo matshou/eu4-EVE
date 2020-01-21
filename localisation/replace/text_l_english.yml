@@ -1,0 +1,6 @@
+﻿l_english:
+ CHANGE_BASE_TAX:0 "$DIRECTION$ $VALUE$ Base Tax in $WHERE$.\n"
+ CHANGE_BASE_PROD:0 "$DIRECTION$ $VALUE$ Base Production in $WHERE$.\n"
+ CHANGE_BASE_MP:0 "$DIRECTION$ $VALUE$ Base Manpower in $WHERE$.\n"
+ provincial_tax_income:0 "Provincial Tax Income"
+ manpower:0 "Manpower"
