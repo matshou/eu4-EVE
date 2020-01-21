@@ -5,7 +5,7 @@
 NDefines.NCountry.ESTATE_PROVINCE_HAPPINESS_INCREASE = 2.5
 NDefines.NCountry.ESTATE_GRANT_PROVINCE_COOLDOWN = 5
 
-NDefines.NCountry.PS_RAISE_WAR_TAXES = 30
+NDefines.NCountry.PS_RAISE_WAR_TAXES = 35
 --------------------------------------------------------
 ------------------ Institution defines -----------------
 --------------------------------------------------------

@@ -11,3 +11,7 @@
  naval_force_limit_free_leaders_4:0 "Naval Force Limit"
  naval_force_limit_free_leaders_5:0 "Naval Force Limit"
 
+ high_war_taxes:0 "High War Taxes"
+ desc_high_war_taxes:0 "Raising war taxes on a population already heavily exhausted from recent war efforts risks open rebellions."
+ very_high_war_taxes:0 "Very High War Taxes"
+ desc_very_high_war_taxes:0 "Raising war taxes on a population already heavily exhausted from recent war efforts risks open rebellions."

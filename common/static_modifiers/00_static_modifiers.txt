@@ -693,6 +693,7 @@ call_for_peace = {
 
 war_exhaustion = {
 	global_unrest = 1
+	war_taxes_cost_modifier = 0.5
 	global_regiment_recruit_speed = 0.03
 	global_ship_recruit_speed = 0.03
 	global_institution_spread = -0.04

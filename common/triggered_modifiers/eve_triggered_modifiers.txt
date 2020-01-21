@@ -3,43 +3,47 @@
 # EVE - Triggered Modifiers
 ###############################
 
-ai_war_taxes_cheat = {
+high_war_taxes = {
 	potential = {
-		ai = yes
-	}
-	trigger = {
+		ai = no
+		is_at_war = yes
 		has_wartaxes = yes
 	}
-	# counter war_taxes changes for ai
-	war_exhaustion = -0.03
-}
-
-ai_war_exhaustion_cheat_3 = {
-	potential = {
-		ai = yes
-	}
 	trigger = {
-		war_exhaustion = 15
+		war_exhaustion = 5
+		NOT = { war_exhaustion = 10 }
 	}
-	war_exhaustion = -0.2
+	global_unrest = 2.5
+	war_exhaustion = 0.04
 }
 
-ai_war_exhaustion_cheat_2 = {
+very_high_war_taxes = {
 	potential = {
-		ai = yes
+		ai = no
+		is_at_war = yes
+		has_wartaxes = yes
+		war_exhaustion = 5
 	}
 	trigger = {
 		war_exhaustion = 10
 	}
-	war_exhaustion = -0.08
+	global_unrest = 5
+	war_exhaustion = 0.08
 }
 
-ai_war_exhaustion_cheat_1 = {
+ai_war_taxes_limit = {
 	potential = {
 		ai = yes
+		# Do not check if at war because it might be possible
+		# that the AI raises war taxes before this is triggered
+		#is_at_war = yes
 	}
 	trigger = {
-		war_exhaustion = 5
+		# AI is less competent then player so we
+		# make it impossible to raise further war taxes
+		war_exhaustion = 7
 	}
-	war_exhaustion = -0.04
+	# make it impossible to raise further war taxes
+	war_taxes_cost_modifier = 50
 }
+
