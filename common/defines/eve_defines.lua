@@ -24,6 +24,7 @@ NDefines.NCountry.INNOVATIVENESS_DAYS_AFTER_FIRST_PICK_VIABLE = 135
 NDefines.NMilitary.ARMY_DRILL_YEARLY_DECAY = -1.7
 NDefines.NMilitary.ARMY_DRILL_YEARLY_GAIN = 10.0
 NDefines.NMilitary.ARMY_DRILL_SKILL_MONTHS = 90
+NDefines.NMilitary.BASE_MP_TO_MANPOWER = 0.2
 --------------------------------------------------------
 ---------------------- AI defines ----------------------
 --------------------------------------------------------
