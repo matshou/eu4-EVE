@@ -270,7 +270,7 @@ manpower = {
 	garrison_size = 0.015
 	garrison_growth = 0.015
 	local_autonomy = -0.03
-	local_unrest = -0.25
+	local_unrest = -0.20
 }
 
 sailors = {
