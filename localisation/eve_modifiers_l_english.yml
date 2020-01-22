@@ -1,4 +1,6 @@
 ﻿l_english:
+ global_autonomy_base_rate:0 "Base Value"
+
  land_force_limit_free_leaders_1:0 "Land Force Limit"
  land_force_limit_free_leaders_2:0 "Land Force Limit"
  land_force_limit_free_leaders_3:0 "Land Force Limit"

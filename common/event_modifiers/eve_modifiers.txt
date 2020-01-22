@@ -1,5 +1,13 @@
 
 ###############################
+# EVE - Country Modifiers
+###############################
+
+global_autonomy_base_rate = {
+	global_autonomy = 0.03
+}
+
+###############################
 # EVE - Estate Modifiers
 ###############################
 

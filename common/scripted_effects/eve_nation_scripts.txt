@@ -9,6 +9,9 @@
 #
 nation.add_global_modifiers = {
 
+	add_country_global_modifiers = {
+		name = global_autonomy_base_rate
+	}
 }
 
 # @scope country
