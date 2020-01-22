@@ -96,6 +96,7 @@ core.init_country = {
 			}
 			capital.init = yes						# apply capital modifiers
 			core.fire_monthly_pulse = yes    		# force an immediate update
+			nation.add_global_modifiers = yes
 
 			set_country_flag = is_initialized
 			set_country_flag = territorial_change

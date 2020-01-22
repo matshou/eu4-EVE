@@ -1,5 +1,25 @@
 
 ###################################
+# EVE - Nation Scripts
+###################################
+
+# Apply permanent global modifiers to country scope
+# This is called from on_startup in on_actions
+# @scope country
+#
+nation.add_global_modifiers = {
+
+}
+
+# @scope country
+add_country_global_modifiers = {
+
+	add_country_modifier = {
+		name = $name$ duration = -1 hidden = yes
+	}
+}
+
+###################################
 # EVE - Nation Capital Scripts
 ###################################
 
