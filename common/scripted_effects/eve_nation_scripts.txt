@@ -1,7 +1,7 @@
 
-##################################
-# EVE - National Scripts
-##################################
+###################################
+# EVE - Nation Capital Scripts
+###################################
 
 # Fired from province that stops being a nation's capital
 # @scope capital
