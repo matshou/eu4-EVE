@@ -15,7 +15,7 @@
 #######################################
 
 feudalism = {
-	penalty = 0.5
+	penalty = 0.8
 	bonus = {
 		free_leader_pool = 1
 	}
@@ -23,7 +23,7 @@ feudalism = {
 	trade_company_efficiency = 0.0
 
 	history = {
-		is_year = 1000
+		is_year = 1066
 		OR = {
 			AND = { #If this is changed costs for Nation Designer may also need to be changed.
 				OR = {
@@ -93,7 +93,6 @@ feudalism = {
 			owner = {
 				NOT = {
 					government = tribal
-					government = native
 					primary_culture = bedouin_arabic
 					primary_culture = uyghur
 					technology_group = andean
@@ -108,6 +107,11 @@ feudalism = {
 				owner = {
 					NOT = { has_reform = siberian_tribe }
 					NOT = { has_reform = steppe_horde }
+					#NOT = { government = tribal_despotism }
+					#NOT = { government = tribal_federation }
+					#NOT = { government = tribal_democracy }
+					#NOT = { government = native_council }
+					#NOT = { government = tribal_kingdom }
 				}
 			}
 			is_year = 1700
@@ -230,7 +234,43 @@ feudalism = {
 				}
 			}
 		}
-	}
+        modifier = {
+			factor = -0.2
+			scale = yes
+			potential = {
+				owner = {
+					has_reform = steppe_horde
+				}
+			}
+           custom_trigger_tooltip = {
+                tooltip = eve_eci_horde
+				owner = {
+					has_reform = steppe_horde
+				}
+			}
+		}
+        modifier = {
+			factor = -0.2
+			scale = yes
+			potential = {
+				owner = {
+                    OR = {
+                        government = native
+                        has_reform = siberian_tribe
+                    }
+				}
+			}
+           custom_trigger_tooltip = {
+                tooltip = eve_eci_native_council
+				owner = {
+                    OR = {
+                        government = native
+                        has_reform = siberian_tribe
+                    }
+				}
+			}
+		}
+    }
 
 	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income, and higher if loans are needed. (Or it has a more than long term goal...)
 		factor = 24
@@ -353,6 +393,20 @@ renaissance = {
 
 	can_embrace = {
 		owner = { has_institution = feudalism }
+		OR = {
+			continent = europe
+			owner = {
+				capital_scope = {
+					continent = europe
+				}
+			}
+			superregion = near_east_superregion
+			superregion = persia_superregion
+			region = egypt_region
+			region = maghreb_region
+			region = east_africa_region
+			is_year = 1550
+		}
 	}
 
 
@@ -360,7 +414,7 @@ renaissance = {
 	embracement_speed = {
 		modifier = {
 			scale = yes
-			factor = 0.6
+			factor = 0.3
 			custom_trigger_tooltip = {
 				tooltip = tooltip_any_friendly_coast_border_province_has_embraced_renaissance
 				any_friendly_coast_border_province = {
@@ -369,7 +423,7 @@ renaissance = {
 			}
 		}
 		modifier = {
-			factor = 0.3
+			factor = 0.15
 			scale = yes
 			potential = {
 				NOT = {
@@ -493,6 +547,27 @@ renaissance = {
 				}
 			}
 		}
+        modifier = {
+			factor = -100.0
+			scale = no
+			potential = {
+				owner = {
+                    OR = {
+                        government = tribal
+                        government = native
+                    }
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_has_tribal_govt
+                owner = {
+                    OR = {
+                        government = tribal
+                        government = native
+                    }
+                }
+            }
+        }
 	}
 
 	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income, and higher if loans are needed. (Or it has a more than long term goal...)
@@ -616,11 +691,7 @@ new_world_i = {
 
 	can_start = {
 		is_year = 1500
-		OR = {
-			continent = europe
-			continent = asia
-			continent = africa
-		}
+		continent = europe
 		has_port = yes
 		is_island = no
 		is_state = yes
@@ -762,6 +833,48 @@ new_world_i = {
 				}
 			}
 		}
+        modifier = { # Reduced spread in MENA to nerf Berbers and represent traditional trade routes being bypassed by European explorers. Note: Ottoman Europe/Granada are unaffected
+			factor = -1.0
+			scale = yes
+			potential = {
+				OR = {
+					region = maghreb_region
+					region = egypt_region
+					superregion = near_east_superregion
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_mena
+                owner = {
+                    OR = {
+                        region = maghreb_region
+                        region = egypt_region
+                        superregion = near_east_superregion
+                    }
+                }
+            }
+        }
+        modifier = {
+			factor = -100.0
+			scale = no
+			potential = {
+				owner = {
+                    OR = {
+                        government = tribal
+                        government = native
+                    }
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_has_tribal_govt
+                owner = {
+                    OR = {
+                        government = tribal
+                        government = native
+                    }
+                }
+            }
+        }
 	}
 
 	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income, and higher if loans are needed. (Or it has a more than long term goal...)
@@ -1086,6 +1199,82 @@ printing_press = {
 				}
 			}
 		}
+        modifier = { # Moveable type was not that advantageous over woodblock printing in East Asia during this era due to pictographic languages with thousands of characters. Mechanical press didn't arrive until 1800s
+			factor = -1.8
+			scale = yes
+			potential = {
+				owner = {
+                    technology_group = chinese
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_chinese
+                owner = {
+                    technology_group = chinese
+                }
+            }
+        }
+        modifier = { # The Jesuits brought the printing press to Japan in the 1590s and printed a romanized form of Japanese. Historically the Tokugawa shogunate did not embrace them, and the press didn't return until the 1800s
+			factor = 2.8
+			scale = yes
+			potential = {
+				owner = {
+                    has_country_flag = a_kirishitan_realm
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_kirishitan
+                owner = {
+                    has_country_flag = a_kirishitan_realm
+                }
+            }
+        }
+        modifier = {
+			factor = -100.0
+			scale = no
+			potential = {
+				owner = {
+                    OR = {
+                        technology_group = north_american
+                        technology_group = south_american
+                        technology_group = central_african
+                        technology_group = andean
+                    }
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_nonliterate
+                owner = {
+                    OR = {
+                        technology_group = north_american
+                        technology_group = south_american
+                        technology_group = central_african
+                        technology_group = andean
+                    }
+                }
+            }
+        }
+        modifier = {
+			factor = -100.0
+			scale = no
+			potential = {
+				owner = {
+                    OR = {
+                        government = tribal
+                        government = native
+                    }
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_has_tribal_govt
+                owner = {
+                    OR = {
+                        government = tribal
+                        government = native
+                    }
+                }
+            }
+        }
 	}
 
 	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income, and higher if loans are needed. (Or it has a more than long term goal...)
@@ -1207,7 +1396,7 @@ global_trade = {
 	can_start = {
 		is_year = 1600
 		is_island = no
-		highest_value_trade_node = yes
+        continent = europe
 		OR = {
 			province_has_center_of_trade_of_level = 3
 			province_has_center_of_trade_of_level = 2
@@ -1217,6 +1406,23 @@ global_trade = {
 			any_active_trade_node = {
 				is_strongest_trade_power = PREV
 				highest_value_trade_node = yes
+			}
+			technology_group = western
+            if = {
+				limit = {
+					OR = {
+						has_dlc = "Wealth of Nations"
+						has_dlc = "Dharma"
+					}
+				}
+				any_owned_province = {
+					is_owned_by_trade_company = yes
+				}
+			}
+			else = {
+				any_owned_province = {
+					is_node_in_trade_company_region = yes
+				}
 			}
 		}
 
@@ -1258,9 +1464,7 @@ global_trade = {
 			}
 			custom_trigger_tooltip = {
 				tooltip = tooltip_center_of_trade_spread
-				OR = {
-					province_has_center_of_trade_of_level = 3
-				}
+				province_has_center_of_trade_of_level = 3
 			}
 		}
 		modifier = {
@@ -1274,9 +1478,7 @@ global_trade = {
 			}
 			custom_trigger_tooltip = {
 				tooltip = tooltip_center_of_trade_spread
-				OR = {
-					province_has_center_of_trade_of_level = 2
-				}
+				province_has_center_of_trade_of_level = 2
 			}
 		}
 		modifier = {
@@ -1377,6 +1579,28 @@ global_trade = {
 				}
 			}
 		}
+
+        modifier = {
+			factor = -100.0
+			scale = no
+			potential = {
+				owner = {
+                    OR = {
+                        government = tribal
+                        government = native
+                    }
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_has_tribal_govt
+                owner = {
+                    OR = {
+                        government = tribal
+                        government = native
+                    }
+                }
+            }
+        }
 	}
 
 	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income, and higher if loans are needed. (Or it has a more than long term goal...)
@@ -1494,6 +1718,7 @@ manufactories = {
 
 	can_start = {
 		is_year = 1650
+        continent = europe
 		is_in_capital_area = yes
 		is_island = no
 		is_state = yes
@@ -1507,6 +1732,7 @@ manufactories = {
 			has_building = plantations
 			has_building = tradecompany
 			has_building = mills
+			has_building = farm_estate
 		}
 	}
 	start_chance = 10		#in 100 for when a province can_start
@@ -1552,137 +1778,17 @@ manufactories = {
 		modifier = {
 			factor = 1
 			scale = yes
-			potential = {
-				OR = {
-					trade_goods = naval_supplies
-					trade_goods = fish
-					trade_goods = salt
-				}
-			}
 			custom_trigger_tooltip = {
-				tooltip = tooltip_wharf_on_institution_continent
-				has_building = wharf
-				any_province = {
-					is_institution_origin = manufactories
-					continent = PREV
-				}
-			}
-		}
-		modifier = {
-			factor = 1
-			scale = yes
-			potential = {
+				tooltip = tooltip_manufactory_on_institution_continent
 				OR = {
-					trade_goods = copper
-					trade_goods = iron
+					has_building = wharf
+					has_building = weapons
+					has_building = textile
+					has_building = plantations
+					has_building = tradecompany
+					has_building = mills
+					has_building = farm_estate
 				}
-			}
-			custom_trigger_tooltip = {
-				tooltip = tooltip_weapons_on_institution_continent
-				has_building = weapons
-				any_province = {
-					is_institution_origin = manufactories
-					continent = PREV
-				}
-			}
-		}
-		modifier = {
-			factor = 1
-			scale = yes
-			potential = {
-				OR = {
-					trade_goods = wool
-					trade_goods = cloth
-					trade_goods = silk
-					trade_goods = dyes
-				}
-			}
-			custom_trigger_tooltip = {
-				tooltip = tooltip_textile_on_institution_continent
-				has_building = textile
-				any_province = {
-					is_institution_origin = manufactories
-					continent = PREV
-				}
-			}
-		}
-		modifier = {
-			factor = 1
-			scale = yes
-			potential = {
-				OR = {
-					trade_goods = coffee
-					trade_goods = cotton
-					trade_goods = sugar
-					trade_goods = tobacco
-					trade_goods = tea
-					trade_goods = cocoa
-				}
-			}
-			custom_trigger_tooltip = {
-				tooltip = tooltip_plantations_on_institution_continent
-				has_building = plantations
-				any_province = {
-					is_institution_origin = manufactories
-					continent = PREV
-				}
-			}
-		}
-		modifier = {
-			factor = 1
-			scale = yes
-			potential = {
-				OR = {
-					trade_goods = ivory
-					trade_goods = slaves
-					trade_goods = spices
-					trade_goods = fur
-					trade_goods = incense
-				}
-			}
-			has_building = tradecompany
-			custom_trigger_tooltip = {
-				tooltip = tooltip_tradecompany_on_institution_continent
-				any_province = {
-					is_institution_origin = manufactories
-					continent = PREV
-				}
-			}
-		}
-		modifier = {
-			factor = 1
-			scale = yes
-			potential = {
-				OR = {
-					trade_goods = grain
-					trade_goods = livestock
-					trade_goods = wine
-				}
-			}
-			custom_trigger_tooltip = {
-				tooltip = tooltip_farm_estate_on_institution_continent
-				has_building = farm_estate
-				any_province = {
-					is_institution_origin = manufactories
-					continent = PREV
-				}
-			}
-		}
-		modifier = {
-			factor = 1
-			scale = yes
-			potential = {
-				OR = {
-					trade_goods = paper
-					trade_goods = gems
-					trade_goods = tropical_wood
-					trade_goods = glass
-					trade_goods = chinaware
-				}
-			}
-			custom_trigger_tooltip = {
-				tooltip = tooltip_mills_on_institution_continent
-				has_building = mills
 				any_province = {
 					is_institution_origin = manufactories
 					continent = PREV
@@ -1692,137 +1798,17 @@ manufactories = {
 		modifier = {
 			factor = 0.25
 			scale = yes
-			potential = {
-				OR = {
-					trade_goods = naval_supplies
-					trade_goods = fish
-					trade_goods = salt
-				}
-			}
 			custom_trigger_tooltip = {
-				tooltip = tooltip_wharf_not_institution_continent
-				has_building = wharf
-				any_province = {
-					is_institution_origin = manufactories
-					NOT = { continent = PREV }
-				}
-			}
-		}
-		modifier = {
-			factor = 0.25
-			scale = yes
-			potential = {
+				tooltip = tooltip_manufactory_not_institution_continent
 				OR = {
-					trade_goods = copper
-					trade_goods = iron
+					has_building = wharf
+					has_building = weapons
+					has_building = textile
+					has_building = plantations
+					has_building = tradecompany
+					has_building = mills
+					has_building = farm_estate
 				}
-			}
-			custom_trigger_tooltip = {
-				tooltip = tooltip_weapons_not_institution_continent
-				has_building = weapons
-				any_province = {
-					is_institution_origin = manufactories
-					NOT = { continent = PREV }
-				}
-			}
-		}
-		modifier = {
-			factor = 0.5
-			scale = yes
-			potential = {
-				OR = {
-					trade_goods = wool
-					trade_goods = cloth
-					trade_goods = silk
-					trade_goods = dyes
-				}
-			}
-			custom_trigger_tooltip = {
-				tooltip = tooltip_textile_not_institution_continent
-				has_building = textile
-				any_province = {
-					is_institution_origin = manufactories
-					NOT = { continent = PREV }
-				}
-			}
-		}
-		modifier = {
-			factor = 0.25
-			scale = yes
-			potential = {
-				OR = {
-					trade_goods = coffee
-					trade_goods = cotton
-					trade_goods = sugar
-					trade_goods = tobacco
-					trade_goods = tea
-					trade_goods = cocoa
-				}
-			}
-			custom_trigger_tooltip = {
-				tooltip = tooltip_plantations_not_institution_continent
-				has_building = plantations
-				any_province = {
-					is_institution_origin = manufactories
-					NOT = { continent = PREV }
-				}
-			}
-		}
-		modifier = {
-			factor = 0.25
-			scale = yes
-			potential = {
-				OR = {
-					trade_goods = ivory
-					trade_goods = slaves
-					trade_goods = spices
-					trade_goods = fur
-					trade_goods = incense
-				}
-			}
-			custom_trigger_tooltip = {
-				tooltip = tooltip_tradecompany_not_institution_continent
-				has_building = tradecompany
-				any_province = {
-					is_institution_origin = manufactories
-					NOT = { continent = PREV }
-				}
-			}
-		}
-		modifier = {
-			factor = 0.25
-			scale = yes
-			potential = {
-				OR = {
-					trade_goods = grain
-					trade_goods = livestock
-					trade_goods = wine
-				}
-			}
-			custom_trigger_tooltip = {
-				tooltip = tooltip_farm_estate_not_institution_continent
-				has_building = farm_estate
-				any_province = {
-					is_institution_origin = manufactories
-					NOT = { continent = PREV }
-				}
-			}
-		}
-		modifier = {
-			factor = 0.25
-			scale = yes
-			potential = {
-				OR = {
-					trade_goods = paper
-					trade_goods = gems
-					trade_goods = tropical_wood
-					trade_goods = glass
-					trade_goods = chinaware
-				}
-			}
-			custom_trigger_tooltip = {
-				tooltip = tooltip_mills_not_institution_continent
-				has_building = mills
 				any_province = {
 					is_institution_origin = manufactories
 					NOT = { continent = PREV }
@@ -1866,6 +1852,139 @@ manufactories = {
 				}
 			}
 		}
+        modifier = {
+			factor = -0.35
+			scale = yes
+			potential = {
+				owner = {
+                    OR = {
+                        technology_group = muslim
+                        technology_group = east_african
+                    }
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_muslim
+                owner = {
+                    OR = {
+                        technology_group = muslim
+                        technology_group = east_african
+                    }
+                }
+            }
+        }
+        modifier = {
+			factor = -0.65
+			scale = yes
+			potential = {
+				owner = {
+                    OR = {
+                        technology_group = indian
+                        AND = {
+                            technology_group = chinese
+                            OR = {
+                                religion = shinto
+                                religion_group = christian
+                            }
+                        }
+                    }
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_indian_or_japanese
+                owner = {
+                    OR = {
+                        technology_group = indian
+                        AND = {
+                            technology_group = chinese
+                            OR = {
+                                religion = shinto
+                                religion_group = christian
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        modifier = {
+			factor = -1.34
+			scale = yes
+			potential = {
+				owner = {
+					OR = {
+                        technology_group = nomad_group
+                        AND = {
+                            technology_group = chinese
+							NOT = { religion = shinto }
+							NOT = { religion_group = christian }
+                        }
+                    }
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_non_japanese_asian
+                owner = {
+					OR = {
+                        technology_group = nomad_group
+                        AND = {
+                            technology_group = chinese
+							NOT = { religion = shinto }
+							NOT = { religion_group = christian }
+                        }
+                    }
+                }
+            }
+        }
+        modifier = {
+			factor = -100.0
+			scale = no
+			potential = {
+				owner = {
+					NOT = { technology_group = western }
+                    NOT = { technology_group = eastern }
+                    NOT = { technology_group = ottoman }
+                    NOT = { technology_group = muslim }
+                    NOT = { technology_group = east_african }
+                    NOT = { technology_group = indian }
+                    NOT = { technology_group = chinese }
+                    NOT = { technology_group = nomad_group }
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_primitive_tech_group
+                owner = {
+					NOT = { technology_group = western }
+                    NOT = { technology_group = eastern }
+                    NOT = { technology_group = ottoman }
+                    NOT = { technology_group = muslim }
+                    NOT = { technology_group = east_african }
+                    NOT = { technology_group = indian }
+                    NOT = { technology_group = chinese }
+                    NOT = { technology_group = nomad_group }
+                }
+            }
+        }
+        modifier = {
+			factor = -100.0
+			scale = no
+			potential = {
+				owner = {
+                    OR = {
+                        government = tribal
+                        government = native
+                    }
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_has_tribal_govt
+                owner = {
+                    OR = {
+                        government = tribal
+                        government = native
+                    }
+                }
+            }
+        }
 
 	}
 
@@ -1901,7 +2020,7 @@ manufactories = {
 # Enlightenment
 #######################################
 enlightenment = {
-	penalty = 0.5
+	penalty = 1.0
 
 	bonus = {
 		culture_conversion_cost = -0.25
@@ -1966,6 +2085,7 @@ enlightenment = {
 		is_year = 1700
 		is_in_capital_area = yes
 		is_island = no
+        continent = europe
 		is_state = yes
 		printing_press = 100
 		global_trade = 100
@@ -1976,13 +2096,10 @@ enlightenment = {
 				has_seat_in_parliament = yes
 			}
 			has_building = university
-			AND = {
-				continent = europe
-				owner = {
-					ADM = 5
-					MIL = 5
-					DIP = 5
-				}
+			owner = {
+				ADM = 5
+				MIL = 5
+				DIP = 5
 			}
 		}
 	}
@@ -2075,9 +2192,9 @@ enlightenment = {
 				tooltip = tooltip_has_seat_in_parliament_not_institution_continent
 				has_seat_in_parliament = yes
 				any_province = {
-				is_institution_origin = enlightenment
-				NOT = { continent = PREV }
-			}
+					is_institution_origin = enlightenment
+					NOT = { continent = PREV }
+				}
 			}
 		}
 		modifier = {
@@ -2149,6 +2266,46 @@ enlightenment = {
 				}
 			}
 		}
+        modifier = {
+			factor = -100.0
+			scale = no
+			potential = {
+				owner = {
+					NOT = { technology_group = western }
+                    NOT = { technology_group = eastern }
+                    NOT = { technology_group = ottoman }
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_not_civilized
+                owner = {
+                    NOT = { technology_group = western }
+                    NOT = { technology_group = eastern }
+                    NOT = { technology_group = ottoman }
+                }
+            }
+        }
+        modifier = {
+			factor = -100.0
+			scale = no
+			potential = {
+				owner = {
+                    OR = {
+                        government = tribal
+                        government = native
+                    }
+                }
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_has_tribal_govt
+                owner = {
+                    OR = {
+                        government = tribal
+                        government = native
+                    }
+                }
+            }
+        }
 	}
 
 	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income, and higher if loans are needed. (Or it has a more than long term goal...)
