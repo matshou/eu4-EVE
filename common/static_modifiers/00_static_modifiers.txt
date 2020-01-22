@@ -579,9 +579,11 @@ war_taxes = {
 stability = {
 	global_trade_power = 0.01			#1% chance each step.
 	global_spy_defence = 0.05				#-15 to +15% modifier
+	global_autonomy = -0.05
 }
 
 positive_stability = {
+	yearly_corruption = -0.05
 	global_unrest = -1					#-1% revolt risk each step
 	global_tax_modifier = 0.05
 	global_missionary_strength = 0.005
@@ -591,7 +593,6 @@ positive_stability = {
 	stability_cost_modifier = 0.50
 	monthly_fervor_increase = 1
 	devotion = 0.5
-	yearly_corruption = -0.02
 	global_institution_spread = 0.05
 	yearly_harmony = 0.25
 }
@@ -601,6 +602,7 @@ privateering = {
 }
 
 negative_stability = {
+	yearly_corruption = 0.05
 	global_unrest = -2					#-1% EXTRA revolt risk each step
 	legitimacy = 1
 	interest = -1
