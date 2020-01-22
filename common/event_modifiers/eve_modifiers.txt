@@ -24,61 +24,61 @@ estate_developed_nobles = {}
 
 prov_autonomy_from_dist_100 = {		# slightly more difficult to govern
 	min_local_autonomy = 5
-	local_autonomy = 0.03
+	local_autonomy = 0.05
 	picture = "local_autonomy"
 }
 
 prov_autonomy_from_dist_200 = {
 	min_local_autonomy = 10
-	local_autonomy = 0.03
+	local_autonomy = 0.05
 	picture = "local_autonomy"
 }
 
 prov_autonomy_from_dist_300 = {		# moderately more difficult to govern
 	min_local_autonomy = 15
-	local_autonomy = 0.05
+	local_autonomy = 0.10
 	picture = "local_autonomy"
 }
 
 prov_autonomy_from_dist_400 = {
 	min_local_autonomy = 20
-	local_autonomy = 0.05
+	local_autonomy = 0.10
 	picture = "local_autonomy"
 }
 
 prov_autonomy_from_dist_500 = {    	# considerably more difficult to govern
 	min_local_autonomy = 25
-	local_autonomy = 0.10
+	local_autonomy = 0.15
 	picture = "local_autonomy"
 }
 
 prov_autonomy_from_dist_600 = {
 	min_local_autonomy = 35
-	local_autonomy = 0.10
+	local_autonomy = 0.15
 	picture = "min_autonomy"
 }
 
 prov_autonomy_from_dist_700 = {		# significantly more difficult to govern
 	min_local_autonomy = 45
-	local_autonomy = 0.15
+	local_autonomy = 0.20
 	picture = "min_autonomy"
 }
 
 prov_autonomy_from_dist_800 = {
 	min_local_autonomy = 55
-	local_autonomy = 0.15
+	local_autonomy = 0.20
 	picture = "min_autonomy"
 }
 
 prov_autonomy_from_dist_900 = {		# extremely more difficult to govern
 	min_local_autonomy = 65
-	local_autonomy = 0.20
+	local_autonomy = 0.25
 	picture = "min_autonomy"
 }
 
 prov_autonomy_from_dist_1000 = {
 	min_local_autonomy = 75
-	local_autonomy = 0.20
+	local_autonomy = 0.25
 	picture = "min_autonomy"
 }
 
