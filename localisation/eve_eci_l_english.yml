@@ -1,5 +1,6 @@
 ﻿l_english:
- eve_eci_horde:0 "[From.Owner.GetName] is a barbaric §RSteppe Horde§!!"
+ eve_eci_horde:0 "Nation has Steppe Nomads government"
+ eve_eci_native_council:0 "Nation is Native or Siberian Council"
  eve_eci_has_tribal_govt:0 "[From.Owner.GetName] is an unreformed §Y[From.Owner.GovernmentName]§!"
  eve_eci_not_civilized:0 "[From.Owner.GetName] is not in §YWestern§!, §YEastern§!, or §YAnatolian§! tech groups"
  eve_eci_primitive_tech_group:0 "[From.Owner.GetName] is not in §YWestern§!, §YEastern§!, §YAnatolian§!, §YMuslim§!, §YEast African§!, §YIndian§!, §YChinese§!, or §YNomad§! tech groups"
@@ -10,7 +11,6 @@
  eve_eci_kirishitan:0 "[From.Owner.GetName] is §YA Kirishitan Realm§!"
  eve_eci_chinese:0 "[From.Owner.GetName] is in §YChinese§! tech group"
  eve_eci_mena:0 "Is in the Maghreb or Egypt regions, or the Near East super-region"
- eve_eci_native_council:0 "[From.Owner.GetName] is a §YNative§! or §YSiberian Council§!"
  eve_eci_a_kirishitan_realm:0 "Thanks to Jesuit introduction of the Gutenberg press, the §YPrinting Press§! institution may now appear in your provinces."
  tooltip_manufactory_on_institution_continent:1 "Have a §YManufactory§! and is on same continent as Manufacturing origin."
  tooltip_manufactory_not_institution_continent:1 "Have a §YManufactory§! and is not on same continent as Manufacturing origin."
