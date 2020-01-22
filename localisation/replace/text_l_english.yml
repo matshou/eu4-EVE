@@ -3,4 +3,3 @@
  CHANGE_BASE_PROD:0 "$DIRECTION$ $VALUE$ Local Production in $WHERE$.\n"
  CHANGE_BASE_MP:0 "$DIRECTION$ $VALUE$ Local Militia in $WHERE$.\n"
  provincial_tax_income:0 "Local Commerce"
- manpower:0 "Local Militia"
