@@ -267,8 +267,7 @@ knowledge_sharing = {
 manpower = {
 	regiment_recruit_speed = -0.015
 	local_defensiveness = 0.013
-	garrison_size = 0.015
-	garrison_growth = 0.015
+	garrison_growth = 0.03
 	local_autonomy = -0.03
 	local_unrest = -0.20
 }
