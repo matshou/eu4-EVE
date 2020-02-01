@@ -63,7 +63,7 @@ estate_burghers =
 		trade_efficiency = -0.30
 		production_efficiency = -0.2
 		development_cost = 0.15
-		yearly_corruption = 0.32
+		yearly_corruption = 0.10
 	}
 
 	# These do not scale, but only applied in provinces owned by the estate

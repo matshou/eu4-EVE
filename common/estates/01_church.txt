@@ -73,7 +73,7 @@ estate_church =
 		devotion = -0.5
 		church_power_modifier = -0.2
 		monthly_fervor_increase = -1
-		yearly_corruption = 0.2
+		yearly_corruption = 0.10
 	}
 
 	# These do not scale, but only applied in provinces owned by the estate
