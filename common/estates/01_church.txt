@@ -80,13 +80,13 @@ estate_church =
 	province_modifier_happy = {
 		min_local_autonomy = -15
 		local_missionary_strength = 0.02
-		local_tax_modifier = 0.15
-		local_unrest = -3.5
+		local_tax_modifier = 0.10
+		local_unrest = -4
 	}
 	province_modifier_neutral = {
 		min_local_autonomy = -15
 		local_missionary_strength = 0.01
-		local_tax_modifier = 0.1
+		religious_conversion_resistance = 0.2
 		local_unrest = -2
 	}
 	province_modifier_angry = {
