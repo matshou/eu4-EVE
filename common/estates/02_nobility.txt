@@ -90,7 +90,6 @@ estate_nobles =
 	province_modifier_happy = {
 		min_local_autonomy = -15
 		local_defensiveness = 0.15
-		local_regiment_cost = -0.25
 		local_manpower_modifier = 0.2
 		garrison_growth = 0.25
 		local_unrest = -2
@@ -98,7 +97,6 @@ estate_nobles =
 	province_modifier_neutral = {
 		min_local_autonomy = -15
 		local_defensiveness = 0.1
-		regiment_recruit_speed = -0.15
 		local_manpower_modifier = 0.1
 		local_unrest = -1
 	}
