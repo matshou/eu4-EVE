@@ -81,13 +81,9 @@ estate_burghers =
 	}
 	province_modifier_angry = {
 		min_local_autonomy = -15
-		local_build_time = 0.3
-		local_build_cost = 0.2
-		local_ship_cost = 0.2
-		local_ship_repair = -0.25
-		ship_recruit_speed = 0.3
+		local_build_time = 0.2
 		local_autonomy = 0.1
-		local_unrest = 4
+		local_unrest = 5
 	}
 
 	# Influence modifiers

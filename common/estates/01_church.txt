@@ -92,9 +92,9 @@ estate_church =
 	}
 	province_modifier_angry = {
 		min_local_autonomy = -15
-		local_institution_spread = -0.2
+		local_missionary_maintenance_cost = 0.2
 		local_autonomy = 0.1
-		local_unrest = 7
+		local_unrest = 5
 	}
 
 	# Influence modifiers

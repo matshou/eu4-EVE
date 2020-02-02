@@ -102,8 +102,7 @@ estate_nobles =
 	}
 	province_modifier_angry = {
 		min_local_autonomy = -15
-		local_manpower_modifier = -0.3
-		local_regiment_cost = 0.3
+		regiment_recruit_speed = 0.2
 		local_autonomy = 0.1
 		local_unrest = 5
 	}
