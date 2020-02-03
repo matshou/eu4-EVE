@@ -52,6 +52,7 @@ core.on_monthly_pulse = {
 	vassals.update = yes
 #	estates.update = yes
 	core.update_advisor_mods = yes
+	core.institutions_update = yes
 
 	# Gained new territory or changed capital
 	if = {
@@ -225,5 +226,26 @@ add_monarch_power = {
 			add_$power$_power = 1
 			subtract_variable = { which = $value$ value = 1 }
 		}
+	}
+}
+
+# Update all <institution>_spread_factor variables.
+# Read more in eve_institution_events.txt
+# @scope country
+#
+core.institutions_update = {
+
+	if = {	# Manufactories
+		limit = { is_year = 1650 }
+		country_event = {
+			id = eve_institution.1
+		}
+	}
+}
+
+add_institution_spread_factor = {
+	change_variable = {
+		which = $for$_spread_factor
+		value = $value$
 	}
 }

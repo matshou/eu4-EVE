@@ -1,0 +1,42 @@
+
+################################
+# EVE - Institution Triggers
+################################
+
+province.institution_spread_factor = {
+	check_variable = {
+		which = $for$_spread_factor
+		value = $value$
+	}
+}
+
+nation.tech_indian_or_japanese = {
+	OR = {
+		technology_group = indian
+		AND = {
+			technology_group = chinese
+			OR = {
+				religion = shinto
+				religion_group = christian
+			}
+		}
+	}
+}
+
+nation.tech_non_japanese_asian = {
+	OR = {
+		technology_group = nomad_group
+		AND = {
+			technology_group = chinese
+			NOT = { religion = shinto }
+			NOT = { religion_group = christian }
+		}
+	}
+}
+
+nation.tech_muslim_or_east_african = {
+	OR = {
+		technology_group = muslim
+		technology_group = east_african
+	}
+}

@@ -1,0 +1,131 @@
+namespace = eve_institution
+
+# Events defined in this file calculate provincial institution spread factor as defined in 00_Core.txt.
+# The main reason for this is that '<institution>' condition such as 'manufacturies = 100' is not available
+# from script scopes and there is no condition to export provincial institution spread information from
+# so the only way to calculate spread outside '00_Core' is to do it from event scope.
+
+# Use 'province.institution_spread_factor' scripted trigger to get spread factor of desired institution
+# in province provided that institution is covered by these events since not all institutions and not all
+# countries are covered by these events for performance reasons.
+
+# Manufactories
+country_event = {
+	id = eve_institution.1
+	title = eve_institution.1.t	  # unlocalized
+	desc = "" picture = ""
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			nation.tech_muslim_or_east_african = yes
+			nation.tech_indian_or_japanese = yes
+			nation.tech_non_japanese_asian = yes
+		}
+	}
+
+	immediate = {
+		every_owned_province = {
+			# Reset the variable before recalculating
+			set_variable = {
+				which = manufactories_spread_factor value = 0
+			}
+			if = {													# Nearby Friendly Province has Manufactories
+				limit = {
+					any_friendly_coast_border_province = {
+						manufactories = 100
+					}
+				}
+				add_institution_spread_factor = {
+					for = manufactories value = 0.35
+				}
+			}
+			if = {
+				limit = {											# Adjacent province has Manufactories
+					NOT = {
+						any_friendly_coast_border_province = {
+							manufactories = 100
+						}
+					}
+					any_neighbor_province = {
+						NOT = { owned_by = ROOT }
+						manufactories = 100
+					}
+				}
+				add_institution_spread_factor = {
+					for = manufactories value = 0.05
+				}
+			}
+			if = {
+				limit = {											# Has Manufactory in province
+					OR = {
+						has_building = wharf
+						has_building = weapons
+						has_building = textile
+						has_building = plantations
+						has_building = tradecompany
+						has_building = mills
+						has_building = farm_estate
+					}
+				}
+				if = {												# Manufactory on same continent as origin
+					limit = {
+						any_province = {
+							is_institution_origin = manufactories
+							continent = PREV
+						}
+					}
+					add_institution_spread_factor = {
+						for = manufactories value = 1.0
+					}
+				}
+				else_if = {											# Manufactory NOT on same continent as origin
+					limit = {
+						any_province = {
+							is_institution_origin = manufactories
+							NOT = { continent = PREV }
+						}
+					}
+					add_institution_spread_factor = {
+						for = manufactories value = 0.25
+					}
+				}
+			}
+			if = {
+				limit = {											# Port/Capital - Colonial Overlord has Manufactories
+					owner = {
+						is_colonial_nation = yes
+					}
+					OR = {
+						has_port = yes
+						is_capital = yes
+					}
+					owner = {
+						is_colonial_nation = yes
+						overlord = { has_institution = manufactories }
+					}
+				}
+				add_institution_spread_factor = {
+					for = manufactories value = 5.0
+				}
+			}
+			if = {
+				limit = {											# Not Trade Company & Owner has embraced Manufactories
+					owner = {
+						has_institution = manufactories
+					}
+					is_owned_by_trade_company = no
+					owner = {
+						has_institution = manufactories
+					}
+				}
+				add_institution_spread_factor = {
+					for = manufactories value = 2.0
+				}
+			}
+		}
+	}
+	option = {}
+}
