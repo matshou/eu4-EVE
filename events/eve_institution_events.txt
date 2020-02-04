@@ -36,6 +36,7 @@ country_event = {
 				if = {
 					limit = { feudalism = 100 }
 					set_province_flag = embraced_feudalism
+					logger.print_info = { id = 108 }
 				}
 				else = {
 					if = {													# Nearby Friendly Province has Feudalism
@@ -121,11 +122,13 @@ country_event = {
 							for = feudalism value = 2.0
 						}
 					}
+					#logger.print_info = { id = 105 }
 				}
 			}
 		}
 		else = {
 			set_country_flag = embraced_feudalism
+			logger.print_info = { id = 106 }
 		}
 	}
 	option = {}
@@ -162,6 +165,7 @@ country_event = {
 				if = {
 					limit = { manufactories = 100 }
 					set_province_flag = embraced_manufactories
+					logger.print_info = { id = 109 }
 				}
 				else = {
 					if = {													# Nearby Friendly Province has Manufactories
@@ -257,11 +261,13 @@ country_event = {
 							for = manufactories value = 2.0
 						}
 					}
+					#logger.print_info = { id = 104 }
 				}
 			}
 		}
 		else = {
 			set_country_flag = embraced_manufactories
+			logger.print_info = { id = 107 }
 		}
 	}
 	option = {}

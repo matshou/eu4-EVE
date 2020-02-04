@@ -45,4 +45,40 @@ defined_text = {
 			core.is_log = { id = 103 }
 		}
 	}
+	text = {
+		localisation_key = info_log.104
+        trigger = {
+			core.is_log = { id = 104 }
+		}
+	}
+	text = {
+		localisation_key = info_log.105
+        trigger = {
+			core.is_log = { id = 105 }
+		}
+	}
+	text = {
+		localisation_key = info_log.106
+        trigger = {
+			core.is_log = { id = 106 }
+		}
+	}
+	text = {
+		localisation_key = info_log.107
+        trigger = {
+			core.is_log = { id = 107 }
+		}
+	}
+	text = {
+		localisation_key = info_log.108
+        trigger = {
+			core.is_log = { id = 108 }
+		}
+	}
+	text = {
+		localisation_key = info_log.109
+        trigger = {
+			core.is_log = { id = 109 }
+		}
+	}
 }
