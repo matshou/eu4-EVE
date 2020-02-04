@@ -19,100 +19,113 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		owner = {
-			has_reform = steppe_horde
-		}
+		nation.gov_horde_or_native_council = yes
 	}
 
 	immediate = {
-		every_owned_province = {
-			# Reset the variable before recalculating
-			set_variable = {
-				which = feudalism_spread_factor value = 0
-			}
-			if = {													# Nearby Friendly Province has Feudalism
-				limit = {
-					any_friendly_coast_border_province = {
-						feudalism = 100
-					}
-				}
-				add_institution_spread_factor = {
-					for = feudalism value = 0.6
+		if = {
+			limit = {
+				any_owned_province = {
+					province.has_embraced_feudalism = no
 				}
 			}
-			if = {													# Borders Nation with Feudalism
-				limit = {
-					NOT = {
-						any_friendly_coast_border_province = {
-							feudalism = 100
+			every_owned_province = {
+				reset_institution_spread_factor = {
+					for = feudalism
+				}
+				if = {
+					limit = { feudalism = 100 }
+					set_province_flag = embraced_feudalism
+				}
+				else = {
+					if = {													# Nearby Friendly Province has Feudalism
+						limit = {
+							any_friendly_coast_border_province = {
+								feudalism = 100
+							}
+						}
+						add_institution_spread_factor = {
+							for = feudalism value = 0.6
 						}
 					}
-					any_neighbor_province = {
-						NOT = { owned_by = ROOT }
-						feudalism = 100
-					}
-				}
-				add_institution_spread_factor = {
-					for = feudalism value = 0.1
-				}
-			}
-			if = {													# Loyal Noble Estate Present & Adjacent has Feudalism
-				limit = {
-					any_neighbor_province = {
-						feudalism = 100
-					}
-					owner = {
-						has_estate = estate_nobles
-						estate_loyalty = {
-							estate = estate_nobles
-							loyalty = 40
+					if = {													# Borders Nation with Feudalism
+						limit = {
+							NOT = {
+								any_friendly_coast_border_province = {
+									feudalism = 100
+								}
+							}
+							any_neighbor_province = {
+								NOT = { owned_by = ROOT }
+								feudalism = 100
+							}
+						}
+						add_institution_spread_factor = {
+							for = feudalism value = 0.1
 						}
 					}
-					has_estate = estate_nobles
-				}
-				add_institution_spread_factor = {
-					for = feudalism value = 0.15
-				}
-			}
-			if = {													# Port or Capital in Colonial Nation
-				limit = {
-					OR = {
-						has_port = yes
-						is_capital = yes
+					if = {													# Loyal Noble Estate Present & Adjacent has Feudalism
+						limit = {
+							any_neighbor_province = {
+								feudalism = 100
+							}
+							owner = {
+								has_estate = estate_nobles
+								estate_loyalty = {
+									estate = estate_nobles
+									loyalty = 40
+								}
+							}
+							has_estate = estate_nobles
+						}
+						add_institution_spread_factor = {
+							for = feudalism value = 0.15
+						}
 					}
-					owner = {
-						is_colonial_nation = yes
-						overlord = { has_institution = feudalism }
+					if = {													# Port or Capital in Colonial Nation
+						limit = {
+							OR = {
+								has_port = yes
+								is_capital = yes
+							}
+							owner = {
+								is_colonial_nation = yes
+								overlord = { has_institution = feudalism }
+							}
+						}
+						add_institution_spread_factor = {
+							for = feudalism value = 5.0
+						}
+					}
+					if = {													# Old World Non-Tribal Capital
+						limit = {
+							owner = { is_colonial_nation = no }
+							is_capital = yes
+							NOT = { continent = north_america }
+							NOT = { continent = south_america }
+							NOT = { continent = new_world }
+							province.owner_gov_tribal_or_native = no
+						}
+						add_institution_spread_factor = {
+							for = feudalism value = 0.1
+						}
+					}
+					if = {													# Not Trade Company & Owner has embraced Feudalism
+						limit = {
+							is_owned_by_trade_company = no
+							owner = {
+								has_institution = feudalism
+							}
+						}
+						add_institution_spread_factor = {
+							for = feudalism value = 2.0
+						}
 					}
 				}
-				add_institution_spread_factor = {
-					for = feudalism value = 5.0
-				}
 			}
-			if = {													# Old World Non-Tribal Capital
-				limit = {
-					owner = { is_colonial_nation = no }
-					is_capital = yes
-					NOT = { continent = north_america }
-					NOT = { continent = south_america }
-					NOT = { continent = new_world }
-					province.owner_gov_tribal_or_native = no
-				}
-				add_institution_spread_factor = {
-					for = feudalism value = 0.1
-				}
-			}
-			if = {													# Not Trade Company & Owner has embraced Feudalism
-				limit = {
-					is_owned_by_trade_company = no
-					owner = {
-						has_institution = feudalism
-					}
-				}
-				add_institution_spread_factor = {
-					for = feudalism value = 2.0
-				}
-			}
+		}
+		else = {
+			set_country_flag = embraced_feudalism
 		}
 	}
 	option = {}
@@ -136,104 +149,119 @@ country_event = {
 	}
 
 	immediate = {
-		every_owned_province = {
-			# Reset the variable before recalculating
-			set_variable = {
-				which = manufactories_spread_factor value = 0
-			}
-			if = {													# Nearby Friendly Province has Manufactories
-				limit = {
-					any_friendly_coast_border_province = {
-						manufactories = 100
-					}
-				}
-				add_institution_spread_factor = {
-					for = manufactories value = 0.35
+		if = {
+			limit = {
+				any_owned_province = {
+					province.has_embraced_manufactories = no
 				}
 			}
-			if = {
-				limit = {											# Adjacent province has Manufactories
-					NOT = {
-						any_friendly_coast_border_province = {
-							manufactories = 100
+			every_owned_province = {
+				reset_institution_spread_factor = {
+					for = manufactories
+				}
+				if = {
+					limit = { manufactories = 100 }
+					set_province_flag = embraced_manufactories
+				}
+				else = {
+					if = {													# Nearby Friendly Province has Manufactories
+						limit = {
+							any_friendly_coast_border_province = {
+								manufactories = 100
+							}
+						}
+						add_institution_spread_factor = {
+							for = manufactories value = 0.35
 						}
 					}
-					any_neighbor_province = {
-						NOT = { owned_by = ROOT }
-						manufactories = 100
-					}
-				}
-				add_institution_spread_factor = {
-					for = manufactories value = 0.05
-				}
-			}
-			if = {
-				limit = {											# Has Manufactory in province
-					OR = {
-						has_building = wharf
-						has_building = weapons
-						has_building = textile
-						has_building = plantations
-						has_building = tradecompany
-						has_building = mills
-						has_building = farm_estate
-					}
-				}
-				if = {												# Manufactory on same continent as origin
-					limit = {
-						any_province = {
-							is_institution_origin = manufactories
-							continent = PREV
+					if = {
+						limit = {											# Adjacent province has Manufactories
+							NOT = {
+								any_friendly_coast_border_province = {
+									manufactories = 100
+								}
+							}
+							any_neighbor_province = {
+								NOT = { owned_by = ROOT }
+								manufactories = 100
+							}
+						}
+						add_institution_spread_factor = {
+							for = manufactories value = 0.05
 						}
 					}
-					add_institution_spread_factor = {
-						for = manufactories value = 1.0
-					}
-				}
-				else_if = {											# Manufactory NOT on same continent as origin
-					limit = {
-						any_province = {
-							is_institution_origin = manufactories
-							NOT = { continent = PREV }
+					if = {
+						limit = {											# Has Manufactory in province
+							OR = {
+								has_building = wharf
+								has_building = weapons
+								has_building = textile
+								has_building = plantations
+								has_building = tradecompany
+								has_building = mills
+								has_building = farm_estate
+							}
+						}
+						if = {												# Manufactory on same continent as origin
+							limit = {
+								any_province = {
+									is_institution_origin = manufactories
+									continent = PREV
+								}
+							}
+							add_institution_spread_factor = {
+								for = manufactories value = 1.0
+							}
+						}
+						else_if = {											# Manufactory NOT on same continent as origin
+							limit = {
+								any_province = {
+									is_institution_origin = manufactories
+									NOT = { continent = PREV }
+								}
+							}
+							add_institution_spread_factor = {
+								for = manufactories value = 0.25
+							}
 						}
 					}
-					add_institution_spread_factor = {
-						for = manufactories value = 0.25
+					if = {
+						limit = {											# Port/Capital - Colonial Overlord has Manufactories
+							owner = {
+								is_colonial_nation = yes
+							}
+							OR = {
+								has_port = yes
+								is_capital = yes
+							}
+							owner = {
+								is_colonial_nation = yes
+								overlord = { has_institution = manufactories }
+							}
+						}
+						add_institution_spread_factor = {
+							for = manufactories value = 5.0
+						}
+					}
+					if = {
+						limit = {											# Not Trade Company & Owner has embraced Manufactories
+							owner = {
+								has_institution = manufactories
+							}
+							is_owned_by_trade_company = no
+							owner = {
+								has_institution = manufactories
+							}
+						}
+						add_institution_spread_factor = {
+							for = manufactories value = 2.0
+						}
 					}
 				}
 			}
-			if = {
-				limit = {											# Port/Capital - Colonial Overlord has Manufactories
-					owner = {
-						is_colonial_nation = yes
-					}
-					OR = {
-						has_port = yes
-						is_capital = yes
-					}
-					owner = {
-						is_colonial_nation = yes
-						overlord = { has_institution = manufactories }
-					}
-				}
-				add_institution_spread_factor = {
-					for = manufactories value = 5.0
-				}
-			}
-			if = {
-				limit = {											# Not Trade Company & Owner has embraced Manufactories
-					owner = {
-						has_institution = manufactories
-					}
-					is_owned_by_trade_company = no
-					owner = {
-						has_institution = manufactories
-					}
-				}
-				add_institution_spread_factor = {
-					for = manufactories value = 2.0
-				}
-			}
+		}
+		else = {
+			set_country_flag = embraced_manufactories
 		}
 	}
 	option = {}

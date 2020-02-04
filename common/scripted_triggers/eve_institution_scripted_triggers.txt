@@ -10,6 +10,22 @@ province.institution_spread_factor = {
 	}
 }
 
+nation.has_embraced_feudalism = {
+	has_country_flag = embraced_feudalism
+}
+
+nation.has_embraced_manufactories = {
+	has_country_flag = embraced_manufactories
+}
+
+province.has_embraced_feudalism = {
+	has_province_flag = embraced_feudalism
+}
+
+province.has_embraced_manufactories = {
+	has_province_flag = embraced_manufactories
+}
+
 province.owner_gov_tribal_or_native = {
 	owner = {
 		OR = {
@@ -41,6 +57,14 @@ province.owner_not_civilized_tech = {
 			technology_group = eastern
 			technology_group = ottoman
 		}
+	}
+}
+
+nation.gov_horde_or_native_council = {
+	OR = {
+		government = native
+		has_reform = siberian_tribe
+		has_reform = steppe_horde
 	}
 }
 
