@@ -9,10 +9,119 @@ namespace = eve_institution
 # in province provided that institution is covered by these events since not all institutions and not all
 # countries are covered by these events for performance reasons.
 
-# Manufactories
+# Feudalism
 country_event = {
 	id = eve_institution.1
-	title = eve_institution.1.t	  # unlocalized
+	title = eve_institution.1.t
+	desc = "" picture = ""
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		owner = {
+			has_reform = steppe_horde
+		}
+	}
+
+	immediate = {
+		every_owned_province = {
+			# Reset the variable before recalculating
+			set_variable = {
+				which = feudalism_spread_factor value = 0
+			}
+			if = {													# Nearby Friendly Province has Feudalism
+				limit = {
+					any_friendly_coast_border_province = {
+						feudalism = 100
+					}
+				}
+				add_institution_spread_factor = {
+					for = feudalism value = 0.6
+				}
+			}
+			if = {													# Borders Nation with Feudalism
+				limit = {
+					NOT = {
+						any_friendly_coast_border_province = {
+							feudalism = 100
+						}
+					}
+					any_neighbor_province = {
+						NOT = { owned_by = ROOT }
+						feudalism = 100
+					}
+				}
+				add_institution_spread_factor = {
+					for = feudalism value = 0.1
+				}
+			}
+			if = {													# Loyal Noble Estate Present & Adjacent has Feudalism
+				limit = {
+					any_neighbor_province = {
+						feudalism = 100
+					}
+					owner = {
+						has_estate = estate_nobles
+						estate_loyalty = {
+							estate = estate_nobles
+							loyalty = 40
+						}
+					}
+					has_estate = estate_nobles
+				}
+				add_institution_spread_factor = {
+					for = feudalism value = 0.15
+				}
+			}
+			if = {													# Port or Capital in Colonial Nation
+				limit = {
+					OR = {
+						has_port = yes
+						is_capital = yes
+					}
+					owner = {
+						is_colonial_nation = yes
+						overlord = { has_institution = feudalism }
+					}
+				}
+				add_institution_spread_factor = {
+					for = feudalism value = 5.0
+				}
+			}
+			if = {													# Old World Non-Tribal Capital
+				limit = {
+					owner = { is_colonial_nation = no }
+					is_capital = yes
+					NOT = { continent = north_america }
+					NOT = { continent = south_america }
+					NOT = { continent = new_world }
+					province.owner_gov_tribal_or_native = no
+				}
+				add_institution_spread_factor = {
+					for = feudalism value = 0.1
+				}
+			}
+			if = {													# Not Trade Company & Owner has embraced Feudalism
+				limit = {
+					is_owned_by_trade_company = no
+					owner = {
+						has_institution = feudalism
+					}
+				}
+				add_institution_spread_factor = {
+					for = feudalism value = 2.0
+				}
+			}
+		}
+	}
+	option = {}
+}
+
+# Manufactories
+country_event = {
+	id = eve_institution.2
+	title = eve_institution.2.t
 	desc = "" picture = ""
 	hidden = yes
 

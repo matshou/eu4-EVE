@@ -10,6 +10,40 @@ province.institution_spread_factor = {
 	}
 }
 
+province.owner_gov_tribal_or_native = {
+	owner = {
+		OR = {
+			government = tribal
+			government = native
+		}
+	}
+}
+
+province.owner_primitive_tech = {
+	owner = {
+		NOT = {
+			technology_group = western
+			technology_group = eastern
+			technology_group = ottoman
+			technology_group = muslim
+			technology_group = east_african
+			technology_group = indian
+			technology_group = chinese
+			technology_group = nomad_group
+		}
+	}
+}
+
+province.owner_not_civilized_tech = {
+	owner = {
+		NOT = {
+			technology_group = western
+			technology_group = eastern
+			technology_group = ottoman
+		}
+	}
+}
+
 nation.tech_indian_or_japanese = {
 	OR = {
 		technology_group = indian

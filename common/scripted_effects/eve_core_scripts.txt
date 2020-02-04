@@ -235,10 +235,16 @@ add_monarch_power = {
 #
 core.institutions_update = {
 
+	if = {	# Feudalism
+		limit = { has_reform = steppe_horde }
+		country_event = {
+			id = eve_institution.1
+		}
+	}
 	if = {	# Manufactories
 		limit = { is_year = 1650 }
 		country_event = {
-			id = eve_institution.1
+			id = eve_institution.2
 		}
 	}
 }
