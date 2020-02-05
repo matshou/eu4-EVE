@@ -155,54 +155,58 @@ feudalism = {
 			factor = -0.1
 			scale = yes
 			potential = {
-				NOT = {
-					any_friendly_coast_border_province = {
-						feudalism = 100
-					}
-				}
 				owner = {
-					has_reform = steppe_horde
+					nation.gov_horde_or_native_council = yes
+				}
+				province.institution_spread_factor = {
+					for = feudalism value = 0.1
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = feudalism value = 0.15
+					}
 				}
 			}
 			custom_trigger_tooltip = {
-                tooltip = eve_eci_horde
-				any_neighbor_province = {
-					NOT = { owned_by = ROOT }
-					feudalism = 100
-				}
-				owner = {
-					has_reform = steppe_horde
-				}
+                tooltip = eve_eci_horde_or_native_council
+				always = yes
 			}
 		}
 		modifier = {
-			factor = -0.1
+			factor = -0.15
 			scale = yes
 			potential = {
-				NOT = {
-					any_friendly_coast_border_province = {
-						feudalism = 100
-					}
-				}
 				owner = {
-					OR = {
-						government = native
-						has_reform = siberian_tribe
+					nation.gov_horde_or_native_council = yes
+				}
+				province.institution_spread_factor = {
+					for = feudalism value = 0.15
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = feudalism value = 0.2
 					}
 				}
 			}
 			custom_trigger_tooltip = {
-                tooltip = eve_eci_native_council
-				any_neighbor_province = {
-					NOT = { owned_by = ROOT }
-					feudalism = 100
-				}
+                tooltip = eve_eci_horde_or_native_council
+				always = yes
+			}
+		}
+		modifier = {
+			factor = -0.2
+			scale = yes
+			potential = {
 				owner = {
-                    OR = {
-                        government = native
-                        has_reform = siberian_tribe
-                    }
+					nation.gov_horde_or_native_council = yes
 				}
+				province.institution_spread_factor = {
+					for = feudalism value = 0.2
+				}
+			}
+			custom_trigger_tooltip = {
+                tooltip = eve_eci_horde_or_native_council
+				always = yes
 			}
 		}
 		modifier = {
@@ -420,6 +424,10 @@ renaissance = {
 			region = east_africa_region
 			is_year = 1550
 		}
+		custom_trigger_tooltip = {
+			tooltip = eve_eci_has_tribal_govt
+			province.owner_gov_tribal_or_native = no
+		}
 	}
 
 
@@ -560,27 +568,6 @@ renaissance = {
 				}
 			}
 		}
-        modifier = {
-			factor = -100.0
-			scale = no
-			potential = {
-				owner = {
-                    OR = {
-                        government = tribal
-                        government = native
-                    }
-                }
-            }
-            custom_trigger_tooltip = {
-                tooltip = eve_eci_has_tribal_govt
-                owner = {
-                    OR = {
-                        government = tribal
-                        government = native
-                    }
-                }
-            }
-        }
 	}
 
 	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income, and higher if loans are needed. (Or it has a more than long term goal...)
@@ -734,7 +721,10 @@ new_world_i = {
 
 
 	can_embrace = {
-		always = yes
+		custom_trigger_tooltip = {
+			tooltip = eve_eci_has_tribal_govt
+			province.owner_gov_tribal_or_native = no
+		}
 	}
 
 
@@ -750,7 +740,6 @@ new_world_i = {
 					new_world_i = 100
 				}
 			}
-
 		}
 
 		modifier = {
@@ -772,6 +761,41 @@ new_world_i = {
 				}
 			}
 		}
+
+		# Reduced spread in MENA to nerf Berbers and represent traditional trade routes being bypassed by European explorers. Note: Ottoman Europe/Granada are unaffected
+		modifier = {
+			factor = -0.5
+			scale = yes
+			potential = {
+				province.maghreb_egypt_or_near_east_region = yes
+				province.institution_spread_factor = {
+					for = new_world value = 0.5
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = new_world value = 1.0
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_mena_province
+                always = yes
+            }
+        }
+		modifier = {
+			factor = -1.0
+			scale = yes
+			potential = {
+				province.maghreb_egypt_or_near_east_region = yes
+				province.institution_spread_factor = {
+					for = new_world value = 1.0
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_mena_province
+                always = yes
+            }
+        }
 
 		#Port provinces in countries with colonial subjects
 		modifier = {
@@ -846,48 +870,6 @@ new_world_i = {
 				}
 			}
 		}
-        modifier = { # Reduced spread in MENA to nerf Berbers and represent traditional trade routes being bypassed by European explorers. Note: Ottoman Europe/Granada are unaffected
-			factor = -1.0
-			scale = yes
-			potential = {
-				OR = {
-					region = maghreb_region
-					region = egypt_region
-					superregion = near_east_superregion
-				}
-            }
-            custom_trigger_tooltip = {
-                tooltip = eve_eci_mena
-                owner = {
-                    OR = {
-                        region = maghreb_region
-                        region = egypt_region
-                        superregion = near_east_superregion
-                    }
-                }
-            }
-        }
-        modifier = {
-			factor = -100.0
-			scale = no
-			potential = {
-				owner = {
-                    OR = {
-                        government = tribal
-                        government = native
-                    }
-                }
-            }
-            custom_trigger_tooltip = {
-                tooltip = eve_eci_has_tribal_govt
-                owner = {
-                    OR = {
-                        government = tribal
-                        government = native
-                    }
-                }
-            }
-        }
 	}
 
 	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income, and higher if loans are needed. (Or it has a more than long term goal...)
@@ -1035,7 +1017,45 @@ printing_press = {
 
 
 	can_embrace = {
-		always = yes
+		OR = {
+			NOT = {
+				# Moveable type was not that advantageous over woodblock printing in East Asia during this era due to
+				# pictographic languages with thousands of characters. Mechanical press didn't arrive until 1800s
+				custom_trigger_tooltip = {
+					tooltip = eve_eci_chinese
+					owner = {
+						technology_group = chinese
+					}
+					OR = {
+						religion = confucianism
+						religion = shinto
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+                tooltip = eve_eci_kirishitan
+                owner = {
+                    has_country_flag = a_kirishitan_realm
+                }
+            }
+		}
+		custom_trigger_tooltip = {
+			tooltip = eve_eci_nonliterate
+			NOT = {
+				owner = {
+					OR = {
+						technology_group = north_american
+						technology_group = south_american
+						technology_group = central_african
+						technology_group = andean
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = eve_eci_has_tribal_govt
+			province.owner_gov_tribal_or_native = no
+		}
 	}
 
 
@@ -1212,23 +1232,8 @@ printing_press = {
 				}
 			}
 		}
-        modifier = { # Moveable type was not that advantageous over woodblock printing in East Asia during this era due to pictographic languages with thousands of characters. Mechanical press didn't arrive until 1800s
-			factor = -1.8
-			scale = yes
-			potential = {
-				owner = {
-                    technology_group = chinese
-                }
-            }
-            custom_trigger_tooltip = {
-                tooltip = eve_eci_chinese
-                owner = {
-                    technology_group = chinese
-                }
-            }
-        }
         modifier = { # The Jesuits brought the printing press to Japan in the 1590s and printed a romanized form of Japanese. Historically the Tokugawa shogunate did not embrace them, and the press didn't return until the 1800s
-			factor = 2.8
+			factor = 1.8
 			scale = yes
 			potential = {
 				owner = {
@@ -1239,52 +1244,6 @@ printing_press = {
                 tooltip = eve_eci_kirishitan
                 owner = {
                     has_country_flag = a_kirishitan_realm
-                }
-            }
-        }
-        modifier = {
-			factor = -100.0
-			scale = no
-			potential = {
-				owner = {
-                    OR = {
-                        technology_group = north_american
-                        technology_group = south_american
-                        technology_group = central_african
-                        technology_group = andean
-                    }
-                }
-            }
-            custom_trigger_tooltip = {
-                tooltip = eve_eci_nonliterate
-                owner = {
-                    OR = {
-                        technology_group = north_american
-                        technology_group = south_american
-                        technology_group = central_african
-                        technology_group = andean
-                    }
-                }
-            }
-        }
-        modifier = {
-			factor = -100.0
-			scale = no
-			potential = {
-				owner = {
-                    OR = {
-                        government = tribal
-                        government = native
-                    }
-                }
-            }
-            custom_trigger_tooltip = {
-                tooltip = eve_eci_has_tribal_govt
-                owner = {
-                    OR = {
-                        government = tribal
-                        government = native
-                    }
                 }
             }
         }
@@ -1447,7 +1406,10 @@ global_trade = {
 
 
 	can_embrace = {
-		always = yes
+		custom_trigger_tooltip = {
+			tooltip = eve_eci_has_tribal_govt
+			province.owner_gov_tribal_or_native = no
+		}
 	}
 
 
@@ -1592,28 +1554,6 @@ global_trade = {
 				}
 			}
 		}
-
-        modifier = {
-			factor = -100.0
-			scale = no
-			potential = {
-				owner = {
-                    OR = {
-                        government = tribal
-                        government = native
-                    }
-                }
-            }
-            custom_trigger_tooltip = {
-                tooltip = eve_eci_has_tribal_govt
-                owner = {
-                    OR = {
-                        government = tribal
-                        government = native
-                    }
-                }
-            }
-        }
 	}
 
 	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income, and higher if loans are needed. (Or it has a more than long term goal...)
@@ -1755,7 +1695,14 @@ manufactories = {
 
 
 	can_embrace = {
-		always = yes
+		custom_trigger_tooltip = {
+			tooltip = eve_eci_has_tribal_govt
+			province.owner_gov_tribal_or_native = no
+		}
+		custom_trigger_tooltip = {
+			tooltip = eve_eci_primitive_tech_group
+			province.owner_primitive_tech = no
+		}
 	}
 
 
@@ -1792,7 +1739,7 @@ manufactories = {
 			factor = 1
 			scale = yes
 			custom_trigger_tooltip = {
-				tooltip = tooltip_manufactory_on_institution_continent
+				tooltip = eve_eci_manufactory_on_institution_continent
 				OR = {
 					has_building = wharf
 					has_building = weapons
@@ -1812,7 +1759,7 @@ manufactories = {
 			factor = 0.25
 			scale = yes
 			custom_trigger_tooltip = {
-				tooltip = tooltip_manufactory_not_institution_continent
+				tooltip = eve_eci_manufactory_not_institution_continent
 				OR = {
 					has_building = wharf
 					has_building = weapons
@@ -1866,24 +1813,292 @@ manufactories = {
 			}
 		}
         modifier = {
+			factor = -0.05
+			scale = yes
+			potential = {
+				owner = {
+                    nation.tech_muslim_or_east_african = yes
+                }
+				province.institution_spread_factor = {
+					for = manufactories value = 0.05
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 0.25
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_muslim
+				always = yes
+            }
+        }
+		modifier = {
+			factor = -0.05
+			scale = yes
+			potential = {
+				owner = {
+                    nation.tech_indian_or_japanese = yes
+                }
+				province.institution_spread_factor = {
+					for = manufactories value = 0.05
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 0.25
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_indian_or_japanese
+				always = yes
+            }
+        }
+		modifier = {
+			factor = -0.05
+			scale = yes
+			potential = {
+				owner = {
+                    nation.tech_non_japanese_asian = yes
+                }
+				province.institution_spread_factor = {
+					for = manufactories value = 0.05
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 0.25
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_non_japanese_asian
+				always = yes
+            }
+        }
+		modifier = {
+			factor = -0.25
+			scale = yes
+			potential = {
+				owner = {
+                    nation.tech_muslim_or_east_african = yes
+                }
+				province.institution_spread_factor = {
+					for = manufactories value = 0.25
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 0.30
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_muslim
+				always = yes
+            }
+        }
+		modifier = {
+			factor = -0.25
+			scale = yes
+			potential = {
+				owner = {
+                    nation.tech_indian_or_japanese = yes
+                }
+				province.institution_spread_factor = {
+					for = manufactories value = 0.25
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 0.30
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_indian_or_japanese
+				always = yes
+            }
+        }
+		modifier = {
+			factor = -0.25
+			scale = yes
+			potential = {
+				owner = {
+                    nation.tech_non_japanese_asian = yes
+                }
+				province.institution_spread_factor = {
+					for = manufactories value = 0.25
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 0.30
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_non_japanese_asian
+				always = yes
+            }
+        }
+		modifier = {
+			factor = -0.30
+			scale = yes
+			potential = {
+				owner = {
+                    nation.tech_muslim_or_east_african = yes
+                }
+				province.institution_spread_factor = {
+					for = manufactories value = 0.30
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 0.35
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_muslim
+				always = yes
+            }
+        }
+		modifier = {
+			factor = -0.30
+			scale = yes
+			potential = {
+				owner = {
+                    nation.tech_indian_or_japanese = yes
+                }
+				province.institution_spread_factor = {
+					for = manufactories value = 0.30
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 0.35
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_indian_or_japanese
+				always = yes
+            }
+        }
+		modifier = {
+			factor = -0.30
+			scale = yes
+			potential = {
+				owner = {
+                    nation.tech_non_japanese_asian = yes
+                }
+				province.institution_spread_factor = {
+					for = manufactories value = 0.30
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 0.35
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_non_japanese_asian
+				always = yes
+            }
+        }
+		modifier = {
 			factor = -0.35
 			scale = yes
 			potential = {
 				owner = {
-                    OR = {
-                        technology_group = muslim
-                        technology_group = east_african
-                    }
+                    nation.tech_muslim_or_east_african = yes
                 }
+				province.institution_spread_factor = {
+					for = manufactories value = 0.35
+				}
             }
             custom_trigger_tooltip = {
                 tooltip = eve_eci_muslim
-                owner = {
-                    OR = {
-                        technology_group = muslim
-                        technology_group = east_african
-                    }
+				always = yes
+            }
+        }
+		modifier = {
+			factor = -0.35
+			scale = yes
+			potential = {
+				owner = {
+                    nation.tech_indian_or_japanese = yes
                 }
+				province.institution_spread_factor = {
+					for = manufactories value = 0.35
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 0.50
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_indian_or_japanese
+				always = yes
+            }
+        }
+		modifier = {
+			factor = -0.35
+			scale = yes
+			potential = {
+				owner = {
+                    nation.tech_non_japanese_asian = yes
+                }
+				province.institution_spread_factor = {
+					for = manufactories value = 0.35
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 1.50
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_non_japanese_asian
+				always = yes
+            }
+        }
+		modifier = {
+			factor = -0.60
+			scale = yes
+			potential = {
+				owner = {
+					nation.tech_indian_or_japanese = yes
+				}
+				province.institution_spread_factor = {
+					for = manufactories value = 0.60
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 0.65
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_indian_or_japanese
+                always = yes
+            }
+        }
+		modifier = {
+			factor = -0.60
+			scale = yes
+			potential = {
+				owner = {
+					nation.tech_non_japanese_asian = yes
+				}
+				province.institution_spread_factor = {
+					for = manufactories value = 0.60
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 0.65
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_non_japanese_asian
+                always = yes
             }
         }
         modifier = {
@@ -1891,111 +2106,73 @@ manufactories = {
 			scale = yes
 			potential = {
 				owner = {
-                    OR = {
-                        technology_group = indian
-                        AND = {
-                            technology_group = chinese
-                            OR = {
-                                religion = shinto
-                                religion_group = christian
-                            }
-                        }
-                    }
-                }
+					nation.tech_indian_or_japanese = yes
+				}
+				province.institution_spread_factor = {
+					for = manufactories value = 0.65
+				}
             }
             custom_trigger_tooltip = {
                 tooltip = eve_eci_indian_or_japanese
-                owner = {
-                    OR = {
-                        technology_group = indian
-                        AND = {
-                            technology_group = chinese
-                            OR = {
-                                religion = shinto
-                                religion_group = christian
-                            }
-                        }
-                    }
-                }
+                always = yes
             }
         }
-        modifier = {
-			factor = -1.34
+		modifier = {
+			factor = -0.65
 			scale = yes
 			potential = {
 				owner = {
-					OR = {
-                        technology_group = nomad_group
-                        AND = {
-                            technology_group = chinese
-							NOT = { religion = shinto }
-							NOT = { religion_group = christian }
-                        }
-                    }
-                }
+					nation.tech_non_japanese_asian = yes
+				}
+				province.institution_spread_factor = {
+					for = manufactories value = 0.65
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 1.0
+					}
+				}
             }
             custom_trigger_tooltip = {
                 tooltip = eve_eci_non_japanese_asian
-                owner = {
-					OR = {
-                        technology_group = nomad_group
-                        AND = {
-                            technology_group = chinese
-							NOT = { religion = shinto }
-							NOT = { religion_group = christian }
-                        }
-                    }
-                }
+                always = yes
+            }
+        }
+		modifier = {
+			factor = -1.0
+			scale = yes
+			potential = {
+				owner = {
+					nation.tech_non_japanese_asian = yes
+				}
+				province.institution_spread_factor = {
+					for = manufactories value = 1.0
+				}
+				NOT = {
+					province.institution_spread_factor = {
+						for = manufactories value = 1.35
+					}
+				}
+            }
+            custom_trigger_tooltip = {
+                tooltip = eve_eci_non_japanese_asian
+                always = yes
             }
         }
         modifier = {
-			factor = -100.0
-			scale = no
+			factor = -1.35
+			scale = yes
 			potential = {
 				owner = {
-					NOT = { technology_group = western }
-                    NOT = { technology_group = eastern }
-                    NOT = { technology_group = ottoman }
-                    NOT = { technology_group = muslim }
-                    NOT = { technology_group = east_african }
-                    NOT = { technology_group = indian }
-                    NOT = { technology_group = chinese }
-                    NOT = { technology_group = nomad_group }
+					nation.tech_non_japanese_asian = yes
                 }
+				province.institution_spread_factor = {
+					for = manufactories value = 1.35
+				}
             }
             custom_trigger_tooltip = {
-                tooltip = eve_eci_primitive_tech_group
-                owner = {
-					NOT = { technology_group = western }
-                    NOT = { technology_group = eastern }
-                    NOT = { technology_group = ottoman }
-                    NOT = { technology_group = muslim }
-                    NOT = { technology_group = east_african }
-                    NOT = { technology_group = indian }
-                    NOT = { technology_group = chinese }
-                    NOT = { technology_group = nomad_group }
-                }
-            }
-        }
-        modifier = {
-			factor = -100.0
-			scale = no
-			potential = {
-				owner = {
-                    OR = {
-                        government = tribal
-                        government = native
-                    }
-                }
-            }
-            custom_trigger_tooltip = {
-                tooltip = eve_eci_has_tribal_govt
-                owner = {
-                    OR = {
-                        government = tribal
-                        government = native
-                    }
-                }
+                tooltip = eve_eci_non_japanese_asian
+                always = yes
             }
         }
 
@@ -2123,7 +2300,14 @@ enlightenment = {
 
 
 	can_embrace = {
-		always = yes
+		custom_trigger_tooltip = {
+			tooltip = eve_eci_has_tribal_govt
+			province.owner_gov_tribal_or_native = no
+		}
+		custom_trigger_tooltip = {
+			tooltip = eve_eci_not_civilized
+			province.owner_not_civilized_tech = no
+		}
 	}
 
 
@@ -2279,46 +2463,6 @@ enlightenment = {
 				}
 			}
 		}
-        modifier = {
-			factor = -100.0
-			scale = no
-			potential = {
-				owner = {
-					NOT = { technology_group = western }
-                    NOT = { technology_group = eastern }
-                    NOT = { technology_group = ottoman }
-                }
-            }
-            custom_trigger_tooltip = {
-                tooltip = eve_eci_not_civilized
-                owner = {
-                    NOT = { technology_group = western }
-                    NOT = { technology_group = eastern }
-                    NOT = { technology_group = ottoman }
-                }
-            }
-        }
-        modifier = {
-			factor = -100.0
-			scale = no
-			potential = {
-				owner = {
-                    OR = {
-                        government = tribal
-                        government = native
-                    }
-                }
-            }
-            custom_trigger_tooltip = {
-                tooltip = eve_eci_has_tribal_govt
-                owner = {
-                    OR = {
-                        government = tribal
-                        government = native
-                    }
-                }
-            }
-        }
 	}
 
 	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income, and higher if loans are needed. (Or it has a more than long term goal...)
