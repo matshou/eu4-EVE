@@ -68,6 +68,14 @@ province.owner_not_civilized_tech = {
 	}
 }
 
+province.maghreb_egypt_or_near_east_region = {
+	OR = {
+		region = maghreb_region
+		region = egypt_region
+		superregion = near_east_superregion
+	}
+}
+
 nation.gov_horde_or_native_council = {
 	OR = {
 		government = native

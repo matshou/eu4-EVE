@@ -247,7 +247,7 @@ core.institutions_update = {
 	if = {	# New World
 		limit = {
 			is_year = 1500
-			nation.has_embraced_new_world = yes
+			nation.has_embraced_new_world = no
 		}
 		country_event = {
 			id = eve_institution.2
