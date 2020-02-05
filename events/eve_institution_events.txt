@@ -23,6 +23,7 @@ country_event = {
 	}
 
 	immediate = {
+		logger.print_info = { id = 113 }
 		if = {
 			limit = {
 				any_owned_province = {
@@ -150,6 +151,7 @@ country_event = {
 	}
 
 	immediate = {
+		logger.print_info = { id = 114 }
 		if = {
 			limit = {
 				any_owned_province = {
@@ -278,6 +280,7 @@ country_event = {
 	}
 
 	immediate = {
+		logger.print_info = { id = 115 }
 		if = {
 			limit = {
 				any_owned_province = {

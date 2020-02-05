@@ -37,3 +37,6 @@
  info_log.110: "[This.GetName] has all provinces fully embrace Colonialism"
  info_log.111: "[This.GetName] has just embraced Colonialism"
  info_log.112: "[This.GetName] colonialism spread: [This.new_world_spread_factor.GetValue]"
+ info_log.113: "Feudalism institution event 1 fired for [This.GetName]"
+ info_log.114: "New World institution event 1 fired for [This.GetName]"
+ info_log.115: "Manufactories institution event 1 fired for [This.GetName]"
