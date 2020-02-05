@@ -235,7 +235,7 @@ add_monarch_power = {
 #
 core.institutions_update = {
 
-	if = {			# Feudalism
+	if = {	# Feudalism
 		limit = {
 			#is_year = 1444
 			nation.has_embraced_feudalism = no
@@ -244,13 +244,22 @@ core.institutions_update = {
 			id = eve_institution.1
 		}
 	}
-	if = {			# Manufactories
+	if = {	# New World
+		limit = {
+			is_year = 1500
+			nation.has_embraced_new_world = yes
+		}
+		country_event = {
+			id = eve_institution.2
+		}
+	}
+	if = {	# Manufactories
 		limit = {
 			is_year = 1650
 			nation.has_embraced_manufactories = no
 		}
 		country_event = {
-			id = eve_institution.2
+			id = eve_institution.3
 		}
 	}
 }

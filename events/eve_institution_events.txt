@@ -134,10 +134,138 @@ country_event = {
 	option = {}
 }
 
-# Manufactories
+# New World
 country_event = {
 	id = eve_institution.2
 	title = eve_institution.2.t
+	desc = "" picture = ""
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			region = maghreb_region
+			region = egypt_region
+			superregion = near_east_superregion
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				any_owned_province = {
+					province.has_embraced_new_world = no
+				}
+			}
+			every_owned_province = {
+				reset_institution_spread_factor = {
+					for = new_world
+				}
+				if = {
+					limit = { new_world_i = 100 }
+					set_province_flag = embraced_new_world
+					logger.print_info = { id = 111 }
+				}
+				else = {
+					if = {													# Nearby Friendly Province has Colonialism
+						limit = {
+							any_friendly_coast_border_province = {
+								new_world_i = 100
+							}
+						}
+						add_institution_spread_factor = {
+							for = new_world value = 1.2
+						}
+					}
+					if = {
+						limit = {											# Port neighboring province with Colonialism
+							NOT = {
+								any_friendly_coast_border_province = {
+									new_world_i = 100
+								}
+							}
+							has_port = yes
+							any_neighbor_province = {
+								new_world_i = 100
+							}
+						}
+						add_institution_spread_factor = {
+							for = new_world value = 0.5
+						}
+					}
+					if = {
+						limit = {											# Port/Capital of Country with a New World Colonial Nation
+							OR = {
+								has_port = yes
+								is_capital = yes
+							}
+							owner = {
+								capital_scope = {
+									NOT = { continent = north_america }
+									NOT = { continent = south_america }
+									NOT = { continent = new_world }
+								}
+							}
+							owner = {
+								colony = 1
+								any_subject_country = {
+									is_colonial_nation = yes
+									OR = {
+										capital_scope = { continent = north_america }
+										capital_scope = { continent = south_america }
+										capital_scope = { continent = new_world }
+									}
+								}
+							}
+						}
+						add_institution_spread_factor = {
+							for = new_world value = 10
+						}
+					}
+					if = {
+						limit = {											# Port/Capital - Colonial Overlord has Colonialism
+							OR = {
+								has_port = yes
+								is_capital = yes
+							}
+							owner = {
+								is_colonial_nation = yes
+								overlord = { has_institution = new_world_i }
+							}
+						}
+						add_institution_spread_factor = {
+							for = new_world value = 5
+						}
+					}
+					if = {
+						limit = {											# Not Trade Company & Owner has embraced Colonialism
+							is_owned_by_trade_company = no
+							owner = {
+								has_institution = new_world_i
+							}
+						}
+						add_institution_spread_factor = {
+							for = new_world value = 2
+						}
+					}
+					logger.print_info = { id = 112 }
+				}
+			}
+		}
+		else = {
+			set_country_flag = embraced_new_world
+			logger.print_info = { id = 110 }
+		}
+	}
+
+	option = {}
+}
+
+# Manufactories
+country_event = {
+	id = eve_institution.3
+	title = eve_institution.3.t
 	desc = "" picture = ""
 	hidden = yes
 

@@ -34,3 +34,6 @@
  info_log.107: "[This.GetName] has all provinces fully embrace Manufactories"
  info_log.108: "[This.GetName] has just embraced Feudalism"
  info_log.109: "[This.GetName] has just embraced Manufactories"
+ info_log.110: "[This.GetName] has all provinces fully embrace Colonialism"
+ info_log.111: "[This.GetName] has just embraced Colonialism"
+ info_log.112: "[This.GetName] colonialism spread: [This.new_world_spread_factor.GetValue]"
