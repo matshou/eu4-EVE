@@ -274,8 +274,12 @@ country_event = {
 	trigger = {
 		OR = {
 			nation.tech_muslim_or_east_african = yes
-			nation.tech_indian_or_japanese = yes
-			nation.tech_non_japanese_asian = yes
+			any_owned_province = {
+				OR = {
+					province.owner_tech_indian_or_shinto_chinese = yes
+					province.owner_tech_nomad_or_non_shinto_chinese = yes
+				}
+			}
 		}
 	}
 

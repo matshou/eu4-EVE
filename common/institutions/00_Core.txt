@@ -1837,9 +1837,7 @@ manufactories = {
 			factor = -0.05
 			scale = yes
 			potential = {
-				owner = {
-                    nation.tech_indian_or_japanese = yes
-                }
+				province.owner_tech_indian_or_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 0.05
 				}
@@ -1858,9 +1856,7 @@ manufactories = {
 			factor = -0.05
 			scale = yes
 			potential = {
-				owner = {
-                    nation.tech_non_japanese_asian = yes
-                }
+				province.owner_tech_nomad_or_non_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 0.05
 				}
@@ -1900,9 +1896,7 @@ manufactories = {
 			factor = -0.25
 			scale = yes
 			potential = {
-				owner = {
-                    nation.tech_indian_or_japanese = yes
-                }
+				province.owner_tech_indian_or_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 0.25
 				}
@@ -1921,9 +1915,7 @@ manufactories = {
 			factor = -0.25
 			scale = yes
 			potential = {
-				owner = {
-                    nation.tech_non_japanese_asian = yes
-                }
+				province.owner_tech_nomad_or_non_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 0.25
 				}
@@ -1963,9 +1955,7 @@ manufactories = {
 			factor = -0.30
 			scale = yes
 			potential = {
-				owner = {
-                    nation.tech_indian_or_japanese = yes
-                }
+				province.owner_tech_indian_or_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 0.30
 				}
@@ -1984,9 +1974,7 @@ manufactories = {
 			factor = -0.30
 			scale = yes
 			potential = {
-				owner = {
-                    nation.tech_non_japanese_asian = yes
-                }
+				province.owner_tech_nomad_or_non_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 0.30
 				}
@@ -2021,9 +2009,7 @@ manufactories = {
 			factor = -0.35
 			scale = yes
 			potential = {
-				owner = {
-                    nation.tech_indian_or_japanese = yes
-                }
+				province.owner_tech_indian_or_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 0.35
 				}
@@ -2042,9 +2028,7 @@ manufactories = {
 			factor = -0.35
 			scale = yes
 			potential = {
-				owner = {
-                    nation.tech_non_japanese_asian = yes
-                }
+				province.owner_tech_nomad_or_non_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 0.35
 				}
@@ -2063,9 +2047,7 @@ manufactories = {
 			factor = -0.60
 			scale = yes
 			potential = {
-				owner = {
-					nation.tech_indian_or_japanese = yes
-				}
+				province.owner_tech_indian_or_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 0.60
 				}
@@ -2084,9 +2066,7 @@ manufactories = {
 			factor = -0.60
 			scale = yes
 			potential = {
-				owner = {
-					nation.tech_non_japanese_asian = yes
-				}
+				province.owner_tech_nomad_or_non_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 0.60
 				}
@@ -2105,9 +2085,7 @@ manufactories = {
 			factor = -0.65
 			scale = yes
 			potential = {
-				owner = {
-					nation.tech_indian_or_japanese = yes
-				}
+				province.owner_tech_indian_or_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 0.65
 				}
@@ -2121,9 +2099,7 @@ manufactories = {
 			factor = -0.65
 			scale = yes
 			potential = {
-				owner = {
-					nation.tech_non_japanese_asian = yes
-				}
+				province.owner_tech_nomad_or_non_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 0.65
 				}
@@ -2142,9 +2118,7 @@ manufactories = {
 			factor = -1.0
 			scale = yes
 			potential = {
-				owner = {
-					nation.tech_non_japanese_asian = yes
-				}
+				province.owner_tech_nomad_or_non_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 1.0
 				}
@@ -2305,8 +2279,8 @@ enlightenment = {
 			province.owner_gov_tribal_or_native = no
 		}
 		custom_trigger_tooltip = {
-			tooltip = eve_eci_not_civilized
-			province.owner_not_civilized_tech = no
+			tooltip = eve_eci_tech_civilized
+			province.owner_tech_civilized = yes
 		}
 	}
 

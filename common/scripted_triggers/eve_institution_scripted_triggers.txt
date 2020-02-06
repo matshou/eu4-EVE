@@ -45,22 +45,20 @@ province.owner_gov_tribal_or_native = {
 
 province.owner_primitive_tech = {
 	owner = {
-		NOT = {
-			technology_group = western
-			technology_group = eastern
-			technology_group = ottoman
-			technology_group = muslim
-			technology_group = east_african
-			technology_group = indian
-			technology_group = chinese
-			technology_group = nomad_group
+		OR = {
+			technology_group = sub_saharan			# West African
+			technology_group = central_african
+			technology_group = mesoamerican
+			technology_group = andean
+			technology_group = north_american
+			technology_group = south_american
 		}
 	}
 }
 
-province.owner_not_civilized_tech = {
+province.owner_tech_civilized = {
 	owner = {
-		NOT = {
+		OR = {
 			technology_group = western
 			technology_group = eastern
 			technology_group = ottoman
@@ -84,26 +82,32 @@ nation.gov_horde_or_native_council = {
 	}
 }
 
-nation.tech_indian_or_japanese = {
+province.owner_tech_indian_or_shinto_chinese = {
 	OR = {
-		technology_group = indian
+		owner = {
+			technology_group = indian
+		}
 		AND = {
-			technology_group = chinese
-			OR = {
-				religion = shinto
-				religion_group = christian
+			owner = {
+				technology_group = chinese
 			}
+			religion = shinto
 		}
 	}
 }
 
-nation.tech_non_japanese_asian = {
+province.owner_tech_nomad_or_non_shinto_chinese = {
 	OR = {
-		technology_group = nomad_group
+		owner = {
+			technology_group = nomad_group
+		}
 		AND = {
-			technology_group = chinese
-			NOT = { religion = shinto }
-			NOT = { religion_group = christian }
+			owner = {
+				technology_group = chinese
+			}
+			NOT = {
+				religion = shinto
+			}
 		}
 	}
 }

@@ -1,7 +1,7 @@
 ﻿l_english:
  eve_eci_horde_or_native_council:0 "Steppe Nomads, Native or Siberian Council"
  eve_eci_has_tribal_govt:0 "[From.Owner.GetName] does NOT have §YTribal§! or §YNative§! government"
- eve_eci_not_civilized:0 "[From.Owner.GetName] is NOT in §YWestern§!, §YEastern§!, or §YAnatolian§! tech group"
+ eve_eci_tech_civilized:0 "[From.Owner.GetName] is in §YWestern§!, §YEastern§!, or §YAnatolian§! tech group"
  eve_eci_primitive_tech_group:0 "[From.Owner.GetName] is NOT in §YWestern§!, §YEastern§!, §YAnatolian§!, §YMuslim§!, §YEast African§!, §YIndian§!, §YChinese§!, or §YNomad§! tech group"
  eve_eci_non_japanese_asian:0 "[From.Owner.GetName] is in §YChinese§! or §YNomad§! tech group and [From.GetName] is not §YShinto§! or §YChristian§!"
  eve_eci_indian_or_japanese:0 "[From.Owner.GetName] is in §YIndian§! or §YChinese§! tech group and [From.GetName] is §YShinto§! or §YChristian§!"
