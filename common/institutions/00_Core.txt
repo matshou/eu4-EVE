@@ -2137,9 +2137,7 @@ manufactories = {
 			factor = -1.35
 			scale = yes
 			potential = {
-				owner = {
-					nation.tech_non_japanese_asian = yes
-                }
+				province.owner_tech_nomad_or_non_shinto_chinese = yes
 				province.institution_spread_factor = {
 					for = manufactories value = 1.35
 				}
