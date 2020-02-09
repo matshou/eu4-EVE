@@ -430,7 +430,7 @@ NCountry = {
 	DISINHERIT_PRESTIGE_HIT = -50,
 	DISINHERIT_PRESTIGE_THRESHOLD = 0,
 
-	INSTITUTION_BONUS_FROM_IMP_DEVELOPMENT = 5,
+	INSTITUTION_BONUS_FROM_IMP_DEVELOPMENT = 2,
 	INSTITUTION_CAP_IMP_DEVELOPMENT = 10,
 	INSTITUTION_BASE_IMP_DEVELOPMENT = 30,
 
@@ -619,7 +619,7 @@ NCountry = {
 	PS_FACTION_BOOST = 10,
 	PS_RAISE_TARIFFS = 50,
 	PS_LOWER_TARIFFS = 25,
-	PS_RAISE_WAR_TAXES = 50,
+	PS_RAISE_WAR_TAXES = 35,
 	PS_WAR_TAXES_LIMIT_MIN = 0,	-- Minimum value for the cost of war taxes
 	PS_CREATE_TRADE_POST = 50,
 	PS_IMPROVE_PROVINCE_BASE = 50,
@@ -975,7 +975,7 @@ NMilitary = {
 
 
 	ARMY_DRILL_YEARLY_DECAY = -1.7,					-- Loss from not Drilling
-	ARMY_DRILL_YEARLY_GAIN = 12.0,					-- Gain from Drilling
+	ARMY_DRILL_YEARLY_GAIN = 10.0,					-- Gain from Drilling
 	ARMY_DRILL_MAX = 100.0,
 	ARMY_DRILL_MAX_MORALE = 0.5,
 	ARMY_DRILL_SKILL_MONTHS = 90,					-- The average number of months until you get a skill increase if drilling 100% of forcelimit. Set to 0 to disable.
@@ -1005,7 +1005,7 @@ NMilitary = {
 	MOVE_LOCK_PERCENTAGE = 0.5,						-- Unit movement is locked after this percentage of progress
 	REGULAR_LEADER_POWER = 1,						-- Used for generals & admirals (affects total pips)
 	EXPLORER_LEADER_POWER = 0.8,					-- Used for conquistadors & explorers (affects total pips)
-	BASE_MP_TO_MANPOWER = 0.25,		-- 250 men per manpower
+	BASE_MP_TO_MANPOWER = 0.2,		-- 250 men per manpower
 	SIEGE_ATTRITION = 1,
 	SIEGE_DISEASE_IMPACT = 0.05,						-- Fraction of besieging soldiers lost in a disease outbraek
 	NATIVE_FEROCITY_IMPACT = 0.05,					-- how many percentage each ferocity gives in combat bonus
@@ -1266,7 +1266,7 @@ NAI = {
 	POWERFUL_ALLY_PENALTY = 50,	-- Penalty on alliance for them already having a powerful ally if much stronger
 	RIVAL_ALLIANCE_PENALTY = 50, -- Penalty on alliance chance for being allied to rivals
 
-	DEVELOPMENT_CAP_BASE = 10,	-- AI will not develop provinces that have more development than this or DEVELOPMENT_CAP_MULT*original development (whichever is bigger)
+	DEVELOPMENT_CAP_BASE = 15,	-- AI will not develop provinces that have more development than this or DEVELOPMENT_CAP_MULT*original development (whichever is bigger)
 	DEVELOPMENT_CAP_MULT = 2,
 
 	PEACE_BASE_RELUCTANCE = 0, -- AI base stubbornness to refuse peace (always applied)
@@ -1528,7 +1528,7 @@ NAI = {
 	TRADE_POLICY_MAXIMIZE_PROFITS_SCORE = 9.0,					-- Score for maximize profit trade policy
 	TRADE_POLICY_IMPROVE_RELATIONS_PER_COUNTRY_SCORE = 5.0,		-- Score per country with merchant for improve relations policy
 	TRADE_POLICY_SPY_OFFENCE_PER_COUNTRY_SCORE = 5.0,			-- Score per country with merchant for spy offence policy
-	DRILL_BONUS_WAR_READINESS = 0.08,							-- Bonus for war readiness of drilled units
+	DRILL_BONUS_WAR_READINESS = 0.10,							-- Bonus for war readiness of drilled units
 	MONTHS_STOP_DRILLING_BEFORE_WAR = 5,						-- Months before a prepared war to stop drilling
 	DRILLING_BUDGET_OF_SURPLUS = 0.75,							-- Max amount of surplus to be used for drilling
 	DRILLING_DEBT_SURPLUS_RATIO_THRESHOLD = 0.025,				-- AI will only consider drilling if Surplus / Debt ratio is above

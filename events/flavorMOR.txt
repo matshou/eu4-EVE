@@ -22,14 +22,14 @@ country_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 3
+		months = 1
 	}
 
 	option = {
 		name = flavor_mor.1.a #Let them try! We shall rise again!
 		add_country_modifier = {
 			name = "mor_crisis"
-			duration = 1825
+			duration = 18250
 		}
 		every_known_country = {
 			limit = {
@@ -39,7 +39,7 @@ country_event = {
 			}
 			add_country_modifier = {
 				name = "mor_crisis"
-				duration = 1825
+				duration = 18250
 			}
 			country_event = { id = flavor_mor.11 }
 		}

@@ -24,6 +24,7 @@ technology = {
 
 	infantry_shock		= 	0.1
 	infantry_fire 		= 	0.1
+	maneuver_value 		= 	0.25
 
 	fort_15th = yes
 
@@ -82,6 +83,7 @@ technology = {
 	year = 1440
 
 	land_morale = 	0.5
+	maneuver_value 		= 	0.25
 }
 
 technology = {

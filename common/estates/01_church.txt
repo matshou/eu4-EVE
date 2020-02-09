@@ -73,24 +73,28 @@ estate_church =
 		devotion = -0.5
 		church_power_modifier = -0.2
 		monthly_fervor_increase = -1
-		yearly_corruption = 0.2
+		yearly_corruption = 0.10
 	}
 
 	# These do not scale, but only applied in provinces owned by the estate
 	province_modifier_happy = {
+		min_local_autonomy = -15
 		local_missionary_strength = 0.02
-		local_tax_modifier = 0.15
-		local_unrest = -3.5
+		religious_conversion_resistance = 0.4
+		local_tax_modifier = 0.10
+		local_unrest = -4
 	}
 	province_modifier_neutral = {
+		min_local_autonomy = -15
 		local_missionary_strength = 0.01
-		local_tax_modifier = 0.1
+		religious_conversion_resistance = 0.2
 		local_unrest = -2
 	}
 	province_modifier_angry = {
-		local_institution_spread = -0.2
+		min_local_autonomy = -15
+		local_missionary_maintenance_cost = 0.2
 		local_autonomy = 0.1
-		local_unrest = 7
+		local_unrest = 5
 	}
 
 	# Influence modifiers
@@ -193,6 +197,20 @@ estate_church =
 	# EVE - Church Estate Modifiers
 	####################################
 
+	influence_modifier = {
+		desc = inquisitor
+		trigger = {
+			advisor = inquisitor
+		}
+		influence = 5
+	}
+	influence_modifier = {
+		desc = theologian
+		trigger = {
+			advisor = theologian
+		}
+		influence = 5
+	}
 	influence_modifier = {
 		desc = EST_VAL_FULL_RELIGIOUS_INF
 		trigger = {

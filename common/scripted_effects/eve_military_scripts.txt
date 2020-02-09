@@ -1,0 +1,84 @@
+
+#############################
+# EVE - Military Scripts
+#############################
+
+# Calculate how much free leaders country is eligible for
+# based on land and naval force limit and apply the right modifier
+# @scope country
+military.calc_free_leaders = {
+
+	calc_free_leaders = { for = land }
+	calc_free_leaders = { for = naval }
+}
+
+# @scope country
+# @param for, lvl
+calc_free_leaders = {
+
+	if = {
+		limit = {
+			NOT = {
+				has_country_modifier = $for$_force_limit_free_leaders_1
+				$for$_forcelimit = 40
+			}
+			$for$_forcelimit = 20
+		}
+		apply_leaders_from_flimit_mod = { for = $for$ lvl = 1 }
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_country_modifier = $for$_force_limit_free_leaders_2
+				$for$_forcelimit = 60
+			}
+			$for$_forcelimit = 40
+		}
+		apply_leaders_from_flimit_mod = { for = $for$ lvl = 2 }
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_country_modifier = $for$_force_limit_free_leaders_3
+				$for$_forcelimit = 80
+			}
+			$for$_forcelimit = 60
+		}
+		apply_leaders_from_flimit_mod = { for = $for$ lvl = 3 }
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_country_modifier = $for$_force_limit_free_leaders_4
+				$for$_forcelimit = 100
+			}
+			$for$_forcelimit = 80
+		}
+		apply_leaders_from_flimit_mod = { for = $for$ lvl = 4 }
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_country_modifier = $for$_force_limit_free_leaders_5
+			}
+			$for$_forcelimit = 100
+		}
+		apply_leaders_from_flimit_mod = { for = $for$ lvl = 5 }
+	}
+}
+
+# @scope country
+# @param for, lvl
+apply_leaders_from_flimit_mod = {
+
+	remove_country_modifier = $for$_force_limit_free_leaders_1
+	remove_country_modifier = $for$_force_limit_free_leaders_2
+	remove_country_modifier = $for$_force_limit_free_leaders_3
+	remove_country_modifier = $for$_force_limit_free_leaders_4
+	remove_country_modifier = $for$_force_limit_free_leaders_5
+
+	add_country_modifier = {
+		name = $for$_force_limit_free_leaders_$lvl$
+		duration = -1 hidden = yes
+	}
+}

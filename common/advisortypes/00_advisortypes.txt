@@ -491,8 +491,8 @@ commandant = {
 	monarch_power = MIL
 
 	# Bonus
-	discipline = 0.04
-	drill_gain_modifier = 0.25
+	discipline = 0.05
+	drill_gain_modifier = 0.2
 
 	skill_scaled_modifier = { meritocracy = 0.5 }
 

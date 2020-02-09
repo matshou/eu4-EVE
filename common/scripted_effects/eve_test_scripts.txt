@@ -22,28 +22,52 @@ test.run_tests = {
 # @scope country
 test.run_common_tests = {
 
+	test.validate_province_autonomy = yes
 }
 
 # Run AI only tests
 # @scope country
 test.run_ai_tests = {
 
-	test.check_war_taxes = yes
 }
 
 # Run Player only tests
 # @scope country
 test.run_player_tests = {
 
-	#test.expressions = yes
+	#test.run_expression_test = yes
 }
 
 # Test expression building and validation code.
 # Use after making changes to effect or trigger code
 # @scope country
 #
-test.expressions = {
+test.run_expression_test = {
 
+	if = {
+		# Since expression tests take a long time to complete
+		# it would be best to run them only once per game save
+		limit = {
+			NOT = { has_country_flag = expression_test_completed }
+		}
+		run_expression_test = yes
+	}
+}
+# @scope country
+run_expression_test = {
+
+	set_variable = {
+		which = gold_removed value = 0
+	}
+	# Empty the treasury before performing the test.
+	# The gold will be returned when the test has completed
+	while = {
+		limit = { treasury = 1 }
+		add_treasury = -1
+		change_variable = {
+			which = gold_removed value = 1
+		}
+	}
 	set_variable = { which = l value = 9999 }
 	add_treasury = 9999
 
@@ -52,7 +76,7 @@ test.expressions = {
 
 		ex.build = { left = treasury }
 		export_to_variable = {
-			which = t value = treasury who = THIS
+			which = t value = treasury
 		}
 		math.floor = { val = t int = 0 }
 
@@ -64,28 +88,137 @@ test.expressions = {
 		add_treasury = -1
 		subtract_variable = { which = l value = 1 }
 	}
+	# Return the gold that was removed to perform
+    # the test back to country treasury
+	while = {
+		limit = {
+			is_var_not_null = { var = gold_removed }
+		}
+		add_treasury = 1
+		subtract_variable = {
+			which = gold_removed value = 1
+		}
+	}
+	set_country_flag = expression_test_completed
 }
 
-# Check if war taxes are working correctly
+# Perform autonomy related tests for every owned province
 # @scope country
-test.check_war_taxes = {
+test.validate_province_autonomy = {
 
+	every_owned_province = {
+		validate_province_distance = yes
+		validate_province_state_autonomy = yes
+	}
+}
+
+# Test if province has valid distance from capital setup
+# @scope province
+validate_province_distance = {
 	if = {
-		limit = { has_country_flag = war_taxes_raised }
+		limit = { province_distance = { who = ROOT distance = 1000 } }
 		if = {
-			limit = { NOT = { has_wartaxes = yes } }
-			clr_country_flag = war_taxes_raised
-			logger.print_info { id = 103 }
+			limit = { province.invalid_distance_from_capital = { dist = 1000 } }
+			logger.print_error = { id = 108 }
 		}
 	}
 	else_if = {
-		limit = { has_wartaxes = yes }
-		set_country_flag = war_taxes_raised
-		logger.print_info { id = 102 }
+		limit = { province_distance = { who = ROOT distance = 900 } }
 		if = {
-			limit = { NOT = { has_country_modifier = ai_war_taxes_effects } }
-			logger.print_error = { id = 107 }
+			limit = { province.invalid_distance_from_capital = { dist = 900 } }
+			logger.print_error = { id = 108 }
 		}
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 800 } }
+		if = {
+			limit = { province.invalid_distance_from_capital = { dist = 800 } }
+			logger.print_error = { id = 108 }
+		}
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 700 } }
+		if = {
+			limit = { province.invalid_distance_from_capital = { dist = 700 } }
+			logger.print_error = { id = 108 }
+		}
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 600 } }
+		if = {
+			limit = { province.invalid_distance_from_capital = { dist = 600 } }
+			logger.print_error = { id = 108 }
+		}
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 500 } }
+		if = {
+			limit = { province.invalid_distance_from_capital = { dist = 500 } }
+			logger.print_error = { id = 108 }
+		}
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 400 } }
+		if = {
+			limit = { province.invalid_distance_from_capital = { dist = 400 } }
+			logger.print_error = { id = 108 }
+		}
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 300 } }
+		if = {
+			limit = { province.invalid_distance_from_capital = { dist = 300 } }
+			logger.print_error = { id = 108 }
+		}
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 200 } }
+		if = {
+			limit = { province.invalid_distance_from_capital = { dist = 200 } }
+			logger.print_error = { id = 108 }
+		}
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 100 } }
+		if = {
+			limit = { province.invalid_distance_from_capital = { dist = 100 } }
+			logger.print_error = { id = 108 }
+		}
+	}
+	else_if = {
+		limit = {
+			province.invalid_distance_from_capital_0 = yes
+		}
+		logger.print_error = { id = 108 }
 	}
 }
 
+# Test if province has valid state autonomy setup
+# @scope province
+validate_province_state_autonomy = {
+
+	if = {
+		limit = { province.is_distant_province = yes }
+		if = {
+			limit = { is_state = yes }
+			if = {
+				limit = { NOT = { has_province_flag = distant_state } }
+				logger.print_error = { id = 110 } # missing distant_state flag
+			}
+			if = {
+				limit = { is_var_null = { var = state_dist_from_capital } }
+				logger.print_error = { id = 111 } # null state_dist_from_capital variable
+			}
+			else = {
+				every_province_in_state = {
+					limit = { province.is_distant_province = yes }
+					core.export_var_to_prev = { var = state_dist_from_capital }
+					if = {
+						limit = { province.invalid_state_dist_from_capital = yes }
+						logger.print_error = { id = 112 } # invalid state_dist_from_capital variable
+					}
+				}
+			}
+		}
+	}
+}

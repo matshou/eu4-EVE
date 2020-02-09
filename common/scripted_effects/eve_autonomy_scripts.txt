@@ -80,6 +80,46 @@ autonomy.update_distance = {
 	clr_country_flag = territorial_change
 }
 
+# Check if there has been changes to provinces belonging to states.
+# Note that we need to check all provinces every month since there
+# are no events that we can use as entry points to trigger this.
+# @scope country
+#
+autonomy.update_state_provinces = {
+
+	every_owned_province = {
+		limit = { province.is_distant_province = yes }
+		update_state_provinces = yes
+	}
+}
+
+# Check if province has just become part or was removed from
+# state and handle all autonomy actions related to states
+# @scope province
+#
+update_state_provinces = {
+
+	# Province was recently added to state
+	if = {
+		limit = { is_state = yes }
+		if = {
+			limit = { NOT = { has_province_flag = distant_state } }
+			autonomy.calculate_state_dist_from_capital = yes
+			set_province_flag = distant_state
+		}
+	}
+	# Province no longer belongs to state because the state was abandoned.
+	# Note that losing a core does not remove the province from state.
+	else_if = {
+		limit = { has_province_flag = distant_state }
+		set_variable = {
+			which = state_dist_from_capital value = 0
+		}
+		set_country_flag = territorial_change 	# call for autonomy update
+		clr_province_flag = distant_state
+	}
+}
+
 # Remove old distance modifier before applying new one
 # Called when recalculating distance autonomy
 # @scope province
@@ -88,15 +128,79 @@ autonomy.remove_distance_m = {
 
 	if = {
 		limit = { has_province_flag = distant_province }
+		set_variable = { which = distance_from_capital value = 0 }
 		trigger_switch = {
 			on_trigger = has_province_modifier
-			prov_autonomy_from_dist_50 = { remove_province_modifier = prov_autonomy_from_dist_50 }
 			prov_autonomy_from_dist_100 = { remove_province_modifier = prov_autonomy_from_dist_100 }
-			prov_autonomy_from_dist_150 = { remove_province_modifier = prov_autonomy_from_dist_150 }
 			prov_autonomy_from_dist_200 = { remove_province_modifier = prov_autonomy_from_dist_200 }
-			prov_autonomy_from_dist_250 = { remove_province_modifier = prov_autonomy_from_dist_250 }
 			prov_autonomy_from_dist_300 = { remove_province_modifier = prov_autonomy_from_dist_300 }
-			prov_autonomy_from_dist_350 = { remove_province_modifier = prov_autonomy_from_dist_350 }
+			prov_autonomy_from_dist_400 = { remove_province_modifier = prov_autonomy_from_dist_400 }
+			prov_autonomy_from_dist_500 = { remove_province_modifier = prov_autonomy_from_dist_500 }
+			prov_autonomy_from_dist_600 = { remove_province_modifier = prov_autonomy_from_dist_600 }
+			prov_autonomy_from_dist_700 = { remove_province_modifier = prov_autonomy_from_dist_700 }
+			prov_autonomy_from_dist_800 = { remove_province_modifier = prov_autonomy_from_dist_800 }
+			prov_autonomy_from_dist_900 = { remove_province_modifier = prov_autonomy_from_dist_900 }
+			prov_autonomy_from_dist_1000 = { remove_province_modifier = prov_autonomy_from_dist_1000 }
+		}
+	}
+}
+
+# Set all autonomy related variables for scope province
+# @scope province
+set_autonomy_variables = {
+
+	set_variable = { which = distance_from_capital value = $dist$ }
+	if = {
+		limit = { is_state = yes }
+		autonomy.calculate_state_dist_from_capital = yes
+	}
+}
+
+# Calculate average distance from capital for all provinces
+# that are a part of the state the current scope province belongs to
+# @scope province
+#
+autonomy.calculate_state_dist_from_capital = {
+
+	set_variable = { which = state_dist_from_capital value = 0 }
+	set_variable = { which = provinces_in_state value = 0 }
+
+	# Go through every province that is a part of the state the current
+	# scope province belongs to and calculate total distance from capital
+	#
+	every_province_in_state = {
+		core.export_var_to_prev = { var = distance_from_capital }
+		PREV = {
+			change_variable = {
+				which = state_dist_from_capital which = output
+			}
+			change_variable = {
+				which = provinces_in_state value = 1
+			}
+		}
+	}
+	# If we checked that province is part of state before calling this method
+	# 'every_province_in_state' should always scope at least 1 entry.
+	# This check also ensures that we are not dividing by 0.
+	if = {
+		limit = { is_var_null = { var = provinces_in_state } }
+		set_variable = { which = state_dist_from_capital value = 0 }
+		logger.print_error = { id = 109 method = 3 }
+	}
+	# Divide by the total amount of provinces in state
+	# to get the average distance from capital
+	else = {
+		divide_variable = {
+			which = state_dist_from_capital
+			which = provinces_in_state
+		}
+		# Need to round down the result because float values cannot be exported
+		# through 'core.export_var_to_prev' by testing methods
+		math.ceil = {
+			val = state_dist_from_capital int = 0
+		}
+		set_variable = {
+			which = provinces_in_state value = 0
 		}
 	}
 }
@@ -111,32 +215,54 @@ autonomy.set_distance = {
 	set_province_flag = distant_province
 
 	if = {
-		limit = { province_distance = { who = ROOT distance = 350 } }
-		add_province_modifier = { name = "prov_autonomy_from_dist_350" duration = -1 }
+		limit = { province_distance = { who = ROOT distance = 1000 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_1000" duration = -1 }
+		set_autonomy_variables = { dist = 1000 }
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 900 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_900" duration = -1 }
+		set_autonomy_variables = { dist = 900 }
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 800 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_800" duration = -1 }
+		set_autonomy_variables = { dist = 800 }
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 700 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_700" duration = -1 }
+		set_autonomy_variables = { dist = 700 }
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 600 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_600" duration = -1 }
+		set_autonomy_variables = { dist = 600 }
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 500 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_500" duration = -1 }
+		set_autonomy_variables = { dist = 500 }
+	}
+	else_if = {
+		limit = { province_distance = { who = ROOT distance = 400 } }
+		add_province_modifier = { name = "prov_autonomy_from_dist_400" duration = -1 }
+		set_autonomy_variables = { dist = 400 }
 	}
 	else_if = {
 		limit = { province_distance = { who = ROOT distance = 300 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_300" duration = -1 }
-	}
-	else_if = {
-		limit = { province_distance = { who = ROOT distance = 250 } }
-		add_province_modifier = { name = "prov_autonomy_from_dist_250" duration = -1 }
+		set_autonomy_variables = { dist = 300 }
 	}
 	else_if = {
 		limit = { province_distance = { who = ROOT distance = 200 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_200" duration = -1 }
-	}
-	else_if = {
-		limit = { province_distance = { who = ROOT distance = 150 } }
-		add_province_modifier = { name = "prov_autonomy_from_dist_150" duration = -1 }
+		set_autonomy_variables = { dist = 200 }
 	}
 	else_if = {
 		limit = { province_distance = { who = ROOT distance = 100 } }
 		add_province_modifier = { name = "prov_autonomy_from_dist_100" duration = -1 }
-	}
-	else_if = {
-		limit = { province_distance = { who = ROOT distance = 50 } }
-		add_province_modifier = { name = "prov_autonomy_from_dist_50" duration = -1 }
+		set_autonomy_variables = { dist = 100 }
 	}
 	# province is in the capital zone and shouldn't have a distance modifier
 	else = { clr_province_flag = distant_province }

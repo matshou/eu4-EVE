@@ -1,7 +1,30 @@
 
-##################################
-# EVE - National Scripts
-##################################
+###################################
+# EVE - Nation Scripts
+###################################
+
+# Apply permanent global modifiers to country scope
+# This is called from on_startup in on_actions
+# @scope country
+#
+nation.add_global_modifiers = {
+
+	add_country_global_modifiers = {
+		name = global_autonomy_base_rate
+	}
+}
+
+# @scope country
+add_country_global_modifiers = {
+
+	add_country_modifier = {
+		name = $name$ duration = -1 hidden = yes
+	}
+}
+
+###################################
+# EVE - Nation Capital Scripts
+###################################
 
 # Fired from province that stops being a nation's capital
 # @scope capital

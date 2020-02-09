@@ -4024,9 +4024,10 @@ bah_bidar_fort = {
 
 #Morocco
 mor_crisis = {
-	global_trade_power = -0.025
-	stability_cost_modifier = 0.05
-	global_institution_spread = -0.025
+	global_trade_power = -0.05
+	stability_cost_modifier = 0.1
+	global_institution_spread = -0.05
+	technology_cost = 0.15
 }
 
 mor_andalucian_moors = {
@@ -9246,9 +9247,9 @@ reassessement_provinces = {
 }
 
 gunpowder_core = {
-	drill_gain_modifier = 0.5
+	drill_gain_modifier = 0.4
 	land_maintenance_modifier = 0.1
-	global_regiment_recruit_speed = 0.5
+	global_regiment_recruit_speed = 0.4
 }
 
 standardized_uniforms_modifier = {

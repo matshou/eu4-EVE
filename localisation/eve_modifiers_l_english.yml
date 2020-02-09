@@ -1,0 +1,19 @@
+﻿l_english:
+ global_autonomy_base_rate:0 "Base Value"
+
+ land_force_limit_free_leaders_1:0 "Land Force Limit"
+ land_force_limit_free_leaders_2:0 "Land Force Limit"
+ land_force_limit_free_leaders_3:0 "Land Force Limit"
+ land_force_limit_free_leaders_4:0 "Land Force Limit"
+ land_force_limit_free_leaders_5:0 "Land Force Limit"
+
+ naval_force_limit_free_leaders_1:0 "Naval Force Limit"
+ naval_force_limit_free_leaders_2:0 "Naval Force Limit"
+ naval_force_limit_free_leaders_3:0 "Naval Force Limit"
+ naval_force_limit_free_leaders_4:0 "Naval Force Limit"
+ naval_force_limit_free_leaders_5:0 "Naval Force Limit"
+
+ high_war_taxes:0 "High War Taxes"
+ desc_high_war_taxes:0 "Raising war taxes on a population already heavily exhausted from recent war efforts risks open rebellions."
+ very_high_war_taxes:0 "Very High War Taxes"
+ desc_very_high_war_taxes:0 "Raising war taxes on a population already heavily exhausted from recent war efforts risks open rebellions."

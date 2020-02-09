@@ -1,0 +1,120 @@
+
+################################
+# EVE - Institution Triggers
+################################
+
+province.institution_spread_factor = {
+	check_variable = {
+		which = $for$_spread_factor
+		value = $value$
+	}
+}
+
+nation.has_embraced_feudalism = {
+	has_country_flag = embraced_feudalism
+}
+
+nation.has_embraced_new_world = {
+	has_country_flag = embraced_new_world
+}
+
+nation.has_embraced_manufactories = {
+	has_country_flag = embraced_manufactories
+}
+
+province.has_embraced_feudalism = {
+	has_province_flag = embraced_feudalism
+}
+
+province.has_embraced_new_world = {
+	has_province_flag = embraced_new_world
+}
+
+province.has_embraced_manufactories = {
+	has_province_flag = embraced_manufactories
+}
+
+province.owner_gov_tribal_or_native = {
+	owner = {
+		OR = {
+			government = tribal
+			government = native
+		}
+	}
+}
+
+province.owner_primitive_tech = {
+	owner = {
+		OR = {
+			technology_group = sub_saharan			# West African
+			technology_group = central_african
+			technology_group = mesoamerican
+			technology_group = andean
+			technology_group = north_american
+			technology_group = south_american
+		}
+	}
+}
+
+province.owner_tech_civilized = {
+	owner = {
+		OR = {
+			technology_group = western
+			technology_group = eastern
+			technology_group = ottoman
+		}
+	}
+}
+
+province.maghreb_egypt_or_near_east_region = {
+	OR = {
+		region = maghreb_region
+		region = egypt_region
+		superregion = near_east_superregion
+	}
+}
+
+nation.gov_horde_or_native_council = {
+	OR = {
+		government = native
+		has_reform = siberian_tribe
+		has_reform = steppe_horde
+	}
+}
+
+province.owner_tech_indian_or_shinto_chinese = {
+	OR = {
+		owner = {
+			technology_group = indian
+		}
+		AND = {
+			owner = {
+				technology_group = chinese
+			}
+			religion = shinto
+		}
+	}
+}
+
+province.owner_tech_nomad_or_non_shinto_chinese = {
+	OR = {
+		owner = {
+			technology_group = nomad_group
+		}
+		AND = {
+			owner = {
+				technology_group = chinese
+			}
+			NOT = {
+				religion = shinto
+			}
+		}
+	}
+}
+
+nation.tech_muslim_or_east_african = {
+	OR = {
+		technology_group = muslim
+		technology_group = east_african
+	}
+}

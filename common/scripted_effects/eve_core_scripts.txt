@@ -23,12 +23,6 @@ core.on_daily_pulse = {
 	}
 	else = {	# Don't do anything else if no longer capital
 		if = {
-			limit = { nation.has_new_ruler = yes }
-
-			set_ruler_flag = inagurated
-			governance.calc_ruler_m = yes
-		}
-		if = {
 			limit = { has_country_flag = immediate_update }
 			core.on_monthly_pulse = yes
 			clr_country_flag = immediate_update
@@ -51,21 +45,24 @@ core.on_monthly_pulse = {
 		core.global_update = yes
 	}
 
-	test.run_tests = yes
-
+	military.calc_free_leaders = yes
 	states.update_states = yes
 	states.update_territories = yes
 	autonomy.check_for_change = yes
 	vassals.update = yes
 #	estates.update = yes
-
 	core.update_advisor_mods = yes
+	core.institutions_update = yes
 
 	# Gained new territory or changed capital
 	if = {
 		limit = { nation.has_territory_changes = yes }
 		autonomy.update_distance = yes
 	}
+	autonomy.update_state_provinces = yes
+
+	# Run tests after everything else
+	test.run_tests = yes
 }
 
 # Called from global scope each month
@@ -94,9 +91,13 @@ core.init_country = {
 			core.set_country_id = yes
 			every_owned_province = {
 				province.set_owner_id = yes
+				declare_variable = {
+					which = distance_from_capital value = 0
+				}
 			}
 			capital.init = yes						# apply capital modifiers
 			core.fire_monthly_pulse = yes    		# force an immediate update
+			nation.add_global_modifiers = yes
 
 			set_country_flag = is_initialized
 			set_country_flag = territorial_change
@@ -128,6 +129,7 @@ core.set_country_id = {
 # Export argument variable to PREV scope so it can be used for comparison.
 # Currently performing an interlaced scan with intervals using while loops
 # is the only way to transfer variable values between scopes.
+# NOTE: Trying to export FLOAT values will result in malformed output.
 #
 # @scope anywhere
 # @param var (variable to export)
@@ -224,5 +226,54 @@ add_monarch_power = {
 			add_$power$_power = 1
 			subtract_variable = { which = $value$ value = 1 }
 		}
+	}
+}
+
+# Update all <institution>_spread_factor variables.
+# Read more in eve_institution_events.txt
+# @scope country
+#
+core.institutions_update = {
+
+	if = {	# Feudalism
+		limit = {
+			#is_year = 1444
+			nation.has_embraced_feudalism = no
+		}
+		country_event = {
+			id = eve_institution.1
+		}
+	}
+	if = {	# New World
+		limit = {
+			is_year = 1500
+			nation.has_embraced_new_world = no
+		}
+		country_event = {
+			id = eve_institution.2
+		}
+	}
+	if = {	# Manufactories
+		limit = {
+			is_year = 1650
+			nation.has_embraced_manufactories = no
+		}
+		country_event = {
+			id = eve_institution.3
+		}
+	}
+}
+
+add_institution_spread_factor = {
+	change_variable = {
+		which = $for$_spread_factor
+		value = $value$
+	}
+}
+
+reset_institution_spread_factor = {
+	set_variable = {
+		which = $for$_spread_factor
+		value = 0
 	}
 }

@@ -169,11 +169,25 @@ fort_15th = {
 # Tier 2, 16th Century Buildings
 ################################################
 courthouse = {
-	cost = 100
 	time = 12
+	cost = 150
 
+	# Note that we cannot use a scripted trigger to validate this
+	# as vanilla code does not recognize references to building entries
+	# that are made AFTER the calling building. In this situation the town hall
+	# building would not be recognized because it's declared after courthouse
 	trigger = {
-		can_build_adm_center = yes
+		is_state = yes
+		NOT = {
+			is_capital = yes
+			any_province_in_state = {
+				NOT = { province_id = PREV }
+				OR = {
+					has_building = courthouse
+					has_building = town_hall
+				}
+			}
+		}
 	}
 
 	modifier = {
@@ -198,7 +212,49 @@ courthouse = {
 	}
 
 	ai_will_do = {
-		factor = 1
+		factor = 150
+
+		modifier = {
+			factor = 0
+			OR = {
+				is_state = no
+				NOT = {
+					province.state_dist_from_capital = { val = 1 }
+				}
+			}
+		}
+		modifier = {
+			factor = 1.25
+			province.state_dist_from_capital = { val = 100 }			# slightly more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 300 }
+			}
+		}
+		modifier = {
+			factor = 2
+			province.state_dist_from_capital = { val = 300 }			# moderately more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 500 }
+			}
+		}
+		modifier = {
+			factor = 3
+			province.state_dist_from_capital = { val = 500 }			# considerably more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 700 }
+			}
+		}
+		modifier = {
+			factor = 4
+			province.state_dist_from_capital = { val = 700 }			# significantly more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 900 }
+			}
+		}
+		modifier = {
+			factor = 5
+			province.state_dist_from_capital = { val = 1000 }		# extremely more difficult to govern
+		}
 	}
 }
 
@@ -527,8 +583,8 @@ counting_house = {
 
 
 town_hall = {
-	cost = 200
-	time = 1
+	cost = 250
+	time = 12
 
 	make_obsolete = courthouse
 
@@ -559,7 +615,49 @@ town_hall = {
 	}
 
 	ai_will_do = {
-		factor = 1
+		factor = 250
+
+		modifier = {
+			factor = 0
+			OR = {
+				is_state = no
+				NOT = {
+					province.state_dist_from_capital = { val = 1 }
+				}
+			}
+		}
+		modifier = {
+			factor = 1.25
+			province.state_dist_from_capital = { val = 100 }			# slightly more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 300 }
+			}
+		}
+		modifier = {
+			factor = 2
+			province.state_dist_from_capital = { val = 300 }			# moderately more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 500 }
+			}
+		}
+		modifier = {
+			factor = 3
+			province.state_dist_from_capital = { val = 500 }			# considerably more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 700 }
+			}
+		}
+		modifier = {
+			factor = 4
+			province.state_dist_from_capital = { val = 700 }			# significantly more difficult to govern
+			NOT = {
+				province.state_dist_from_capital = { val = 900 }
+			}
+		}
+		modifier = {
+			factor = 5
+			province.state_dist_from_capital = { val = 1000 }		# extremely more difficult to govern
+		}
 	}
 }
 

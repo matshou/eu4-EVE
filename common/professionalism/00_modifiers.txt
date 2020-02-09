@@ -21,6 +21,7 @@ supply_depot_modifier = {
 	}
 
 	may_build_supply_depot = yes
+	manpower_recovery_speed = 0.1
 }
 
 refill_garrison_modifier = {
