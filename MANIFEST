@@ -50,3 +50,9 @@ vassalized_rival common/powerprojection/00_static.txt
 took_province_from_rival common/powerprojection/00_static.txt
 lost_province_to_rival common/powerprojection/00_static.txt
 rival_lost_province common/powerprojection/00_static.txt
+
+cultural_event.1 events/CulturalEvents.txt
+flavor_mor.1 events/flavorMOR.txt
+subject_interaction_events.40 events/SubjectInteractionEvents.txt
+subject_interaction_events.41 events/SubjectInteractionEvents.txt
+shinto_events.47 events/Shinto.txt
