@@ -1,0 +1,52 @@
+commedia_dellarte common/event_modifiers/00_event_modifiers.txt
+mor_crisis common/event_modifiers/00_event_modifiers.txt
+gunpowder_core common/event_modifiers/00_event_modifiers.txt
+standardized_uniforms_modifier common/event_modifiers/00_event_modifiers.txt
+
+courthouse common/buildings/00_buildings.txt
+dock common/buildings/00_buildings.txt
+regimental_camp common/buildings/00_buildings.txt
+town_hall common/buildings/00_buildings.txt
+
+on_startup common/on_actions/00_on_actions.txt
+on_adm_development common/on_actions/00_on_actions.txt
+on_dip_development common/on_actions/00_on_actions.txt
+on_mil_development common/on_actions/00_on_actions.txt
+
+in_capital_state common/static_modifiers/00_static_modifiers.txt
+mild_winter common/static_modifiers/00_static_modifiers.txt
+normal_winter common/static_modifiers/00_static_modifiers.txt
+severe_winter common/static_modifiers/00_static_modifiers.txt
+provincial_tax_income common/static_modifiers/00_static_modifiers.txt
+provincial_production_size common/static_modifiers/00_static_modifiers.txt
+manpower common/static_modifiers/00_static_modifiers.txt
+development common/static_modifiers/00_static_modifiers.txt
+unrest common/static_modifiers/00_static_modifiers.txt
+ai_nation common/static_modifiers/00_static_modifiers.txt
+war_taxes common/static_modifiers/00_static_modifiers.txt
+stability common/static_modifiers/00_static_modifiers.txt
+positive_stability common/static_modifiers/00_static_modifiers.txt
+negative_stability common/static_modifiers/00_static_modifiers.txt
+war_exhaustion common/static_modifiers/00_static_modifiers.txt
+num_of_marriages common/static_modifiers/00_static_modifiers.txt
+low_army_professionalism common/static_modifiers/00_static_modifiers.txt
+high_army_professionalism common/static_modifiers/00_static_modifiers.txt
+regiment_drill_modifier common/static_modifiers/00_static_modifiers.txt
+army_drill_modifier common/static_modifiers/00_static_modifiers.txt
+innovativeness common/static_modifiers/00_static_modifiers.txt
+
+quality_ideas common/ideas/00_basic_ideas.txt
+
+warned_rival common/powerprojection/00_static.txt
+guarantee_neighbour_of_rival common/powerprojection/00_static.txt
+last_age_power_projection common/powerprojection/00_static.txt
+humiliated_rival common/powerprojection/00_static.txt
+humiliated_by_rival common/powerprojection/00_static.txt
+eclipsed_rival common/powerprojection/00_static.txt
+declared_war_at_rival common/powerprojection/00_static.txt
+joined_war_against_rival common/powerprojection/00_static.txt
+refused_war_against_rival common/powerprojection/00_static.txt
+vassalized_rival common/powerprojection/00_static.txt
+took_province_from_rival common/powerprojection/00_static.txt
+lost_province_to_rival common/powerprojection/00_static.txt
+rival_lost_province common/powerprojection/00_static.txt
