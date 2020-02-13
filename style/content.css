@@ -6,8 +6,11 @@
 #chance .value:after {
   content: 'x';
 }
+/* Default content for modifier text,
+ * overridden by percentage based modifiers
+ */
 .modifier .text:after {
-  content: attr(value) '%';
+  content: attr(value);
 }
 
 #adm_power.icon:before {
