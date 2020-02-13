@@ -1,0 +1,33 @@
+:root {
+  --monospace:"Lucida Console",Consolas,"Courier",monospace;
+}
+
+#chance .value:after {
+  content: 'x';
+}
+.modifier .text:after {
+  content: attr(value) '%';
+}
+
+#adm_power.icon:before {
+  content: url(../icon/monarch_admin_power.png);
+}
+#impossible.icon:before {
+  content: url(../icon/ai_decline_icon.png);
+}
+#build_cost.modifier .icon:before {
+  content: url(../icon/local_build_cost.png);
+}
+#envoy_travel_time.modifier .icon:before {
+  content: url(../icon/envoy_travel_time.png);
+}
+
+#build_cost .tooltip:hover:before {
+  content: 'Construction cost';
+}
+#envoy_travel_time .tooltip:hover:before {
+  content: 'Envoy travel time';
+}
+.tooltip-box:hover:before {
+	content: 'sample tooltip'
+}

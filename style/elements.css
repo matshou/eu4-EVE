@@ -1,0 +1,52 @@
+.flex-row {
+  display: flex;
+  flex-flow: row;
+}
+.flex-column {
+  display: flex;
+  flex-flow: column;
+}
+[align="center"] {
+  align-items: center;
+  justify-content: center;
+}
+
+#chance .value {
+  font-weight: bold;
+}
+#chance sub {
+  font-size: 0.8em;
+}
+#chance code {
+  /* background-color: transparent; */
+  font-family: var(--monospace);
+  font-size: 0.85em;
+}
+#chance .text {
+  font-size: 0.85em;
+  padding-left: 5px;
+}
+
+[font="larger"] {
+  font-size: 1.15em;
+}
+[font="smaller"] {
+  font-size: 0.85em;
+}
+
+.icon:before {
+  display: inline-flex;
+  vertical-align: middle;
+  transform: scale(0.8);
+}
+
+.modifier {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.modifier .text {
+  margin-left: 7px;
+  font-weight: bold;
+}
