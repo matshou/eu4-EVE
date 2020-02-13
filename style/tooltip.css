@@ -2,6 +2,7 @@
   --tooltip-hover: 33px;		  /* hover area size */
   --tooltip-scale: 0.8;
   --tooltip-distance: 170%;		  /* distance from hover area */
+  --tooltip-arrow-size: 6px;
   --tooltip-arrow-scale: 1.5;
   --tooltip-arrow-align: 15px;
   --tooltip-bg-color: #737373;
@@ -17,7 +18,7 @@
 .tooltip:hover {
   transform: scale(var(--tooltip-scale));
 }
-
+/* Inline tooltips need to be manually adjusted */
 .tooltip[type="inline"]:hover:before {
   top: calc(var(--tooltip-distance) + 8px);
 }
@@ -35,13 +36,12 @@
 
 /* Arrow decorator */
 .tooltip:hover:after {
-  /* transition: opacity  0s linear 1s; */
   background: var(--tooltip-bg-color);
   content: '';
-  width: 6px;
-  height: 6px;
   position: absolute;
   white-space: nowrap;
+  width: var(--tooltip-arrow-size);
+  height: var(--tooltip-arrow-size);
   transform: scale(var(--tooltip-arrow-scale)) rotate(45deg);
   left: var(--tooltip-arrow-align);
   top: 60px;

@@ -4,7 +4,6 @@ html {
 
 table {
   border-collapse: collapse;
-  /* border-spacing: 0px; */
 }
 table tr td {
   padding: 6px 15px;
@@ -24,16 +23,13 @@ td.trait .name {
 
 td.trait .description {
   display: block;
-  /* padding-top: 2px; */
-  /* text-align: justify; */
   line-height: 25px;
   font-size: 12px;
 }
 
 table li {
   font-size: 0.85em;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px 0px;
 }
 
 table ul {
@@ -63,8 +59,6 @@ code {
 	}
 }
 
-.test {
-  -moz-border-radius-topright:5px;
-  -moz-border-radius-topleft:5px;
-  border:2px solid #0094ff;
+[border="blue"][ {
+  border:2px solid var(--color-azure);
 }

@@ -17,6 +17,9 @@
 .modifier .icon:before {
   margin: -15px;
 }
+.icon:before {
+  transform: scale(0.8);
+}
 #envoy_travel_time .icon:before {
   transform: scale(0.73);
   padding-left: 1px;

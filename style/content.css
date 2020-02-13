@@ -1,5 +1,6 @@
 :root {
   --monospace:"Lucida Console",Consolas,"Courier",monospace;
+  --color-azure: #0094ff;
 }
 
 #chance .value:after {
@@ -27,7 +28,4 @@
 }
 #envoy_travel_time .tooltip:hover:before {
   content: 'Envoy travel time';
-}
-.tooltip-box:hover:before {
-	content: 'sample tooltip'
 }
