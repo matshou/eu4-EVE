@@ -28,6 +28,9 @@
 #colonial_range.modifier .icon:before {
   content: url(../icon/colonial_range.png);
 }
+#stability_cost.modifier .icon:before {
+  content: url(../icon/stability_cost_modifier.png);
+}
 
 #build_cost .tooltip:hover:before {
   content: 'Construction cost';
@@ -40,4 +43,7 @@
 }
 #colonial_range .tooltip:hover:before {
   content: 'Colonial range';
+}
+#stability_cost .tooltip:hover:before {
+  content: 'Stability cost modifier';
 }
