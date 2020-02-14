@@ -1,14 +1,17 @@
-#envoy_travel_time.modifier .text,
+#envoy_travel_time.modifier .text:after,
 #build_cost.modifier .text:after {
   content: attr(value) '%';
+}
+#envoy_travel_time.modifier .text:after,
+#build_cost.modifier .text:after {
   text-decoration: line-through;
 }
-#envoy_travel_time.modifier .text[value^="+"],
+#envoy_travel_time.modifier .text[value^="+"]:after,
 #build_cost.modifier .text[value^="+"]:after {
   text-decoration: none;
   color: red;
 }
-#envoy_travel_time.modifier .text[value^="-"],
+#envoy_travel_time.modifier .text[value^="-"]:after,
 #build_cost.modifier .text[value^="-"]:after {
   text-decoration: none;
   color: green;
