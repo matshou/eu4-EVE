@@ -20,15 +20,12 @@ td.trait .description {
   font-size: 12px;
 }
 
-#chance div:nth-child(1) {
-  width: 40%;
 }
-#chance div:nth-child(2) {
-  width: 60%;
+#chance.flex-row div:nth-child(1) {
+  width: 50px;
 }
-#code-list.flex-column {
-  width: 50% !important;
-  margin-left: -5px;
+#chance.flex-row div:nth-child(2) {
+  width: 115px;
 }
 #chance .value {
   text-align: center;
