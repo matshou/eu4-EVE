@@ -20,6 +20,8 @@ td.trait .description {
   font-size: 12px;
 }
 
+#chance .value:after {
+  content: 'x';
 }
 #chance.flex-row div:nth-child(1) {
   width: 50px;
