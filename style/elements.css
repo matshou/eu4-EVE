@@ -6,14 +6,18 @@
   display: flex;
   flex-flow: column;
 }
-[align="center"] {
-  align-items: center;
-  justify-content: center;
-}
 
 }
 }
+
+.flex-row[align="center"],
+.flex-column[align="center"] {
+  justify-content: center;
+  align-items: center;
 }
+.flex-row[type="single-line"] {
+  align-items: baseline;
+  justify-content: space-evenly;
 }
 
 [font="larger"] {
