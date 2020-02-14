@@ -7,7 +7,13 @@
   flex-flow: column;
 }
 
+/* Spacing between flex rows in table cells */
+td .flex-column > .flex-row {
+  padding-top: 15px;
 }
+/* Disable padding-top for first column row */
+td .flex-column .flex-row:nth-child(1) {
+  padding-top: 0px !important;
 }
 
 .flex-row[align="center"],
