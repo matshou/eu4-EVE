@@ -1,18 +1,22 @@
+#colonial_range.modifier .text:after,
 #envoy_travel_time.modifier .text:after,
 #build_cost.modifier .text:after {
   content: attr(value) '%';
 }
+#colonial_range.modifier .text:after,
 #global_autonomy.modifier .text:after,
 #envoy_travel_time.modifier .text:after,
 #build_cost.modifier .text:after {
   text-decoration: line-through;
 }
+#colonial_range.modifier .text[value^="-"]:after,
 #global_autonomy.modifier .text[value^="+"]:after,
 #envoy_travel_time.modifier .text[value^="+"]:after,
 #build_cost.modifier .text[value^="+"]:after {
   text-decoration: none;
   color: red;
 }
+#colonial_range.modifier .text[value^="+"]:after,
 #global_autonomy.modifier .text[value^="-"]:after,
 #envoy_travel_time.modifier .text[value^="-"]:after,
 #build_cost.modifier .text[value^="-"]:after {

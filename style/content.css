@@ -28,6 +28,9 @@
 #global_autonomy.modifier .icon:before {
   content: url(../icon/global_autonomy.png);
 }
+#colonial_range.modifier .icon:before {
+  content: url(../icon/colonial_range.png);
+}
 
 #build_cost .tooltip:hover:before {
   content: 'Construction cost';
@@ -37,4 +40,7 @@
 }
 #global_autonomy .tooltip:hover:before {
   content: 'Monthly autonomy change';
+}
+#colonial_range .tooltip:hover:before {
+  content: 'Colonial range';
 }
