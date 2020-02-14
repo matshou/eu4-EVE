@@ -2,15 +2,18 @@
 #build_cost.modifier .text:after {
   content: attr(value) '%';
 }
+#global_autonomy.modifier .text:after,
 #envoy_travel_time.modifier .text:after,
 #build_cost.modifier .text:after {
   text-decoration: line-through;
 }
+#global_autonomy.modifier .text[value^="+"]:after,
 #envoy_travel_time.modifier .text[value^="+"]:after,
 #build_cost.modifier .text[value^="+"]:after {
   text-decoration: none;
   color: red;
 }
+#global_autonomy.modifier .text[value^="-"]:after,
 #envoy_travel_time.modifier .text[value^="-"]:after,
 #build_cost.modifier .text[value^="-"]:after {
   text-decoration: none;
@@ -23,6 +26,7 @@
 .icon:before {
   transform: scale(0.8);
 }
+#global_autonomy .icon:before,
 #envoy_travel_time .icon:before {
   transform: scale(0.73);
   padding-left: 1px;

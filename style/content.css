@@ -25,10 +25,16 @@
 #envoy_travel_time.modifier .icon:before {
   content: url(../icon/envoy_travel_time.png);
 }
+#global_autonomy.modifier .icon:before {
+  content: url(../icon/global_autonomy.png);
+}
 
 #build_cost .tooltip:hover:before {
   content: 'Construction cost';
 }
 #envoy_travel_time .tooltip:hover:before {
   content: 'Envoy travel time';
+}
+#global_autonomy .tooltip:hover:before {
+  content: 'Monthly autonomy change';
 }
