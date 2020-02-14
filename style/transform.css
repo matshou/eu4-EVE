@@ -28,7 +28,7 @@
 }
 #global_autonomy .icon:before,
 #envoy_travel_time .icon:before {
-  transform: scale(0.73);
+  transform: scale(0.7);
   padding-left: 1px;
 }
 #adm_power.icon:before {
