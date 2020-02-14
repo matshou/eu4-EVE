@@ -11,19 +11,9 @@
   justify-content: center;
 }
 
-#chance .value {
-  font-weight: bold;
 }
-#chance sub {
-  font-size: 0.8em;
 }
-#chance code {
-  font-family: var(--monospace);
-  font-size: 0.85em;
 }
-#chance .text {
-  font-size: 0.85em;
-  padding-left: 5px;
 }
 
 [font="larger"] {

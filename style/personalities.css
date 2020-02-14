@@ -1,0 +1,48 @@
+td.centered {
+  vertical-align: center;
+  text-align: center;
+}
+
+td.trait {
+  padding: 6px 13px;
+}
+
+td.trait .name {
+  display: block;
+  line-height: 35px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #eee;
+}
+
+td.trait .description {
+  display: block;
+  line-height: 25px;
+  font-size: 12px;
+}
+
+#chance div:nth-child(1) {
+  width: 40%;
+}
+#chance div:nth-child(2) {
+  width: 60%;
+}
+#code-list.flex-column {
+  width: 50% !important;
+  margin-left: -5px;
+}
+#chance .value {
+  text-align: center;
+  font-weight: bold;
+}
+#chance .text {
+  text-align: center;
+  font-size: 0.85em;
+}
+#chance sub {
+  font-size: 0.8em;
+}
+#chance code {
+  font-family: var(--monospace);
+  font-size: 1.0em;
+  padding: 0.1em 0;
+}

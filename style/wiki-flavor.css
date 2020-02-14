@@ -5,26 +5,9 @@ html {
 table {
   border-collapse: collapse;
 }
+
 table tr td {
-  padding: 6px 15px;
-}
-
-td.centered {
-  vertical-align: center;
-  text-align: center;
-}
-
-td.trait .name {
-  display: block;
-  line-height: 35px;
-  margin-bottom: 3px;
-  border-bottom: 1px solid #eee;
-}
-
-td.trait .description {
-  display: block;
-  line-height: 25px;
-  font-size: 12px;
+  padding: 15px 13px;
 }
 
 table li {
