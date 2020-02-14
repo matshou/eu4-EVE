@@ -1,0 +1,183 @@
+<html>
+<head>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ruler Personalities</title>
+	<link rel="stylesheet" href="style/typora-github.css">
+	<link rel="stylesheet" href="style/wiki-flavor.css">
+	<link rel="stylesheet" href="style/content.css">
+	<link rel="stylesheet" href="style/elements.css">
+	<link rel="stylesheet" href="style/tooltip.css">
+	<link rel="stylesheet" href="style/transform.css">
+	<link rel="stylesheet" href="style/personalities.css">
+	</head>
+	<body>
+	<article class="markdown-body">
+	<h1>Ruler Personalities</h1>
+	<table>
+	<thead>
+		<tr style="height:60px">
+		<th style="width:35%">Trait</th>
+		<th style="width:10%">Effect</th>
+		<th style="width:25%">Chance</th>
+		<th>AI would</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td class="trait">
+		<b class="name">Architect</b>
+		<sub class="description">This ruler understands the importance of improving infrastructure as a necessity for any state of our age. Grand visions coupled with a great understanding and talent for keeping costs down makes this ruler a great asset to us.
+		</sub>
+	</td>
+	<td>
+		<div class="flex-column" align="center">
+			<div class="modifier" id="build_cost">
+				<div class="icon"></div><div class="tooltip"></div>
+				<div class="text" value="-10"></div>
+			</div>
+		</div>
+	</td>
+	<td>
+		<div class="flex-row" id="chance" align="center" width="outer-padding:medium">
+			<div class="value" font="larger">0.5</div>
+			<div class="flex-column" id="code-list" style="width:55%">
+				<code class="icon" id="adm_power">>= 5</code>
+				<code class="icon" id="adm_power">== 6</code>
+			</div>
+		</div>
+	</td>
+	<td>
+		<ul><li>Spend more money on buildings.</li></ul>
+	</td>
+	</tr>
+	<tr>
+	<td class="trait">
+		<b class="name">Perfectionist</b>
+		<sub class="description">A keen interest in detail and minutiae is not always coupled with an equal talent for such things. Constantly causing interruptions and delays our ruler is doing a lot more harm than good when it comes to developing our internal  infrastructure.</sub>
+	</td>
+	<td>
+		<div class="flex-column" align="center">
+			<div class="modifier" id="build_cost">
+				<div class="icon"></div><div class="tooltip"></div>
+				<div class="text" value="+10"></div>
+			</div>
+		</div>
+	</td>
+	<td>
+		<div class="flex-row" id="chance" align="center">
+			<div class="value">-0.5</div>
+			<div class="text">ruler has other negative trait</div>
+		</div>
+	</td>
+	<td>
+		<ul><li>Try to avoid ugly map borders.</li></ul>
+	</td>
+	<tr>
+	<td class="trait">
+		<b class="name">Impatient</b>
+		<sub class="description">Bearing pains or trials calmly is not in our ruler's nature and our envoys know this better then any  other subjects as tardiness is not well tolerated.</sub>
+	</td>
+	<td>
+		<div class="flex-column" align="center">
+			<div class="modifier" id="envoy_travel_time">
+				<div class="icon"></div><div class="tooltip"></div>
+				<div class="text" value="+25"></div>
+			</div>
+		</div>
+	</td>
+	<td>
+		<div class="flex-column" align="center">
+			<div class="flex-row" id="chance" align="center">
+				<div class="icon" id="impossible"></div>
+				<div class="text">calm personality</div>
+			</div>
+			<div class="flex-row" id="chance" align="center">
+				<div class="value">-0.5</div>
+				<div class="text">ruler has other negative trait</div>
+			</div>
+		</div>
+	</td>
+	<td>
+		<ul>
+			<li>Demand gold in peace deals.</li>
+			<li>Want to take loans.</li>
+		</ul>
+	</td>
+	</tr>
+	<tr>
+	<td class="trait">
+		<b class="name">Aloof</b>
+		<sub class="description">This ruler is seen as uninterested and unwilling to partake in matters of governance which results in greater liberties for all his subjects.</sub>
+	</td>
+	<td>
+		<div class="flex-column" align="center">
+			<div class="modifier" id="global_autonomy">
+				<div class="icon"></div><div class="tooltip"></div>
+				<div class="text" value="+0.05"></div>
+			</div>
+		</div>
+	</td>
+	<td>
+		<div class="flex-column" align="center">
+			<div class="flex-row" id="chance" align="center" >
+				<div class="icon" id="impossible"></div>
+				<div class="text">lawgiver personality</div>
+			</div>
+			<div class="flex-row" id="chance" align="center">
+				<div class="value">+0.5</div>
+				<div class="text">balanced personality</div>
+			</div>
+			<div class="flex-row" id="chance" align="center">
+				<div class="value">-0.5</div>
+				<div class="text">militarist personality</div>
+			</div>
+			<div class="flex-row" id="chance" align="center">
+				<div class="value">-0.5</div>
+				<div class="text">ruler has other negative trait</div>
+			</div>
+		</div>
+	</td>
+	<td>
+		<ul>
+			<li>Be less likely to go to war.</li>
+			<li>Not lower province autonomy.</li>
+		</ul>
+	</td>
+	</tr>
+	<tr>
+	<td class="trait">
+		<b class="name">Ambitious Explorer</b>
+		<sub class="description">This ruler dreams of riches found in unknown lands and is willing to undertake greater risks to explore and colonize the new world.</sub>
+	</td>
+	<td>
+		<div class="flex-column" align="center">
+			<div class="modifier" id="colonial_range">
+				<div class="icon"></div><div class="tooltip"></div>
+				<div class="text" value="+20"></div>
+			</div>
+		</div>
+	</td>
+	<td>
+		<div class="flex-column" align="center">
+			<div class="flex-row" id="chance" align="center">
+				<div class="icon" id="impossible"></div>
+				<div class="text" >No access to open sea</div>
+			</div>
+			<div class="flex-row" id="chance" align="center">
+				<div class="value">-0.5</div>
+				<div class="text">expansionist personality</div>
+			</div>
+		</div>
+	</td>
+	<td>
+		<ul>
+			<li>Seek to establish colonies with greater intent.</li>
+		</ul>
+	</td>
+	</tr>
+	</tbody>
+	</table>
+</article>
+</body>
+</html>
